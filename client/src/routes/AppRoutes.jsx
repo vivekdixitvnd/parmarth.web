@@ -26,6 +26,7 @@ import ListUsers from "../pages/ListUsers/ListUsers";
 import VerifyCode from "../pages/VerifyCode/VerifyCode";
 import backendUrl from "../backendUrl";
 import toast from "react-hot-toast";
+import Muskan from "../pages/Muskan/Muskan.jsx";
 import FestivalCelebration from "../pages/FestivalCelebration/FestivalCelebration";
 import ArticlesAndBlogs from "../pages/ArticlesAndBlogs/ArticlesAndBlogs";
 import ConvertUrl from "../pages/ConvertUrl/ConvertUrl";
@@ -63,6 +64,7 @@ const AppRoutes = () => {
       <Route path="/classes" element={<Classes />} />
       <Route path="/team" element={<Team />} />
       <Route path="/udgam" element={<Udgam />} />
+      <Route path="/muskan" element={<Muskan />} />
       <Route path="/schooling" element={<Schooling />} />
       <Route path="/events" element={<Events />} />
       <Route path="/educational-visits" element={<EducationalVisits />} />
