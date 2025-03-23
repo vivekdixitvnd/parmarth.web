@@ -1,0 +1,141 @@
+[
+    {
+        "id": 1,
+        "ref": "PARM-200313901",
+        "name": "Mridul Pandey",
+        "batch": "2024",
+        "linkedin": "https://www.linkedin.com/in/mridul"
+    },
+    {
+        "id": 2,
+        "name": "Rajnish Dubey",
+        "batch": "2024",
+        "linkedin": "https://www.linkedin.com/in/rajnish"
+    },
+    {
+        "id": 3,
+        "name": "Sakshi Chauhan",
+        "batch": "2024",
+        "linkedin": "https://www.linkedin.com/in/sakshi"
+    },
+    {
+        "id": 4,
+        "name": "Shikha Awasthi",
+        "batch": "2024",
+        "linkedin": "https://www.linkedin.com/in/shikha"
+    },
+    {
+        "id": 5,
+        "name": "Manish Tarkar",
+        "batch": "2023",
+        "linkedin": "https://www.linkedin.com/in/manish"
+    },
+    {
+        "id": 6,
+        "name": "Adarsh Bhardwaj",
+        "batch": "2023",
+        "linkedin": "https://www.linkedin.com/in/adarsh"
+    },
+    {
+        "id": 7,
+        "name": "Shubham Chaurasiya",
+        "batch": "2023",
+        "linkedin": "https://www.linkedin.com/in/shubham"
+    },
+    {
+        "id": 8,
+        "name": "Shilpi",
+        "batch": "2023",
+        "linkedin": "https://www.linkedin.com/in/shilpi"
+    },
+    {
+        "id": 9,
+        "name": "Sharthik Sharma",
+        "batch": "2023",
+        "linkedin": "https://www.linkedin.com/in/sharthik"
+    },
+    {
+        "id": 10,
+        "name": "Alok Kumar",
+        "batch": "2022",
+        "linkedin": "https://www.linkedin.com/in/alok"
+    },
+    {
+        "id": 11,
+        "name": "Abhay Sharma",
+        "batch": "2022",
+        "linkedin": "https://www.linkedin.com/in/abhay"
+    },
+    {
+        "id": 12,
+        "name": "Divyanshu Jaiswal",
+        "batch": "2022",
+        "linkedin": "https://www.linkedin.com/in/abhay"
+    },
+    {
+        "id": 13,
+        "name": "Bhuvanesh",
+        "batch": "2022",
+        "linkedin": "https://www.linkedin.com/in/abhay"
+    },
+    {
+        "id": 14,
+        "name": "Shashank",
+        "batch": "2022",
+        "linkedin": "https://www.linkedin.com/in/abhay"
+    },
+    {
+        "id": 15,
+        "name": "Abhishek Kushwaha",
+        "batch": "2021",
+        "linkedin": "https://www.linkedin.com/in/abhishek"
+    },
+    {
+        "id": 16,
+        "name": "Ankit Shrivastava",
+        "batch": "2021",
+        "linkedin": "https://www.linkedin.com/in/ankit"
+    },
+    {
+        "id": 17,
+        "name": "Ashish Chand",
+        "batch": "2021",
+        "linkedin": "https://www.linkedin.com/in/ashish"
+    },
+    {
+        "id": 18,
+        "name": "Shrey Dubey",
+        "batch": "2020",
+        "linkedin": "https://www.linkedin.com/in/shrey"
+    },
+    {
+        "id": 19,
+        "name": "Pragya",
+        "batch": "2020",
+        "linkedin": "https://www.linkedin.com/in/pragya"
+    },
+    {
+        "id": 20,
+        "name": "Ashwani Sharma",
+        "batch": "2019",
+        "linkedin": "https://www.linkedin.com/in/ashwani"
+    },
+    {
+        "id": 21,
+        "name": "Kirti",
+        "batch": "2019",
+        "linkedin": "https://www.linkedin.com/in/kirti"
+    },
+    {
+        "id": 22,
+        "name": "Vipul",
+        "batch": "2018",
+        "linkedin": "https://www.linkedin.com/in/vipul"
+    },
+    {
+        "id": 23,
+        "name": "Richa",
+        "batch": "2016",
+        "linkedin": "https://www.linkedin.com/in/richa"
+    }
+]
