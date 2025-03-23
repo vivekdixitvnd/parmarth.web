@@ -1,0 +1,158 @@
+.body {
+    padding-top: 10px;
+    /* Navbar ke niche space */
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+    background-color: #f8f9fa;
+    /* Background halka sa */
+}
+
+.section {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.section h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #277bc0;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 0;
+    /* Navbar se upar overlap fix */
+}
+
+.members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Auto-fit cards */
+    gap: 20px;
+    /* Cards ke beech gap */
+    justify-content: center;
+    /* Centering cards properly */
+    max-width: 1200px;
+    /* Limit width to prevent stretching */
+    margin: 0 auto;
+    /* Center align with equal left-right spacing */
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media (min-width: 1024px) {
+    .members {
+        grid-template-columns: repeat(5, 1fr);
+        /* Max 5 cards per row */
+    }
+}
+
+.card {
+    width: 180px;
+    /* Thoda chhota card */
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100px;
+    /* Photo size */
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.card p {
+    font-size: 13px;
+    color: gray;
+}
+
+/* Social icons container */
+.card .social-icons {
+    margin-top: 10px;
+}
+
+/* Individual social icons */
+.card .social-icons a {
+    margin: 0 5px;
+    color: #277bc0;
+    font-size: 18px;
+    transition: color 0.2s;
+}
+
+.card .social-icons a:hover {
+    color: #055a8c;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.icons a {
+    color: #0077b5;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.icons a:hover {
+    color: #0056b3;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+}
+
+/* Alternate row colors */
+tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+    /* Light gray */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #e9ecef;
+    /* Slightly darker gray */
+}
+
+th {
+    background-color: #6ebaf9;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
