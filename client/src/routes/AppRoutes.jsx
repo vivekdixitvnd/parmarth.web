@@ -13,6 +13,7 @@ import AddRteData from "../pages/AddRteData/AddRteData";
 import RteData from "../pages/RteData/RteData";
 import Volunteers from "../pages/VolunteersData/Volunteers";
 import Udgam from "../pages/Udgam/Udgam.jsx"
+import Utsaah from "../pages/Utsaah/Utsaah.jsx"
 import Team from "../pages/Team/Team";
 import CreatePost from "../pages/CreatePost/CreatePost";
 import EditPost from "../pages/EditPost/EditPost";
@@ -63,7 +64,8 @@ const AppRoutes = () => {
       <Route path="/about" element={<About />} />
       <Route path="/classes" element={<Classes />} />
       <Route path="/team" element={<Team />} />
-      <Route path="/udgam" element={<Udgam />} />
+      <Route path="/udgam" element={<Udgam />
+      <Route path="/utsaah" element={<Utsaah />} />
       <Route path="/muskan" element={<Muskan />} />
       <Route path="/schooling" element={<Schooling />} />
       <Route path="/events" element={<Events />} />
