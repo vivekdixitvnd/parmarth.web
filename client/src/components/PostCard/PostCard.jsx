@@ -25,7 +25,7 @@ const PostCard = (props) => {
             props.data.category === "article") && (
             <p className={styles["category"]}>{props.data.category}</p>
           )}
-          <p>{props.data.description}</p>
+          {/* <p>{props.data.description}</p> */}
         </div>
       </div>
     </>

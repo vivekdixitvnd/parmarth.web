@@ -13,6 +13,7 @@ import AddRteData from "../pages/AddRteData/AddRteData";
 import RteData from "../pages/RteData/RteData";
 import Volunteers from "../pages/VolunteersData/Volunteers";
 import Udgam from "../pages/Udgam/Udgam.jsx"
+import Utsarg from "../pages/Utsarg/Utsarg.jsx"
 import Utsaah from "../pages/Utsaah/Utsaah.jsx"
 import Ummeed from "../pages/Ummeed/Ummeed.jsx"
 import EduVisit from "../pages/EduVisit/EduVisit.jsx"
@@ -24,15 +25,13 @@ import ListPost from "../pages/ListPosts/ListPosts";
 import Post from "../pages/Post/Post";
 import AddVolunteerData from "../pages/AddVolunteerData/AddVolunteerData";
 import Events from "../pages/Events/Events";
-import EducationalVisits from "../pages/EducationalVisits/EducationalVisits";
 import CreateUser from "../pages/CreateUser/CreateUser";
 import ListUsers from "../pages/ListUsers/ListUsers";
 import VerifyCode from "../pages/VerifyCode/VerifyCode";
 import backendUrl from "../backendUrl";
 import toast from "react-hot-toast";
 import Muskan from "../pages/Muskan/Muskan.jsx";
-import FestivalCelebration from "../pages/FestivalCelebration/FestivalCelebration";
-import ArticlesAndBlogs from "../pages/ArticlesAndBlogs/ArticlesAndBlogs";
+import Article from "../pages/Article/Article.jsx";
 import ConvertUrl from "../pages/ConvertUrl/ConvertUrl";
 import AddEventVolunteersData from "../pages/AddEventVolunteersData/AddEventVolunteersData";
 import EventVolunteersData from "../pages/EventVolunteersData/EventVolunteersData";
@@ -69,6 +68,7 @@ const AppRoutes = () => {
       <Route path="/classes" element={<Classes />} />
       <Route path="/team" element={<Team />} />
       <Route path="/udgam" element={<Udgam />} />
+      <Route path="/utsarg" element={<Utsarg />} />
       <Route path="/utsaah" element={<Utsaah />} />
       <Route path="/ummeed" element={<Ummeed />} />
       <Route path="/utsav" element={<UtsavAyojan />} />
@@ -77,9 +77,7 @@ const AppRoutes = () => {
       <Route path="/muskan" element={<Muskan />} />
       <Route path="/schooling" element={<Schooling />} />
       <Route path="/events" element={<Events />} />
-      <Route path="/educational-visits" element={<EducationalVisits />} />
-      <Route path="/festival-celebration" element={<FestivalCelebration />} />
-      <Route path="/articles-and-blogs" element={<ArticlesAndBlogs />} />
+      <Route path="/article" element={<Article />} />
       {/* {authCtx.isLoggedIn && (
         <Route path="/convert-url" element={<ConvertUrl />} />
       )} */}

@@ -18,6 +18,7 @@ const Navbar = () => {
   const [showMoreDropdown, setShowMoreDropdown] = useState(false);
   const [showAdminsDropdown, setShowAdminsDropdown] = useState(false);
   const [showEventsDropdown, setShowAEventsDropdown] = useState(false);
+  const [showHappeningsDropdown, setShowAHappeningsDropdown] = useState(false);
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -87,6 +88,21 @@ const Navbar = () => {
           </span>
         </NavLink>
         <NavLink
+          to="/events"
+          className={pathname === "/events" ? styles.active : styles.link}
+        >
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
+            }}
+          >
+            Recent Activity
+          </span>
+        </NavLink>
+        <NavLink
           to="#"
           className={pathname === "#" ? styles.active : styles.link}
           style={{ position: "relative" }}
@@ -152,9 +168,9 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/events"
+                      to="/utsarg"
                       className={
-                        pathname === "/events" ? styles.active : styles.link
+                        pathname === "/utsarg" ? styles.active : styles.link
                       }
                       style={{ fontSize: "18px" }}
                     >
@@ -185,19 +201,7 @@ const Navbar = () => {
                       <b>रक्तदान महादान</b>
                       </NavLink>
                       </li>
-                      <li>
-                    <NavLink
-                      to="/educational-visits"
-                      className={
-                        pathname === "/educational-visits"
-                          ? styles.active
-                          : styles.link
-                      }
-                      style={{ fontSize: "18px" }}
-                    >
-                      <b>educational-visits</b>
-                    </NavLink>
-                  </li>
+                      
                   <li>
                     <NavLink
                       to="/utsav"
@@ -210,26 +214,10 @@ const Navbar = () => {
                     >
                       <b>उत्सव आयोजन</b>
                     </NavLink>
-                  </li>
+                  </li>                 
                 </ul>
               </div>
             )}
-          </span>
-        </NavLink>
-        <NavLink
-          to="#"
-          className={pathname === "#" ? styles.active : styles.link}
-          style={{ position: "relative" }}
-        >
-          <span
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            Happenings
-            <RiArrowDropDownLine size={25} />
           </span>
         </NavLink>
         <NavLink
@@ -254,15 +242,15 @@ const Navbar = () => {
               <ul>
                 <li>
                   <NavLink
-                    to="/articles-and-blogs"
+                    to="/article"
                     className={
-                      pathname === "articles-and-blogs"
+                      pathname === "article"
                         ? styles.active
                         : styles.link
                     }
                     style={{ fontSize: "18px" }}
                   >
-                    Articles and Blogs
+                    Articles
                   </NavLink>
                 </li>
                 <li>
