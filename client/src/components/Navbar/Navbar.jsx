@@ -163,13 +163,13 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/events"
+                      to="/eduvisit"
                       className={
-                        pathname === "/events" ? styles.active : styles.link
+                        pathname === "/eduvisit" ? styles.active : styles.link
                       }
                       style={{ fontSize: "18px" }}
                     >
-                      <b>शैक्षिक भ्रमण</b>
+                      <b>शैक्षणिक भ्रमण</b>
                     </NavLink>
                   </li>
                   <li>
