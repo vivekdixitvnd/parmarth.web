@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import styles from "./FestivalCelebration.module.css";
+import styles from "./Article.module.css";
 import PostCard from "../../components/PostCard/PostCard";
 import backendUrl from "../../backendUrl";
 import Masonry from "react-masonry-css";
-import toast from "react-hot-toast";
 import Pagination from "../../components/Pagination/Pagination";
+import toast from "react-hot-toast";
 
-const FestivalCelebration = () => {
+const Articles = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,14 +34,14 @@ const FestivalCelebration = () => {
   };
 
   useEffect(() => {
-    getData(`${backendUrl}/getPostByCategory/festival-celebration`);
+    getData(`${backendUrl}/getArticles?page=1`);
   }, []);
 
   return (
     <>
       <Navbar />
       <div className={styles.body}>
-        <h1>Festival Celebration</h1>
+        <h1>Articles</h1>
         <hr className={styles.hr} />
         <Masonry
           breakpointCols={{
@@ -62,7 +62,7 @@ const FestivalCelebration = () => {
           <Pagination
             data={data}
             fetchData={getData}
-            apiUrl={`${backendUrl}/getPostByCategory/educational-visit`}
+            apiUrl={`${backendUrl}/getArticles`}
           />
         )}
       </div>
@@ -71,4 +71,4 @@ const FestivalCelebration = () => {
   );
 };
 
-export default FestivalCelebration;
+export default Articles;

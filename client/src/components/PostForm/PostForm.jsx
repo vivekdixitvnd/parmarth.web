@@ -35,13 +35,10 @@ const PostForm = (props) => {
   const isContentValid = (content) => content.trim().length > 0;
   const isCategoryValid = () => {
     switch (category) {
-      case "blog":
       case "event":
       case "medical-helps":
       case "article":
       case "donation":
-      case "educational-visit":
-      case "festival-celebration":
         return true;
 
       default:
@@ -258,13 +255,10 @@ const PostForm = (props) => {
               <option disabled hidden value="choose">
                 Select Category
               </option>
-              <option value="blog">Blog</option>
               <option value="event">Event</option>
               <option value="medical-helps">Medical Helps</option>
               <option value="article">Article</option>
               <option value="donation">Donation</option>
-              <option value="educational-visit">Educational Visit</option>
-              <option value="festival-celebration">Festival Celebration</option>
             </select>
           </span>
           <button type="submit" className={styles.submit} disabled={isLoading}>

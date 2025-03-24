@@ -169,7 +169,11 @@ const ListPost = () => {
                 toast.success(resData.message);
                 setIsDeleting(false);
                 setModalState(false);
-                getPosts();
+                setData((prevData) => ({
+                  ...prevData,
+                  posts: prevData.posts.filter((post) => post._id !== postToBeDeleted),
+                  totalPosts: prevData.totalPosts - 1,
+                }));
               }
             })
             .catch((err) => console.log(err));

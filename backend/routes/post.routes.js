@@ -2,7 +2,7 @@ import { Router } from "express";
 const router = Router();
 import isAuth from "../middleware/is-auth.js";
 import {
-  getArticlesAndBlogs,
+  getArticles,
   getPosts,
   getPostById,
   getPostByCategory,
@@ -14,7 +14,7 @@ import {
 router.get("/api/getPosts", getPosts);
 router.get("/api/getPost/:id", getPostById);
 router.get("/api/getPostByCategory/:category", getPostByCategory);
-router.get("/api/getArticlesAndBlogs", getArticlesAndBlogs);
+router.get("/api/getArticles", getArticles);
 router.post("/api/addPost", isAuth, addPost);
 router.put("/api/editPost/:id", isAuth, editPost);
 router.delete("/api/deletePost/:id", isAuth, deletePost);

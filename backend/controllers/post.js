@@ -78,7 +78,7 @@ const getPostByCategory = async (req, res, next) => {
   }
 };
 
-const getArticlesAndBlogs = async (req, res, next) => {
+const getArticles = async (req, res, next) => {
   const page = +req.query.page || 1;
   const ITEMS_PER_PAGE = 6;
 
@@ -86,13 +86,12 @@ const getArticlesAndBlogs = async (req, res, next) => {
 
   try {
     totalPosts = await Post.count({
-      $or: [{ category: { $eq: "article" } }, { category: { $eq: "blog" } }],
+      $or: [{ category: { $eq: "article" } }],
     });
     const posts = await Post.find(
       {
         $or: [
           { category: { $eq: "article" } },
-          { category: { $eq: "blog" } },
         ],
       },
       {
@@ -128,13 +127,10 @@ const addPost = async (req, res, next) => {
   const isContentValid = (content) => content.trim().length > 0;
   const isCategoryValid = () => {
     switch (category) {
-      case "blog":
       case "event":
       case "medical-helps":
       case "article":
       case "donation":
-      case "educational-visit":
-      case "festival-celebration":
         return true;
 
       default:
@@ -188,13 +184,10 @@ const editPost = async (req, res, next) => {
   const isContentValid = (content) => content.trim().length > 0;
   const isCategoryValid = () => {
     switch (category) {
-      case "blog":
       case "event":
       case "medical-helps":
       case "article":
       case "donation":
-      case "educational-visit":
-      case "festival-celebration":
         return true;
 
       default:
@@ -240,9 +233,8 @@ const editPost = async (req, res, next) => {
 
 const deletePost = async (req, res, next) => {
   const id = req.params.id;
-
   try {
-    const deletedPost = await Post.findByIdAndRemove(id);
+    const deletedPost = await Post.findByIdAndDelete(id);
     if (!deletedPost) {
       return res.status(422).json({ error: "Couldn't find Data" });
     }
@@ -256,7 +248,7 @@ export {
   getPosts,
   getPostById,
   getPostByCategory,
-  getArticlesAndBlogs,
+  getArticles,
   addPost,
   editPost,
   deletePost,
