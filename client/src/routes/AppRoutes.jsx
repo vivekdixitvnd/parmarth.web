@@ -16,6 +16,7 @@ import Udgam from "../pages/Udgam/Udgam.jsx"
 import Utsaah from "../pages/Utsaah/Utsaah.jsx"
 import Ummeed from "../pages/Ummeed/Ummeed.jsx"
 import EduVisit from "../pages/EduVisit/EduVisit.jsx"
+import BloodDonation from "../pages/BloodDonation/BloodDonation.jsx"
 import Team from "../pages/Team/Team";
 import CreatePost from "../pages/CreatePost/CreatePost";
 import EditPost from "../pages/EditPost/EditPost";
@@ -70,6 +71,7 @@ const AppRoutes = () => {
       <Route path="/utsaah" element={<Utsaah />} />
       <Route path="/ummeed" element={<Ummeed />} />
       <Route path="/eduvisit" element={<EduVisit />} />
+      <Route path="/blooddonation" element={<BloodDonation />} />
       <Route path="/muskan" element={<Muskan />} />
       <Route path="/schooling" element={<Schooling />} />
       <Route path="/events" element={<Events />} />
