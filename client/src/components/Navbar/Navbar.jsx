@@ -204,9 +204,9 @@ const Navbar = () => {
                       
                   <li>
                     <NavLink
-                      to="/festival-celebration"
+                      to="/utsav"
                       className={
-                        pathname === "/festival-celebration"
+                        pathname === "/utsav"
                           ? styles.active
                           : styles.link
                       }

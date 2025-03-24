@@ -35,6 +35,7 @@ import Article from "../pages/Article/Article.jsx";
 import ConvertUrl from "../pages/ConvertUrl/ConvertUrl";
 import AddEventVolunteersData from "../pages/AddEventVolunteersData/AddEventVolunteersData";
 import EventVolunteersData from "../pages/EventVolunteersData/EventVolunteersData";
+import UtsavAyojan from "../pages/UtsavAyojan/UtsaavAyojan.jsx";
 
 const AppRoutes = () => {
   const authCtx = useContext(AuthContext);
@@ -70,6 +71,7 @@ const AppRoutes = () => {
       <Route path="/utsarg" element={<Utsarg />} />
       <Route path="/utsaah" element={<Utsaah />} />
       <Route path="/ummeed" element={<Ummeed />} />
+      <Route path="/utsav" element={<UtsavAyojan />} />
       <Route path="/eduvisit" element={<EduVisit />} />
       <Route path="/blooddonation" element={<BloodDonation />} />
       <Route path="/muskan" element={<Muskan />} />
