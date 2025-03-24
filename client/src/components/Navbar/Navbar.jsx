@@ -119,9 +119,9 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/events"
+                      to="/ummeed"
                       className={
-                        pathname === "/events" ? styles.active : styles.link
+                        pathname === "/ummeed" ? styles.active : styles.link
                       }
                       style={{ fontSize: "18px" }}
                     >
@@ -141,9 +141,9 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/events"
+                      to="/utsaah"
                       className={
-                        pathname === "/events" ? styles.active : styles.link
+                        pathname === "/utsaah" ? styles.active : styles.link
                       }
                       style={{ fontSize: "18px" }}
                     >
@@ -163,16 +163,29 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/events"
+                      to="/eduvisit"
                       className={
-                        pathname === "/events" ? styles.active : styles.link
+                        pathname === "/eduvisit" ? styles.active : styles.link
                       }
                       style={{ fontSize: "18px" }}
                     >
-                      <b>शैक्षिक भ्रमण</b>
+                      <b>शैक्षणिक भ्रमण</b>
                     </NavLink>
                   </li>
                   <li>
+                    <NavLink
+                      to="/blooddonation"
+                      className={
+                        pathname === "/booddonation"
+                          ? styles.active
+                          : styles.link
+                      }
+                      style={{ fontSize: "18px" }}
+                    >
+                      <b>रक्तदान महादान</b>
+                      </NavLink>
+                      </li>
+                      <li>
                     <NavLink
                       to="/educational-visits"
                       className={
@@ -182,7 +195,7 @@ const Navbar = () => {
                       }
                       style={{ fontSize: "18px" }}
                     >
-                      <b>रक्तदान महादान</b>
+                      <b>educational-visits</b>
                     </NavLink>
                   </li>
                   <li>
