@@ -1,106 +1,252 @@
+/* Base Styles */
 .body {
-    padding: 20px; /* Increased padding for better spacing */
+    padding: 20px;
     text-align: left;
-    background-color: #e9ecef; /* Slightly darker background */
-}
-
-/* Section Styling */
-.section {
+    background-color: #e9ecef;
+  }
+  
+  /* Section Styling */
+  .section {
     margin: 20px 0;
-    padding: 20px; /* Added padding for content spacing */
-    background-color: #ffffff; /* White background for sections */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-.section h1 {
-    font-size: 32px; /* Increased font size */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section h1 {
+    font-size: 32px;
     margin-bottom: 20px;
-    color: #0056b3; /* Darker blue for better contrast */
+    color: #0056b3;
     text-transform: uppercase;
     font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Text shadow */
-}
-
-.section h2 {
-    font-size: 28px; /* Increased font size */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section h2 {
+    font-size: 28px;
     margin-top: 30px;
     margin-bottom: 15px;
-    color: #343a40; /* Darker gray for better contrast */
+    color: #343a40;
     font-weight: bold;
-}
-
-/* Slider Wrapper */
-.sliderWrapper {
-    width: 100%;
+  }
+  
+  .section h3 {
+    font-size: 22px;
+    color: #0056b3;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  /* Festival Grid Layout */
+  .festivalGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+  }
+  
+  .festivalCard {
+    background: #fff;
+    border-radius: 8px;
     overflow: hidden;
-    position: relative;
-    white-space: nowrap;
-}
-
-/* Slider Container */
-.sliderContainer {
-    display: flex;
-    width: 100%;
-}
-
-/* Individual Slider */
-.slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-/* Slide Styles */
-.slide {
-    width: 100vw;
-    height: 400px;
-    display: inline-block;
-}
-
-/* Slide Images */
-.slide img {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #dee2e6;
+  }
+  
+  .festivalCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+  
+  .festivalImage {
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .festivalImage img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease; /* Smooth zoom effect */
-}
-
-.slide img:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-}
-
-/* Navigation Buttons */
-.navButton {
-    width: 50px; /* Fixed width for buttons */
-    height: 50px; /* Fixed height for buttons */
+    transition: transform 0.3s ease;
+  }
+  
+  .festivalCard:hover .festivalImage img {
+    transform: scale(1.05);
+  }
+  
+  .festivalContent {
+    padding: 20px;
+  }
+  
+  .festivalDate {
+    color: #6c757d;
+    font-style: italic;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  
+  /* Highlights Section */
+  .highlightsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+  }
+  
+  .highlightCard {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-top: 4px solid #0056b3;
+  }
+  
+  .highlightCard h3 {
+    font-size: 2.5rem;
+    color: #0056b3;
+    margin: 0 0 10px 0;
+  }
+  
+  /* Participation Options */
+  .participationOptions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+  }
+  
+  .optionCard {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    border-top: 4px solid #0056b3;
+  }
+  
+  .optionCard h3 {
+    color: #343a40;
+    margin-top: 0;
+  }
+  
+  /* CTA Buttons */
+  .ctaSection {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .ctaButton {
+    background: #0056b3;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .ctaButton:hover {
+    background: #003d7a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  /* Slider Styles (existing styles with minor adjustments) */
+  .sliderWrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  .slide {
+    width: 100vw;
+    height: 400px;
+    display: inline-block;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .navButton {
+    width: 50px;
+    height: 50px;
     position: absolute;
     top: 50%;
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    background-color: rgba(255, 255, 255, 0.8);
     border: none;
-    color: #0056b3; /* Darker blue for buttons */
-    font-size: 24px; /* Adjusted font size */
+    color: #0056b3;
+    font-size: 24px;
     cursor: pointer;
     z-index: 10;
     transform: translateY(-50%);
-    border-radius: 50%; /* Circular buttons */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-}
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .navButton:hover {
+    background-color: #0056b3;
+    color: white;
+  }
 
-#prev {
+  #prev {
     left: 10px; /* Move Left Button to the Edge */
 }
 
 #next {
     right: 10px; /* Move Right Button to the Edge */
 }
-
-.navButton:hover {
-    background-color: rgba(255, 255, 255, 1); /* Solid background on hover */
-    color: #003d7a; /* Darker color on hover */
-    opacity: 1; /* Full opacity on hover */
-}
-
-/* Slide Transition Effect */
-.slideTransition {
-    transition: transform 0.5s ease-in-out;
-}
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .festivalGrid {
+      grid-template-columns: 1fr;
+    }
+    
+    .ctaSection {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .section h1 {
+      font-size: 28px;
+    }
+    
+    .section h2 {
+      font-size: 24px;
+    }
+    
+    .slide {
+      height: 300px;
+    }
+  }
+  
+  /* List Styles */
+  .section ul {
+    padding-left: 20px;
+    margin: 15px 0;
+  }
+  
+  .section li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  
+  /* Content Paragraphs */
+  .section p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #495057;
+  }
