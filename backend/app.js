@@ -8,6 +8,16 @@ import fs from "fs";
 import helmet from "helmet";
 import compression from "compression";
 import morgan from "morgan";
+import cors from "cors";
+
+// Allow specific origin
+const corsOptions = {
+  origin: ["https://parmarth-web-x1mq.vercel.app"], // Allowed domains
+  methods: "OPTIONS, GET, POST, PUT, PATCH, DELETE",
+  allowedHeaders: "Content-Type, Authorization",
+};
+
+
 
 //Routes
 import {
@@ -26,7 +36,7 @@ import {
 const app = express();
 
 app.use(express.json({ limit: "10mb" }));
-
+app.use(cors(corsOptions));
 const __dirname = path.resolve();
 
 // Construct the logs directory path
