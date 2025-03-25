@@ -36,7 +36,6 @@ import {
 const app = express();
 
 app.use(express.json({ limit: "10mb" }));
-app.use(cors(corsOptions));
 const __dirname = path.resolve();
 
 // Construct the logs directory path
