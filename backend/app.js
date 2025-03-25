@@ -12,7 +12,7 @@ import cors from "cors";
 
 // Allow specific origin
 const corsOptions = {
-  origin: ["https://parmarth-web-x1mq.vercel.app"], // Allowed domains
+  origin: ["https://localhost/8080"], // Allowed domains
   methods: "OPTIONS, GET, POST, PUT, PATCH, DELETE",
   allowedHeaders: "Content-Type, Authorization",
 };
@@ -36,7 +36,6 @@ import {
 const app = express();
 
 app.use(express.json({ limit: "10mb" }));
-app.use(cors(corsOptions));
 const __dirname = path.resolve();
 
 // Construct the logs directory path
