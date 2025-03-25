@@ -27,34 +27,45 @@ const MemberCard = ({ member }) => (
 
 const AdvisoryTable = ({ members }) => {
     return (
-        <div className="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Reference No.</th>
-                        <th>Name</th>
-                        <th>Batch</th>
-                        <th>LinkedIn</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {members.map((member) => (
-                        <tr key={member.id}>
-                            <td>{member.ref}</td>
-                            <td>{member.name}</td>
-                            <td>{member.batch}</td>
-                            <td>
-                                <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                                    in
-                                </a>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+      <div className="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Reference No.</th>
+              <th>Name</th>
+              <th>Batch</th>
+              <th>Contact</th>
+            </tr>
+          </thead>
+          <tbody>
+            {members.map((member) => (
+              <tr key={member.id}>
+                <td>{member.ref}</td>
+                <td>{member.name}</td>
+                <td>{member.batch}</td>
+                <td>
+                  {member.linkedin ? (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      in
+                    </a>
+                  ) : member.email ? (
+                    <a href={`mailto:${member.email}`}>📧</a>
+                  ) : (
+                    <span>N/A</span> // Agar dono nahi hai toh ye show karega
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
-};
+  };
+  
 
 const Team = () => {
     return (
