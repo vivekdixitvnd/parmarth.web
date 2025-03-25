@@ -19,6 +19,7 @@ import Ummeed from "../pages/Ummeed/Ummeed.jsx"
 import EduVisit from "../pages/EduVisit/EduVisit.jsx"
 import BloodDonation from "../pages/BloodDonation/BloodDonation.jsx"
 import Team from "../pages/Team/Team";
+import Constitution from "../pages/Constitution/Constitution";
 import CreatePost from "../pages/CreatePost/CreatePost";
 import EditPost from "../pages/EditPost/EditPost";
 import ListPost from "../pages/ListPosts/ListPosts";
@@ -78,6 +79,7 @@ const AppRoutes = () => {
       <Route path="/schooling" element={<Schooling />} />
       <Route path="/events" element={<Events />} />
       <Route path="/article" element={<Article />} />
+      <Route path="/constitution" element={<Constitution />} />
       {/* {authCtx.isLoggedIn && (
         <Route path="/convert-url" element={<ConvertUrl />} />
       )} */}

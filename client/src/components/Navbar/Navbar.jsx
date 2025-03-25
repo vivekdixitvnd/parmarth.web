@@ -268,6 +268,17 @@ const Navbar = () => {
                 </li>
                 <li>
                   <NavLink
+                    to="/constitution"
+                    className={
+                      pathname === "/constitution" ? styles.active : styles.link
+                    }
+                    style={{ fontSize: "18px" }}
+                  >
+                    <strong>परमार्थ का संविधान</strong>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
                     to="/schooling/"
                     className={
                       pathname === "/schooling/" ? styles.active : styles.link
