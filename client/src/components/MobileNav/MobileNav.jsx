@@ -42,6 +42,21 @@ const MobileNav = () => {
         Team
       </NavLink>
       <NavLink
+                to="/events"
+                className={pathname === "/events" ? "mobile-nav__active" : "mobile-nav__link"}
+              >
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    position: "relative",
+                  }}
+                >
+                  Recent Activity
+                </span>
+              </NavLink>
+      <NavLink
         to="#"
         className={pathname === "#" ? "mobile-nav__active" : "mobile-nav__link"}
         style={{
@@ -59,75 +74,107 @@ const MobileNav = () => {
           }}
           onClick={() => setShowAEventsDropdown(!showEventsDropdown)}
         >
-          Events
-          <RiArrowDropDownLine size={25} />
-        </span>
-        {showEventsDropdown && (
-          <div className="mobile-nav__dropdown">
-            <ul>
-              <li>
-                <NavLink
-                  to="/events"
-                  className={
-                    pathname === "/events"
-                      ? "mobile-nav__active"
-                      : "mobile-nav__link"
-                  }
-                  style={{ fontSize: "18px" }}
-                >
-                  Events
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/educational-visits"
-                  className={
-                    pathname === "/educational-visits"
-                      ? "mobile-nav__active"
-                      : "mobile-nav__link"
-                  }
-                  style={{ fontSize: "18px" }}
-                >
-                  Educational Visits
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/festival-celebration"
-                  className={
-                    pathname === "/festival-celebration"
-                      ? "mobile-nav__active"
-                      : "mobile-nav__link"
-                  }
-                  style={{ fontSize: "18px" }}
-                >
-                  Festival Celebration
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-        )}
-      </NavLink>
-      <NavLink
-        to="#"
-        className={pathname === "#" ? "mobile-nav__active" : "mobile-nav__link"}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <span
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          Happenings
-          <RiArrowDropDownLine size={25} />
-        </span>
+           Events 
+           <RiArrowDropDownLine size={25} />
+           </span>
+                      {showEventsDropdown && (
+                        <div className="mobile-nav__dropdown">
+                          <ul>
+                            <li>
+                              <NavLink
+                                to="/udgam"
+                                className={
+                                  pathname === "/udgam" ? "mobile-nav__active" : "mobile-nav__link"
+                                }
+                                style={{ fontSize: "18px" }}
+                              >
+                                <b>उद्गम</b>
+                              </NavLink>
+                            </li>
+                            <li>
+                              <NavLink
+                                to="/ummeed"
+                                className={
+                                  pathname === "/ummeed" ? "mobile-nav__active" : "mobile-nav__link"
+                                }
+                                style={{ fontSize: "18px" }}
+                              >
+                                <b>उम्मीद</b>
+                              </NavLink>
+                            </li>
+                            <li>
+                              <NavLink
+                                to="/muskan"
+                                className={
+                                  pathname === "/muskan" ? "mobile-nav__active" : "mobile-nav__link"
+                                }
+                                style={{ fontSize: "18px" }}
+                              >
+                                <b>मुस्कान</b>
+                              </NavLink>
+                            </li>
+                            <li>
+                              <NavLink
+                                to="/utsaah"
+                                className={
+                                  pathname === "/utsaah" ? "mobile-nav__active" : "mobile-nav__link"
+                                }
+                                style={{ fontSize: "18px" }}
+                              >
+                                <b>उत्साह</b>
+                              </NavLink>
+                            </li>
+                            <li>
+                              <NavLink
+                                to="/utsarg"
+                                className={
+                                  pathname === "/utsarg" ? "mobile-nav__active" : "mobile-nav__link"
+                                }
+                                style={{ fontSize: "18px" }}
+                              >
+                                <b>उत्सर्ग</b>
+                              </NavLink>
+                            </li>
+                            <li>
+                              <NavLink
+                                to="/eduvisit"
+                                className={
+                                  pathname === "/eduvisit" ? "mobile-nav__active" : "mobile-nav__link"
+                                }
+                                style={{ fontSize: "18px" }}
+                              >
+                                <b>शैक्षणिक भ्रमण</b>
+                              </NavLink>
+                            </li>
+                            <li>
+                              <NavLink
+                                to="/blooddonation"
+                                className={
+                                  pathname === "/booddonation"
+                                    ? "mobile-nav__active" : "mobile-nav__link"
+                                }
+                                style={{ fontSize: "18px" }}
+                              >
+                                <b>रक्तदान महादान</b>
+                                </NavLink>
+                                </li>
+                                
+                            <li>
+                              <NavLink
+                                to="/utsav"
+                                className={
+                                  pathname === "/utsav"
+                                   ? "mobile-nav__active" : "mobile-nav__link"
+                                }
+                                style={{ fontSize: "18px" }}
+                              >
+                                <b>उत्सव आयोजन</b>
+                              </NavLink>
+                            </li>                 
+                          </ul>
+                        </div>
+                      )}
+
       </NavLink>
       <NavLink
         to="#"
@@ -155,15 +202,15 @@ const MobileNav = () => {
             <ul>
               <li>
                 <NavLink
-                  to="/articles-and-blogs"
+                  to="/article"
                   className={
-                    pathname === "/articles-and-blogs"
+                    pathname === "/article"
                       ? "mobile-nav__active"
                       : "mobile-nav__link"
                   }
                   style={{ fontSize: "18px" }}
                 >
-                  Articles and Blogs
+                  Articles
                 </NavLink>
               </li>
               <li>
@@ -177,6 +224,19 @@ const MobileNav = () => {
                   style={{ fontSize: "18px" }}
                 >
                   Request for Certificate
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/constitution"
+                  className={
+                    pathname === "/constitution"
+                      ? "mobile-nav__active"
+                      : "mobile-nav__link"
+                  }
+                  style={{ fontSize: "18px" }}
+                >
+                  परमार्थ का संविधान
                 </NavLink>
               </li>
               <li>
@@ -238,7 +298,7 @@ const MobileNav = () => {
                     </NavLink>
                   </li>
                 )}
-                {(userType === "master" || userType === "teachers") && (
+                {(userType === "master" || userType === "media") && (
                   <li>
                     <NavLink
                       to="/add-rte-data"
@@ -269,7 +329,6 @@ const MobileNav = () => {
                   </li>
                 )}
                 {(userType === "master" ||
-                  userType === "teachers" ||
                   userType === "media") && (
                   <li>
                     <NavLink
@@ -301,7 +360,6 @@ const MobileNav = () => {
                   </li>
                 )}
                 {(userType === "master" ||
-                  userType === "teachers" ||
                   userType === "media") && (
                   <li>
                     <NavLink
@@ -318,8 +376,7 @@ const MobileNav = () => {
                   </li>
                 )}
                 {(userType === "master" ||
-                  userType === "media" ||
-                  userType === "teachers") && (
+                  userType === "media") && (
                   <li>
                     <NavLink
                       to="/list-posts"
@@ -382,7 +439,7 @@ const MobileNav = () => {
           )}
         </NavLink>
       )}
-      {isLoggedIn && pathname !== "/create-post" && (
+      {isLoggedIn && (userType == "master" || userType == "media")  && pathname !== "/create-post" && (
         <button
           className="mobile-nav__create-post"
           onClick={() => navigate("/create-post")}
