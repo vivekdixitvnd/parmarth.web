@@ -8,9 +8,10 @@ const About = () => {
     <>
       <Navbar />
       <div className={styles.body}>
-        <h1>History of Parmarth</h1>
-        <hr className={styles.hr} />
-        <p>
+        {/* History of Parmarth */}
+        <div className={styles.section}>
+          <h1>Parmarth</h1>
+          <p>
           Journey of Club started in 2015. Back in those times, their was a huge
           amount of child beggars on the college road and college chauraha.
           Those little beggars use to beg for little food or some money. Such
@@ -27,12 +28,18 @@ const About = () => {
           teaching increased. Once, children developed interest, volunteers
           started to teach them in their slums. Seeing dedication of volunteers,
           college allowed us to teach those children in college premises.
-        </p>
-        <br />
-        <br />
-        <h1>This Day & Age</h1>
-        <hr className={styles.hr} />
-        <p style={{ marginBottom: "2rem" }}>
+          </p>
+          <p>
+            The organization has expanded its reach through various initiatives
+            aimed at nurturing young minds and fostering a sense of
+            responsibility towards society.
+          </p>
+        </div>
+
+        {/* Age of Parmarth */}
+        <div className={styles.section}>
+          <h2>This Day & Age</h2>
+          <p>
           Today, club is well structured and follows college hierarchy. More
           than 200 volunteers from all the streams and courses are associated
           with the club every year. Nearly 150 children visit us in evening on a
@@ -58,7 +65,34 @@ const About = () => {
           Little we have walked and there are miles to go. Maybe someday world
           will be a better place for all, and what it demands is a little
           humanity from us, from you and from everyone else.
-        </p>
+          </p>
+        </div>
+
+        {/* Vision of Parmarth */}
+        <div className={styles.section}>
+          <h2>Vision of Parmarth</h2>
+          <p>
+            Our vision is to create an inclusive society where every child,
+            regardless of their background, has the opportunity to realize
+            their full potential. We aim to equip children with the necessary
+            skills and knowledge to become responsible citizens and future
+            leaders.
+          </p>
+        </div>
+
+        {/* Mission of Parmarth */}
+        <div className={styles.section}>
+          <h2>Mission of Parmarth</h2>
+          <p>
+            The mission of Parmarth is to:
+          </p>
+          <ul>
+            <li>Provide quality education and skill development.</li>
+            <li>Promote awareness of social and environmental responsibilities.</li>
+            <li>Empower children through mentorship and guidance.</li>
+            <li>Create a nurturing environment that fosters creativity and innovation.</li>
+          </ul>
+        </div>
       </div>
       <Footer />
     </>
