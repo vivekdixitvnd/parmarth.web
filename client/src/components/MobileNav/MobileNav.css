@@ -1,3 +1,8 @@
+*{
+  z-index: 1000;
+}
+
+
 .bm-burger-button {
   position: fixed;
   width: 30px;
