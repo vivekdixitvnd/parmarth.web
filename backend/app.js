@@ -8,14 +8,6 @@ import fs from "fs";
 import helmet from "helmet";
 import compression from "compression";
 import morgan from "morgan";
-import cors from "cors";
-
-// Allow specific origin
-const corsOptions = {
-  origin: ["https://localhost/8080"], // Allowed domains
-  methods: "OPTIONS, GET, POST, PUT, PATCH, DELETE",
-  allowedHeaders: "Content-Type, Authorization",
-};
 
 
 
