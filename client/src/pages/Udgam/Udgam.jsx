@@ -74,7 +74,7 @@ const Udgam = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <div className={styles.body}>
         <div className={styles.section}>
           <InfiniteScroll images={images} />
