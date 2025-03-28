@@ -62,20 +62,14 @@ const generateReferenceNumber = async (rollNumber, session) => {
   const part2 = rollStr.substring(6, 9);  // 7th to 9th digits
   const part3 = rollStr.substring(11, 13); // Last 2 digits
 
-  // Find the latest serial number for the given session
-  const lastVolunteer = await Volunteer.findOne({ session })
-    .sort({ refrence: -1 }) // Get the latest added entry
-    .lean();
+  // Count total entries for the given session
+  const sessionCount = await Volunteer.countDocuments({ session });
 
-  let serialNumber = "01"; // Default if no previous entries
+  // Increment serial number by 1
+  const serialNumber = (sessionCount + 1).toString().padStart(2, "0");
 
-  if (lastVolunteer && lastVolunteer.refrence) {
-    const lastSerial = lastVolunteer.refrence.split("-").pop(); // Extract last serial
-    const newSerial = (parseInt(lastSerial, 10) + 1).toString().padStart(2, "0"); // Increment and format
-    serialNumber = newSerial;
-  }
-
-  return `PARM-${part1}${part2}${part3}${serialNumber}`;
+  // Generate the reference number
+  return PARM-${part1}${part2}${part3}${serialNumber};
 };
 
 const addVolunteerDataViaExcel = async (req, res, next) => {
