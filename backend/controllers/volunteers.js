@@ -21,7 +21,9 @@ const addVolunteerData = async (req, res, next) => {
   var branch = "";
   if (course === "B.Tech") {
     if (!req.body.branch) {
-      return res.status(422).json({ error: "Branch is required for B.Tech students" });
+      return res
+        .status(422)
+        .json({ error: "Branch is required for B.Tech students" });
     }
     branch = req.body.branch;
   }
@@ -42,7 +44,7 @@ const addVolunteerData = async (req, res, next) => {
       rollNumber: +rollNumber,
       postHolded: postHolded.trim().toUpperCase(),
       session: session.trim(),
-      refrence,  // **Add reference number here**
+      refrence, // **Add reference number here**
       ...(course === "B.Tech" && { branch: branch.trim().toUpperCase() }),
     });
 
@@ -71,7 +73,6 @@ const generateReferenceNumber = async (rollNumber, session) => {
   return `PARM-${part1}${part2}${part3}${serialNumber}`;
 };
 
-
 const addVolunteerDataViaExcel = async (req, res, next) => {
   if (!req.file) {
     return res.status(422).json({ error: "Upload an Excel file" });
@@ -80,17 +81,14 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
   const filePath = req.file.path;
 
   try {
+    const workbook = XLSX.readFile(filePath);
+    const sheetNameList = workbook.SheetNames;
 
-    var workbook = XLSX.readFile(filePath);
-    var sheetNameList = workbook.SheetNames;
-
-    var volunteersData = [];
+    const volunteersData = [];
 
     sheetNameList.forEach((y) => {
-      var worksheet = workbook.Sheets[y];
-      var headers = {};
-      
-      // Camel case conversion for headers
+      const worksheet = workbook.Sheets[y];
+      const headers = {};
       function camelCase(str) {
         return str
           .replace(/\s(.)/g, function (a) {
@@ -101,116 +99,35 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
             return b.toLowerCase();
           });
       }
-
-      for (z in worksheet) {
+      for (let z in worksheet) {
         if (z[0] === "!") continue;
-        var col = z.substring(0, 1);
-        var row = parseInt(z.substring(1));
-        var value = worksheet[z].v;
-
-        // Set headers dynamically from Excel
+        const col = z.substring(0, 1);
+        const row = parseInt(z.substring(1));
+        const value = worksheet[z].v;
         if (row == 1) {
           headers[col] = camelCase(value.trim());
           continue;
         }
-
         if (!volunteersData[row]) volunteersData[row] = {};
-
-        if (col === "D") {
-          volunteersData[row][headers[col]] = +value; // Roll number as Number
-        } else {
-          volunteersData[row][headers[col]] = value.toString().toUpperCase(); // Rest to UPPERCASE
-        }
+        volunteersData[row][headers[col]] = value.toString().toUpperCase();
       }
-      volunteersData.shift(); // Remove undefined row
-      volunteersData.shift(); // Remove header row
+      volunteersData.shift();
+      volunteersData.shift();
     });
 
-    // ✅ Reference number directly from Excel
-    volunteersData = volunteersData.map((vol) => ({
-      ...vol,
-      refrence: vol.refrence, // Use reference as it is
-    }));
-
-    await Volunteer.insertMany(volunteersData); // Add data to DB
+    await Rte.insertMany(volunteersData);
     console.log("Data added");
-
-    fs.unlinkSync(filePath); // Delete uploaded file
-    console.log("File deleted");
-
-=======
-    const workbook = XLSX.readFile(filePath);
-    const sheetNameList = workbook.SheetNames;
-
-    let volunteersData = [];
-
-    sheetNameList.forEach((sheet) => {
-      const worksheet = workbook.Sheets[sheet];
-      const headers = {};
-      const volunteerRows = [];
-
-      // Camel case conversion function
-      const camelCase = (str) =>
-        str
-          .replace(/\s(.)/g, (a) => a.toUpperCase())
-          .replace(/\s/g, "")
-          .replace(/^(.)/, (b) => b.toLowerCase());
-
-      // Extract headers dynamically
-      for (let cell in worksheet) {
-        if (cell[0] === "!") continue;
-        const col = cell.match(/[A-Z]+/)[0];
-        const row = parseInt(cell.match(/\d+/)[0]);
-        const value = worksheet[cell].v.toString().trim();
-
-        if (row === 1) {
-          headers[col] = camelCase(value);
-        } else {
-          if (!volunteerRows[row]) volunteerRows[row] = {};
-          volunteerRows[row][headers[col]] = value;
-        }
+    fs.unlink(filePath, (err) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      } else {
+        console.log("File deleted");
       }
-
-      // Removing undefined entries
-      volunteersData = [...volunteersData, ...volunteerRows.filter((v) => v)];
     });
-
-    // Validation & Formatting
-    const formattedVolunteers = await Promise.all(volunteersData.map(async (vol, index) => {
-  if (!vol.name || !vol.course || !vol.rollNumber || !vol.postHolded || !vol.session) {
-    throw new Error(`Missing required fields in row ${index + 2}`);
-  }
-  if (vol.course === "B.Tech" && !vol.branch) {
-    throw new Error(`Branch is required for B.Tech student in row ${index + 2}`);
-  }
-  
-  const refrence = await generateReferenceNumber(vol.rollNumber, vol.session);  // **Generate reference**
-  
-  return {
-    ...vol,
-    name: vol.name.toUpperCase(),
-    course: vol.course.toUpperCase(),
-    postHolded: vol.postHolded.toUpperCase(),
-    session: /^\d{4}-\d{4}$/.test(vol.session) ? vol.session : (() => {
-      throw new Error(`Invalid session format in row ${index + 2}`);
-    })(),
-    rollNumber: Number(vol.rollNumber),
-    refrence,  // **Assign reference number**
-  };
-}));
-
-
-    await Volunteer.insertMany(formattedVolunteers);
-    console.log("Data added successfully");
-
-    fs.unlinkSync(filePath);
-
     return res.status(200).json({ message: "Successfully added data" });
   } catch (err) {
-    fs.unlinkSync(filePath);
-    return res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
-
 
 export { getVolunteersData, addVolunteerData, addVolunteerDataViaExcel };
