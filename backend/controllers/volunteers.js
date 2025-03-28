@@ -55,22 +55,22 @@ const addVolunteerData = async (req, res, next) => {
 };
 
 const generateReferenceNumber = async (rollNumber, session) => {
-  const rollStr = rollNumber.toString();
-  if (rollStr.length !== 13) throw new Error("Roll number must be 13 digits");
-
-  const part1 = rollStr.substring(0, 2);  // First 2 digits
-  const part2 = rollStr.substring(6, 9);  // 7th to 9th digits
-  const part3 = rollStr.substring(11, 13); // Last 2 digits
-
-  // Count total entries for the given session
+  // Count session-wise entries
   const sessionCount = await Volunteer.countDocuments({ session });
 
-  // Increment serial number by 1
+  // Serial number based on count
   const serialNumber = (sessionCount + 1).toString().padStart(2, "0");
 
-  // Generate the reference number
-  return PARM-${part1}${part2}${part3}${serialNumber};
+  // Roll number ke kuch parts lena hai for reference
+  const rollStr = rollNumber.toString();
+  const part1 = rollStr.substring(0, 2); // First 2 digits
+  const part2 = rollStr.substring(6, 9); // 7th to 9th digits
+  const part3 = rollStr.substring(11, 13); // Last 2 digits
+
+  // Reference number format
+  return `PARM-${part1}${part2}${part3}${serialNumber}`;
 };
+
 
 const addVolunteerDataViaExcel = async (req, res, next) => {
   if (!req.file) {
