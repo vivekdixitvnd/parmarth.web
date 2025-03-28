@@ -114,7 +114,7 @@ const Volunteers = () => {
                       <td>{res.rollNumber}</td>
                       <td>{res.postHolded}</td>
                       <td>{res.session}</td>
-                      <td>{res.reference || "N/A"}</td>
+                      <td>{res.refrence || "N/A"}</td>
                     </tr>
                   ))
                 )}
