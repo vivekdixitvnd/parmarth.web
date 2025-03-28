@@ -65,22 +65,19 @@
     transition: transform 0.3s ease; /* Smooth zoom effect */
 }
 
-.slide img:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-}
+
 
 /* Navigation Buttons */
 .navButton {
     width: 50px; /* Fixed width for buttons */
     height: 50px; /* Fixed height for buttons */
-    /* position: relative; */
-    /* top: 50%; */
+    position: absolute; 
+    top: 50%;
     background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
     border: none;
     color: #0056b3; /* Darker blue for buttons */
     font-size: 24px; /* Adjusted font size */
     cursor: pointer;
-    z-index: 10;
     /* transform: translateY(-50%); */
     border-radius: 50%; /* Circular buttons */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
