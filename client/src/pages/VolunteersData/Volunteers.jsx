@@ -10,67 +10,115 @@ const Volunteers = () => {
   const authCtx = useContext(AuthContext);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     const getVolunteersData = async () => {
       setIsLoading(true);
 
-      await fetch(`${backendUrl}/getVolunteersData`, {
-        headers: { Authorization: "Bearer " + authCtx.token },
-      })
-        .then((res) => {
-          if (res.status !== 200) {
-            return [];
-          }
-          return res.json();
-        })
-        .then((res) => {
-          if (res === []) {
-            toast.error("Failed to load Volunteers Data");
-          }
-          setData(res);
-        })
-        .catch((err) => console.log(err));
+      try {
+        const response = await fetch(`${backendUrl}/getVolunteersData`, {
+          headers: { Authorization: "Bearer " + authCtx.token },
+        });
 
-      setIsLoading(false);
+        if (!response.ok) {
+          throw new Error("Failed to load Volunteers Data");
+        }
+
+        const result = await response.json();
+        console.log("result ---", result);
+        setData(result);
+        setFilteredData(result); // Initialize filtered data with all data
+        console.log("filter data-----", filteredData);
+        console.log("data-----", data);
+      } catch (err) {
+        console.error(err);
+        toast.error("Failed to load Volunteers Data");
+      } finally {
+        setIsLoading(false);
+      }
     };
     getVolunteersData();
-  }, []);
+  }, [authCtx.token]);
+
+  // Filter data based on search term
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      setFilteredData(data);
+    } else {
+      const filtered = data.filter((volunteer) =>
+        Object.values(volunteer).some(
+          (value) =>
+            value &&
+            value.toString().toLowerCase().includes(searchTerm.toLowerCase()),
+        ),
+      );
+      setFilteredData(filtered);
+    }
+  }, [searchTerm, data]);
 
   return (
     <>
       <Navbar />
       <div className={styles.body}>
         <div>
-          <div className={styles.total}>
-            <strong>Total Entries:</strong> {data.length}
+          <div className={styles.header}>
+            <div className={styles.total}>
+              <strong>Total Entries:</strong> {filteredData.length}
+            </div>
+            <div className={styles.search}>
+              <input
+                type="text"
+                placeholder="Search volunteers..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
           </div>
-          <div style={{ overflowX: "auto" }}>
-            <table>
-              <tr>
-                <th>S. No.</th>
-                <th>Name</th>
-                <th>Course (Branch)</th>
-                <th>Roll Number</th>
-                <th>Post Holded</th>
-              </tr>
-              {isLoading ? (
-                <td colspan={5}>
-                  <div className={styles.loader}></div>
-                </td>
-              ) : (
-                data.map((res, index) => (
-                  <tr key={res._id}>
-                    <td>{index + 1}</td>
-                    <td>{res.name}</td>
-                    <td>
-                      {res.course} {res?.branch && <span>({res?.branch})</span>}
+          <div className={styles.tableContainer}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>S. No.</th>
+                  <th>Name</th>
+                  <th>Course (Branch)</th>
+                  <th>Roll Number</th>
+                  <th>Post Holded</th>
+                  <th>Session</th>
+                  <th>Reference No.</th>
+                </tr>
+              </thead>
+              <tbody>
+                {isLoading ? (
+                  <tr>
+                    <td colSpan={7}>
+                      <div className={styles.loader}></div>
                     </td>
-                    <td>{res.rollNumber}</td>
-                    <td>{res.postHolded}</td>
                   </tr>
-                ))
-              )}
+                ) : filteredData.length === 0 ? (
+                  <tr>
+                    <td colSpan={7} className={styles.noData}>
+                      No volunteers found
+                    </td>
+                  </tr>
+                ) : (
+                  filteredData.map((res, index) => (
+                    <tr key={res._id}>
+                      <td>{index + 1}</td>
+                      <td>{res.name}</td>
+                      <td>
+                        {res.course}{" "}
+                        {res?.branch && <span>({res.branch})</span>}
+                      </td>
+                      <td>{res.rollNumber}</td>
+                      <td>{res.postHolded}</td>
+                      <td>{res.session}</td>
+                      <td>{res.refrence || "N/A"}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
             </table>
           </div>
         </div>

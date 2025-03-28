@@ -8,64 +8,56 @@ import backendUrl from "../../backendUrl";
 
 const AddVolunteerData = () => {
   const [name, setName] = useState("");
-  const [rollNumber, setRollNumber] = useState(0);
+  const [rollNumber, setRollNumber] = useState("");
   const [course, setCourse] = useState("");
   const [branch, setBranch] = useState("");
   const [postHolded, setPostHolded] = useState("");
+  const [session, setSession] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [excelFile, setExcelFile] = useState("");
   const authCtx = useContext(AuthContext);
 
   const isNameValid = (name) => /^[a-zA-Z ]{2,30}$/.test(name);
-
   const isRollNumberValid = (rollNumber) => rollNumber.length === 13;
-
-  const isCourseValid = (course) => {
-    switch (course) {
-      case "B.Tech":
-      case "M.Tech":
-      case "MBA":
-      case "MCA":
-        return true;
-
-      default:
-        return false;
-    }
-  };
-
-  const isPostHoldedValid = (postHolded) =>
-    typeof postHolded === "string" && postHolded.trim().length > 0;
+  const isCourseValid = (course) =>
+    ["B.Tech", "M.Tech", "MBA", "MCA"].includes(course);
+  const isPostHoldedValid = (postHolded) => postHolded.trim().length > 0;
+  const isSessionValid = (session) => /^\d{4}-\d{4}$/.test(session);
 
   const onFormSubmitHandler = (e) => {
     e.preventDefault();
-
     setIsLoading(true);
 
     if (!isNameValid(name)) {
-      toast.error("Enter a valid name");
+      toast.error("Enter a valid name (2-30 alphabetic characters)");
       setIsLoading(false);
       return;
     } else if (!isRollNumberValid(rollNumber)) {
-      toast.error("Enter a valid roll number");
+      toast.error("Enter a valid 13-digit roll number");
       setIsLoading(false);
       return;
     } else if (!isCourseValid(course)) {
-      toast.error("Select a course");
+      toast.error("Select a valid course");
       setIsLoading(false);
       return;
     } else if (!isPostHoldedValid(postHolded)) {
       toast.error("Enter your Post");
       setIsLoading(false);
       return;
+    } else if (!isSessionValid(session)) {
+      toast.error("Enter a valid session (format: YYYY-YYYY)");
+      setIsLoading(false);
+      return;
     }
 
     const data = {
-      name: name,
+      name: name.trim().toUpperCase(),
       rollNumber: +rollNumber,
-      course: course,
-      postHolded: postHolded,
-      ...(course === "B.Tech" && { branch: branch }),
+      course: course.trim(),
+      postHolded: postHolded.trim().toUpperCase(),
+      session: session.trim(),
+      ...(course === "B.Tech" && { branch: branch.trim().toUpperCase() }),
     };
 
     fetch(`${backendUrl}/addVolunteerData`, {
@@ -76,29 +68,33 @@ const AddVolunteerData = () => {
       },
       body: JSON.stringify(data),
     })
-      .then((res) => {
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((resData) => {
         if (resData.error) {
           toast.error(resData.error);
-        } else if (resData.message) {
+        } else {
           toast.success(resData.message);
+          // Reset form
+          setName("");
+          setRollNumber("");
+          setCourse("");
+          setBranch("");
+          setPostHolded("");
+          setSession("");
         }
       })
-      .catch((err) => console.error(err));
-
-    setIsLoading(false);
+      .catch((err) => toast.error(err.message))
+      .finally(() => setIsLoading(false));
   };
 
-  const onUploadFileSubmitHandler = async (e) => {
+  const onUploadFileSubmitHandler = (e) => {
     e.preventDefault();
     setIsUploading(true);
 
     const formData = new FormData();
     formData.append("excelFile", excelFile);
 
-    await fetch(`${backendUrl}/addVolunteerDataViaExcel`, {
+    fetch(`${backendUrl}/addVolunteerDataViaExcel`, {
       method: "POST",
       body: formData,
       headers: { Authorization: "Bearer " + authCtx.token },
@@ -107,13 +103,13 @@ const AddVolunteerData = () => {
       .then((resData) => {
         if (resData.error) {
           toast.error(resData.error);
-        } else if (resData.message) {
+        } else {
           toast.success(resData.message);
+          setExcelFile("");
         }
       })
-      .catch((err) => toast.error(err.message));
-
-    setIsUploading(false);
+      .catch((err) => toast.error(err.message))
+      .finally(() => setIsUploading(false));
   };
 
   return (
@@ -125,63 +121,41 @@ const AddVolunteerData = () => {
           onSubmit={onUploadFileSubmitHandler}
           encType="multipart/form-data"
         >
-          <label for="excelFile">Upload an Excel file</label>
+          <label htmlFor="excelFile">Upload an Excel file</label>
           <div style={{ marginTop: "1rem" }}>
-            <span
-              style={{
-                fontSize: "16px",
-                fontWeight: "900",
-                color: "red",
-              }}
-            >
-              File Should contain only five columns and 1st row must have these
-              headings in the same manner and same order as well
-              <br />
-              <br />
-              <span
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "500",
-                  color: "red",
-                }}
-              >
-                Courses should be only the following -
-                <br />
-                B.Tech | M.Tech | MBA | MCA
-              </span>
+            <span style={{ fontSize: "16px", fontWeight: "900", color: "red" }}>
+              File should contain these columns in order:
               <span style={{ color: "#535353", fontWeight: "500" }}>
                 <ul>
                   <li>Name</li>
-                  <li>Course</li>
-                  <li>
-                    Branch (optional - leave this field empty in case of branch
-                    other than <strong>B.Tech</strong>)
-                  </li>
-                  <li>Roll Number</li>
+                  <li>Course (B.Tech, M.Tech, MBA, MCA)</li>
+                  <li>Branch (required only for B.Tech)</li>
+                  <li>Roll Number (13 digits)</li>
                   <li>Post Holded</li>
+                  <li>Session (YYYY-YYYY)</li>
+                  <li>Reference No.</li>
                 </ul>
               </span>
+              Example:
             </span>
-            <span style={{ color: "#535353", fontWeight: "500" }}>e.g.</span>
             <img
               src="/img/excel-file-secondary.png"
-              alt=""
+              alt="Excel file example"
               className={styles["excel-image"]}
             />
           </div>
           <input
             id="excelFile"
             type="file"
-            reqiured
+            required
             name="excelFile"
-            onChange={(e) => {
-              setExcelFile(e.target.files[0]);
-            }}
+            accept=".xlsx, .xls"
+            onChange={(e) => setExcelFile(e.target.files[0])}
           />
           <button
             type="submit"
             className={styles.submit}
-            disabled={isUploading}
+            disabled={isUploading || !excelFile}
           >
             {isUploading ? <div className={styles.loader}></div> : "Upload"}
           </button>
@@ -189,49 +163,56 @@ const AddVolunteerData = () => {
         <h1>OR</h1>
         <form className={styles.form} onSubmit={onFormSubmitHandler}>
           <h1>Add Volunteer Data</h1>
-          <label for="name">Name</label>
+
+          <label htmlFor="name">Name</label>
           <input
             required
             id="name"
             type="text"
             placeholder="John Doe"
+            value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <label for="roll-number">Roll Number</label>
+
+          <label htmlFor="roll-number">Roll Number</label>
           <input
             required
             id="roll-number"
             type="text"
-            placeholder="Enter your roll number"
+            placeholder="Enter 13-digit roll number"
+            value={rollNumber}
             onChange={(e) => setRollNumber(e.target.value)}
+            maxLength={13}
           />
-          <label for="course">Course</label>
+
+          <label htmlFor="course">Course</label>
           <select
             required
             id="course"
-            defaultValue="choose"
+            value={course}
             className={styles["branch-dropdown"]}
             onChange={(e) => setCourse(e.target.value)}
           >
-            <option disabled hidden value="choose">
-              Select Branch
+            <option value="" disabled hidden>
+              Select Course
             </option>
-            <option value="B.Tech">B.Tech.</option>
-            <option value="M.Tech">M.Tech.</option>
+            <option value="B.Tech">B.Tech</option>
+            <option value="M.Tech">M.Tech</option>
             <option value="MCA">MCA</option>
             <option value="MBA">MBA</option>
           </select>
+
           {course === "B.Tech" && (
             <>
-              <label for="branch">Branch</label>
+              <label htmlFor="branch">Branch</label>
               <select
                 required
                 id="branch"
-                defaultValue="choose"
+                value={branch}
                 className={styles["branch-dropdown"]}
                 onChange={(e) => setBranch(e.target.value)}
               >
-                <option disabled hidden value="choose">
+                <option value="" disabled hidden>
                   Select Branch
                 </option>
                 <option value="CE">CE - Civil Engineering</option>
@@ -249,13 +230,27 @@ const AddVolunteerData = () => {
               </select>
             </>
           )}
-          <label for="post-holded">Post Holded</label>
+
+          <label htmlFor="post-holded">Post Holded</label>
           <input
             required
             id="post-holded"
             type="text"
             placeholder="e.g. Volunteer"
+            value={postHolded}
             onChange={(e) => setPostHolded(e.target.value)}
+          />
+
+          <label htmlFor="session">Session</label>
+          <input
+            required
+            id="session"
+            type="text"
+            placeholder="YYYY-YYYY (e.g., 2023-2024)"
+            value={session}
+            onChange={(e) => setSession(e.target.value)}
+            pattern="\d{4}-\d{4}"
+            title="Format: YYYY-YYYY"
           />
 
           <button type="submit" className={styles.submit} disabled={isLoading}>
