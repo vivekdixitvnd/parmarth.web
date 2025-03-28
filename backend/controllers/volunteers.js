@@ -80,6 +80,65 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
   const filePath = req.file.path;
 
   try {
+
+    var workbook = XLSX.readFile(filePath);
+    var sheetNameList = workbook.SheetNames;
+
+    var volunteersData = [];
+
+    sheetNameList.forEach((y) => {
+      var worksheet = workbook.Sheets[y];
+      var headers = {};
+      
+      // Camel case conversion for headers
+      function camelCase(str) {
+        return str
+          .replace(/\s(.)/g, function (a) {
+            return a.toUpperCase();
+          })
+          .replace(/\s/g, "")
+          .replace(/^(.)/, function (b) {
+            return b.toLowerCase();
+          });
+      }
+
+      for (z in worksheet) {
+        if (z[0] === "!") continue;
+        var col = z.substring(0, 1);
+        var row = parseInt(z.substring(1));
+        var value = worksheet[z].v;
+
+        // Set headers dynamically from Excel
+        if (row == 1) {
+          headers[col] = camelCase(value.trim());
+          continue;
+        }
+
+        if (!volunteersData[row]) volunteersData[row] = {};
+
+        if (col === "D") {
+          volunteersData[row][headers[col]] = +value; // Roll number as Number
+        } else {
+          volunteersData[row][headers[col]] = value.toString().toUpperCase(); // Rest to UPPERCASE
+        }
+      }
+      volunteersData.shift(); // Remove undefined row
+      volunteersData.shift(); // Remove header row
+    });
+
+    // ✅ Reference number directly from Excel
+    volunteersData = volunteersData.map((vol) => ({
+      ...vol,
+      refrence: vol.refrence, // Use reference as it is
+    }));
+
+    await Volunteer.insertMany(volunteersData); // Add data to DB
+    console.log("Data added");
+
+    fs.unlinkSync(filePath); // Delete uploaded file
+    console.log("File deleted");
+
+=======
     const workbook = XLSX.readFile(filePath);
     const sheetNameList = workbook.SheetNames;
 
@@ -145,6 +204,7 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
     console.log("Data added successfully");
 
     fs.unlinkSync(filePath);
+
     return res.status(200).json({ message: "Successfully added data" });
   } catch (err) {
     fs.unlinkSync(filePath);
