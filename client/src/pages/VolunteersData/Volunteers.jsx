@@ -80,13 +80,13 @@ const Volunteers = () => {
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>S. No.</th>
-                  <th>Name</th>
-                  <th>Course (Branch)</th>
-                  <th>Roll Number</th>
-                  <th>Post Holded</th>
-                  <th>Session</th>
-                  <th>Reference No.</th>
+                  <th className={styles.sNo}>S. No.</th>
+                  <th className={styles.name}>Name</th>
+                  <th className={styles.course}>Course (Branch)</th>
+                  <th className={styles.rollNumber}>Roll Number</th>
+                  <th className={styles.post}>Post Holded</th>
+                  <th className={styles.session}>Session</th>
+                  <th className={styles.refNo}>Reference No.</th>
                 </tr>
               </thead>
               <tbody>
@@ -105,16 +105,16 @@ const Volunteers = () => {
                 ) : (
                   filteredData.map((res, index) => (
                     <tr key={res._id}>
-                      <td>{index + 1}</td>
-                      <td>{res.name}</td>
-                      <td>
+                      <td className={styles.sNo}>{index + 1}</td>
+                      <td className={styles.name}>{res.name}</td>
+                      <td className={styles.course}>
                         {res.course}{" "}
                         {res?.branch && <span>({res.branch})</span>}
                       </td>
-                      <td>{res.rollNumber}</td>
-                      <td>{res.postHolded}</td>
-                      <td>{res.session}</td>
-                      <td>{res.refrence || "N/A"}</td>
+                      <td className={styles.rollNumber}>{res.rollNumber}</td>
+                      <td className={styles.post}>{res.postHolded}</td>
+                      <td className={styles.session}>{res.session}</td>
+                      <td className={styles.refNo}>{res.refrence || "N/A"}</td>
                     </tr>
                   ))
                 )}
