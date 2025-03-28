@@ -86,6 +86,30 @@ const addVolunteerData = async (req, res, next) => {
   }
 };
 
+const generateReferenceNumber = async (rollNumber, session) => {
+  const rollStr = rollNumber.toString();
+  if (rollStr.length !== 13) throw new Error("Roll number must be 13 digits");
+
+  const part1 = rollStr.substring(0, 2);  // First 2 digits
+  const part2 = rollStr.substring(6, 9);  // 7th to 9th digits
+  const part3 = rollStr.substring(11, 13); // Last 2 digits
+
+  // Find the latest serial number for the given session
+  const lastVolunteer = await Volunteer.findOne({ session })
+    .sort({ refrence: -1 }) // Get the latest added entry
+    .lean();
+
+  let serialNumber = "01"; // Default if no previous entries
+
+  if (lastVolunteer && lastVolunteer.refrence) {
+    const lastSerial = lastVolunteer.refrence.split("-").pop(); // Extract last serial
+    const newSerial = (parseInt(lastSerial, 10) + 1).toString().padStart(2, "0"); // Increment and format
+    serialNumber = newSerial;
+  }
+
+  return `PARM-${part1}${part2}${part3}${serialNumber}`;
+};
+
 const addVolunteerDataViaExcel = async (req, res, next) => {
   if (!req.file) {
     return res.status(422).json({ error: "Upload an Excel file" });
@@ -94,71 +118,72 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
   const filePath = req.file.path;
 
   try {
-    var workbook = XLSX.readFile(filePath);
-    var sheetNameList = workbook.SheetNames;
+    const workbook = XLSX.readFile(filePath);
+    const sheetNameList = workbook.SheetNames;
 
-    var volunteersData = [];
+    let volunteersData = [];
 
-    sheetNameList.forEach((y) => {
-      var worksheet = workbook.Sheets[y];
-      var headers = {};
-      function camelCase(str) {
-        return str
-          .replace(/\s(.)/g, function (a) {
-            return a.toUpperCase();
-          })
+    sheetNameList.forEach((sheet) => {
+      const worksheet = workbook.Sheets[sheet];
+      const headers = {};
+      const volunteerRows = [];
+
+      // Camel case conversion function
+      const camelCase = (str) =>
+        str
+          .replace(/\s(.)/g, (a) => a.toUpperCase())
           .replace(/\s/g, "")
-          .replace(/^(.)/, function (b) {
-            return b.toLowerCase();
-          });
-      }
-      for (z in worksheet) {
-        if (z[0] === "!") continue;
-        var col = z.substring(0, 1);
-        var row = parseInt(z.substring(1));
-        var value = worksheet[z].v;
-        if (row == 1) {
-          headers[col] = camelCase(value.trim());
-          continue;
-        }
-        if (!volunteersData[row]) volunteersData[row] = {};
+          .replace(/^(.)/, (b) => b.toLowerCase());
 
-        if (col === "D") { // Assuming D is the column for rollNumber (number)
-          volunteersData[row][headers[col]] = +value;
-        } else if (headers[col] === "session") {
-          // Ensure session is in correct format
-          if (!/^\d{4}-\d{4}$/.test(value.toString().trim())) {
-            throw new Error(`Invalid session format in row ${row}. Expected format: YYYY-YYYY`);
-          }
-          volunteersData[row][headers[col]] = value.toString().trim();
+      // Extract headers dynamically
+      for (let cell in worksheet) {
+        if (cell[0] === "!") continue;
+        const col = cell.match(/[A-Z]+/)[0];
+        const row = parseInt(cell.match(/\d+/)[0]);
+        const value = worksheet[cell].v.toString().trim();
+
+        if (row === 1) {
+          headers[col] = camelCase(value);
         } else {
-          volunteersData[row][headers[col]] = value.toString().toUpperCase();
+          if (!volunteerRows[row]) volunteerRows[row] = {};
+          volunteerRows[row][headers[col]] = value;
         }
       }
-      volunteersData.shift();
-      volunteersData.shift();
+
+      // Removing undefined entries
+      volunteersData = [...volunteersData, ...volunteerRows.filter((v) => v)];
     });
 
-    // Validate all records have required fields
-    volunteersData.forEach((volunteer, index) => {
-      if (!volunteer.name || !volunteer.course || !volunteer.rollNumber || 
-          !volunteer.postHolded || !volunteer.session) {
+    // Validation & Formatting
+    const formattedVolunteers = volunteersData.map((vol, index) => {
+      if (!vol.name || !vol.course || !vol.rollNumber || !vol.postHolded || !vol.session) {
         throw new Error(`Missing required fields in row ${index + 2}`);
       }
-      if (volunteer.course === "B.Tech" && !volunteer.branch) {
+      if (vol.course === "B.Tech" && !vol.branch) {
         throw new Error(`Branch is required for B.Tech student in row ${index + 2}`);
       }
+      return {
+        ...vol,
+        name: vol.name.toUpperCase(),
+        course: vol.course.toUpperCase(),
+        postHolded: vol.postHolded.toUpperCase(),
+        session: /^\d{4}-\d{4}$/.test(vol.session) ? vol.session : (() => {
+          throw new Error(`Invalid session format in row ${index + 2}`);
+        })(),
+        rollNumber: Number(vol.rollNumber),
+      };
     });
 
-    await Volunteer.insertMany(volunteersData);
-    console.log("Data added");
+    await Volunteer.insertMany(formattedVolunteers);
+    console.log("Data added successfully");
+
     fs.unlinkSync(filePath);
-    console.log("File deleted");
     return res.status(200).json({ message: "Successfully added data" });
   } catch (err) {
-    fs.unlinkSync(filePath); // Clean up the file even if there's an error
-    res.status(500).json({ error: err.message });
+    fs.unlinkSync(filePath);
+    return res.status(500).json({ error: err.message });
   }
 };
+
 
 export { getVolunteersData, addVolunteerData, addVolunteerDataViaExcel };
