@@ -7,6 +7,7 @@ const volunteerSchema = new Schema({
   rollNumber: Number,
   postHolded: { type: String, required: true },
   session: { type: String, required: true },
+  refrence: { type: String, uniqu},
 });
 
 const Volunteer = mongoose.model("Volunteer", volunteerSchema);
