@@ -112,6 +112,7 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
         volunteersData[row][headers[col]] = value.toString().toUpperCase();
       }
       volunteersData.shift();
+      volunteerData.shift();
       
     });
 
