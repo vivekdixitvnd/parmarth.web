@@ -18,7 +18,6 @@ const Navbar = () => {
   const [showMoreDropdown, setShowMoreDropdown] = useState(false);
   const [showAdminsDropdown, setShowAdminsDropdown] = useState(false);
   const [showEventsDropdown, setShowAEventsDropdown] = useState(false);
-  const [showHappeningsDropdown, setShowAHappeningsDropdown] = useState(false);
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -107,6 +106,7 @@ const Navbar = () => {
           className={pathname === "#" ? styles.active : styles.link}
           style={{ position: "relative" }}
           onMouseEnter={() => setShowAEventsDropdown(!showEventsDropdown)}
+          onMouseLeave={() => setShowAEventsDropdown(!showEventsDropdown)}
         >
           <span
             style={{
