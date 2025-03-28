@@ -106,7 +106,7 @@ const Navbar = () => {
           className={pathname === "#" ? styles.active : styles.link}
           style={{ position: "relative" }}
           onMouseEnter={() => setShowAEventsDropdown(!showEventsDropdown)}
-          onMouseLeave={() => setShowMoreDropdown(!showMoreDropdown)}
+          onMouseLeave={() => setShowAEventsDropdown(!showEventsDropdown)}
         >
           <span
             style={{
