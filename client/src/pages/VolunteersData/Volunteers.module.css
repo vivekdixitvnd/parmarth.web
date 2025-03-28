@@ -1,4 +1,4 @@
-.body {
+/* .body {
   padding: 2rem;
 }
 
@@ -58,4 +58,52 @@ th {
   100% {
     transform: rotate(360deg);
   }
+} */
+
+
+.body {
+  padding: 2rem;
+}
+
+.body > div {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-x: auto; /* Allows scrolling */
+}
+
+.tableContainer {
+  overflow-x: auto; /* Enables horizontal scrolling */
+  max-width: 100%;
+}
+
+.table {
+  width: 100%;
+  min-width: 900px; /* Ensures proper column spacing */
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: center;
+  padding: 0.8rem 1rem;
+  white-space: nowrap; /* Prevents text from wrapping */
+}
+
+th {
+  background-color: #277bc0;
+  color: #fff;
+}
+
+.loader {
+  border: 10px solid #ccc;
+  border-radius: 50%;
+  border-top: 10px solid #277bc0;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

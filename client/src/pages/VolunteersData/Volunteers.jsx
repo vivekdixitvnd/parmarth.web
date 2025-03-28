@@ -27,11 +27,11 @@ const Volunteers = () => {
         }
 
         const result = await response.json();
-        console.log("result ---", result)
+        console.log("result ---", result);
         setData(result);
         setFilteredData(result); // Initialize filtered data with all data
-        console.log("filter data-----",filteredData)
-        console.log("data-----",data)
+        console.log("filter data-----", filteredData);
+        console.log("data-----", data);
       } catch (err) {
         console.error(err);
         toast.error("Failed to load Volunteers Data");
@@ -76,8 +76,8 @@ const Volunteers = () => {
               />
             </div>
           </div>
-          <div style={{ overflowX: "auto" }}>
-            <table>
+          <div className={styles.tableContainer}>
+            <table className={styles.table}>
               <thead>
                 <tr>
                   <th>S. No.</th>
@@ -92,13 +92,13 @@ const Volunteers = () => {
               <tbody>
                 {isLoading ? (
                   <tr>
-                    <td colSpan={6}>
+                    <td colSpan={7}>
                       <div className={styles.loader}></div>
                     </td>
                   </tr>
                 ) : filteredData.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className={styles.noData}>
+                    <td colSpan={7} className={styles.noData}>
                       No volunteers found
                     </td>
                   </tr>
