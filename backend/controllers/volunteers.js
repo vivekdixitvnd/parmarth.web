@@ -115,7 +115,7 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
       volunteersData.shift();
     });
 
-    await Rte.insertMany(volunteersData);
+    await Volunteer.insertMany(volunteersData);
     console.log("Data added");
     fs.unlink(filePath, (err) => {
       if (err) {
