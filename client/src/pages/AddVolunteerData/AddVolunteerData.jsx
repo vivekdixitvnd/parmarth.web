@@ -13,7 +13,6 @@ const AddVolunteerData = () => {
   const [branch, setBranch] = useState("");
   const [postHolded, setPostHolded] = useState("");
   const [session, setSession] = useState("");
-  const [reference, setReference] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [excelFile, setExcelFile] = useState("");
@@ -134,6 +133,7 @@ const AddVolunteerData = () => {
                   <li>Roll Number (13 digits)</li>
                   <li>Post Holded</li>
                   <li>Session (YYYY-YYYY)</li>
+                  <li>Reference No.</li>
                 </ul>
               </span>
               Example:
@@ -251,15 +251,6 @@ const AddVolunteerData = () => {
             onChange={(e) => setSession(e.target.value)}
             pattern="\d{4}-\d{4}"
             title="Format: YYYY-YYYY"
-          />
-
-          <label htmlFor="reference">Reference</label>
-          <input
-            id="reference"
-            type="text"
-            value={reference}
-            onChange={(e) => setReference(e.target.value)}
-            required
           />
 
           <button type="submit" className={styles.submit} disabled={isLoading}>
