@@ -3,11 +3,11 @@ import mongoose, { Schema } from "mongoose";
 const volunteerSchema = new Schema({
   name: { type: String, required: true },
   course: { type: String, required: true },
-  branch: { type: String, required: true },
+  branch: { type: String},
   rollNumber: Number,
   postHolded: { type: String, required: true },
   session: { type: String, required: true },
-  refrence: { type: String, uniqu},
+  refrence: { type: String, unique: true},
 });
 
 const Volunteer = mongoose.model("Volunteer", volunteerSchema);

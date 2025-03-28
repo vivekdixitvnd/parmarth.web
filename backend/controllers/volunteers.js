@@ -14,7 +14,6 @@ const getVolunteersData = async (req, res, next) => {
 const addVolunteerData = async (req, res, next) => {
   const { name, course, rollNumber, postHolded, session } = req.body;
 
-  // Validate required fields
   if (!name || !course || !rollNumber || !postHolded || !session) {
     return res.status(422).json({ error: "All fields are required" });
   }
@@ -27,47 +26,15 @@ const addVolunteerData = async (req, res, next) => {
     branch = req.body.branch;
   }
 
-  // Validation functions
-  const isNameValid = (name) => /^[a-zA-Z ]{2,30}$/.test(name);
-  const isRollNumberValid = (rollNumber) => rollNumber.toString().length === 13;
-  const isCourseValid = (course) => {
-    const validCourses = ["B.Tech", "M.Tech", "MBA", "MCA"];
-    return validCourses.includes(course);
-  };
-  const isPostHoldedValid = (postHolded) =>
-    typeof postHolded === "string" && postHolded.trim().length > 0;
-  const isSessionValid = (session) => {
-    // Validate session format (e.g., 2022-2023, 2023-2024)
-    return /^\d{4}-\d{4}$/.test(session);
-  };
-
   try {
-    if (!isNameValid(name)) {
-      return res.status(422).json({ error: "Enter a valid name" });
-    } else if (!isRollNumberValid(rollNumber)) {
-      return res.status(422).json({ error: "Enter a valid roll number" });
-    } else if (!isCourseValid(course)) {
-      return res.status(422).json({
-        error: `Enter a valid course (one of: B.Tech, M.Tech, MBA, MCA). Received: ${course}`,
-      });
-    } else if (!isPostHoldedValid(postHolded)) {
-      return res.status(422).json({ error: "Enter Post Holded" });
-    } else if (!isSessionValid(session)) {
-      return res.status(422).json({ error: "Enter a valid session (format: YYYY-YYYY)" });
-    }
-
-    const existingData = await Volunteer.findOne({
-      name: name.trim().toUpperCase(),
-      course: course.trim().toUpperCase(),
-      rollNumber: +rollNumber,
-      postHolded: postHolded.trim().toUpperCase(),
-      session: session.trim(),
-      ...(course === "B.Tech" && { branch: branch.trim().toUpperCase() }),
-    });
+    const existingData = await Volunteer.findOne({ rollNumber, session });
 
     if (existingData) {
       return res.status(422).json({ error: "Data Already Exist" });
     }
+
+    // **Generate the reference number**
+    const refrence = await generateReferenceNumber(rollNumber, session);
 
     const volunteerData = new Volunteer({
       name: name.trim().toUpperCase(),
@@ -75,6 +42,7 @@ const addVolunteerData = async (req, res, next) => {
       rollNumber: +rollNumber,
       postHolded: postHolded.trim().toUpperCase(),
       session: session.trim(),
+      refrence,  // **Add reference number here**
       ...(course === "B.Tech" && { branch: branch.trim().toUpperCase() }),
     });
 
@@ -87,28 +55,22 @@ const addVolunteerData = async (req, res, next) => {
 };
 
 const generateReferenceNumber = async (rollNumber, session) => {
-  const rollStr = rollNumber.toString();
-  if (rollStr.length !== 13) throw new Error("Roll number must be 13 digits");
+  // Count session-wise entries
+  const sessionCount = await Volunteer.countDocuments({ session });
 
-  const part1 = rollStr.substring(0, 2);  // First 2 digits
-  const part2 = rollStr.substring(6, 9);  // 7th to 9th digits
+  // Serial number based on count
+  const serialNumber = (sessionCount + 1).toString().padStart(2, "0");
+
+  // Roll number ke kuch parts lena hai for reference
+  const rollStr = rollNumber.toString();
+  const part1 = rollStr.substring(0, 2); // First 2 digits
+  const part2 = rollStr.substring(6, 9); // 7th to 9th digits
   const part3 = rollStr.substring(11, 13); // Last 2 digits
 
-  // Find the latest serial number for the given session
-  const lastVolunteer = await Volunteer.findOne({ session })
-    .sort({ refrence: -1 }) // Get the latest added entry
-    .lean();
-
-  let serialNumber = "01"; // Default if no previous entries
-
-  if (lastVolunteer && lastVolunteer.refrence) {
-    const lastSerial = lastVolunteer.refrence.split("-").pop(); // Extract last serial
-    const newSerial = (parseInt(lastSerial, 10) + 1).toString().padStart(2, "0"); // Increment and format
-    serialNumber = newSerial;
-  }
-
+  // Reference number format
   return `PARM-${part1}${part2}${part3}${serialNumber}`;
 };
+
 
 const addVolunteerDataViaExcel = async (req, res, next) => {
   if (!req.file) {
@@ -155,24 +117,29 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
     });
 
     // Validation & Formatting
-    const formattedVolunteers = volunteersData.map((vol, index) => {
-      if (!vol.name || !vol.course || !vol.rollNumber || !vol.postHolded || !vol.session) {
-        throw new Error(`Missing required fields in row ${index + 2}`);
-      }
-      if (vol.course === "B.Tech" && !vol.branch) {
-        throw new Error(`Branch is required for B.Tech student in row ${index + 2}`);
-      }
-      return {
-        ...vol,
-        name: vol.name.toUpperCase(),
-        course: vol.course.toUpperCase(),
-        postHolded: vol.postHolded.toUpperCase(),
-        session: /^\d{4}-\d{4}$/.test(vol.session) ? vol.session : (() => {
-          throw new Error(`Invalid session format in row ${index + 2}`);
-        })(),
-        rollNumber: Number(vol.rollNumber),
-      };
-    });
+    const formattedVolunteers = await Promise.all(volunteersData.map(async (vol, index) => {
+  if (!vol.name || !vol.course || !vol.rollNumber || !vol.postHolded || !vol.session) {
+    throw new Error(`Missing required fields in row ${index + 2}`);
+  }
+  if (vol.course === "B.Tech" && !vol.branch) {
+    throw new Error(`Branch is required for B.Tech student in row ${index + 2}`);
+  }
+  
+  const refrence = await generateReferenceNumber(vol.rollNumber, vol.session);  // **Generate reference**
+  
+  return {
+    ...vol,
+    name: vol.name.toUpperCase(),
+    course: vol.course.toUpperCase(),
+    postHolded: vol.postHolded.toUpperCase(),
+    session: /^\d{4}-\d{4}$/.test(vol.session) ? vol.session : (() => {
+      throw new Error(`Invalid session format in row ${index + 2}`);
+    })(),
+    rollNumber: Number(vol.rollNumber),
+    refrence,  // **Assign reference number**
+  };
+}));
+
 
     await Volunteer.insertMany(formattedVolunteers);
     console.log("Data added successfully");
