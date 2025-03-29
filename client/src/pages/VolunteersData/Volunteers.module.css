@@ -146,8 +146,11 @@ th {
     width: 190px; /* Reduce for mobile */
   }
 
-  .rollNumber, .post, .refNo {
+  .rollNumber, .refNo {
     width: 120px;
+  }
+  .post{
+    width: 150px;
   }
 }
 
