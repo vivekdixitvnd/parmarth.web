@@ -111,14 +111,22 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
           if (!volunteerRows[row]) volunteerRows[row] = {};
           volunteerRows[row][headers[col]] = value;
         }
+      } // <-- Yeh closing brace yahan missing thi
+
+      // Push volunteer data
+      volunteerRows.forEach((row) => {
+        if (row) volunteersData.push(row);
+      });
+    });
+
     fs.unlink(filePath, (err) => {
       if (err) {
         return res.status(500).json({ error: err.message });
       } else {
         console.log("File deleted");
-
       }
     });
+
     return res.status(200).json({ message: "Successfully added data" });
   } catch (err) {
     res.status(500).json({ error: err.message });
