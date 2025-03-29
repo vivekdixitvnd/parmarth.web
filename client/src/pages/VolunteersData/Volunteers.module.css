@@ -78,19 +78,77 @@ th {
 
 .table {
   width: 100%;
-  min-width: 900px; /* Ensures proper column spacing */
+  min-width: 900px;
   border-collapse: collapse;
+  table-layout: fixed; /* Ensures fixed column widths */
+}
+
+/* Column Widths */
+.sNo {
+  width: 50px;
+  min-width: 50px;
+}
+
+.name {
+  width: 180px;
+  min-width: 180px;
+}
+
+.course {
+  width: 200px;
+  min-width: 200px;
+}
+
+.rollNumber {
+  width: 130px;
+  min-width: 130px;
+}
+
+.post {
+  width: 150px;
+  min-width: 150px;
+}
+
+.session {
+  width: 100px;
+  min-width: 100px;
+}
+
+.refNo {
+  width: 140px;
+  min-width: 140px;
 }
 
 th, td {
   text-align: center;
-  padding: 0.8rem 1rem;
+  padding: 0.6rem 1rem;
   white-space: nowrap; /* Prevents text from wrapping */
 }
 
 th {
   background-color: #277bc0;
   color: #fff;
+}
+
+/* Responsive Table */
+@media (max-width: 1024px) {
+  .table {
+    min-width: 700px; /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .table {
+    min-width: 600px;
+  }
+
+  .name, .course {
+    width: 150px; /* Reduce for mobile */
+  }
+
+  .rollNumber, .post, .refNo {
+    width: 120px;
+  }
 }
 
 .loader {
