@@ -47,14 +47,14 @@ const EventVolunteersData = () => {
           <div style={{ overflowX: "auto" }}>
             <table>
               <tr>
-                <th>S. No.</th>
-                <th>Name</th>
-                <th>Course (Branch)</th>
-                <th>Event</th>
-                <th>Roll Number</th>
-                <th>Post Holded</th>
-                <th>Academic Year</th>
-                <th>Certificate Number Assigned</th>
+                <th className={styles.sNo}>S. No.</th>
+                <th className={styles.name}>Name</th>
+                <th className={styles.course}>Course (Branch)</th>
+                <th className={styles.event}>Event</th>
+                <th className={styles.rollNumber}>Roll Number</th>
+                <th className={styles.post}>Post Holded</th>
+                <th className={styles.academic}>Academic Year</th>
+                <th className={styles.certno}>Certificate Number Assigned</th>
               </tr>
               {isLoading ? (
                 <td colspan={8}>
@@ -63,16 +63,16 @@ const EventVolunteersData = () => {
               ) : (
                 data.map((res, index) => (
                   <tr key={res._id}>
-                    <td>{index + 1}</td>
-                    <td>{res.name}</td>
-                    <td>
+                    <td className={styles.sNo}>{index + 1}</td>
+                    <td className={styles.name}>{res.name}</td>
+                    <td className={styles.course}>
                       {res.course} {res?.branch && <span>({res?.branch})</span>}
                     </td>
-                    <td>{res.event}</td>
-                    <td>{res.rollNumber}</td>
-                    <td>{res.responsibility}</td>
-                    <td>{res.academicYear}</td>
-                    <td>{res.certificateNumber}</td>
+                    <td className={styles.event}>{res.event}</td>
+                    <td className={styles.rollNumber}>{res.rollNumber}</td>
+                    <td className={styles.post}>{res.responsibility}</td>
+                    <td className={styles.academic}>{res.academicYear}</td>
+                    <td className={styles.certno}>{res.certificateNumber}</td>
                   </tr>
                 ))
               )}

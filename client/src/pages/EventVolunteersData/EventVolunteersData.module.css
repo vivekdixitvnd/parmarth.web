@@ -3,8 +3,9 @@
 }
 
 .body > div {
-  max-width: max-content;
+  max-width: 100%;
   margin: 0 auto;
+  overflow-x: auto; /* Scroll enable kar diya */
 }
 
 .total {
@@ -13,17 +14,18 @@
   color: #535353;
 }
 
-table,
-th,
-td {
-  border: 1px solid black;
+table {
+  width: 100%;
+  min-width: 900px; /* Ensures table doesn't shrink too much */
   border-collapse: collapse;
 }
 
 th,
 td {
+  border: 1px solid black;
   text-align: center;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
+  white-space: nowrap; /* Text wrapping avoid karne ke liye */
 }
 
 th {
@@ -31,6 +33,40 @@ th {
   color: #fff;
 }
 
+/* Column-Specific Width Adjustments */
+.sNo {
+  width: 50px; /* S. No. ke liye */
+}
+
+.name {
+  width: 180px; /* Max name length ke hisaab se */
+}
+
+.course {
+  width: 200px; /* Course + Branch */
+}
+
+.event {
+  width: 150px;
+}
+
+.rollNumber {
+  width: 130px; /* 13-digit Roll Number ke hisaab se */
+}
+
+.post {
+  width: 100px;
+}
+
+.academic {
+  width: 50px;
+}
+
+.certno {
+  width: 200px;
+}
+
+/* Loader */
 .loader {
   border: 10px solid #ccc;
   border-radius: 50%;
