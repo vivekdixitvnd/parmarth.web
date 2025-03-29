@@ -84,48 +84,6 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
     const workbook = XLSX.readFile(filePath);
     const sheetNameList = workbook.SheetNames;
 
-    const volunteersData = [];
-
-    sheetNameList.forEach((y) => {
-      const worksheet = workbook.Sheets[y];
-      const headers = {};
-      function camelCase(str) {
-        return str
-          .replace(/\s(.)/g, function (a) {
-            return a.toUpperCase();
-          })
-          .replace(/\s/g, "")
-          .replace(/^(.)/, function (b) {
-            return b.toLowerCase();
-          });
-      }
-      for (let z in worksheet) {
-        if (z[0] === "!") continue;
-        const col = z.substring(0, 1);
-        const row = parseInt(z.substring(1));
-        const value = worksheet[z].v;
-        if (row == 1) {
-          headers[col] = camelCase(value.trim());
-          continue;
-        }
-        if (!volunteersData[row]) volunteersData[row] = {};
-        volunteersData[row][headers[col]] = value.toString().toUpperCase();
-      }
-      volunteersData.shift();
-      volunteersData.shift();
-    });
-
-    await Volunteer.insertMany(volunteersData);
-    console.log("Data added");
-
-
-    fs.unlinkSync(filePath); // Delete uploaded file
-    console.log("File deleted");
-
-
-    const workbook = XLSX.readFile(filePath);
-    const sheetNameList = workbook.SheetNames;
-
     let volunteersData = [];
 
     sheetNameList.forEach((sheet) => {
