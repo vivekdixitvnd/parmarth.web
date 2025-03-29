@@ -8,7 +8,10 @@ const eventVolunteerSchema = new Schema({
   rollNumber: Number,
   responsibility: String,
   academicYear: Number,
-  certificateNumber: Number,
+  certificateNumber: {
+    type: String,
+    required: true,
+  },
 });
 
 const EventVolunteer = mongoose.model(
