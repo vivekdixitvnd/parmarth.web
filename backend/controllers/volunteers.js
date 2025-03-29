@@ -73,6 +73,7 @@ const generateReferenceNumber = async (rollNumber, session) => {
   return `PARM-${part1}${part2}${part3}${serialNumber}`;
 };
 
+
 const addVolunteerDataViaExcel = async (req, res, next) => {
   if (!req.file) {
     return res.status(422).json({ error: "Upload an Excel file" });
@@ -81,11 +82,13 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
   const filePath = req.file.path;
 
   try {
+    // Read Excel File
     const workbook = XLSX.readFile(filePath);
     const sheetNameList = workbook.SheetNames;
 
     let volunteersData = [];
 
+    // Loop through sheets
     sheetNameList.forEach((sheet) => {
       const worksheet = workbook.Sheets[sheet];
       const headers = {};
@@ -106,12 +109,12 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
         const value = worksheet[cell].v.toString().trim();
 
         if (row === 1) {
-          headers[col] = camelCase(value);
+          headers[col] = camelCase(value); // Set header names as keys
         } else {
           if (!volunteerRows[row]) volunteerRows[row] = {};
           volunteerRows[row][headers[col]] = value;
         }
-      } // <-- Yeh closing brace yahan missing thi
+      }
 
       // Push volunteer data
       volunteerRows.forEach((row) => {
@@ -119,19 +122,29 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
       });
     });
 
+    // Check if data is coming properly
+    if (volunteersData.length === 0) {
+      fs.unlink(filePath, () => {});
+      return res.status(400).json({ error: "No valid data found in Excel." });
+    }
+
+    // Insert data to DB
+    await Volunteer.insertMany(volunteersData);
+
+    // Delete file after inserting data
     fs.unlink(filePath, (err) => {
       if (err) {
-        return res.status(500).json({ error: err.message });
+        console.error("Error deleting file:", err.message);
       } else {
-        console.log("File deleted");
+        console.log("File deleted successfully");
       }
     });
 
-    return res.status(200).json({ message: "Successfully added data" });
+    return res.status(200).json({ message: "Data successfully added to the database", data: volunteersData });
   } catch (err) {
+    console.error("Error:", err.message);
     res.status(500).json({ error: err.message });
   }
 };
-
 
 export { getVolunteersData, addVolunteerData, addVolunteerDataViaExcel };
