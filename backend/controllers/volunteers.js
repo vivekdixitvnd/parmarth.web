@@ -117,11 +117,48 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
 
     await Volunteer.insertMany(volunteersData);
     console.log("Data added");
+
+
+    fs.unlinkSync(filePath); // Delete uploaded file
+    console.log("File deleted");
+
+
+    const workbook = XLSX.readFile(filePath);
+    const sheetNameList = workbook.SheetNames;
+
+    let volunteersData = [];
+
+    sheetNameList.forEach((sheet) => {
+      const worksheet = workbook.Sheets[sheet];
+      const headers = {};
+      const volunteerRows = [];
+
+      // Camel case conversion function
+      const camelCase = (str) =>
+        str
+          .replace(/\s(.)/g, (a) => a.toUpperCase())
+          .replace(/\s/g, "")
+          .replace(/^(.)/, (b) => b.toLowerCase());
+
+      // Extract headers dynamically
+      for (let cell in worksheet) {
+        if (cell[0] === "!") continue;
+        const col = cell.match(/[A-Z]+/)[0];
+        const row = parseInt(cell.match(/\d+/)[0]);
+        const value = worksheet[cell].v.toString().trim();
+
+        if (row === 1) {
+          headers[col] = camelCase(value);
+        } else {
+          if (!volunteerRows[row]) volunteerRows[row] = {};
+          volunteerRows[row][headers[col]] = value;
+        }
     fs.unlink(filePath, (err) => {
       if (err) {
         return res.status(500).json({ error: err.message });
       } else {
         console.log("File deleted");
+
       }
     });
     return res.status(200).json({ message: "Successfully added data" });
