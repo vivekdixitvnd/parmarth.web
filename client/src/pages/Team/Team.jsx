@@ -31,19 +31,19 @@ const AdvisoryTable = ({ members }) => {
         <table>
           <thead>
             <tr>
-              <th>Reference No.</th>
-              <th>Name</th>
-              <th>Batch</th>
-              <th>Contact</th>
+              <th className="refrence">Reference No.</th>
+              <th className="name">Name</th>
+              <th className="batch">Batch</th>
+              <th className="contact">Contact</th>
             </tr>
           </thead>
           <tbody>
             {members.map((member) => (
               <tr key={member.id}>
-                <td>{member.ref}</td>
-                <td>{member.name}</td>
-                <td>{member.batch}</td>
-                <td>
+                <td className="refrence">{member.ref}</td>
+                <td className="name">{member.name}</td>
+                <td className="batch">{member.batch}</td>
+                <td className="contact">
                   {member.linkedin ? (
                     <a
                       href={member.linkedin}
@@ -82,7 +82,7 @@ const Team = () => {
                 </div>
 
                 <div className={styles.section}>
-                    <h1>Advisory Committee Members</h1>
+                    <h1 className="hhyj6">Advisory Committee Members</h1>
                     <AdvisoryTable members={advisoryMembers} />
                 </div>
             </div>

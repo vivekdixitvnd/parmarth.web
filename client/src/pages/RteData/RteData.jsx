@@ -42,13 +42,13 @@ const RteData = () => {
           <div className={styles.total}>
             <strong>Total Entries:</strong> {data.length}
           </div>
-          <div style={{ overflowX: "auto" }}>
+          <div className="table-container">
             <table>
               <tr>
-                <th>S. No.</th>
-                <th>Student Name</th>
-                <th>Class</th>
-                <th>School</th>
+                <th className={styles.sno}>S. No.</th>
+                <th className={styles.name}>Student Name</th>
+                <th className={styles.class}>Class</th>
+                <th className={styles.school}>School</th>
               </tr>
               {isLoading ? (
                 <td colspan={4}>
@@ -57,10 +57,10 @@ const RteData = () => {
               ) : (
                 data.map((res, index) => (
                   <tr key={res._id}>
-                    <td>{index + 1}</td>
-                    <td>{res.studentName}</td>
-                    <td>{res.classStudying}</td>
-                    <td>{res.school}</td>
+                    <td className={styles.sno}>{index + 1}</td>
+                    <td className={styles.name}>{res.studentName}</td>
+                    <td className={styles.class}>{res.classStudying}</td>
+                    <td className={styles.school}>{res.school}</td>
                   </tr>
                 ))
               )}
