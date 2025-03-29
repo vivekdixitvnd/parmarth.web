@@ -11,60 +11,77 @@ const getEventVolunteersData = async (req, res, next) => {
   }
 };
 
-const addEventVolunteerDataViaExcel = async (req, res, next) => {
-  try {
-    if (!req.file) {
-      return res.status(422).json({ error: "Upload an Excel file" });
-    }
 
-    const filePath = req.file.path;
+const addVolunteerDataViaExcel = async (req, res, next) => {
+  if (!req.file) {
+    return res.status(422).json({ error: "Upload an Excel file" });
+  }
+
+  const filePath = req.file.path;
+
+  try {
+    // Read Excel File
     const workbook = XLSX.readFile(filePath);
     const sheetNameList = workbook.SheetNames;
 
     let volunteersData = [];
 
-    sheetNameList.forEach((y) => {
-      const worksheet = workbook.Sheets[y];
-      let headers = {};
-      function camelCase(str) {
-        return str
-          .replace(/\s(.)/g, function (a) {
-            return a.toUpperCase();
-          })
-          .replace(/\s/g, "")
-          .replace(/^(.)/, function (b) {
-            return b.toLowerCase();
-          });
-      }
-      for (const z in worksheet) {
-        if (z[0] === "!") continue;
-        const col = z.substring(0, 1);
-        const row = parseInt(z.substring(1));
-        const value = worksheet[z].v;
-        if (row === 1) {
-          headers[col] = camelCase(value.trim());
-          continue;
-        }
-        if (!volunteersData[row]) volunteersData[row] = {};
+    // Loop through sheets
+    sheetNameList.forEach((sheet) => {
+      const worksheet = workbook.Sheets[sheet];
+      const headers = {};
+      const volunteerRows = [];
 
-        if (col === "E" || col === "G" || col === "H") {
-          volunteersData[row][headers[col]] = +value;
+      // Camel case conversion function
+      const camelCase = (str) =>
+        str
+          .replace(/\s(.)/g, (a) => a.toUpperCase())
+          .replace(/\s/g, "")
+          .replace(/^(.)/, (b) => b.toLowerCase());
+
+      // Extract headers dynamically
+      for (let cell in worksheet) {
+        if (cell[0] === "!") continue;
+        const col = cell.match(/[A-Z]+/)[0];
+        const row = parseInt(cell.match(/\d+/)[0]);
+        const value = worksheet[cell].v.toString().trim();
+
+        if (row === 1) {
+          headers[col] = camelCase(value); // Set header names as keys
         } else {
-          volunteersData[row][headers[col]] = value.toString().toUpperCase();
+          if (!volunteerRows[row]) volunteerRows[row] = {};
+          volunteerRows[row][headers[col]] = value;
         }
       }
-      volunteersData.shift();
-      volunteersData.shift();
+
+      // Push volunteer data
+      volunteerRows.forEach((row) => {
+        if (row) volunteersData.push(row);
+      });
     });
 
-    await EventVolunteer.insertMany(volunteersData);
-    
-    fs.unlinkSync(filePath); // Deleting the file
+    // Check if data is coming properly
+    if (volunteersData.length === 0) {
+      fs.unlink(filePath, () => {});
+      return res.status(400).json({ error: "No valid data found in Excel." });
+    }
 
-    return res.status(200).json({ message: "Successfully added data" });
+    // Insert data to DB
+    await Volunteer.insertMany(volunteersData);
+
+    // Delete file after inserting data
+    fs.unlink(filePath, (err) => {
+      if (err) {
+        console.error("Error deleting file:", err.message);
+      } else {
+        console.log("File deleted successfully");
+      }
+    });
+
+    return res.status(200).json({ message: "Data successfully added to the database", data: volunteersData });
   } catch (err) {
-    fs.unlinkSync(filePath); // Deleting the file if an error occurs
-    return res.status(500).json({ error: err.message });
+    console.error("Error:", err.message);
+    res.status(500).json({ error: err.message });
   }
 };
 
