@@ -12,7 +12,7 @@ const getEventVolunteersData = async (req, res, next) => {
 };
 
 
-const addVolunteerDataViaExcel = async (req, res, next) => {
+const addEventVolunteerDataViaExcel = async (req, res, next) => {
   if (!req.file) {
     return res.status(422).json({ error: "Upload an Excel file" });
   }
@@ -67,7 +67,7 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
     }
 
     // Insert data to DB
-    await Volunteer.insertMany(volunteersData);
+    await EventVolunteer.insertMany(volunteersData);
 
     // Delete file after inserting data
     fs.unlink(filePath, (err) => {
