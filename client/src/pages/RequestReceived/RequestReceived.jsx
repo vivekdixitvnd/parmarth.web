@@ -108,10 +108,7 @@ const RequestReceived = () => {
                         <span>
                           <strong>
                             {res.purpose.toUpperCase()}
-                            <br />
-                            POST:{" "}
                           </strong>
-                          {res.postHolded}
                         </span>
                       ) : (
                         <span>

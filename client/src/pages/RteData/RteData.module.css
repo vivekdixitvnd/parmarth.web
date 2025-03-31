@@ -9,12 +9,18 @@
 .body > div {
   max-width: max-content;
   margin: 0 auto;
+  overflow-x: auto; /* Allows scrolling */
 }
 
 .total {
   text-align: right;
   margin-bottom: 1rem;
   color: #535353;
+}
+
+.tableContainer {
+  overflow-x: auto; /* Enables horizontal scrolling */
+  max-width: 100%;
 }
 
 table,
@@ -33,6 +39,22 @@ td {
 th {
   background-color: #277bc0;
   color: #fff;
+}
+
+.school{
+  width: 560px;
+} 
+
+.sno {
+  width: 50px;
+}
+
+.name {
+  width: 180px;
+}
+
+.class {
+  width: 150px;
 }
 
 .loader {
