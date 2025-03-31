@@ -216,7 +216,7 @@ const RequestReceived = () => {
           </div>
         </div>
       </div>
-      {(userType == "teachers") && <UploadSignature/>}
+      {(userType == "teachers" || userType == "master") && <UploadSignature/>}
       <Footer />
     </>
   );
