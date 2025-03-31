@@ -10,10 +10,7 @@ const RequestForCertificate = () => {
   const [email, setEmail] = useState("");
   const [rollNumber, setRollNumber] = useState(0);
   const [course, setCourse] = useState("");
-  const [branch, setBranch] = useState("");
-  const [postHolded, setPostHolded] = useState("");
   const [purpose, setPurpose] = useState("general");
-  const [event, setEvent] = useState("");
   const [academicYear, setAcademicYear] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,24 +34,23 @@ const RequestForCertificate = () => {
     }
   };
 
-  const isPostHoldedValid = (postHolded) =>
-    typeof postHolded === "string" && postHolded.trim().length > 0;
-
   const isAcademicYearValid = (academicYear) => /\d\d\d\d/.test(academicYear);
 
-  const isEventValid = (event) => {
-    switch (event) {
-      case "muskan":
-      case "udgam":
-        return true;
-      default:
-        return false;
-    }
-  };
+  // const isEventValid = (event) => {
+  //   switch (event) {
+  //     case "Muskaan":
+  //     case "udgam":
+  //       return true;
+  //     default:
+  //       return false;
+  //   }
+  // };
 
+    
+  
   const onFormSubmitHandler = async (e) => {
     e.preventDefault();
-
+    
     setIsLoading(true);
 
     if (!isNameValid(name)) {
@@ -75,18 +71,7 @@ const RequestForCertificate = () => {
       return;
     }
 
-    if (purpose === "general") {
-      if (!isPostHoldedValid(postHolded)) {
-        toast.error("Enter your Post");
-        setIsLoading(false);
-        return;
-      }
-    } else if (purpose === "event") {
-      if (!isEventValid(event)) {
-        toast.error("Select a valid Event");
-        setIsLoading(false);
-        return;
-      }
+   if (purpose === "event") {
       if (!isAcademicYearValid(academicYear)) {
         toast.error("Enter a valid Academic Year");
         setIsLoading(false);
@@ -101,9 +86,6 @@ const RequestForCertificate = () => {
       course: course,
       purpose: purpose,
       academicYear: academicYear,
-      ...(course === "B.Tech" && { branch: branch }),
-      ...(purpose === "general" && { postHolded: postHolded }),
-      ...(purpose === "event" && { event: event }),
     };
 
     await fetch(`${backendUrl}/addRequestData`, {
@@ -167,41 +149,13 @@ const RequestForCertificate = () => {
             onChange={(e) => setCourse(e.target.value)}
           >
             <option disabled hidden value="choose">
-              Select Branch
+              Select Course
             </option>
             <option value="B.Tech">B.Tech</option>
             <option value="M.Tech">M.Tech</option>
             <option value="MCA">MCA</option>
             <option value="MBA">MBA</option>
           </select>
-          {course === "B.Tech" && (
-            <>
-              <label for="branch">Branch</label>
-              <select
-                required
-                id="branch"
-                defaultValue="choose"
-                className={styles.dropdown}
-                onChange={(e) => setBranch(e.target.value)}
-              >
-                <option disabled hidden value="choose">
-                  Select Branch
-                </option>
-                <option value="CE">CE - Civil Engineering</option>
-                <option value="CH">CH - Chemical Engineering</option>
-                <option value="CS">CS - Computer Science Engineering</option>
-                <option value="EC">
-                  EC - Electronics and Communication Engineering
-                </option>
-                <option value="EE">EE - Electrical Engineering</option>
-                <option value="EI">
-                  EI - Electronics and Instrumentation Engineering
-                </option>
-                <option value="IT">IT - Information Technology</option>
-                <option value="ME">ME - Mechanical Engineering</option>
-              </select>
-            </>
-          )}
           <label for="purpose">Select Purpose</label>
           <div
             style={{
@@ -233,34 +187,8 @@ const RequestForCertificate = () => {
               Event
             </button>
           </div>
-          {purpose === "general" && (
-            <>
-              <label for="post-holded">Post Holded</label>
-              <input
-                required
-                id="post-holded"
-                type="text"
-                placeholder="e.g. Volunteer"
-                onChange={(e) => setPostHolded(e.target.value)}
-              />
-            </>
-          )}
           {purpose === "event" && (
             <>
-              <label for="event-selection">Select Event</label>
-              <select
-                required
-                id="event-selection"
-                defaultValue="choose"
-                className={styles.dropdown}
-                onChange={(e) => setEvent(e.target.value)}
-              >
-                <option disabled hidden value="choose">
-                  Select Event
-                </option>
-                <option value="muskan">Muskan</option>
-                <option value="udgam">Udgam</option>
-              </select>
               <label for="academic-year">Academic Year</label>
               <input
                 type="text"

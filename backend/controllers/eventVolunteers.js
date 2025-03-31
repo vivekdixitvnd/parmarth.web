@@ -2,10 +2,30 @@ import EventVolunteer from "../models/eventVolunteers.js";
 import XLSX from "xlsx";
 import fs from "fs";
 
+// const getEventVolunteersData = async (req, res, next) => {
+//   try {
+//     const volunteers = await EventVolunteer.find();
+//     res.status(200).json(volunteers);
+//   } catch (err) {
+//     res.status(500).json({ error: err.message });
+//   }
+// };
+
 const getEventVolunteersData = async (req, res, next) => {
   try {
     const volunteers = await EventVolunteer.find();
-    res.status(200).json(volunteers);
+
+    // Convert all string values to uppercase
+    const upperCaseVolunteers = volunteers.map(volunteer => {
+      return Object.fromEntries(
+        Object.entries(volunteer.toObject()).map(([key, value]) => [
+          key,
+          typeof value === "string" ? value.toUpperCase() : value
+        ])
+      );
+    });
+
+    res.status(200).json(upperCaseVolunteers);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -44,7 +64,7 @@ const addEventVolunteerDataViaExcel = async (req, res, next) => {
         if (cell[0] === "!") continue;
         const col = cell.match(/[A-Z]+/)[0];
         const row = parseInt(cell.match(/\d+/)[0]);
-        const value = worksheet[cell].v.toString().trim();
+        const value = worksheet[cell].v.toString().trim().toLowerCase();
 
         if (row === 1) {
           headers[col] = camelCase(value); // Set header names as keys
