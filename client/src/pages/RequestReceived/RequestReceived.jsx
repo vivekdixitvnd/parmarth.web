@@ -116,7 +116,7 @@ const RequestReceived = () => {
                       ) : (
                         <span>
                           <strong>{res.purpose.toUpperCase()} - </strong>
-                          {res.event.toUpperCase()}
+                          {res.event}
                         </span>
                       )}
                     </td>
@@ -219,7 +219,7 @@ const RequestReceived = () => {
           </div>
         </div>
       </div>
-      {(userType == "teachers") && <UploadSignature/>}
+      {(userType == "teachers" || userType == "master") && <UploadSignature/>}
       <Footer />
     </>
   );
