@@ -12,9 +12,9 @@ const getVolunteersData = async (req, res, next) => {
 };
 
 const addVolunteerData = async (req, res, next) => {
-  const { name, course, rollNumber, postHolded, session } = req.body;
+  const { name, course, rollNumber, email, postHolded, session } = req.body;
 
-  if (!name || !course || !rollNumber || !postHolded || !session) {
+  if (!name || !course || !rollNumber || !email || !postHolded || !session) {
     return res.status(422).json({ error: "All fields are required" });
   }
 
@@ -42,6 +42,7 @@ const addVolunteerData = async (req, res, next) => {
       name: name.trim().toUpperCase(),
       course: course.trim().toUpperCase(),
       rollNumber: +rollNumber,
+      email: email.trim().toLowerCase(),
       postHolded: postHolded.trim().toUpperCase(),
       session: session.trim(),
       refrence, // **Add reference number here**

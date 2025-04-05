@@ -9,6 +9,7 @@ import backendUrl from "../../backendUrl";
 const AddVolunteerData = () => {
   const [name, setName] = useState("");
   const [rollNumber, setRollNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [course, setCourse] = useState("");
   const [branch, setBranch] = useState("");
   const [postHolded, setPostHolded] = useState("");
@@ -20,6 +21,7 @@ const AddVolunteerData = () => {
 
   const isNameValid = (name) => /^[a-zA-Z ]{2,30}$/.test(name);
   const isRollNumberValid = (rollNumber) => rollNumber.length === 13;
+  const isEmailValid = (email) => email.length < 30;
   const isCourseValid = (course) =>
     ["B.Tech", "M.Tech", "MBA", "MCA"].includes(course);
   const isPostHoldedValid = (postHolded) => postHolded.trim().length > 0;
@@ -35,6 +37,10 @@ const AddVolunteerData = () => {
       return;
     } else if (!isRollNumberValid(rollNumber)) {
       toast.error("Enter a valid 13-digit roll number");
+      setIsLoading(false);
+      return;
+    } else if (!isEmailValid(email)) {
+      toast.error("Enter a valid Email");
       setIsLoading(false);
       return;
     } else if (!isCourseValid(course)) {
@@ -54,6 +60,7 @@ const AddVolunteerData = () => {
     const data = {
       name: name.trim().toUpperCase(),
       rollNumber: +rollNumber,
+      email: email.trim().toLowerCase(),
       course: course.trim(),
       postHolded: postHolded.trim().toUpperCase(),
       session: session.trim(),
@@ -77,6 +84,7 @@ const AddVolunteerData = () => {
           // Reset form
           setName("");
           setRollNumber("");
+          setEmail("");
           setCourse("");
           setBranch("");
           setPostHolded("");
@@ -131,6 +139,7 @@ const AddVolunteerData = () => {
                   <li>Course (B.Tech, M.Tech, MBA, MCA)</li>
                   <li>Branch (required only for B.Tech)</li>
                   <li>Roll Number (13 digits)</li>
+                  <li>Email</li>
                   <li>Post Holded</li>
                   <li>Session (YYYY-YYYY)</li>
                   <li>Reference No.</li>
@@ -183,6 +192,15 @@ const AddVolunteerData = () => {
             value={rollNumber}
             onChange={(e) => setRollNumber(e.target.value)}
             maxLength={13}
+          />
+
+          <label for="email">Email</label>
+          <input
+            required
+            id="email"
+            type="email"
+            placeholder="john@example.com"
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <label htmlFor="course">Course</label>

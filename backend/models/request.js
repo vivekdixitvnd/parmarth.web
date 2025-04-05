@@ -5,10 +5,10 @@ const requestSchema = new Schema({
     type: String,
     required: true,
   },
-  email: {
-    type: String,
-    required: true,
-  },
+  // email: {
+  //   type: String,
+  //   required: true,
+  // },
   course: {
     type: String,
     required: true,
@@ -24,7 +24,7 @@ const requestSchema = new Schema({
     type: String,
     require: true,
   },
-  postHolded: {
+  session: {
     type: String,
   },
   event: {

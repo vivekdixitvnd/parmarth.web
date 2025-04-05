@@ -2,15 +2,6 @@ import EventVolunteer from "../models/eventVolunteers.js";
 import XLSX from "xlsx";
 import fs from "fs";
 
-// const getEventVolunteersData = async (req, res, next) => {
-//   try {
-//     const volunteers = await EventVolunteer.find();
-//     res.status(200).json(volunteers);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
 const getEventVolunteersData = async (req, res, next) => {
   try {
     const volunteers = await EventVolunteer.find();

@@ -24,13 +24,13 @@ const Footer = () => {
               <div>Institute of Engineering and<br />Technology, Lucknow, 226021</div>
             </div>
           </div>
-          <div className={styles["contact-field"]}>
+          {/* <div className={styles["contact-field"]}>
             <FaPhone className={styles.icon} />
             <div className={styles.details}>
               <div className={styles.label}>Phone Number</div>
               <div>+91 9639383630<br />+91 7007292577</div>
             </div>
-          </div>
+          </div> */}
           <div className={styles["contact-field"]}>
             <MdEmail className={styles.icon} />
             <div className={styles.details}>
