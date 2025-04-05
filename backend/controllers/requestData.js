@@ -18,110 +18,15 @@ const getRequestData = async (req, res, next) => {
   }
 };
 
-// const addRequestData = async (req, res, next) => {
-//   // Validation
-//   const { name, email, course, rollNumber, purpose } = req.body;
-
-//   let postHolded = "",
-//     event = "",
-//     academicYear = "";
-//   if (purpose === "general") {
-//     postHolded = req.body.postHolded;
-//   } else if (purpose === "event") {
-//     event = req.body.event;
-//     academicYear = req.body.academicYear;
-//   }
-
-//   let branch = "";
-//   if (course === "B.Tech.") {
-//     branch = req.body.branch;
-//   }
-
-//   const isNameValid = (name) => /^[a-zA-Z ]{2,30}$/.test(name);
-//   const isEmailValid = (email) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
-//   const isRollNumberValid = (rollNumber) => rollNumber.toString().length === 13;
-//   const isCourseValid = (course) => ["B.Tech", "M.Tech", "MBA", "MCA"].includes(course);
-//   const isPostHoldedValid = (postHolded) => typeof postHolded === "string" && postHolded.trim().length > 0;
-//   const isEventValid = (event) => ["muskan", "udgam"].includes(event);
-
-//   if (!isNameValid(name)) {
-//     return res.status(422).json({ error: "Enter a valid name" });
-//   } else if (!isEmailValid(email)) {
-//     return res.status(422).json({ error: "Enter a valid email" });
-//   } else if (!isRollNumberValid(rollNumber)) {
-//     return res.status(422).json({ error: "Enter a valid roll number" });
-//   } else if (!isCourseValid(course)) {
-//     return res.status(422).json({ error: "Enter your course" });
-//   }
-
-//   if (purpose === "general" && !isPostHoldedValid(postHolded)) {
-//     return res.status(422).json({ error: "Enter your Post" });
-//   } else if (purpose === "event" && !isEventValid(event)) {
-//     return res.status(422).json({ error: "Select a valid Event" });
-//   }
-
-//   try {
-//     let dataExist = null;
-//     if (purpose === "general") {
-//       const data = await Volunteer.findOne({
-//         name: name.trim().toUpperCase(),
-//         course: course.trim(),
-//         rollNumber: +rollNumber,
-//       });
-//       if (!data) {
-//         dataExist = false;
-//       } else if (data.rollNumber === rollNumber) {
-//         dataExist = true;
-//       }
-//       const requestData = new Request({
-//         name: name.trim().toUpperCase(),
-//         email: email.trim().toLowerCase(),
-//         course: course.trim().toUpperCase(),
-//         rollNumber: +rollNumber,
-//         purpose: purpose.trim(),
-//         postHolded: postHolded,
-//         dataExist: dataExist,
-//       });
-
-//       await requestData.save();
-//       console.log("Added Data");
-//       return res.status(201).json({ message: "Successfully added your request" });
-//     } else if (purpose === "event") {
-//       const data = await EventVolunteer.find({
-//         name: name.trim().toUpperCase(),
-//         course: course.trim(),
-//         rollNumber: +rollNumber,
-//         event: event,
-//       });
-//       const dataExist = data ? true : false;
-//       const requestData = new Request({
-//         name: name.trim().toUpperCase(),
-//         email: email.trim().toLowerCase(),
-//         course: course.trim().toUpperCase(),
-//         rollNumber: +rollNumber,
-//         purpose: purpose.trim(),
-//         event: event,
-//         dataExist: dataExist,
-//       });
-
-//       await requestData.save();
-//       console.log("Added Data");
-//       return res.status(201).json({ message: "Successfully added your request" });
-//     }
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
 const addRequestData = async (req, res, next) => {
   // Validation
-  const { name, email, course, rollNumber, purpose } = req.body;
+  const { name, course, rollNumber, purpose } = req.body;
 
-  let postHolded = "",
+  let session = "",
     event = "",
     academicYear = "";
   if (purpose === "general") {
-    postHolded = req.body.postHolded;
+    session = req.body.session;
   } else if (purpose === "event") {
     event = req.body.event;
     academicYear = req.body.academicYear;
@@ -133,27 +38,29 @@ const addRequestData = async (req, res, next) => {
   }
 
   const isNameValid = (name) => /^[a-zA-Z ]{2,30}$/.test(name);
-  const isEmailValid = (email) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+  // const isEmailValid = (email) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
   const isRollNumberValid = (rollNumber) => rollNumber.toString().length === 13;
   const isCourseValid = (course) => ["B.Tech", "M.Tech", "MBA", "MCA"].includes(course);
-  // const isPostHoldedValid = (postHolded) => typeof postHolded === "string" && postHolded.trim().length > 0;
+  const isSessionValid = (session) => typeof session === "string" && session.trim().length > 0;
   // const isEventValid = (event) => ["muskan", "udgam"].includes(event);
 
   if (!isNameValid(name)) {
     return res.status(422).json({ error: "Enter a valid name" });
-  } else if (!isEmailValid(email)) {
-    return res.status(422).json({ error: "Enter a valid email" });
+  // } else if (!isEmailValid(email)) {
+  //   return res.status(422).json({ error: "Enter a valid email" });
   } else if (!isRollNumberValid(rollNumber)) {
     return res.status(422).json({ error: "Enter a valid roll number" });
   } else if (!isCourseValid(course)) {
     return res.status(422).json({ error: "Enter your course" });
+  // } else if (!isSessionValid(session)) {
+  //   return res.status(422).json({ error: "Enter your Session" });
   }
 
-  // if (purpose === "general" && !isPostHoldedValid(postHolded)) {
-  //   return res.status(422).json({ error: "Enter your Post" });
+  if (purpose === "general" && !isSessionValid(session)) {
+    return res.status(422).json({ error: "Enter your Session" });
   // // } else if (purpose === "event" && !isEventValid(event)) {
   // //   return res.status(422).json({ error: "Select a valid Event" });
-  // }
+  }
 
   try {
     let dataExist = false;
@@ -163,6 +70,7 @@ const addRequestData = async (req, res, next) => {
         name: name.trim().toUpperCase(),
         // course: course.trim(),
         rollNumber: +rollNumber,
+        session: session,
       });
 
       if (data) {
@@ -192,7 +100,7 @@ const addRequestData = async (req, res, next) => {
 
     const requestData = new Request({
       name: name.trim().toUpperCase(),
-      email: email.trim().toLowerCase(),
+      // email: email.trim().toLowerCase(),
       course: course.trim().toUpperCase(),
       rollNumber: +rollNumber,
       purpose: purpose.trim(),

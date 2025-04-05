@@ -5,6 +5,7 @@ const volunteerSchema = new Schema({
   course: { type: String, required: true },
   branch: { type: String},
   rollNumber: Number,
+  email: String,
   postHolded: { type: String, required: true },
   session: { type: String, required: true },
   refrence: { type: String, unique: true},

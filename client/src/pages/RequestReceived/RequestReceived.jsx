@@ -83,7 +83,7 @@ const RequestReceived = () => {
                 <th>Name</th>
                 <th>Course</th>
                 <th>Roll Number</th>
-                <th>Email</th>
+                {/* <th>Email</th> */}
                 <th>Purpose</th>
                 <th>Data Exist</th>
                 <th>Approve Request</th>
@@ -102,7 +102,7 @@ const RequestReceived = () => {
                       {res.course} {res?.branch && <span>({res?.branch})</span>}
                     </td>
                     <td>{res.rollNumber}</td>
-                    <td>{res.email}</td>
+                    {/* <td>{res.email}</td> */}
                     <td>
                       {res.purpose === "general" ? (
                         <span>
@@ -112,7 +112,7 @@ const RequestReceived = () => {
                         </span>
                       ) : (
                         <span>
-                          <strong>{res.purpose.toUpperCase()} - </strong>
+                          <strong>{res.purpose.toUpperCase()}</strong>
                           {res.event}
                         </span>
                       )}

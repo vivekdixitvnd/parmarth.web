@@ -6,12 +6,15 @@ const eventVolunteerSchema = new Schema({
   branch: String,
   event: String,
   rollNumber: Number,
+  email: String,
   responsibility: String,
+  eventDate: String,
   academicYear: Number,
   certificateNumber: {
     type: String,
     required: true,
   },
+
 });
 
 const EventVolunteer = mongoose.model(

@@ -12,12 +12,13 @@ const RequestForCertificate = () => {
   const [course, setCourse] = useState("");
   const [purpose, setPurpose] = useState("general");
   const [academicYear, setAcademicYear] = useState("");
+  const [session, setSession] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const isNameValid = (name) => /^[a-zA-Z ]{2,30}$/.test(name);
 
-  const isEmailValid = (email) =>
-    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+  // const isEmailValid = (email) =>
+  //   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
   const isRollNumberValid = (rollNumber) => rollNumber.length === 13;
 
@@ -35,6 +36,7 @@ const RequestForCertificate = () => {
   };
 
   const isAcademicYearValid = (academicYear) => /\d\d\d\d/.test(academicYear);
+  const isSessionValid = (session) => /\d\d\d\d/.test(session);
 
   // const isEventValid = (event) => {
   //   switch (event) {
@@ -57,10 +59,6 @@ const RequestForCertificate = () => {
       toast.error("Enter a valid name");
       setIsLoading(false);
       return;
-    } else if (!isEmailValid(email)) {
-      toast.error("Enter a valid email");
-      setIsLoading(false);
-      return;
     } else if (!isRollNumberValid(rollNumber)) {
       toast.error("Enter a valid roll number");
       setIsLoading(false);
@@ -78,14 +76,22 @@ const RequestForCertificate = () => {
         return;
       }
     }
+   if (purpose === "general") {
+      if (!isSessionValid(session)) {
+        toast.error("Enter a valid Session");
+        setIsLoading(false);
+        return;
+      }
+    }
 
     const data = {
       name: name,
-      email: email,
+      // email: email,
       rollNumber: +rollNumber,
       course: course,
       purpose: purpose,
       academicYear: academicYear,
+      session: session,
     };
 
     await fetch(`${backendUrl}/addRequestData`, {
@@ -124,14 +130,14 @@ const RequestForCertificate = () => {
             placeholder="John Doe"
             onChange={(e) => setName(e.target.value)}
           />
-          <label for="email">Email</label>
+          {/* <label for="email">Email</label>
           <input
             required
             id="email"
             type="email"
             placeholder="john@example.com"
             onChange={(e) => setEmail(e.target.value)}
-          />
+          /> */}
           <label for="roll-number">Roll Number</label>
           <input
             required
@@ -175,6 +181,7 @@ const RequestForCertificate = () => {
             >
               General
             </button>
+            
             <button
               className={`${styles.btn} ${
                 purpose === "event" ? styles["btn-active"] : ""
@@ -197,6 +204,17 @@ const RequestForCertificate = () => {
               />
             </>
           )}
+          {purpose === "general" && (
+            <>
+              <label for="session">Session</label>
+              <input
+                type="text"
+                placeholder="e.g. 2022-2023"
+                onChange={(e) => setSession(e.target.value)}
+              />
+            </>
+          )}
+          
 
           <button type="submit" className={styles.submit} disabled={isLoading}>
             {isLoading ? <div className={styles.loader}></div> : "Submit"}
