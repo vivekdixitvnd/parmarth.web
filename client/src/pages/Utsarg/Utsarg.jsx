@@ -64,12 +64,13 @@ const InfiniteScroll = ({ images }) => {
   );
 };
 
-const Udgam = () => {
+const Utsarg = () => {
   const images = [
-    "/img/Team/1.jpg",
-    "/img/Team/2.jpg",
-    "/img/Team/3.png",
-    "/img/Team/4.png",
+    "/img/Utsarg/1.png",
+    "/img/Utsarg/2.png",
+    "/img/Utsarg/3.png",
+    "/img/Utsarg/4.png",
+    "/img/Utsarg/5.png",
   ];
 
   return (
@@ -132,4 +133,4 @@ const Udgam = () => {
   );
 };
 
-export default Udgam;
+export default Utsarg;

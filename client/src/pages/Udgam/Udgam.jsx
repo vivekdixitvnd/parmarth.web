@@ -66,10 +66,11 @@ const InfiniteScroll = ({ images }) => {
 
 const Udgam = () => {
   const images = [
-    "/img/Team/1.jpg",
-    "/img/Team/2.jpg",
-    "/img/Team/3.png",
-    "/img/Team/4.png",
+    "/img/Udgam/1.png",
+    "/img/Udgam/2.png",
+    "/img/Udgam/3.png",
+    "/img/Udgam/4.png",
+    "/img/Udgam/5.png",
   ];
 
   return (

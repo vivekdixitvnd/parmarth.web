@@ -64,12 +64,13 @@ const InfiniteScroll = ({ images }) => {
   );
 };
 
-const Udgam = () => {
+const BloodDonation = () => {
   const images = [
-    "/img/Team/1.jpg",
-    "/img/Team/2.jpg",
-    "/img/Team/3.png",
-    "/img/Team/4.png",
+    "/img/Blood/1.png",
+    "/img/Blood/2.png",
+    "/img/Blood/3.png",
+    "/img/Blood/4.png",
+    "/img/Blood/5.png",
   ];
 
   return (
@@ -143,4 +144,4 @@ const Udgam = () => {
   );
 };
 
-export default Udgam;
+export default BloodDonation;

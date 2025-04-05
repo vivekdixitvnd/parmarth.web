@@ -66,10 +66,11 @@ const InfiniteScroll = ({ images }) => {
 
 const Muskan = () => {
   const images = [
-    "/img/Team/1.jpg",
-    "/img/Team/2.jpg",
-    "/img/Team/3.png",
-    "/img/Team/4.png",
+    "/img/Muskaan/1.png",
+    "/img/Muskaan/2.png",
+    "/img/Muskaan/3.png",
+    "/img/Muskaan/4.png",
+    "/img/Muskaan/5.png",
   ];
 
   return (
