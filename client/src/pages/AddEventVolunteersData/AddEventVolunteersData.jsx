@@ -55,7 +55,7 @@ const AddEventVolunteersData = () => {
                 color: "red",
               }}
             >
-              File Should contain only six columns and 1st row must have these
+              File Should contain only 11 columns and 1st row must have these
               headings in the same manner and same order as well
               <br />
               <br />
@@ -72,15 +72,20 @@ const AddEventVolunteersData = () => {
               </span>
               <span style={{ color: "#535353", fontWeight: "500" }}>
                 <ul>
+                  <li>S. No.</li>
                   <li>Name</li>
+                  <li>Roll Number</li>
+                  <li>Email</li>
                   <li>Course</li>
                   <li>
                     Branch (optional - leave this field empty in case of branch
                     other than <strong>B.Tech</strong>)
                   </li>
-                  <li>Event (Muskan or Udgam)</li>
-                  <li>Roll Number</li>
-                  <li>Post Holded</li>
+                  <li>Event (Muskaan)</li>
+                  <li>Resposibility</li>
+                  <li>Event Date (- (Dash) is important without any space in date) </li>
+                  <li>Academic Year</li>
+                  <li>Certificate Number</li>
                 </ul>
               </span>
             </span>
