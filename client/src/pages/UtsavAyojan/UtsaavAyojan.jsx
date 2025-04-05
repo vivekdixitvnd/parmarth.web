@@ -66,10 +66,11 @@ const InfiniteScroll = ({ images }) => {
 
 const UtsavAyojan = () => {
   const images = [
-    "/img/Team/1.jpg",
-    "/img/Team/2.jpg",
-    "/img/Team/3.png",
-    "/img/Team/4.png",
+    "/img/UtsavaAyojan/1.png",
+    "/img/UtsavaAyojan/2.png",
+    "/img/UtsavaAyojan/3.png",
+    "/img/UtsavaAyojan/4.png",
+    "/img/UtsavaAyojan/5.png",
   ];
 
   const festivals = [
