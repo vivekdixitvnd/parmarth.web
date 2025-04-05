@@ -127,7 +127,7 @@ const RequestForCertificate = () => {
             required
             id="name"
             type="text"
-            placeholder="John Doe"
+            placeholder="Enter your Full name"
             onChange={(e) => setName(e.target.value)}
           />
           {/* <label for="email">Email</label>

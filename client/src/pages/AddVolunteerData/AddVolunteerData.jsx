@@ -135,6 +135,7 @@ const AddVolunteerData = () => {
               File should contain these columns in order:
               <span style={{ color: "#535353", fontWeight: "500" }}>
                 <ul>
+                  <li>S. No.</li>
                   <li>Name</li>
                   <li>Course (B.Tech, M.Tech, MBA, MCA)</li>
                   <li>Branch (required only for B.Tech)</li>
@@ -142,7 +143,7 @@ const AddVolunteerData = () => {
                   <li>Email</li>
                   <li>Post Holded</li>
                   <li>Session (YYYY-YYYY)</li>
-                  <li>Reference No.</li>
+                  <li>Reference</li>
                 </ul>
               </span>
               Example:
@@ -178,7 +179,7 @@ const AddVolunteerData = () => {
             required
             id="name"
             type="text"
-            placeholder="John Doe"
+            placeholder="Enter your full name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -199,7 +200,7 @@ const AddVolunteerData = () => {
             required
             id="email"
             type="email"
-            placeholder="john@example.com"
+            placeholder="Enter a valid email"
             onChange={(e) => setEmail(e.target.value)}
           />
 

@@ -84,7 +84,7 @@ const approveRequest = async (req, res, next) => {
         const name = eventVolunteer.name.toUpperCase();
         const responsibility = eventVolunteer.responsibility.toUpperCase();
         const branch = eventVolunteer.branch.toUpperCase();
-        const academicYear = eventVolunteer.academicYear;
+        const eventDate = eventVolunteer.eventDate;
         const certificateNumber = eventVolunteer.certificateNumber.toUpperCase();
 
         // Add all texts to the certificate
@@ -103,7 +103,7 @@ const approveRequest = async (req, res, next) => {
 
         draw
         .text(`BRANCH: ${branch}`)
-        .attr("x", "69%")
+        .attr("x", "68%")
         .attr("y", "56%")
         .attr("text-anchor", "right")
         .attr("font-size", "26")
@@ -120,7 +120,7 @@ const approveRequest = async (req, res, next) => {
         .attr("font-weight", "bold");
       
       draw
-        .text(`Event Date: ${academicYear}`)
+        .text(`Event Date: ${eventDate}`)
         .attr("x", "7%")
         .attr("y", "8%")
         .attr("text-anchor", "left")
@@ -129,7 +129,7 @@ const approveRequest = async (req, res, next) => {
       
       draw
         .text(`Ref. No: ${certificateNumber}`)
-        .attr("x", "74%")
+        .attr("x", "72%")
         .attr("y", "8%")
         .attr("text-anchor", "right")
         .attr("font-size", "18")
@@ -167,8 +167,8 @@ const approveRequest = async (req, res, next) => {
           from: "vivekdixit504@gmail.com", // Mailtrap se match karo
           to: eventVolunteer.email,
           cc: "",
-          subject: "Parmarth Certificate",
-          html: `<p>Hi ${name},</p><p>Your request for Parmarth Certificate generation is approved.</p><p>Please find attached certificate for the same.</p><p>Warm Regards,<br/>Parmarth - Social Club</p><p>Institute of Engineering and Technology, Lucknow</p><p><a href="https://parmarth.ietlucknow.ac.in/" target="_blank" rel="noreferrer">https://parmarth.ietlucknow.ac.in/</a></p>`,
+          subject: "Parmarth Requested Certificate is Approved",
+          html: `<p>Dear ${name},</p><p>Your request for Parmarth Certificate generation is approved.</p><p>Please find attached certificate for the same.</p><p>Warm Regards,<br/>Parmarth - Social Club<br/>Institute of Engineering and Technology, Lucknow<br/><a href="https://parmarth.ietlucknow.ac.in/" target="_blank" rel="noreferrer">https://parmarth.ietlucknow.ac.in/</a></p>`,
           attachments: [
             {
               path: certificatePath,
@@ -219,9 +219,9 @@ const approveRequest = async (req, res, next) => {
         const postHolded = volunteer.postHolded.toUpperCase();
 
         // Add all texts to the certificate
-        const vivek = ("for participating in MUSKAAN (The cloth distribution event) organized");
-        const vivek1 = ("by PARMARTH (The Social Club of IET Lucknow) and for your");
-        const vivek2 = ("commitment to social welfare.");
+        const vivek = ("Played a valuable role in PARMARTH – The Social Club of IET Lucknow,");
+        const vivek1 = ("showcasing dedication, creativity, and a strong sense of responsibility.");
+        const vivek2 = ("Wishing continued success and excellence in all future endeavors.");
 
         draw
         .text(name)
@@ -235,7 +235,7 @@ const approveRequest = async (req, res, next) => {
 
         draw
         .text(`BRANCH: ${branch}`)
-        .attr("x", "69%")
+        .attr("x", "68%")
         .attr("y", "56%")
         .attr("text-anchor", "right")
         .attr("font-size", "26")
@@ -244,7 +244,7 @@ const approveRequest = async (req, res, next) => {
       
       draw
         .text(`RESPONSIBILITY: ${postHolded}`)
-        .attr("x", "16%")
+        .attr("x", "15%")
         .attr("y", "56%")
         .attr("text-anchor", "left")
         .attr("font-size", "26")
@@ -300,8 +300,8 @@ const approveRequest = async (req, res, next) => {
           from: "vivekdixit504@gmail.com", // Mailtrap se match karo
           to: volunteer.email,
           cc: "",
-          subject: "Parmarth Certificate",
-          html: `<p>Hi ${name},</p><p>Your request for Parmarth Certificate generation is approved.</p><p>Please find attached certificate for the same.</p><p>Warm Regards,<br/>Parmarth - Social Club</p><p>Institute of Engineering and Technology, Lucknow</p><p><a href="https://parmarth.ietlucknow.ac.in/" target="_blank" rel="noreferrer">https://parmarth.ietlucknow.ac.in/</a></p>`,
+          subject: "Parmarth Requested Certificate is Approved",
+          html: `<p>Dear ${name},</p><p>Your request for Parmarth Certificate generation is approved.</p><p>Please find attached certificate for the same.</p><p>Warm Regards,<br/>Parmarth - Social Club<br/>Institute of Engineering and Technology, Lucknow<br/><a href="https://parmarth.ietlucknow.ac.in/" target="_blank" rel="noreferrer">https://parmarth.ietlucknow.ac.in/</a></p>`,
           attachments: [
             {
               path: certificatePath,
