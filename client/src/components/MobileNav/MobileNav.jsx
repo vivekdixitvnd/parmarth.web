@@ -104,15 +104,16 @@ const MobileNav = () => {
                             </li>
                             <li>
                               <NavLink
-                                to="/muskan"
+                                to="/unnayan"
                                 className={
-                                  pathname === "/muskan" ? "mobile-nav__active" : "mobile-nav__link"
+                                  pathname === "/unnayan" ? "mobile-nav__active" : "mobile-nav__link"
                                 }
                                 style={{ fontSize: "18px" }}
                               >
-                                <b>मुस्कान</b>
+                                <b>उन्नयन</b>
                               </NavLink>
                             </li>
+                            
                             <li>
                               <NavLink
                                 to="/utsaah"
@@ -133,6 +134,17 @@ const MobileNav = () => {
                                 style={{ fontSize: "18px" }}
                               >
                                 <b>उत्सर्ग</b>
+                              </NavLink>
+                            </li>
+                            <li>
+                              <NavLink
+                                to="/muskan"
+                                className={
+                                  pathname === "/muskan" ? "mobile-nav__active" : "mobile-nav__link"
+                                }
+                                style={{ fontSize: "18px" }}
+                              >
+                                <b>मुस्कान</b>
                               </NavLink>
                             </li>
                             <li>

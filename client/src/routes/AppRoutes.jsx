@@ -15,6 +15,7 @@ import Volunteers from "../pages/VolunteersData/Volunteers";
 import Udgam from "../pages/Udgam/Udgam.jsx"
 import Utsarg from "../pages/Utsarg/Utsarg.jsx"
 import Utsaah from "../pages/Utsaah/Utsaah.jsx"
+import Unnayan from "../pages/Unnayan/Unnayan.jsx"
 import Ummeed from "../pages/Ummeed/Ummeed.jsx"
 import EduVisit from "../pages/EduVisit/EduVisit.jsx"
 import BloodDonation from "../pages/BloodDonation/BloodDonation.jsx"
@@ -71,6 +72,7 @@ const AppRoutes = () => {
       <Route path="/udgam" element={<Udgam />} />
       <Route path="/utsarg" element={<Utsarg />} />
       <Route path="/utsaah" element={<Utsaah />} />
+      <Route path="/unnayan" element={<Unnayan />} />
       <Route path="/ummeed" element={<Ummeed />} />
       <Route path="/utsav" element={<UtsavAyojan />} />
       <Route path="/eduvisit" element={<EduVisit />} />
