@@ -86,7 +86,7 @@ const UtsavAyojan = () => {
       impact:
         "25 volunteers create a warm and inclusive celebration, ensuring everyone experiences the true spirit of Diwali.",
       date: "October/November",
-      image: "../img/5.jpeg",
+      image: "../img/UtsavaAyojan/diwali.png",
     },
     {
       title: "Holi Celebration",
@@ -100,7 +100,7 @@ const UtsavAyojan = () => {
       impact:
         "40 volunteers bring happiness and unity to 120 students, creating vibrant memories.",
       date: "March",
-      image: "../img/3.jpg",
+      image: "../img/UtsavaAyojan/2.png",
     },
     {
       title: "Children's Day",
@@ -114,7 +114,7 @@ const UtsavAyojan = () => {
       impact:
         "25 volunteers create joyful experiences for 120 students, with 200 visits recorded.",
       date: "November 14",
-      image: "../img/6.jpeg",
+      image: "../img/UtsavaAyojan/3.png",
     },
     {
       title: "Republic Day",
@@ -128,7 +128,7 @@ const UtsavAyojan = () => {
       impact:
         "50 volunteers inspire 120 students with messages of patriotism and unity.",
       date: "January 26",
-      image: "../img/1.jpeg",
+      image: "../img/UtsavaAyojan/1.png",
     },
     {
       title: "Environment Day",
@@ -157,7 +157,7 @@ const UtsavAyojan = () => {
       impact:
         "25 volunteers introduce 120 students to valuable tools for health and mindfulness.",
       date: "June 21",
-      image: "../img/2.jpeg",
+      image: "../img/UtsavaAyojan/yoga.png",
     },
     {
       title: "Independence Day",
@@ -171,7 +171,7 @@ const UtsavAyojan = () => {
       impact:
         "50 volunteers foster national pride among 120 students through inspiring activities.",
       date: "August 15",
-      image: "../img/5.jpeg",
+      image: "../img/UtsavaAyojan/1.png",
     },
   ];
 
