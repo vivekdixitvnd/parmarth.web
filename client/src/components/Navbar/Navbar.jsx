@@ -145,15 +145,16 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/muskan"
+                      to="/unnayan"
                       className={
-                        pathname === "/muskan" ? styles.active : styles.link
+                        pathname === "/unnayan" ? styles.active : styles.link
                       }
                       style={{ fontSize: "18px" }}
                     >
-                      <b>मुस्कान</b>
+                      <b>उन्नयन</b>
                     </NavLink>
                   </li>
+                  
                   <li>
                     <NavLink
                       to="/utsaah"
@@ -174,6 +175,17 @@ const Navbar = () => {
                       style={{ fontSize: "18px" }}
                     >
                       <b>उत्सर्ग</b>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/muskan"
+                      className={
+                        pathname === "/muskan" ? styles.active : styles.link
+                      }
+                      style={{ fontSize: "18px" }}
+                    >
+                      <b>मुस्कान</b>
                     </NavLink>
                   </li>
                   <li>
