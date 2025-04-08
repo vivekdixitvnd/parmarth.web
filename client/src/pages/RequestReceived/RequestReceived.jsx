@@ -10,11 +10,15 @@ import UploadSignature from "../../components/UploadSignature/UploadSignature";
 
 const RequestReceived = () => {
   const authCtx = useContext(AuthContext);
-  const userType = authCtx.userType
+  const userType = authCtx.userType;
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isApproveLoading, setIsApproveLoading] = useState(false);
   const [purpose, setPurpose] = useState("general");
+  const [signatures, setSignatures] = useState({
+    faculty1: false,
+    faculty2: false,
+  });
 
   const getRequestData = async (purposeValue) => {
     setIsLoading(true);
@@ -44,9 +48,38 @@ const RequestReceived = () => {
     setIsLoading(false);
   };
 
+  const fetchSignatures = async () => {
+    try {
+      const res = await fetch(`${backendUrl}/checkSignatures`, {
+        headers: {
+          Authorization: `Bearer ${authCtx.token}`,
+        },
+      });
+  
+      if (res.status === 401) {
+        toast.error("Unauthorized. Please login again.");
+        return;
+      }
+  
+      const data = await res.json();
+      setSignatures(data);
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to fetch signature status");
+    }
+  };
+  
+
   useEffect(() => {
     getRequestData(purpose);
+    fetchSignatures();
   }, [purpose]);
+
+  const handleSignatureUpload = () => {
+    fetchSignatures();
+  };
+
+  const isApproveEnabled = signatures.faculty1 && signatures.faculty2;
 
   return (
     <>
@@ -106,9 +139,7 @@ const RequestReceived = () => {
                     <td>
                       {res.purpose === "general" ? (
                         <span>
-                          <strong>
-                            {res.purpose.toUpperCase()}
-                          </strong>
+                          <strong>{res.purpose.toUpperCase()}</strong>
                         </span>
                       ) : (
                         <span>
@@ -128,6 +159,7 @@ const RequestReceived = () => {
                       <button
                         className={styles.button}
                         style={{ backgroundColor: "#82cd47" }}
+                        disabled={!isApproveEnabled}
                         onClick={async () => {
                           setIsApproveLoading(true);
                           await fetch(
@@ -216,7 +248,23 @@ const RequestReceived = () => {
           </div>
         </div>
       </div>
-      {(userType == "teachers" || userType == "master") && <UploadSignature/>}
+
+      <div style={{ margin: "1rem 0", fontWeight: "bold" }}>
+        Signature Status:
+        <ul>
+          <li>
+            Faculty 1: {signatures.faculty1 ? "✅ Uploaded" : "❌ Not Uploaded"}
+          </li>
+          <li>
+            Faculty 2: {signatures.faculty2 ? "✅ Uploaded" : "❌ Not Uploaded"}
+          </li>
+        </ul>
+      </div>
+
+      {(userType === "teachers" || userType === "master") && (
+        <UploadSignature onUpload={handleSignatureUpload} />
+      )}
+
       <Footer />
     </>
   );
