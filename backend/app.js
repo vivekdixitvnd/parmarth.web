@@ -30,7 +30,7 @@ import {
 const app = express();
 
 app.use(cors({
-  origin: 'https://parmarth-web.vercel.app/',
+  origin: 'https://parmarth-web.vercel.app',
   credentials: true,
 }));
 app.options('*', cors()); // handle preflight for all routes
