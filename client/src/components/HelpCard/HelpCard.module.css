@@ -1,24 +1,351 @@
 .card {
-  width: 300px;
-  height: 400px;
-  margin: 1rem 1.5rem;
-  padding: 1rem;
-  background-color: #ccc;
-  border-radius: 10px;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
+  width: 950px;
+  height: 500px;
+  margin: 10px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card:hover {
-  box-shadow: 0 0 10px #0d4c92;
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(23, 138, 233, 0.25);
+}
+
+.contentOverlay {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 45%;
+  background-color: var(--bg-color);
+  z-index: 1;
+  clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.cardContent {
+  position: relative;
+  width: 45%;
+  padding: 40px;
+  z-index: 2;
 }
 
 .title {
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  font-size: 2.2rem;
+  color: var(--title-color);
+  margin-bottom: 20px;
+  font-weight: 700;
 }
 
-.title:hover {
-  color: #277bc0;
-  opacity: 0.8;
+.divider {
+  height: 4px;
+  width: 80px;
+  background: var(--divider-color);
+  margin: 0 0 25px 0;
+  border-radius: 2px;
+}
+
+.description {
+  color: #4a5568;
+  line-height: 1.7;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 50px;
+}
+
+.actionButton {
+  background-color: var(--primary-btn-color);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.actionButton:hover {
+  filter: brightness(90%);
+  transform: translateY(-2px);
+}
+
+.secondaryButton {
+  background-color: white;
+  color: var(--secondary-btn-color);
+  border: 2px solid var(--secondary-btn-color);
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.secondaryButton:hover {
+  background-color: #f7fafc;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+  .card {
+    width: 90vw;
+    height: auto;
+    flex-direction: column;
+  }
+  
+  .contentOverlay {
+    width: 100%;
+    height: 45%;
+    bottom: 0;
+    top: auto;
+    clip-path: polygon(0% 20%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  
+  .cardContent {
+    width: 100%;
+    padding: 30px;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cardContent {
+    padding: 25px;
+  }
+  
+  .title {
+    font-size: 1.6rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+  
+  .buttonContainer {
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .actionButton,
+  .secondaryButton {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+/* In HelpCard.module.css */
+
+/* Make sure buttons/anchor tags look the same */
+.actionButton,
+.secondaryButton {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none; /* Remove underline for anchor tags */
+  /* Keep all your existing button styles */
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.actionButton {
+  background-color: var(--primary-btn-color);
+  color: white;
+  border: none;
+}
+
+.secondaryButton {
+  background-color: white;
+  color: var(--secondary-btn-color);
+  border: 2px solid var(--secondary-btn-color);
+}
+
+/* Hover states */
+.actionButton:hover {
+  filter: brightness(90%);
+  transform: translateY(-2px);
+}
+
+.secondaryButton:hover {
+  background-color: #f7fafc;
+  transform: translateY(-2px);
+}
+.card {
+  width: 100vw;
+  max-width: 950px;
+  min-width: 400px;
+  height: 500px;
+  margin: 10px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.contentOverlay {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 45%;
+  min-width: 350px; /* Minimum width for rigid content */
+  background-color: var(--bg-color);
+  z-index: 1;
+  clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.cardContent {
+  position: absolute;
+  right: 0;
+  width: 45%;
+  min-width: 350px; 
+  height: 100%;
+  padding: 40px;
+  z-index: 2;
+  box-sizing: border-box;
+  /* background-color: red; */
+}
+
+.title {
+  font-size: 2.2rem;
+  color: var(--title-color);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.divider {
+  height: 4px;
+  width: 80px;
+  background: var(--divider-color);
+  margin: 0 0 25px 0;
+  border-radius: 2px;
+}
+
+.description {
+  color: #4a5568;
+  line-height: 1.5;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 50px;
+}
+
+.actionButton {
+  background-color: var(--primary-btn-color);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.secondaryButton {
+  background-color: white;
+  color: var(--secondary-btn-color);
+  border: 2px solid var(--secondary-btn-color);
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 900px) {
+  .card {
+    height: auto;
+    aspect-ratio: 950/500;
+  }
+  
+  .contentOverlay, 
+  .cardContent {
+    width: 50%;
+    min-width: 300px;
+  }
+  .actionButton,
+.secondaryButton{
+  font-size: 0.8rem;
+  padding: 6px 12px;
+}
+.description {
+  /* color: #4a5568; */
+  line-height: 1;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 1.5rem;
+  /* color: var(--title-color); */
+  margin-bottom: 2px;
+  /* font-weight: 700; */
+}
+
+}
+
+@media (max-width: 650px) {
+  .card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  
+  
+  
+  .contentOverlay, 
+  .cardContent {
+    width: 50%;
+    min-width: 45%;
+    clip-path: none;
+    /* position: relative; */
+    height: auto;
+  }
+  
+  .cardContent {
+    padding: 30px;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .buttonContainer {
+    flex-direction: column;
+    gap: 15px;
+  }
 }

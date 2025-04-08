@@ -1,0 +1,12 @@
+/* Default styling for testimonial card */
+.testimonialCard {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+  width: 90%;
+  margin: 0 auto;
+  height: max-content;
+}
+

@@ -1,0 +1,61 @@
+/* StatsCounter.module.css */
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  text-align: center;
+  width: 220px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.statNumber {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #277bc0;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.statTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.statDescription {
+  font-size: 1rem;
+  color: #555; /* Ensure good contrast */
+  line-height: 1.6;
+  width: 100%;
+}
+
+.descriptionLine {
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+}
+
+/* Ensure text is visible on all backgrounds */
+.statDescription p {
+  color: inherit;
+  margin: 0;
+  padding: 2px 0;
+}
+
+@media (max-width: 768px) {
+  .statItem {
+    width: 100%;
+    max-width: 280px;
+    padding: 25px 15px;
+  }
+  
+  .statDescription {
+    font-size: 0.95rem;
+  }
+}
