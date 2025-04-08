@@ -8,6 +8,7 @@ import fs from "fs";
 import helmet from "helmet";
 import compression from "compression";
 import morgan from "morgan";
+import cors from "cors"
 
 
 
@@ -23,9 +24,18 @@ import {
   status2FARoute,
   verify2FARoute,
   imgUrlRoute,
+  signature
 } from "./routes/index.js";
 
 const app = express();
+
+app.use(cors({
+  origin: 'https://parmarth-web.vercel.app/',
+  credentials: true,
+}));
+app.options('*', cors()); // handle preflight for all routes
+
+app.use(express.json());
 
 app.use(express.json({ limit: "10mb" }));
 const __dirname = path.resolve();
@@ -68,6 +78,8 @@ app.use(approveRequestRoute);
 app.use(status2FARoute);
 app.use(verify2FARoute);
 app.use(imgUrlRoute);
+app.use(signature);
+
 
 // mongoose
 //   .connect(process.env.MONGOURI)
