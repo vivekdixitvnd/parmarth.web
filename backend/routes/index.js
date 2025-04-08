@@ -8,8 +8,10 @@ import status2FARoute from "./status2FA.routes.js";
 import verify2FARoute from "./verify2FACode.routes.js";
 import imgUrlRoute from "./imgUrl.routes.js";
 import rteRoute from "./rteData.routes.js";
+import signature from "./signature.routes.js"
 
 export {
+  signature,
   approveRequestRoute,
   requestDataRoute,
   authRoute,

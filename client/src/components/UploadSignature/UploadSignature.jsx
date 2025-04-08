@@ -1,81 +1,71 @@
-import React, { useState } from 'react'
-import styles from "./UploadSignature.module.css"
+import React, { useEffect, useState } from "react";
+import styles from "./UploadSignature.module.css";
+import axios from "axios";
+import backendUrl from "../../backendUrl";
 
-const UploadSignature = () => {
-    const [selectedFile, setSelectedFile] = useState(null);
-    // const [selectedRequest, setSelectedRequest] = useState(null);
-    const [preview, setPreview] = useState(null);
+const UploadSignature = ({ onUpload }) => {
+  const [preview, setPreview] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [user, setUser] = useState("faculty1");
 
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        setSelectedFile(file);
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            setPreview(e.target.result);
-        };
-        reader.readAsDataURL(file);
-    };
+  const handleChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+    setPreview(URL.createObjectURL(file));
+  };
 
-    // const handleRequestSelection = (event) => {
-    //     setSelectedRequest(event.target.value);
-    // };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        if (selectedFile) {
-            const formData = new FormData();
-            formData.append('signature', selectedFile);
-
-            try {
-                const response = await axios.post('http://localhost:5174/upload', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                });
-                alert('Signature uploaded successfully!');
-            } catch (error) {
-                console.error('Error uploading the signature:', error);
-                alert('Failed to upload the signature.');
-            }
-        } else {
-            alert('Please choose a file to upload.');
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    if (!selectedFile || !user) return alert("Select file and user");
+  
+    const formData = new FormData();
+    formData.append("signature", selectedFile); 
+    formData.append("uploadedBy", user); 
+    for (let pair of formData.entries()) {
+      console.log(pair[0]+ ': ' + pair[1]);
+    }
+    
+  
+    try {
+      const res = await axios.post(
+        `${backendUrl}/upload-signature?uploadedBy=${user}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
-    };
+      );
+      
+      alert(res.data.message);
+      setSelectedFile(null);
+      setPreview(null);
+      onUpload(); // notify parent
+    } catch (err) {
+      console.error(err);
+      alert("Upload failed");
+    }
+  };
+  
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit}>
-        <h2>Upload Signature for Approved Requests</h2>
-        {/* <div className="input-group">
-                    <label htmlFor="request">Select Approved Request</label>
-                    <select id="request" onChange={handleRequestSelection} required>
-                        <option value="">Select a request</option>
-                        {requests.map((request) => (
-                            <option key={request.id} value={request.id}>{request.name}</option>
-                        ))}
-                    </select>
-                </div> */}
-        <div className={styles.inputgroup}>
-          <label htmlFor="signature">Choose a signature file</label>
-          <input
-            type="file"
-            id="signature"
-            name="signature"
-            accept="image/*"
-            onChange={handleFileChange}
-            required
-          />
-        </div>
+      <form onSubmit={handleUpload}>
+        <h3>Upload Signature</h3>
+        <select value={user} onChange={(e) => setUser(e.target.value)} required>
+          <option value="faculty1">Faculty 1</option>
+          <option value="faculty2">Faculty 2</option>
+        </select>
+        <input type="file" accept="image/*" onChange={handleChange} required />
         <button type="submit">Upload</button>
       </form>
       {preview && (
         <div className={styles.preview}>
-          <h3>Signature Preview</h3>
           <img src={preview} alt="Signature Preview" />
         </div>
       )}
     </div>
   );
-}
+};
 
-export default UploadSignature
+export default UploadSignature;
