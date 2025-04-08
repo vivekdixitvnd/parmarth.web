@@ -33,6 +33,7 @@ import VerifyCode from "../pages/VerifyCode/VerifyCode";
 import backendUrl from "../backendUrl";
 import toast from "react-hot-toast";
 import Muskan from "../pages/Muskan/Muskan.jsx";
+import GE from "../pages/GE/GE.jsx";
 import Article from "../pages/Article/Article.jsx";
 import ConvertUrl from "../pages/ConvertUrl/ConvertUrl";
 import AddEventVolunteersData from "../pages/AddEventVolunteersData/AddEventVolunteersData";
@@ -78,6 +79,7 @@ const AppRoutes = () => {
       <Route path="/eduvisit" element={<EduVisit />} />
       <Route path="/blooddonation" element={<BloodDonation />} />
       <Route path="/muskan" element={<Muskan />} />
+      <Route path="/ge" element={<GE />} />
       <Route path="/schooling" element={<Schooling />} />
       <Route path="/events" element={<Events />} />
       <Route path="/article" element={<Article />} />
