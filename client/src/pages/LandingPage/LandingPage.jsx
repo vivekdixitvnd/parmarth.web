@@ -205,7 +205,7 @@ const LandingPage = () => {
               imgUrl="img/Schooling_RTE.png"
               url="/schooling"
             />
-            <TaskCard task="Social Service" imgUrl="img/Social_Services.png" />
+            <TaskCard task="Social Service" imgUrl="img/Social_Services.png" url="/socialservice" />
           </div>
         </div>
 

@@ -13,6 +13,7 @@ import AddRteData from "../pages/AddRteData/AddRteData";
 import RteData from "../pages/RteData/RteData";
 import Volunteers from "../pages/VolunteersData/Volunteers";
 import Udgam from "../pages/Udgam/Udgam.jsx"
+import SocialService from "../pages/SocialService/SocialService.jsx"
 import Utsarg from "../pages/Utsarg/Utsarg.jsx"
 import Utsaah from "../pages/Utsaah/Utsaah.jsx"
 import Unnayan from "../pages/Unnayan/Unnayan.jsx"
@@ -71,6 +72,7 @@ const AppRoutes = () => {
       <Route path="/classes" element={<Classes />} />
       <Route path="/team" element={<Team />} />
       <Route path="/udgam" element={<Udgam />} />
+      <Route path="/socialservice" element={<SocialService />} />
       <Route path="/utsarg" element={<Utsarg />} />
       <Route path="/utsaah" element={<Utsaah />} />
       <Route path="/unnayan" element={<Unnayan />} />
