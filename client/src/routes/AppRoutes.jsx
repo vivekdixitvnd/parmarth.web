@@ -40,6 +40,9 @@ import ConvertUrl from "../pages/ConvertUrl/ConvertUrl";
 import AddEventVolunteersData from "../pages/AddEventVolunteersData/AddEventVolunteersData";
 import EventVolunteersData from "../pages/EventVolunteersData/EventVolunteersData";
 import UtsavAyojan from "../pages/UtsavAyojan/UtsaavAyojan.jsx";
+import DonationForm from "../pages/Forms/DonationForm.jsx"; // Add this import
+import BecomeSponsor from "../pages/Forms/BecomeSponsor.jsx"; // Add this import
+import HealthCareForm from "../pages/Forms/HealthCareForm.jsx";
 
 const AppRoutes = () => {
   const authCtx = useContext(AuthContext);
@@ -69,6 +72,9 @@ const AppRoutes = () => {
         <Route path="/verify-code" element={<VerifyCode />} />
       )}
       <Route path="/about" element={<About />} />
+      <Route path="/DonationForm" element={<DonationForm />} />
+      <Route path="/BecomeSponsor" element={<BecomeSponsor />} />
+      <Route path="/HealthCareForm" element={<HealthCareForm />} />
       <Route path="/classes" element={<Classes />} />
       <Route path="/team" element={<Team />} />
       <Route path="/udgam" element={<Udgam />} />

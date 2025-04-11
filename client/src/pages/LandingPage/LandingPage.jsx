@@ -147,6 +147,7 @@ const LandingPage = () => {
                   description="Happiness doesn't result from what we get, but from what we give."
                   cardClass="donationCard"
                   primaryBtnText="Donate Now"
+                  primaryBtnUrl="/DonationForm"
                   primaryBtnClass="donationPrimaryBtn"
                   secondaryBtnText="Why Donate?"
                   secondaryBtnClass="donationSecondaryBtn"
@@ -165,6 +166,7 @@ const LandingPage = () => {
                   cardClass="sponsorCard"
                   primaryBtnText="Become a Sponsor"
                   primaryBtnClass="sponsorPrimaryBtn"
+                  primaryBtnUrl="/BecomeSponsor"
                   secondaryBtnText="Child Stories"
                   secondaryBtnClass="sponsorSecondaryBtn"
                   bgColor=''
@@ -180,6 +182,7 @@ const LandingPage = () => {
                   cardClass="medicalCard"
                   primaryBtnText="Support Healthcare"
                   primaryBtnClass="medicalPrimaryBtn"
+                  primaryBtnUrl="/HealthCareForm"
                   secondaryBtnText="Our Clinics"
                   secondaryBtnClass="medicalSecondaryBtn"
                   bgColor=''
