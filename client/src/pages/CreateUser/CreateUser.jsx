@@ -74,6 +74,7 @@ const CreateUser = () => {
       }),
     })
       .then((res) => {
+        console.log(res)
         return res.json();
       })
       .then((resData) => {
@@ -97,7 +98,7 @@ const CreateUser = () => {
           <label for="email" className={styles.label}>
             Email
           </label>
-          <input
+          <input className={styles.inputBox}
             type="text"
             placeholder="Enter your email"
             id="email"
@@ -107,7 +108,7 @@ const CreateUser = () => {
           <label for="user-type" className={styles.label}>
             Select User Type
           </label>
-          <select
+          <select 
             required
             id="user-type"
             defaultValue="choose"
@@ -124,7 +125,7 @@ const CreateUser = () => {
           <label for="password" className={styles.label}>
             Password
           </label>
-          <input
+          <input className={styles.inputBox}
             id="password"
             type="password"
             placeholder="Enter your password"
@@ -135,7 +136,7 @@ const CreateUser = () => {
           <label for="confirm-password" className={styles.label}>
             Confirm Password
           </label>
-          <input
+          <input className={styles.inputBox}
             id="confirm-password"
             type="password"
             placeholder="Confirm your password"
@@ -143,7 +144,7 @@ const CreateUser = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-          <button className={styles.submit} type="submit" disable={isLoading}>
+          <button className={styles.submit} type="submit" disabled={isLoading}>
             {isLoading ? <div className={styles.loader}></div> : "Create User"}
           </button>
         </form>

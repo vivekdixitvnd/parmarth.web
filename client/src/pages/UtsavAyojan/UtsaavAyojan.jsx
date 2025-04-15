@@ -34,7 +34,7 @@ const InfiniteScroll = ({ images }) => {
       nextSlide();
     }, 3000); // Change slide every 3 seconds
 
-    return () => clearInterval(interval); // Clean up interval
+    return () => clearInterval(interval ); // Clean up interval
   }, [currentIndex]);
 
   return (

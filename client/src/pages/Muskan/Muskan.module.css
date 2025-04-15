@@ -71,14 +71,14 @@
 .navButton {
     width: 50px; /* Fixed width for buttons */
     height: 50px; /* Fixed height for buttons */
-    position: absolute; 
+    position: absolute;
     top: 50%;
     background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
     border: none;
     color: #0056b3; /* Darker blue for buttons */
     font-size: 24px; /* Adjusted font size */
     cursor: pointer;
-    /* transform: translateY(-50%); */
+    transform: translateY(-50%);
     border-radius: 50%; /* Circular buttons */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
 }
