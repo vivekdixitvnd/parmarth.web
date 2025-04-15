@@ -18,8 +18,19 @@
     margin-bottom: 1rem;
     color: #535353;
   }
-  
+  .search {
+    width: 35%;
+    /* position: relative; */
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 0;
+    
+    }
+    
+
   .tableContainer {
+    margin-top: 10px;
     overflow-x: auto; /* Enables horizontal scrolling */
     max-width: 100%;
   }
@@ -68,6 +79,7 @@
     animation: spin 2s linear infinite;
     margin: 2rem auto;
   }
+
   
   @-webkit-keyframes spin {
     0% {

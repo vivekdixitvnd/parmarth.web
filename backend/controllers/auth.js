@@ -118,7 +118,7 @@ const createUser = async (req, res, next) => {
 
     const adminUser = await Admin.findOne({ email: email });
     if (!adminUser) {
-      const hashPassword = bcrypt.hash(password.trim(), 10);
+      const hash = await bcrypt.hash(password.trim(), 10);
 
       const user = await Admin.create({
         email: email.trim(),
@@ -139,14 +139,14 @@ const createUser = async (req, res, next) => {
     res.status(500).json({ error: error });
   }
 
-  Admin.findOne({ email: email })
-    .then((data) => {
-      if (!data) {
-      } else if (data.email === email.trim()) {
-        return res.status(422).json({ error: "Same User already exist" });
-      }
-    })
-    .catch((err) => res.status(500).json({ error: err }));
+  // Admin.findOne({ email: email })
+  //   .then((data) => {
+  //     if (!data) {
+  //     } else if (data.email === email.trim()) {
+  //       return res.status(422).json({ error: "Same User already exist" });
+  //     }
+  //   })
+  //   .catch((err) => res.status(500).json({ error: err }));
 };
 
 const getUsers = async (req, res, next) => {
