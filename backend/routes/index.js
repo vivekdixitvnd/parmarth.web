@@ -9,6 +9,7 @@ import verify2FARoute from "./verify2FACode.routes.js";
 import imgUrlRoute from "./imgUrl.routes.js";
 import rteRoute from "./rteData.routes.js";
 import signature from "./signature.routes.js"
+import donateEmail from "./donateEmail.route.js"
 
 export {
   signature,
@@ -22,4 +23,5 @@ export {
   verify2FARoute,
   imgUrlRoute,
   rteRoute,
+  donateEmail
 };
