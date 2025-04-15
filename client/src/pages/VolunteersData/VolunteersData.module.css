@@ -1,0 +1,89 @@
+.body {
+    padding: 2rem;
+    overflow-x: hidden;
+  }
+  
+  .body > h1 {
+    text-align: center;
+  }
+  
+  .body > div {
+    max-width: max-content;
+    margin: 0 auto;
+    overflow-x: hidden; /* Allows scrolling */
+  }
+  
+  .total {
+    text-align: right;
+    margin-bottom: 1rem;
+    color: #535353;
+  }
+  
+  .tableContainer {
+    overflow-x: auto; /* Enables horizontal scrolling */
+    max-width: 100%;
+  }
+  
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    text-align: center;
+    padding: 0.5rem 1rem;
+  }
+  
+  th {
+    background-color: #277bc0;
+    color: #fff;
+  }
+  
+  .school{
+    width: 560px;
+  } 
+  
+  .sno {
+    width: 50px;
+  }
+  
+  .name {
+    width: 180px;
+  }
+  
+  .class {
+    width: 150px;
+  }
+  
+  .loader {
+    border: 10px solid #ccc;
+    border-radius: 50%;
+    border-top: 10px solid #277bc0;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin: 2rem auto;
+  }
+  
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

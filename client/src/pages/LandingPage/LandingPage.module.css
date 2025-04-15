@@ -2,6 +2,14 @@
   --nav-height: 112px;
 }
 
+
+
+
+body > * {
+  overflow-x: hidden;
+}
+
+
 .parallax {
   background-image: url("../../assets/img/background.png");
   height: calc(100vh - var(--nav-height)) !important;
@@ -16,6 +24,8 @@
   align-items: center;
   text-align: center;
 }
+
+
 
 .parmarth {
   font-size: 4rem;

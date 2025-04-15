@@ -1,62 +1,55 @@
-import React, { useContext, useEffect, useState } from "react";
-import styles from "./Volunteers.module.css";
+import React, { useEffect, useState } from "react";
+import styles from "./VolunteersData.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import toast from "react-hot-toast";
-import AuthContext from "../../store/auth-context";
+import { useParams } from "react-router-dom";
 import backendUrl from "../../backendUrl";
 
-const Volunteers = () => {
-  const authCtx = useContext(AuthContext);
+const VolunteersData = () => {
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const { session } = useParams();
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const getVolunteersData = async () => {
+    const getVolunteersDataBySession = async () => {
       setIsLoading(true);
-
-      try {
-        const response = await fetch(`${backendUrl}/getVolunteersData`, {
-          headers: { Authorization: "Bearer " + authCtx.token },
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to load Volunteers Data");
-        }
-
-        const result = await response.json();
-        console.log("result ---", result);
-        setData(result);
-        setFilteredData(result); // Initialize filtered data with all data
-        console.log("filter data-----", filteredData);
-        console.log("data-----", data);
-      } catch (err) {
-        console.error(err);
-        toast.error("Failed to load Volunteers Data");
-      } finally {
-        setIsLoading(false);
-      }
+      await fetch(`${backendUrl}/getVolunteersData/` + session)
+        .then((res) => {
+          if (res.status !== 200) {
+            return [];
+          }
+          return res.json();
+        })
+        .then((res) => {
+          if (res === []) {
+            toast.error("Failed to load Student Data");
+          }
+          setData(res);
+        })
+        .catch((err) => toast.error(err.messsage));
+      setIsLoading(false);
     };
-    getVolunteersData();
-  }, [authCtx.token]);
+    getVolunteersDataBySession();
+  }, []);
 
   // Filter data based on search term
-  useEffect(() => {
-    if (searchTerm.trim() === "") {
-      setFilteredData(data);
-    } else {
-      const filtered = data.filter((volunteer) =>
-        Object.values(volunteer).some(
-          (value) =>
-            value &&
-            value.toString().toLowerCase().includes(searchTerm.toLowerCase()),
-        ),
-      );
-      setFilteredData(filtered);
-    }
-  }, [searchTerm, data]);
+    useEffect(() => {
+      if (searchTerm.trim() === "") {
+        setFilteredData(data);
+      } else {
+        const filtered = data.filter((volunteer) =>
+          Object.values(volunteer).some(
+            (value) =>
+              value &&
+              value.toString().toLowerCase().includes(searchTerm.toLowerCase()),
+          ),
+        );
+        setFilteredData(filtered);
+      }
+    }, [searchTerm, data]);
 
   return (
     <>
@@ -128,4 +121,4 @@ const Volunteers = () => {
   );
 };
 
-export default Volunteers;
+export default VolunteersData;

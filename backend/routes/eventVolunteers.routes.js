@@ -1,16 +1,17 @@
 import upload from "../middleware/multer.js";
 import { Router } from "express";
 const router = Router();
-import { getEventVolunteersData, addEventVolunteerDataViaExcel } from "../controllers/eventVolunteers.js";
+import { getEventVolunteersData, addEventVolunteerDataViaExcel, getEventVolunteerDataByAcademicYear } from "../controllers/eventVolunteers.js";
 import isAuth from "../middleware/is-auth.js";
 
 
 
 router.get(
   "/api/getEventVolunteersData",
-  isAuth,
   getEventVolunteersData,
 );
+
+router.get("/api/getEventVolunteersData/:academicYear", getEventVolunteerDataByAcademicYear);
 
 router.post(
   "/api/addEventVolunteerDataViaExcel",

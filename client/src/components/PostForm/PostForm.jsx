@@ -9,7 +9,7 @@ import Resizer from "react-image-file-resizer";
 
 const PostForm = (props) => {
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  // const [description, setDescription] = useState("");
   const [coverPhoto, setCoverPhoto] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
@@ -54,7 +54,7 @@ const PostForm = (props) => {
         400,
         300,
         "JPEG",
-        100,
+        70,
         0,
         (uri) => {
           resolve(uri);
@@ -78,7 +78,7 @@ const PostForm = (props) => {
             toast.error("Failed to load Post Data");
           }
           setTitle(res.title);
-          setDescription(res.description);
+          // setDescription(res.description);
           setContent(res.content);
           setCategory(res.category);
           setCoverPhoto(res.coverPhotoUrl);
@@ -113,7 +113,7 @@ const PostForm = (props) => {
 
     const data = {
       title: title,
-      description: description || "",
+      // description: description || "",
       coverPhotoUrl: coverPhoto,
       content: content,
       category: category,
@@ -195,14 +195,14 @@ const PostForm = (props) => {
             placeholder="Enter your post title"
             onChange={(e) => setTitle(e.target.value)}
           />
-          <label for="description">Description</label>
+          {/* <label for="description">Description</label>
           <textarea
             id="description"
             value={description}
             placeholder="Enter your post description"
             onChange={(e) => setDescription(e.target.value)}
             rows="3"
-          />
+          /> */}
           <label for="cover-photo">
             Cover Photo <span style={{ color: "red" }}>*</span>
           </label>

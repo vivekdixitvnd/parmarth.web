@@ -153,7 +153,7 @@ const addPost = async (req, res, next) => {
 
   const post = new Post({
     title: title.trim(),
-    description: description.trim() || "",
+    // description: description.trim() || "",
     coverPhotoUrl: coverPhotoUrl,
     content: content.toString(),
     category: category,

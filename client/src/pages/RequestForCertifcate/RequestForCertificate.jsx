@@ -130,14 +130,6 @@ const RequestForCertificate = () => {
             placeholder="Enter your Full name"
             onChange={(e) => setName(e.target.value)}
           />
-          {/* <label for="email">Email</label>
-          <input
-            required
-            id="email"
-            type="email"
-            placeholder="john@example.com"
-            onChange={(e) => setEmail(e.target.value)}
-          /> */}
           <label for="roll-number">Roll Number</label>
           <input
             required

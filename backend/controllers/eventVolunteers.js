@@ -22,6 +22,16 @@ const getEventVolunteersData = async (req, res, next) => {
   }
 };
 
+const getEventVolunteerDataByAcademicYear = async (req, res, next) => {
+  const academicYear = req.params.academicYear;
+  try {
+    const rteData = await EventVolunteer.find({ academicYear: academicYear });
+    res.status(200).json(rteData);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 
 const addEventVolunteerDataViaExcel = async (req, res, next) => {
   if (!req.file) {
@@ -96,4 +106,4 @@ const addEventVolunteerDataViaExcel = async (req, res, next) => {
   }
 };
 
-export { getEventVolunteersData, addEventVolunteerDataViaExcel };
+export { getEventVolunteersData, getEventVolunteerDataByAcademicYear, addEventVolunteerDataViaExcel };
