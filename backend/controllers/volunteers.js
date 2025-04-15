@@ -11,6 +11,16 @@ const getVolunteersData = async (req, res, next) => {
   }
 };
 
+const getVolunteersDataBySession = async (req, res, next) => {
+  const session = req.params.session;
+  try {
+    const voluteers = await Volunteer.find({ session: session });
+    res.status(200).json(voluteers);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 const addVolunteerData = async (req, res, next) => {
   const { name, course, rollNumber, email, postHolded, session } = req.body;
 
@@ -148,4 +158,4 @@ const addVolunteerDataViaExcel = async (req, res, next) => {
   }
 };
 
-export { getVolunteersData, addVolunteerData, addVolunteerDataViaExcel };
+export { getVolunteersData, addVolunteerData, addVolunteerDataViaExcel, getVolunteersDataBySession };

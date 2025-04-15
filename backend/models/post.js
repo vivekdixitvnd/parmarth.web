@@ -6,9 +6,9 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
-  description: {
-    type: String,
-  },
+  // description: {
+  //   type: String,
+  // },
   coverPhotoUrl: {
     type: String,
     required: true,

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext,useEffect, useState } from "react";
 import "./MobileNav.css";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
@@ -16,15 +16,40 @@ const MobileNav = () => {
   const [showMoreDropdown, setShowMoreDropdown] = useState(false);
   const [showAdminsDropdown, setShowAdminsDropdown] = useState(false);
   const [showEventsDropdown, setShowAEventsDropdown] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+ // Disable body scroll when menu is open
+ useEffect(() => {
+  document.body.style.overflow = menuOpen ? "hidden" : "auto";
+}, [menuOpen]);
+
+// Close menu when route changes
+useEffect(() => {
+  setMenuOpen(false);
+}, [pathname]);
+
+// Custom overlay click handler to close menu
+const handleOverlayClick = () => setMenuOpen(false);
+
 
   return (
-    <Menu right width={280}>
-      <NavLink
-        to="/"
-        className={pathname === "/" ? "mobile-nav__active" : "mobile-nav__link"}
+    <>
+    <Menu
+        right
+        width={280}
+        isOpen={menuOpen}
+        onStateChange={({ isOpen }) => setMenuOpen(isOpen)}
+        // customBurgerIcon={<img src="/menu-icon.png" alt="Menu" />}
+        // customCrossIcon={<img src="/cross-icon.png" alt="Close" />}
       >
-        Home
-      </NavLink>
+        {/* All your NavLink code remains the same */}
+        {/* --- shortened for brevity --- */}
+        <NavLink
+          to="/"
+          className={pathname === "/" ? "mobile-nav__active" : "mobile-nav__link"}
+        >
+          Home
+        </NavLink>
       <NavLink
         to="/about"
         className={
@@ -36,7 +61,7 @@ const MobileNav = () => {
       <NavLink
         to="/team"
         className={
-          pathname === "/about" ? "mobile-nav__active" : "mobile-nav__link"
+          pathname === "/team" ? "mobile-nav__active" : "mobile-nav__link"
         }
       >
         Team
@@ -162,7 +187,7 @@ const MobileNav = () => {
                               <NavLink
                                 to="/blooddonation"
                                 className={
-                                  pathname === "/booddonation"
+                                  pathname === "/bloddonation"
                                     ? "mobile-nav__active" : "mobile-nav__link"
                                 }
                                 style={{ fontSize: "18px" }}
@@ -253,17 +278,46 @@ const MobileNav = () => {
               </li>
               <li>
                 <NavLink
-                  to="/schooling/"
+                  to="/RTE/"
                   className={
-                    pathname === "/schooling/"
+                    pathname === "/RTE/"
                       ? "mobile-nav__active"
                       : "mobile-nav__link"
                   }
                   style={{ fontSize: "18px" }}
                 >
-                  Get RTE Data
+                  Admission Data
                 </NavLink>
               </li>
+              
+                  <li>
+                    <NavLink
+                      to="/volunteers"
+                      className={
+                        pathname === "/volunteers"
+                          ? "mobile-nav__active"
+                          : "mobile-nav__link"
+                      }
+                      style={{ fontSize: "18px" }}
+                    >
+                      Volunteers Data
+                    </NavLink>
+                  </li>
+                 
+                  <li>
+                    <NavLink
+                      to="/event-volunteers"
+                      className={
+                        pathname === "/EventVolunteers"
+                          ? "mobile-nav__active"
+                          : "mobile-nav__link"
+                      }
+                      style={{ fontSize: "18px" }}
+                    >
+                      Event Volunteers Data
+                    </NavLink>
+                  </li>
+                
             </ul>
           </div>
         )}
@@ -325,23 +379,9 @@ const MobileNav = () => {
                     </NavLink>
                   </li>
                 )}
-                {(userType === "master" || userType === "teachers") && (
-                  <li>
-                    <NavLink
-                      to="/volunteers-data"
-                      className={
-                        pathname === "/volunteers-data"
-                          ? "mobile-nav__active"
-                          : "mobile-nav__link"
-                      }
-                      style={{ fontSize: "18px" }}
-                    >
-                      Get Volunteers Data
-                    </NavLink>
-                  </li>
-                )}
+                
                 {(userType === "master" ||
-                  userType === "media") && (
+                  userType === "teachers") && (
                   <li>
                     <NavLink
                       to="/add-volunteer-data"
@@ -356,23 +396,9 @@ const MobileNav = () => {
                     </NavLink>
                   </li>
                 )}
-                {(userType === "master" || userType === "teachers") && (
-                  <li>
-                    <NavLink
-                      to="/event-volunteers-data"
-                      className={
-                        pathname === "/event-volunteers-data"
-                          ? "mobile-nav__active"
-                          : "mobile-nav__link"
-                      }
-                      style={{ fontSize: "18px" }}
-                    >
-                      Get Event Volunteers Data
-                    </NavLink>
-                  </li>
-                )}
+                
                 {(userType === "master" ||
-                  userType === "media") && (
+                  userType === "teachers") && (
                   <li>
                     <NavLink
                       to="/add-event-volunteers-data"
@@ -459,27 +485,32 @@ const MobileNav = () => {
           CREATE POST
         </button>
       )}
-      {!isLoggedIn ? (
-        <button
-          className="mobile-nav__login"
-          onClick={() => navigate("/login")}
-        >
-          LOGIN
-        </button>
-      ) : (
-        <button
-          className="mobile-nav__login"
-          onClick={() => {
-            authCtx.logout();
-            navigate("/");
-            toast.success("Successfully logged out");
-          }}
-        >
-          LOGOUT
-        </button>
-      )}
-    </Menu>
+              {!isLoggedIn ? (
+          <button className="mobile-nav__login" onClick={() => navigate("/login")}>
+            LOGIN
+          </button>
+        ) : (
+          <button
+            className="mobile-nav__login"
+            onClick={() => {
+              authCtx.logout();
+              navigate("/");
+              toast.success("Successfully logged out");
+            }}
+          >
+            LOGOUT
+          </button>
+        )}
+      </Menu>
+
+
+     { menuOpen && (
+        <div
+          className="mobile-nav__overlay"
+          onClick={handleOverlayClick}
+        ></div>
+     )}
+    </>
   );
 };
-
 export default MobileNav;

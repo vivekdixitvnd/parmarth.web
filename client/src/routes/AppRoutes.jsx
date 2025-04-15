@@ -7,11 +7,12 @@ import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound/NotFound";
 import RequestForCertificate from "../pages/RequestForCertifcate/RequestForCertificate";
 import Schooling from "../pages/Schooling/Schooling";
+import RTE from "../pages/RTE/RTE";
 import RequestReceived from "../pages/RequestReceived/RequestReceived";
 import AuthContext from "../store/auth-context";
 import AddRteData from "../pages/AddRteData/AddRteData";
 import RteData from "../pages/RteData/RteData";
-import Volunteers from "../pages/VolunteersData/Volunteers";
+import Volunteers from "../pages/Volunteers/Volunteers.jsx";
 import Udgam from "../pages/Udgam/Udgam.jsx"
 import SocialService from "../pages/SocialService/SocialService.jsx"
 import Utsarg from "../pages/Utsarg/Utsarg.jsx"
@@ -43,6 +44,8 @@ import UtsavAyojan from "../pages/UtsavAyojan/UtsaavAyojan.jsx";
 import DonationForm from "../pages/Forms/DonationForm.jsx"; // Add this import
 import BecomeSponsor from "../pages/Forms/BecomeSponsor.jsx"; // Add this import
 import HealthCareForm from "../pages/Forms/HealthCareForm.jsx";
+import VolunteersData from "../pages/VolunteersData/VolunteersData.jsx";
+import EventVolunteers from "../pages/EventVolunteers/EventVolunteers.jsx";
 
 const AppRoutes = () => {
   const authCtx = useContext(AuthContext);
@@ -89,6 +92,9 @@ const AppRoutes = () => {
       <Route path="/muskan" element={<Muskan />} />
       <Route path="/ge" element={<GE />} />
       <Route path="/schooling" element={<Schooling />} />
+      <Route path="/RTE" element={<RTE />} />
+      <Route path="/volunteers" element={<Volunteers />} />
+      <Route path="/event-volunteers" element={<EventVolunteers />} />
       <Route path="/events" element={<Events />} />
       <Route path="/article" element={<Article />} />
       <Route path="/constitution" element={<Constitution />} />
@@ -101,6 +107,9 @@ const AppRoutes = () => {
       />
       <Route path="/rte-data" element={<RteData />} />
       <Route path="/rte-data/:academicYear" element={<RteData />} />
+      <Route path="/volunteers-data" element={<VolunteersData />} />
+      <Route path="/volunteers-data/:session" element={<VolunteersData />} />
+      <Route path="/event-volunteers-data/:academicYear" element={<EventVolunteersData />} />
       {authCtx.isLoggedIn &&
         (userType === "master" || userType === "media") && (
           <Route path="/add-rte-data" element={<AddRteData />} />
@@ -126,22 +135,19 @@ const AppRoutes = () => {
         (userType === "master" || userType === "teachers") && (
           <Route path="/request-received" element={<RequestReceived />} />
         )}
-      {authCtx.isLoggedIn &&
-        (userType === "master" || userType === "teachers") && (
-          <Route path="/volunteers-data" element={<Volunteers />} />
-        )}
+      
       {authCtx.isLoggedIn &&
         (userType === "master" ||
           userType === "media") && (
           <Route path="/add-volunteer-data" element={<AddVolunteerData />} />
         )}
-      {authCtx.isLoggedIn &&
+      {/* {authCtx.isLoggedIn &&
         (userType === "master" || userType === "teachers") && (
           <Route
             path="/event-volunteers-data"
             element={<EventVolunteersData />}
           />
-        )}
+        )} */}
       {authCtx.isLoggedIn &&
         (userType === "master" ||
           userType === "media") && (

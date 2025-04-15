@@ -72,17 +72,18 @@ const Team = () => {
         <>
             <Navbar />
             <div className={styles.body}>
+            <h1>Head Committee Members</h1>
                 <div className={styles.section}>
-                    <h1>Head Committee Members</h1>
+                  
                     <div className={styles.members}>
                         {headMembers.map((member) => (
                             <MemberCard key={member.id} member={member} />
                         ))}
                     </div>
                 </div>
-
+                <h1 >Advisory Committee Members</h1>
                 <div className={styles.section}>
-                    <h1 className="hhyj6">Advisory Committee Members</h1>
+                    
                     <AdvisoryTable members={advisoryMembers} />
                 </div>
             </div>

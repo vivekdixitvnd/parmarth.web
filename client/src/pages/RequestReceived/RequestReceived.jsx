@@ -111,17 +111,17 @@ const RequestReceived = () => {
           {isApproveLoading && <div className={styles["loader-approve"]}></div>}
           <div style={{ overflowX: "auto" }}>
             <table>
-              <tr>
-                <th>S. No.</th>
-                <th>Name</th>
-                <th>Course</th>
-                <th>Roll Number</th>
-                {/* <th>Email</th> */}
-                <th>Purpose</th>
-                <th>Data Exist</th>
-                <th>Approve Request</th>
-                <th>Reject Request</th>
-              </tr>
+            <tr className="table-header">
+  <th className="col-sno">S. No.</th>
+  <th className="col-name">Name</th>
+  <th className="col-course">Course</th>
+  <th className="col-roll">Roll Number</th>
+  {/* <th className="col-email">Email</th> */}
+  <th className="col-purpose">Purpose</th>
+  <th className="col-data">Data Exist</th>
+  <th className="col-approve">Approve Request</th>
+  <th className="col-reject">Reject Request</th>
+</tr>
               {isLoading ? (
                 <td colspan={9}>
                   <div className={styles.loader}></div>

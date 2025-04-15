@@ -6,6 +6,7 @@
   top: 3rem;
 }
 
+
 .bm-burger-bars {
   background: #277bc0;
 }
@@ -116,4 +117,15 @@
 
 .mobile-nav__dropdown > ul > li {
   margin: 1rem 0;
+}
+
+
+.mobile-nav__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3); /* optional dim background */
+  z-index: 999; /* lower than burger menu (1000) but above page */
 }

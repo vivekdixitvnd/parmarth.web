@@ -30,7 +30,8 @@ import {
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  // origin: 'http://localhost:5173',
+  origin: 'https://parmarth-web.vercel.app',
   credentials: true,
 }));
 app.options('*', cors()); // handle preflight for all routes
@@ -38,6 +39,7 @@ app.options('*', cors()); // handle preflight for all routes
 app.use(express.json());
 
 app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 const __dirname = path.resolve();
 
 // Construct the logs directory path

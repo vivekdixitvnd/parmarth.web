@@ -1,108 +1,139 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Schooling.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import toast from "react-hot-toast";
-import RteCard from "../../components/RteCard/RteCard";
-import { Link } from "react-router-dom";
-import backendUrl from "../../backendUrl";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+const InfiniteScroll = ({ images }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isSliding, setIsSliding] = useState(false);
+
+  // Next Slide
+  const nextSlide = () => {
+    setIsSliding(true);
+    setTimeout(() => {
+      currentIndex < images.length - 1
+        ? setCurrentIndex(currentIndex + 1)
+        : setCurrentIndex(0);
+    }, 100);
+  };
+
+  // Previous Slide
+  const prevSlide = () => {
+    setIsSliding(true);
+    setTimeout(() => {
+      currentIndex > 0
+        ? setCurrentIndex(currentIndex - 1)
+        : setCurrentIndex(images.length - 1);
+    }, 100);
+  };
+
+  // Auto-scroll logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval ); // Clean up interval
+  }, [currentIndex]);
+
+  return (
+    <div className={styles.sliderWrapper}>
+      {/* Left Button */}
+      <button onClick={prevSlide} className={styles.navButton} id={styles.prev}>
+        <FaChevronLeft />
+      </button>
+
+      <div className={styles.sliderContainer}>
+        <div
+          className={`${styles.slider} ${
+            isSliding ? styles.slideTransition : ""
+          }`}
+        >
+          <div className={styles.slide}>
+            <img src={images[currentIndex]} alt={`slide-${currentIndex}`} />
+          </div>
+        </div>
+      </div>
+
+      {/* Right Button */}
+      <button onClick={nextSlide} className={styles.navButton} id={styles.next}>
+        <FaChevronRight />
+      </button>
+    </div>
+  );
+};
 
 const Schooling = () => {
-  const [academicYears, setAcademicYears] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const getRteData = async () => {
-      setIsLoading(true);
-      await fetch(`${backendUrl}/getRteData`)
-        .then((res) => {
-          if (res.status !== 200) {
-            return [];
-          }
-          return res.json();
-        })
-        .then((res) => {
-          if (res === []) {
-            toast.error("Failed to load RTE Data");
-            return;
-          }
-
-          // Getting all academic years
-          setAcademicYears([...new Set(res.map((data) => data.academicYear))]);
-        })
-        .catch((err) => toast.error(err.message));
-
-      setIsLoading(false);
-    };
-    getRteData();
-  }, []);
+  const images = [
+    "/img/Schooling/1.png",
+    "/img/Schooling/2.png",
+    "/img/Schooling/3.png",
+    "/img/Schooling/4.png",
+    "/img/Schooling/5.png",
+    "/img/Schooling/6.png",
+    "/img/Schooling/7.png",
+    "/img/Schooling/8.png",
+    "/img/Schooling/9.png",
+    "/img/Schooling/10.png",
+    "/img/Schooling/11.png",
+    "/img/Schooling/12.png",
+  ];
 
   return (
     <>
       <Navbar />
       <div className={styles.body}>
-        <div className={styles.content}>
-          <h1>Consummating the Inconceivable</h1>
-          <hr className={styles.hr} />
-          <img src="/img/schooling-rte.jpeg" alt="" />
-          <p>
-            " Education is the most powerful weapon that can be used to change
-            the world ". In the world full of gratuitous loathing , detestation
-            and unwarranted abhorrence, education, not only can lead to greater
-            sense of cosmic unity . Education is the only expedient for ensuring
-            a better future , a future where folks rise above their narrow
-            compartmentilisation and archaic mentality , a future where no child
-            has commerce his childhood by begging , a future where every child
-            is fed and a future where there's no one is is victimised .
-            Education is not limited to any particular section of society. It is
-            as fundamental as life. Everyone should be provided with a chance to
-            get it, to get a basic tool by which they can shape themselves and
-            the society. To deepen roots of education in every section of
-            society, our constitution provides right of free and compulsory
-            education to every kid, where no one can snap their right of getting
-            it. Right To Education (RTE) act empowers the poor section and
-            ensure that their kids can also get quality education and can push
-            their limits. Unfortunately, most of government schemes doesn't
-            reach true beneficiaries, including RTE. परमार्थ served as a link
-            between government and deserving from past 4 years. It works on all
-            fronts i.e pre admission, admission and post admission. Pre
-            admission include survey of kids in slum who can be admitted in
-            primary and class 1 and filling their admission forms with all the
-            required documents. Once results of admissions are announced by
-            lottery system, volunteers visit schools and do all admission
-            formalities. We also fulfill other needs at time of admissions such
-            as stationary, books, dress depending upon financial situation of
-            parents. But, we are not finished with it yet, post admission
-            include monitoring of kids so that no problem arises from any of
-            sides, for this volunteers attend Parent Teachers meeting of every
-            school. Till date परमार्थ has admitted more than 142 students in
-            private schools through RTE. Dream of 142 eyes have been fulfilled
-            which they might have seen while seeing school going kids. May
-            someday getting education be no more a dream and every eye gets
-            sparkle of education in it.
-          </p>
+        <div className={styles.section}>
+          <InfiniteScroll images={images} />
         </div>
-        <h1 id="rte-data">RTE Admission Data</h1>
-        <div className={styles["rte-data"]}>
-          {academicYears.length !== 0 ? (
-            academicYears.map((academicYear, index) => (
-              <Link
-                key={index}
-                to={`/rte-data/${academicYear}`}
-                className={styles["rte-card"]}
-                onClick={() =>
-                  localStorage.setItem("academicYear", academicYear)
-                }
-              >
-                <RteCard academicYear={academicYear} />
-              </Link>
-            ))
-          ) : isLoading ? (
-            <div className={styles.loader}></div>
-          ) : (
-            <h2>No Data to show</h2>
-          )}
-        </div>
+
+        {/* Schooling Support by Parmarth */}
+<div className={styles.section}>
+  <h1>Schooling Support – "Shiksha Ka Haq, Har Bacche Ke Saath!"</h1>
+  <p><strong>Parmarth</strong> believes that every child deserves access to quality education, regardless of their socio-economic background. With this vision, Parmarth actively facilitates school admissions and academic support for underprivileged children, helping them take confident steps toward a brighter future.</p>
+</div>
+
+{/* Admission through RTE */}
+<div className={styles.section}>
+  <h2>Admission Through RTE</h2>
+  <p>One of the first steps taken by <strong>Parmarth</strong> is guiding families to secure school admissions for their children under the <strong>Right to Education (RTE)</strong> Act. Our volunteers help complete the documentation and application process so that deserving students can get enrolled in <strong>Class 1</strong> of reputed private schools, free of cost.</p>
+</div>
+
+{/* JNV Exam Preparation */}
+<div className={styles.section}>
+  <h2>Jawahar Navodaya Vidyalaya (JNV) Exam Preparation</h2>
+  <p><strong>JNV</strong> is a prestigious residential school system run by the Government of India that provides free education from Class 6 onward to meritorious students from rural areas. <strong>Parmarth</strong> identifies eligible children and prepares them thoroughly for the entrance exam.</p>
+  <ul>
+    <li><strong>Concept-Based Learning:</strong> Focus on building strong fundamentals in reasoning, mathematics, and language.</li>
+    <li><strong>Practice Papers & Mock Tests:</strong> Regular testing to help students get familiar with the exam pattern and manage time effectively.</li>
+    <li><strong>Personal Mentoring:</strong> Volunteers and mentors track individual progress and provide feedback for improvement.</li>
+  </ul>
+</div>
+
+{/* Shreshtha Yojana Exam Preparation */}
+<div className={styles.section}>
+  <h2>Shreshtha Yojana Exam Preparation</h2>
+  <p><strong>Shreshtha Yojana</strong> is an initiative by the Government of India aimed at selecting and supporting talented students from SC communities for admission into quality residential schools for Classes 9 and 11. <strong>Parmarth</strong> helps students prepare for this national-level entrance exam and secure seats in top institutions.</p>
+  <ul>
+    <li><strong>Targeted Coaching:</strong> Specialized preparation for Class 9 and Class 11 level competitive syllabi.</li>
+    <li><strong>Awareness Campaigns:</strong> Informing families and students about the benefits and application process of Shreshtha.</li>
+    <li><strong>Interview & Counseling Support:</strong> Guidance not just for exams but also for interviews and post-selection transition.</li>
+  </ul>
+</div>
+
+{/* Long-Term Impact */}
+<div className={styles.section}>
+  <h2>Long-Term Impact</h2>
+  <p>Through this structured approach, <strong>Parmarth</strong> ensures that children don't just get enrolled in schools, but also thrive academically and secure opportunities in prestigious institutions. This educational empowerment transforms lives, not just for the children but for their entire families and communities.</p>
+</div>
+
+{/* Education for All */}
+<div className={styles.section}>
+  <h2>Education for All</h2>
+  <p>With consistent efforts, <strong>Parmarth</strong> is turning the dream of inclusive and equitable education into reality. Be it through RTE admissions or coaching for elite schools like JNV and Shreshtha, each initiative is a step towards building an educated and empowered India.</p>
+</div>
+
       </div>
       <Footer />
     </>
