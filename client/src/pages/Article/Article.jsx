@@ -39,8 +39,8 @@ const Articles = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <h1>Articles</h1>
         <hr className={styles.hr} />
         <Masonry
@@ -66,7 +66,7 @@ const Articles = () => {
           />
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

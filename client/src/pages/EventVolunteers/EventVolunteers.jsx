@@ -58,8 +58,8 @@ const EventVolunteers = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div>
           <div className={styles.header}>
           <h1>Registered Volunteers at MUSKAAN in PARMARTH</h1>
@@ -97,7 +97,7 @@ const EventVolunteers = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -53,8 +53,8 @@ const VolunteersData = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div>
           <div className={styles.header}>
             <div className={styles.total}>
@@ -116,7 +116,7 @@ const VolunteersData = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

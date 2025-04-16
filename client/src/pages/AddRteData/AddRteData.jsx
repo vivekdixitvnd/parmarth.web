@@ -102,8 +102,8 @@ const AddRteData = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <form
           className={styles.form}
           onSubmit={onUploadFileSubmitHandler}
@@ -203,7 +203,7 @@ const AddRteData = () => {
           </button>
         </form>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -7,11 +7,11 @@ import PostForm from "../../components/PostForm/PostForm";
 const EditPost = () => {
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <PostForm function="edit" />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -41,8 +41,8 @@ const ConvertUrl = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div className={styles["card"]}>
           <div className={styles.heading}>Convert Image URL</div>
           <form onSubmit={onSubmitHandler} className={styles["form"]}>
@@ -74,7 +74,7 @@ const ConvertUrl = () => {
           </div>
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

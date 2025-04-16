@@ -35,8 +35,8 @@ const RteData = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <h1>RTE Admission Data of Year {academicYear}</h1>
         <div>
           <div className={styles.total}>
@@ -68,7 +68,7 @@ const RteData = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

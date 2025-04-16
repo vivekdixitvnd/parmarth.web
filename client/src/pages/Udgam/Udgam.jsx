@@ -75,8 +75,8 @@ const Udgam = () => {
 
   return (
     <>
-      <Navbar/>
-      <div className={styles.body}>
+      {/* <Navbar/> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div className={styles.section}>
           <InfiniteScroll images={images} />
         </div>
@@ -199,7 +199,7 @@ UDGAM is structured in such a way that it offers something valuable to every par
         </p>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

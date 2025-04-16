@@ -7,8 +7,8 @@ import Footer from "../../components/Footer/Footer";
 const Classes = () => {
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         {/* History Section */}
         <div className={styles.subsection}>
         <img src="/img/teaching.jpg" alt="LT History" className={styles.image} />
@@ -120,7 +120,7 @@ const Classes = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

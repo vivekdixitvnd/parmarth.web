@@ -85,8 +85,8 @@ const Schooling = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
       <h1 className="hhyj6">JNV Admission Data</h1>
       <div className={styles.section}>
       
@@ -119,7 +119,7 @@ const Schooling = () => {
           )}
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

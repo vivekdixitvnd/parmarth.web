@@ -91,8 +91,8 @@ const CreateUser = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <form className={styles.form} onSubmit={createUserClickHandler}>
           <h1>Create an Admin User</h1>
           <label for="email" className={styles.label}>
@@ -149,7 +149,7 @@ const CreateUser = () => {
           </button>
         </form>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

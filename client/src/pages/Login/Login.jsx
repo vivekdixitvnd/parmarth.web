@@ -79,8 +79,8 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.main}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.main}>
         <div className={styles["login-card"]}>
           <div className={styles.heading}>Login</div>
           <form
@@ -120,7 +120,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
       <Toaster />
     </>
   );

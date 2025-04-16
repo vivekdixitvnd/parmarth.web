@@ -58,8 +58,8 @@ const Volunteers = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div>
           <div className={styles.header}>
           <h1 id="volunteers-data">Registered Volunteers in PARMARTH</h1>
@@ -98,7 +98,7 @@ const Volunteers = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

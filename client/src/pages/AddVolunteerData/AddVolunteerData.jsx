@@ -122,8 +122,8 @@ const AddVolunteerData = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <form
           className={styles.form}
           onSubmit={onUploadFileSubmitHandler}
@@ -277,7 +277,7 @@ const AddVolunteerData = () => {
           </button>
         </form>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

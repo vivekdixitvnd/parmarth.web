@@ -6,8 +6,8 @@ import styles from "./Constitution.module.css";
 const Constitution = () => {
   return (
     <>
-      <Navbar />
-      <div className={styles.pdfContainer}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.pdfContainer}>
         <iframe
           src="/Constitution.pdf"
           width="100%"
@@ -15,7 +15,7 @@ const Constitution = () => {
           title="परमार्थ का संविधान"
         />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
