@@ -75,8 +75,8 @@ const Utsaah = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div className={styles.section}>
           <InfiniteScroll images={images} />
         </div>
@@ -190,7 +190,7 @@ const Utsaah = () => {
         </p>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

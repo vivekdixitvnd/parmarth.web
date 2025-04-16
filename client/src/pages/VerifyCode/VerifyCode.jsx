@@ -59,8 +59,8 @@ const VerifyCode = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.main}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.main}>
         <div className={styles["card"]}>
           <div className={styles.heading}>Verify 2FA Code</div>
           <form onSubmit={onSubmitHandler} className={styles["form"]}>
@@ -79,7 +79,7 @@ const VerifyCode = () => {
           </form>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -46,8 +46,8 @@ const ListPost = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <h1>List of Posts</h1>
         <div>
           <div className={styles.total}>
@@ -210,7 +210,7 @@ const ListPost = () => {
           </>
         )}
       </Modal>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

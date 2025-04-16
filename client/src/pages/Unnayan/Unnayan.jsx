@@ -75,8 +75,8 @@ const Unnayan = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div className={styles.section}>
           <InfiniteScroll images={images} />
         </div>
@@ -123,7 +123,7 @@ const Unnayan = () => {
 </div>
 
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

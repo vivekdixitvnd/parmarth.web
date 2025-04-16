@@ -75,8 +75,8 @@ const BloodDonation = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div className={styles.section}>
           <InfiniteScroll images={images} />
         </div>
@@ -139,7 +139,7 @@ const BloodDonation = () => {
                 By organizing this event, Parmarth ensures the availability of blood for emergencies while fostering compassion and responsibility in the community. Witnessing such selfless acts encourages others to contribute towards building a healthier and supportive society.
             </p></div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -53,8 +53,8 @@ const Counter = ({ end, duration = 2000 }) => {
 const LandingPage = () => {
   return (
     <>
-      <Navbar />
-      <div id="parallax" className={styles.parallax}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} id="parallax" className={styles.parallax}>
         <div className={styles.parmarth} id="parallax">
           परमार्थ<span style={{ color: "#277bc0" }}>.</span>
         </div>
@@ -325,7 +325,7 @@ const LandingPage = () => {
 
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

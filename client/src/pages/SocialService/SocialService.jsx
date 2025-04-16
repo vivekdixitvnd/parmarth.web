@@ -64,7 +64,7 @@ const InfiniteScroll = ({ images }) => {
   );
 };
 
-const Utsaah = () => {
+const SocialService = () => {
   const images = [
     "/img/Utsaah/1.png",
     "/img/Utsaah/2.png",
@@ -75,8 +75,8 @@ const Utsaah = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div className={styles.section}>
           <InfiniteScroll images={images} />
         </div>
@@ -148,9 +148,9 @@ True social service goes beyond charity—it’s about empowerment, awareness, a
           </p>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
 
-export default Utsaah;
+export default SocialService;

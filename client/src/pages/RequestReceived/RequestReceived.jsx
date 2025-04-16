@@ -83,8 +83,8 @@ const RequestReceived = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div className={styles["tabs-btn"]}>
           <h4>Purpose Category</h4>
           <button
@@ -253,10 +253,10 @@ const RequestReceived = () => {
         Signature Status:
         <ul>
           <li>
-            Faculty 1: {signatures.faculty1 ? "✅ Uploaded" : "❌ Not Uploaded"}
+            Dr. Pawan Kumar Tiwari: {signatures.faculty1 ? "✅ Uploaded" : "❌ Not Uploaded"}
           </li>
           <li>
-            Faculty 2: {signatures.faculty2 ? "✅ Uploaded" : "❌ Not Uploaded"}
+            Dr. Ajay Kumar Sharma: {signatures.faculty2 ? "✅ Uploaded" : "❌ Not Uploaded"}
           </li>
         </ul>
       </div>
@@ -265,7 +265,7 @@ const RequestReceived = () => {
         <UploadSignature onUpload={handleSignatureUpload} />
       )}
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

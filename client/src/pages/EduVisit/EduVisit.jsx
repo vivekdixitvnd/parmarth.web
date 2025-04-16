@@ -75,8 +75,8 @@ const EduVisit = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div className={styles.section}>
           <InfiniteScroll images={images} />
         </div>
@@ -128,7 +128,7 @@ const EduVisit = () => {
             <p>These visits create lasting memories that inspire children to dream big, think critically, and embrace limitless opportunities. They often become a source of inspiration that motivates them to strive for a better future.</p>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -54,8 +54,8 @@ const Post = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         {isLoading ? (
           <div className={styles.loader}></div>
         ) : (
@@ -91,7 +91,7 @@ const Post = () => {
           </div>
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
       <Toaster />
     </>
   );

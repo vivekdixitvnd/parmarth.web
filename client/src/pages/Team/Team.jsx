@@ -70,8 +70,8 @@ const AdvisoryTable = ({ members }) => {
 const Team = () => {
     return (
         <>
-            <Navbar />
-            <div className={styles.body}>
+            {/* <Navbar /> */}
+            <div style={{ paddingTop: "150px" }} className={styles.body}>
             <h1>Head Committee Members</h1>
                 <div className={styles.section}>
                   
@@ -87,7 +87,7 @@ const Team = () => {
                     <AdvisoryTable members={advisoryMembers} />
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 };
