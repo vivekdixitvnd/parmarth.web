@@ -75,8 +75,8 @@ const Utsarg = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div className={styles.section}>
           <InfiniteScroll images={images} />
         </div>
@@ -128,7 +128,7 @@ const Utsarg = () => {
             <p>As the volunteers move on to new phases of their lives, their impact remains etched in the hearts of the children they have nurtured. <strong>UTSARG</strong> ensures that this legacy of service and compassion continues to thrive, empowering future generations to carry forward the mission of spreading knowledge and hope.</p>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

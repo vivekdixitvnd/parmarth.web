@@ -53,8 +53,8 @@ const UploadSignature = ({ onUpload }) => {
       <form onSubmit={handleUpload}>
         <h3>Upload Signature</h3>
         <select value={user} onChange={(e) => setUser(e.target.value)} required>
-          <option value="faculty1">Faculty 1</option>
-          <option value="faculty2">Faculty 2</option>
+          <option value="faculty1">Dr. Pawan Kumar Tiwari</option>
+          <option value="faculty2">Dr. Ajay Kumar Sharma</option>
         </select>
         <input type="file" accept="image/*" onChange={handleChange} required />
         <button type="submit">Upload</button>

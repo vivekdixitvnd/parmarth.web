@@ -73,8 +73,8 @@ const DonationForm = () => {
 
   return (
     <>
-      <Navbar />
-      <main className={styles.body}>
+      {/* <Navbar /> */}
+      <main style={{ paddingTop: "150px" }} className={styles.body}>
         <section className={styles.section}>
           <h1>Donate to Parmarth</h1>
           <p className={styles.introText}>
@@ -191,7 +191,7 @@ const DonationForm = () => {
           </form>
         </section>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

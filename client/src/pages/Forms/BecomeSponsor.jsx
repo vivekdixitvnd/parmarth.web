@@ -25,8 +25,8 @@ const SponsorChildForm = () => {
 
   return (
     <>
-    <Navbar/>
-    <main className={styles.body}>
+    {/* <Navbar/> */}
+    <main style={{ paddingTop: "150px" }} className={styles.body}>
       {" "}
       <section className={styles.section}>
         <h1>Sponsor a Child</h1>{" "}
@@ -138,7 +138,7 @@ const SponsorChildForm = () => {
         </form>
       </section>
     </main>
-    <Footer/>
+    {/* <Footer/> */}
     </>
   );
 };

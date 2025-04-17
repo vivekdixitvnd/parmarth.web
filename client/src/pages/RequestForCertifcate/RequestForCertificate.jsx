@@ -118,8 +118,8 @@ const RequestForCertificate = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <form className={styles.form} onSubmit={onFormSubmitHandler}>
           <h1>Request for Certificate</h1>
           <label for="name">Name</label>
@@ -213,7 +213,7 @@ const RequestForCertificate = () => {
           </button>
         </form>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

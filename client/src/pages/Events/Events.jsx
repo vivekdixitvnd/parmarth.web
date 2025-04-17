@@ -39,8 +39,8 @@ const Events = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div className={styles["page-desc"]}>
           It's not the events that we create but the meaning that we attach to
           those events. At परमार्थ, we organise a set of events from time to
@@ -73,7 +73,7 @@ const Events = () => {
           />
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

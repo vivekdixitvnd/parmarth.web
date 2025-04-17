@@ -75,8 +75,8 @@ const Ummeed = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         <div className={styles.section}>
           <InfiniteScroll images={images} />
         </div>
@@ -154,7 +154,7 @@ const Ummeed = () => {
         </ul>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

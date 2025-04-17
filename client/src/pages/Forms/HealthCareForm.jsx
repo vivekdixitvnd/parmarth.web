@@ -30,8 +30,8 @@ const HealthCareForm = () => {
 
   return (
     <>
-      <Navbar />
-      <main className={styles.body}>
+      {/* <Navbar /> */}
+      <main style={{ paddingTop: "150px" }} className={styles.body}>
         <section className={styles.section}>
           <h1>Medical Help</h1>
 
@@ -124,7 +124,7 @@ const HealthCareForm = () => {
           </form>
         </section>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

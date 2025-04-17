@@ -6,8 +6,8 @@ import Footer from "../../components/Footer/Footer";
 const About = () => {
   return (
     <>
-      <Navbar />
-      <div className={styles.body}>
+      {/* <Navbar /> */}
+      <div style={{ paddingTop: "150px" }} className={styles.body}>
         {/* History of Parmarth */}
         <div className={styles.section}>
           <h1>Parmarth</h1>
@@ -94,7 +94,7 @@ const About = () => {
           </ul>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -1,5 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import AuthContext from "../store/auth-context";
+import toast from "react-hot-toast";
+import backendUrl from "../backendUrl";
+
+// Pages
 import About from "../pages/About/About";
 import Classes from "../pages/Classes/Classes";
 import LandingPage from "../pages/LandingPage/LandingPage";
@@ -9,18 +14,17 @@ import RequestForCertificate from "../pages/RequestForCertifcate/RequestForCerti
 import Schooling from "../pages/Schooling/Schooling";
 import RTE from "../pages/RTE/RTE";
 import RequestReceived from "../pages/RequestReceived/RequestReceived";
-import AuthContext from "../store/auth-context";
 import AddRteData from "../pages/AddRteData/AddRteData";
 import RteData from "../pages/RteData/RteData";
 import Volunteers from "../pages/Volunteers/Volunteers.jsx";
-import Udgam from "../pages/Udgam/Udgam.jsx"
-import SocialService from "../pages/SocialService/SocialService.jsx"
-import Utsarg from "../pages/Utsarg/Utsarg.jsx"
-import Utsaah from "../pages/Utsaah/Utsaah.jsx"
-import Unnayan from "../pages/Unnayan/Unnayan.jsx"
-import Ummeed from "../pages/Ummeed/Ummeed.jsx"
-import EduVisit from "../pages/EduVisit/EduVisit.jsx"
-import BloodDonation from "../pages/BloodDonation/BloodDonation.jsx"
+import Udgam from "../pages/Udgam/Udgam.jsx";
+import SocialService from "../pages/SocialService/SocialService.jsx";
+import Utsarg from "../pages/Utsarg/Utsarg.jsx";
+import Utsaah from "../pages/Utsaah/Utsaah.jsx";
+import Unnayan from "../pages/Unnayan/Unnayan.jsx";
+import Ummeed from "../pages/Ummeed/Ummeed.jsx";
+import EduVisit from "../pages/EduVisit/EduVisit.jsx";
+import BloodDonation from "../pages/BloodDonation/BloodDonation.jsx";
 import Team from "../pages/Team/Team";
 import Constitution from "../pages/Constitution/Constitution";
 import CreatePost from "../pages/CreatePost/CreatePost";
@@ -32,8 +36,6 @@ import Events from "../pages/Events/Events";
 import CreateUser from "../pages/CreateUser/CreateUser";
 import ListUsers from "../pages/ListUsers/ListUsers";
 import VerifyCode from "../pages/VerifyCode/VerifyCode";
-import backendUrl from "../backendUrl";
-import toast from "react-hot-toast";
 import Muskan from "../pages/Muskan/Muskan.jsx";
 import GE from "../pages/GE/GE.jsx";
 import Article from "../pages/Article/Article.jsx";
@@ -41,11 +43,14 @@ import ConvertUrl from "../pages/ConvertUrl/ConvertUrl";
 import AddEventVolunteersData from "../pages/AddEventVolunteersData/AddEventVolunteersData";
 import EventVolunteersData from "../pages/EventVolunteersData/EventVolunteersData";
 import UtsavAyojan from "../pages/UtsavAyojan/UtsaavAyojan.jsx";
-import DonationForm from "../pages/Forms/DonationForm.jsx"; // Add this import
-import BecomeSponsor from "../pages/Forms/BecomeSponsor.jsx"; // Add this import
+import DonationForm from "../pages/Forms/DonationForm.jsx";
+import BecomeSponsor from "../pages/Forms/BecomeSponsor.jsx";
 import HealthCareForm from "../pages/Forms/HealthCareForm.jsx";
 import VolunteersData from "../pages/VolunteersData/VolunteersData.jsx";
 import EventVolunteers from "../pages/EventVolunteers/EventVolunteers.jsx";
+
+// Layout
+import Layout from "../components/Layout.jsx";
 
 const AppRoutes = () => {
   const authCtx = useContext(AuthContext);
@@ -65,104 +70,84 @@ const AppRoutes = () => {
           });
       })();
     }
-  });
+  }, []);
 
   return (
     <Routes>
-      <Route path="/" element={<LandingPage />} />
-      {!authCtx.isLoggedIn && <Route path="/login" element={<Login />} />}
-      {!authCtx.isLoggedIn && (
-        <Route path="/verify-code" element={<VerifyCode />} />
-      )}
-      <Route path="/about" element={<About />} />
-      <Route path="/DonationForm" element={<DonationForm />} />
-      <Route path="/BecomeSponsor" element={<BecomeSponsor />} />
-      <Route path="/HealthCareForm" element={<HealthCareForm />} />
-      <Route path="/classes" element={<Classes />} />
-      <Route path="/team" element={<Team />} />
-      <Route path="/udgam" element={<Udgam />} />
-      <Route path="/socialservice" element={<SocialService />} />
-      <Route path="/utsarg" element={<Utsarg />} />
-      <Route path="/utsaah" element={<Utsaah />} />
-      <Route path="/unnayan" element={<Unnayan />} />
-      <Route path="/ummeed" element={<Ummeed />} />
-      <Route path="/utsav" element={<UtsavAyojan />} />
-      <Route path="/eduvisit" element={<EduVisit />} />
-      <Route path="/blooddonation" element={<BloodDonation />} />
-      <Route path="/muskan" element={<Muskan />} />
-      <Route path="/ge" element={<GE />} />
-      <Route path="/schooling" element={<Schooling />} />
-      <Route path="/RTE" element={<RTE />} />
-      <Route path="/volunteers" element={<Volunteers />} />
-      <Route path="/event-volunteers" element={<EventVolunteers />} />
-      <Route path="/events" element={<Events />} />
-      <Route path="/article" element={<Article />} />
-      <Route path="/constitution" element={<Constitution />} />
-      {/* {authCtx.isLoggedIn && (
-        <Route path="/convert-url" element={<ConvertUrl />} />
-      )} */}
+      {/* Public Routes */}
       <Route
-        path="/request-for-certificate"
-        element={<RequestForCertificate />}
+        path="/"
+        element={
+          <Layout>
+            <LandingPage />
+          </Layout>
+        }
       />
-      <Route path="/rte-data" element={<RteData />} />
-      <Route path="/rte-data/:academicYear" element={<RteData />} />
-      <Route path="/volunteers-data" element={<VolunteersData />} />
-      <Route path="/volunteers-data/:session" element={<VolunteersData />} />
-      <Route path="/event-volunteers-data/:academicYear" element={<EventVolunteersData />} />
-      {authCtx.isLoggedIn &&
-        (userType === "master" || userType === "media") && (
-          <Route path="/add-rte-data" element={<AddRteData />} />
-        )}
-      {authCtx.isLoggedIn &&
-        (userType === "master" || userType === "media") && (
-          <Route path="/create-post" element={<CreatePost />} />
-        )}
-      {authCtx.isLoggedIn &&
-        (userType === "master" ||
-          userType === "media" ||
-          userType === "teachers") && (
-          <Route path="/edit-post/:id" element={<EditPost />} />
-        )}
-      {authCtx.isLoggedIn &&
-        (userType === "master" ||
-          userType === "media" ||
-          userType === "teachers") && (
-          <Route path="/list-posts" element={<ListPost />} />
-        )}
-      <Route path="/:category/:id" element={<Post />} />
-      {authCtx.isLoggedIn &&
-        (userType === "master" || userType === "teachers") && (
-          <Route path="/request-received" element={<RequestReceived />} />
-        )}
-      
-      {authCtx.isLoggedIn &&
-        (userType === "master" ||
-          userType === "media") && (
-          <Route path="/add-volunteer-data" element={<AddVolunteerData />} />
-        )}
-      {/* {authCtx.isLoggedIn &&
-        (userType === "master" || userType === "teachers") && (
-          <Route
-            path="/event-volunteers-data"
-            element={<EventVolunteersData />}
-          />
-        )} */}
-      {authCtx.isLoggedIn &&
-        (userType === "master" ||
-          userType === "media") && (
-          <Route
-            path="/add-event-volunteers-data"
-            element={<AddEventVolunteersData />}
-          />
-        )}
-      {authCtx.isLoggedIn && userType === "master" && (
-        <Route path="/create-user" element={<CreateUser />} />
+      {!authCtx.isLoggedIn && <Route path="/login" element={<Login />} />}
+      {!authCtx.isLoggedIn && <Route path="/verify-code" element={<VerifyCode />} />}
+
+      <Route path="/about" element={<Layout><About /></Layout>} />
+      <Route path="/DonationForm" element={<Layout><DonationForm /></Layout>} />
+      <Route path="/BecomeSponsor" element={<Layout><BecomeSponsor /></Layout>} />
+      <Route path="/HealthCareForm" element={<Layout><HealthCareForm /></Layout>} />
+      <Route path="/classes" element={<Layout><Classes /></Layout>} />
+      <Route path="/team" element={<Layout><Team /></Layout>} />
+      <Route path="/udgam" element={<Layout><Udgam /></Layout>} />
+      <Route path="/socialservice" element={<Layout><SocialService /></Layout>} />
+      <Route path="/utsarg" element={<Layout><Utsarg /></Layout>} />
+      <Route path="/utsaah" element={<Layout><Utsaah /></Layout>} />
+      <Route path="/unnayan" element={<Layout><Unnayan /></Layout>} />
+      <Route path="/ummeed" element={<Layout><Ummeed /></Layout>} />
+      <Route path="/utsav" element={<Layout><UtsavAyojan /></Layout>} />
+      <Route path="/eduvisit" element={<Layout><EduVisit /></Layout>} />
+      <Route path="/blooddonation" element={<Layout><BloodDonation /></Layout>} />
+      <Route path="/muskan" element={<Layout><Muskan /></Layout>} />
+      <Route path="/ge" element={<Layout><GE /></Layout>} />
+      <Route path="/schooling" element={<Layout><Schooling /></Layout>} />
+      <Route path="/RTE" element={<Layout><RTE /></Layout>} />
+      <Route path="/volunteers" element={<Layout><Volunteers /></Layout>} />
+      <Route path="/event-volunteers" element={<Layout><EventVolunteers /></Layout>} />
+      <Route path="/events" element={<Layout><Events /></Layout>} />
+      <Route path="/article" element={<Layout><Article /></Layout>} />
+      <Route path="/constitution" element={<Layout><Constitution /></Layout>} />
+      <Route path="/request-for-certificate" element={<Layout><RequestForCertificate /></Layout>} />
+      <Route path="/rte-data" element={<Layout><RteData /></Layout>} />
+      <Route path="/rte-data/:academicYear" element={<Layout><RteData /></Layout>} />
+      <Route path="/volunteers-data" element={<Layout><VolunteersData /></Layout>} />
+      <Route path="/volunteers-data/:session" element={<Layout><VolunteersData /></Layout>} />
+      <Route path="/event-volunteers-data/:academicYear" element={<Layout><EventVolunteersData /></Layout>} />
+      <Route path="/:category/:id" element={<Layout><Post /></Layout>} />
+
+      {/* Protected Routes */}
+      {authCtx.isLoggedIn && (userType === "master" || userType === "media") && (
+        <>
+          <Route path="/add-rte-data" element={<Layout><AddRteData /></Layout>} />
+          <Route path="/create-post" element={<Layout><CreatePost /></Layout>} />
+          <Route path="/add-volunteer-data" element={<Layout><AddVolunteerData /></Layout>} />
+          <Route path="/add-event-volunteers-data" element={<Layout><AddEventVolunteersData /></Layout>} />
+        </>
       )}
-      {authCtx.isLoggedIn && userType === "master" && (
-        <Route path="/list-users" element={<ListUsers />} />
+
+      {authCtx.isLoggedIn && (userType === "master" || userType === "media" || userType === "teachers") && (
+        <>
+          <Route path="/edit-post/:id" element={<Layout><EditPost /></Layout>} />
+          <Route path="/list-posts" element={<Layout><ListPost /></Layout>} />
+        </>
       )}
-      <Route path="*" element={<NotFound />} />
+
+      {authCtx.isLoggedIn && (userType === "master" || userType === "teachers") && (
+        <Route path="/request-received" element={<Layout><RequestReceived /></Layout>} />
+      )}
+
+      {authCtx.isLoggedIn && userType === "master" && (
+        <>
+          <Route path="/create-user" element={<Layout><CreateUser /></Layout>} />
+          <Route path="/list-users" element={<Layout><ListUsers /></Layout>} />
+        </>
+      )}
+
+      {/* Fallback */}
+      <Route path="*" element={<Layout><NotFound /></Layout>} />
     </Routes>
   );
 };
