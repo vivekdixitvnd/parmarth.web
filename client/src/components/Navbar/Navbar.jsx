@@ -18,6 +18,7 @@ const Navbar = () => {
   const [showMoreDropdown, setShowMoreDropdown] = useState(false);
   const [showAdminsDropdown, setShowAdminsDropdown] = useState(false);
   const [showEventsDropdown, setShowAEventsDropdown] = useState(false);
+  const [showOrgDropdown, setShowOrgDropdown] = useState(false);
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -71,21 +72,92 @@ const Navbar = () => {
             About
           </span>
         </NavLink>
+
+
         <NavLink
-          to="/team"
-          className={pathname === "/team" ? styles.active : styles.link}
+          to="#"
+          className={pathname.startsWith("/organization") ? styles.active : styles.link}
+          style={{ position: "relative" }}
+          onMouseEnter={() => setShowOrgDropdown(true)}
+          onMouseLeave={() => setShowOrgDropdown(false)}
         >
           <span
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              position: "relative",
             }}
           >
-            Team
+            Organization
+            <RiArrowDropDownLine size={25} />
+            {/* </span> */}
+
+            {showOrgDropdown && (
+              <div className={styles.dropdown}>
+                <ul>
+                  <li>
+                    <NavLink
+                      to="/organization/governing-council"
+                      className={
+                        pathname === "/organization/governing-council"
+                          ? styles.active
+                          : styles.link
+                      }
+                      style={{ fontSize: "18px" }}
+                    >
+                      Governing Council
+                    </NavLink>
+                  </li>
+
+                  <li>
+
+                    <NavLink
+                      to="/organization/advisory"
+                      className={
+                        pathname === "/organization/advisory"
+                          ? styles.active
+                          : styles.link
+                      }
+                      style={{ fontSize: "18px" }}
+                    >
+                      Advisory Council
+                    </NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink
+                      to="/organization/current-team"
+                      className={
+                        pathname === "/organization/current-team"
+                          ? styles.active
+                          : styles.link
+                      }
+                      style={{ fontSize: "18px" }}
+                    >
+                      Executive Council
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/organization/current-team"
+                      className={
+                        pathname === "/organization/current-team"
+                          ? styles.active
+                          : styles.link
+                      }
+                      style={{ fontSize: "18px" }}
+                    >
+                      Legacy Executive Council
+                    </NavLink>
+                  </li>
+
+
+                </ul>
+              </div>
+            )}
           </span>
         </NavLink>
+
         <NavLink
           to="/events"
           className={pathname === "/events" ? styles.active : styles.link}
@@ -154,7 +226,7 @@ const Navbar = () => {
                       <b>उन्नयन</b>
                     </NavLink>
                   </li>
-                  
+
                   <li>
                     <NavLink
                       to="/utsaah"
@@ -210,9 +282,9 @@ const Navbar = () => {
                       style={{ fontSize: "18px" }}
                     >
                       <b>रक्तदान महादान</b>
-                      </NavLink>
-                      </li>
-                      
+                    </NavLink>
+                  </li>
+
                   <li>
                     <NavLink
                       to="/utsav"
@@ -225,7 +297,7 @@ const Navbar = () => {
                     >
                       <b>उत्सव आयोजन</b>
                     </NavLink>
-                  </li>                 
+                  </li>
                 </ul>
               </div>
             )}
@@ -300,32 +372,32 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                      <NavLink
-                        to="/volunteers"
-                        className={
-                          pathname === "/volunteers"
-                            ? styles.active
-                            : styles.link
-                        }
-                        style={{ fontSize: "18px" }}
-                      >
-                        Volunteers Data
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink
-                        to="/event-volunteers"
-                        className={
-                          pathname === "/event-volunteers"
-                            ? styles.active
-                            : styles.link
-                        }
-                        style={{ fontSize: "18px" }}
-                      >
-                        Event Volunteers Data
-                      </NavLink>
-                    </li>
-                  
+                  <NavLink
+                    to="/volunteers"
+                    className={
+                      pathname === "/volunteers"
+                        ? styles.active
+                        : styles.link
+                    }
+                    style={{ fontSize: "18px" }}
+                  >
+                    Volunteers Data
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/event-volunteers"
+                    className={
+                      pathname === "/event-volunteers"
+                        ? styles.active
+                        : styles.link
+                    }
+                    style={{ fontSize: "18px" }}
+                  >
+                    Event Volunteers Data
+                  </NavLink>
+                </li>
+
                 {!isLoggedIn ? (
                   <li style={{ marginTop: "1.5rem" }}>
                     <NavLink to="/login" className={styles.login}>
@@ -388,53 +460,53 @@ const Navbar = () => {
                   )}
                   {(userType === "master" ||
                     userType === "media") && (
-                    <li>
-                      <NavLink
-                        to="/add-rte-data"
-                        className={
-                          pathname === "/add-rte-data"
-                            ? styles.active
-                            : styles.link
-                        }
-                        style={{ fontSize: "18px" }}
-                      >
-                        Add RTE Data
-                      </NavLink>
-                    </li>
-                  )}
+                      <li>
+                        <NavLink
+                          to="/add-rte-data"
+                          className={
+                            pathname === "/add-rte-data"
+                              ? styles.active
+                              : styles.link
+                          }
+                          style={{ fontSize: "18px" }}
+                        >
+                          Add RTE Data
+                        </NavLink>
+                      </li>
+                    )}
                   {(userType === "master" ||
                     userType === "teachers") && (
-                    <li>
-                      <NavLink
-                        to="/add-volunteer-data"
-                        className={
-                          pathname === "/add-volunteer-data"
-                            ? styles.active
-                            : styles.link
-                        }
-                        style={{ fontSize: "18px" }}
-                      >
-                        Add Volunteer Data
-                      </NavLink>
-                    </li>
-                  )}
-                  
+                      <li>
+                        <NavLink
+                          to="/add-volunteer-data"
+                          className={
+                            pathname === "/add-volunteer-data"
+                              ? styles.active
+                              : styles.link
+                          }
+                          style={{ fontSize: "18px" }}
+                        >
+                          Add Volunteer Data
+                        </NavLink>
+                      </li>
+                    )}
+
                   {(userType === "master" ||
                     userType === "teachers") && (
-                    <li>
-                      <NavLink
-                        to="/add-event-volunteers-data"
-                        className={
-                          pathname === "/add-event-volunteers-data"
-                            ? styles.active
-                            : styles.link
-                        }
-                        style={{ fontSize: "18px" }}
-                      >
-                        Add Event Volunteers Data
-                      </NavLink>
-                    </li>
-                  )}
+                      <li>
+                        <NavLink
+                          to="/add-event-volunteers-data"
+                          className={
+                            pathname === "/add-event-volunteers-data"
+                              ? styles.active
+                              : styles.link
+                          }
+                          style={{ fontSize: "18px" }}
+                        >
+                          Add Event Volunteers Data
+                        </NavLink>
+                      </li>
+                    )}
                   {(userType === "master" || userType === "media") && (
                     <li>
                       <NavLink
@@ -452,20 +524,20 @@ const Navbar = () => {
                   )}
                   {(userType === "master" ||
                     userType === "media") && (
-                    <li>
-                      <NavLink
-                        to="/list-posts"
-                        className={
-                          pathname === "/list-posts"
-                            ? styles.active
-                            : styles.link
-                        }
-                        style={{ fontSize: "18px" }}
-                      >
-                        List Posts
-                      </NavLink>
-                    </li>
-                  )}
+                      <li>
+                        <NavLink
+                          to="/list-posts"
+                          className={
+                            pathname === "/list-posts"
+                              ? styles.active
+                              : styles.link
+                          }
+                          style={{ fontSize: "18px" }}
+                        >
+                          List Posts
+                        </NavLink>
+                      </li>
+                    )}
                   {userType === "master" && (
                     <li>
                       <NavLink
