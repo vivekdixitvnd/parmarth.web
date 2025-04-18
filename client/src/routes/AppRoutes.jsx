@@ -25,7 +25,9 @@ import Unnayan from "../pages/Unnayan/Unnayan.jsx";
 import Ummeed from "../pages/Ummeed/Ummeed.jsx";
 import EduVisit from "../pages/EduVisit/EduVisit.jsx";
 import BloodDonation from "../pages/BloodDonation/BloodDonation.jsx";
-// import Governing from "../pages/organization/governing/governing";
+import Governing from "../pages/organization/Governing/Governing.jsx"
+import LegacyPresidents from "../pages/organization/Legacy/PastPresidents/LegacyPresidents.jsx";
+import LegacyVicePresidents from "../pages/organization/Legacy/VicePresidents/LegacyVicePresidents.jsx";
 import Constitution from "../pages/Constitution/Constitution";
 import CreatePost from "../pages/CreatePost/CreatePost";
 import EditPost from "../pages/EditPost/EditPost";
@@ -91,7 +93,9 @@ const AppRoutes = () => {
       <Route path="/BecomeSponsor" element={<Layout><BecomeSponsor /></Layout>} />
       <Route path="/HealthCareForm" element={<Layout><HealthCareForm /></Layout>} />
       <Route path="/classes" element={<Layout><Classes /></Layout>} />
-{/*       <Route path="/governing" element={<Layout><Governing /></Layout>} /> */}
+      <Route path="/governing" element={<Layout><Governing/></Layout>} />
+      <Route path="/presidents" element={<Layout><LegacyPresidents/></Layout>} />
+      <Route path="/vp" element={<Layout><LegacyVicePresidents/></Layout>} />
       <Route path="/udgam" element={<Layout><Udgam /></Layout>} />
       <Route path="/socialservice" element={<Layout><SocialService /></Layout>} />
       <Route path="/utsarg" element={<Layout><Utsarg /></Layout>} />
