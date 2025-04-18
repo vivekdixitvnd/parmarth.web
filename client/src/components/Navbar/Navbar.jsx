@@ -99,53 +99,84 @@ const Navbar = () => {
                   </NavLink>
                 </li>
 
-                  <li>
+                <li>
+                  <NavLink
+                    to="/advisory"
+                    className={pathname === "/advisory" ? styles.active : styles.link}
+                    style={{ fontSize: "18px" }}
+                  >
+                    Advisory Council
+                  </NavLink>
+                </li>
 
-                    <NavLink
-                      to="/organization/advisory"
-                      className={
-                        pathname === "/organization/advisory"
-                          ? styles.active
-                          : styles.link
-                      }
-                      style={{ fontSize: "18px" }}
+                <li>
+                  <NavLink
+                    to="/executive"
+                    className={pathname === "/executive" ? styles.active : styles.link}
+                    style={{ fontSize: "18px" }}
+                  >
+                    Executive Council
+                  </NavLink>
+                </li>
+
+                {/* Legacy Executive Council with Sub-dropdown */}
+                <li
+                  style={{ position: "relative" }}
+                  onMouseEnter={() => setShowLegDropdown(true)}
+                  onMouseLeave={() => setShowLegDropdown(false)}
+                >
+                  <NavLink
+                    to="#"
+                    className={pathname.startsWith("/legacy") ? styles.active : styles.link}
+                    style={{ fontSize: "18px", display: "flex", alignItems: "center" }}
+                  >
+                    Legacy Executive Council
+                    <RiArrowDropDownLine size={25} />
+                  </NavLink>
+
+                  {showLegDropdown && (
+                    <div
+                      className={styles.subDropdown}
+                      style={{
+                        display: "block",
+                        position: "absolute",
+                        top: "0",
+                        left: "100%",
+                        backgroundColor: "#fff",
+                        borderRadius: "10px",
+                        boxShadow: "0 0 10px #ccc",
+                        border: "1px solid #277bc0",
+                        padding: "1rem",
+                        zIndex: 20,
+                      }}
                     >
-                      Advisory Council
-                    </NavLink>
-                  </li>
-
-                  <li>
-                    <NavLink
-                      to="/organization/executive"
-                      className={
-                        pathname === "/organization/executive"
-                          ? styles.active
-                          : styles.link
-                      }
-                      style={{ fontSize: "18px" }}
-                    >
-                      Executive Council
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/organization/legacy"
-                      className={
-                        pathname === "/organization/legacy"
-                          ? styles.active
-                          : styles.link
-                      }
-                      style={{ fontSize: "18px" }}
-                    >
-                      Legacy Executive Council
-                    </NavLink>
-                  </li>
-
-
-                </ul>
-              </div>
-            )}
-          </span>
+                      <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                        <li>
+                          <NavLink
+                            to="/presidents"
+                            className={pathname === "/presidents" ? styles.active : styles.link}
+                            style={{ fontSize: "18px" }}
+                          >
+                            Past Presidents
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="/vp"
+                            className={pathname === "/vp" ? styles.active : styles.link}
+                            style={{ fontSize: "18px" }}
+                          >
+                            Past Vice President
+                          </NavLink>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                  )}
+                </li>
+              </ul>
+            </div>
+          )}
         </NavLink>
 
         <NavLink
