@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "ref": "PAR-1700101",
+    "name": "Abhishek Kushwaha",
+    "batch": "2021",
+    "email": "ak6847696@gmail.com"
+},
+{
+    "id": 2,
+    "ref": "PAR-1713104",
+    "name": "Ankit Shrivastava",
+    "batch": "2021",
+    "email": "aksmks9698@gmail.com"
+},
+{
+    "id": 3,
+    "ref": "PAR-1751102",
+    "name": "Ashish Chand",
+    "batch": "2021",
+    "linkedin": "https://www.linkedin.com/in/ashishhere"
+},
+{
+    "id": 4,
+    "ref": "PAR-1620105",
+    "name": "Shrey Dubey",
+    "batch": "2020",
+    "linkedin": "https://www.linkedin.com/in/shrey-dubey"
+},
+{
+    "id": 5,
+    "ref": "PAR-1610106",
+    "name": "Pragya Vyas",
+    "batch": "2020",
+    "linkedin": "https://www.linkedin.com/in/pvyas02"
+},
+{
+    "id": 6,
+    "ref": "PAR-1510104",
+    "name": "Ashwani Sharma",
+    "batch": "2019",
+    "linkedin": "https://www.linkedin.com/in/ashwanisharma3"
+},
+{
+    "id": 7,
+    "ref": "PAR-1770108",
+    "name": "Kirti Verma",
+    "batch": "2019",
+    "linkedin": "https://www.linkedin.com/in/kirti-verma-445354171"
+},
+{
+    "id": 8,
+    "ref": "PAR-1440107",
+    "name": "Vipul Sharma",
+    "batch": "2018",
+    "linkedin": "https://www.linkedin.com/in/vipul-sharma273b941b4"
+},
+{
+    "id": 9,
+    "ref": "PAR-1470109",
+    "name": "Richa Sharma",
+    "batch": "2016",
+    "email": "richasharma0903@gmail.com"
+}
+  ]
+  

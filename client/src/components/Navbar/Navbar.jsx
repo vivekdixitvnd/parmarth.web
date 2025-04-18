@@ -112,9 +112,9 @@ const Navbar = () => {
                   <li>
 
                     <NavLink
-                      to="/organization/advisory"
+                      to="/advisory"
                       className={
-                        pathname === "/organization/advisory"
+                        pathname === "/advisory"
                           ? styles.active
                           : styles.link
                       }
@@ -126,9 +126,9 @@ const Navbar = () => {
 
                   <li>
                     <NavLink
-                      to="/organization/executive"
+                      to="/executive"
                       className={
-                        pathname === "/organization/executive"
+                        pathname === "/executive"
                           ? styles.active
                           : styles.link
                       }
