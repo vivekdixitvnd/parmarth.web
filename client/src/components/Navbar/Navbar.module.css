@@ -11,9 +11,10 @@
   z-index: 10;
 }
 
-
 .navbar span {
   height: 50px;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
@@ -32,9 +33,7 @@
   box-shadow: 0 0 2px #000;
 }
 
-
-
-.iet-logo {
+.ietLogo {
   width: 80px;
   height: 80px;
   display: flex;
@@ -89,7 +88,7 @@
   color: #fff;
 }
 
-.create-post {
+.createPost {
   margin-right: 1rem;
   width: 150px;
   padding: 0.5rem;
@@ -102,7 +101,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.create-post:hover {
+.createPost:hover {
   background-color: transparent;
   color: #000;
 }
@@ -116,6 +115,7 @@
   box-shadow: 0 0 10px #277bc0;
   top: 100%;
   left: 0;
+  z-index: 10;
 }
 
 .dropdown > ul {
@@ -128,16 +128,41 @@
 
 .dropdown > ul > li {
   margin: 1rem 0;
+  position: relative;
 }
 
-@media screen and (width<1024px) {
+.subDropdown {
+  width: max-content;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  border: 1px solid #277bc0;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #277bc0;
+  padding: 1rem;
+  z-index: 20;
+}
+
+.subDropdown > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.subDropdown > ul > li {
+  margin: 0.5rem 0;
+}
+
+@media screen and (width < 1024px) {
   .logo {
     width: 80px;
     height: 80px;
     background-size: 80px 80px;
     margin-left: 1rem;
   }
-  .iet-logo {
+  .ietLogo {
     width: 80px;
     height: 80px;
     background-size: 80px 80px;
@@ -145,7 +170,7 @@
   }
 }
 
-@media screen and (width<1300px) {
+@media screen and (width < 1300px) {
   .navbar span {
     height: auto;
   }
