@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./Team.module.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import { FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 import headMembers from "./headMem.json"
 import advisoryMembers from "./advisoryComittee.json"
