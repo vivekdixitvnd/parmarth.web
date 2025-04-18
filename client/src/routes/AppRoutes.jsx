@@ -26,8 +26,8 @@ import Ummeed from "../pages/Ummeed/Ummeed.jsx";
 import EduVisit from "../pages/EduVisit/EduVisit.jsx";
 import BloodDonation from "../pages/BloodDonation/BloodDonation.jsx";
 // import Governing from "../pages/organization/Governing/Governing.jsx"
-import LegacyPresidents from "../pages/organization/Legacy/PastPresidents/LegacyPresidents.jsx";
-import LegacyVicePresidents from "../pages/organization/Legacy/VicePresidents/LegacyVicePresidents.jsx";
+// import LegacyPresidents from "../pages/organization/Legacy/PastPresidents/LegacyPresidents.jsx";
+// import LegacyVicePresidents from "../pages/organization/Legacy/VicePresidents/LegacyVicePresidents.jsx";
 import Constitution from "../pages/Constitution/Constitution";
 import CreatePost from "../pages/CreatePost/CreatePost";
 import EditPost from "../pages/EditPost/EditPost";
