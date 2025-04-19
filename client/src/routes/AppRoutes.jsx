@@ -94,8 +94,8 @@ const AppRoutes = () => {
       <Route path="/HealthCareForm" element={<Layout><HealthCareForm /></Layout>} />
       <Route path="/classes" element={<Layout><Classes /></Layout>} />
       <Route path="/governing" element={<Layout><Governing/></Layout>} />
-      <Route path="/presidents" element={<Layout><LegacyPresidents/></Layout>} />
-      <Route path="/vp" element={<Layout><LegacyVicePresidents/></Layout>} />
+{/*       <Route path="/presidents" element={<Layout><LegacyPresidents/></Layout>} />
+      <Route path="/vp" element={<Layout><LegacyVicePresidents/></Layout>} /> */}
       <Route path="/udgam" element={<Layout><Udgam /></Layout>} />
       <Route path="/socialservice" element={<Layout><SocialService /></Layout>} />
       <Route path="/utsarg" element={<Layout><Utsarg /></Layout>} />
