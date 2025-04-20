@@ -1,19 +1,17 @@
 .body {
-    padding-top: 125px;
-    /* Navbar ke niche space */
+    padding-top: 125px; /* Navbar ke niche space */
     padding-left: 50px;
     padding-bottom: 50px;
     padding-right: 50px;
     text-align: center;
-    background-color: #f8f9fa;
-    /* Background halka sa */
+    background-color: #f8f9fa; /* Background halka sa */
 }
 
 .body > div {
     max-width: 100%;
     margin: 0 auto;
     overflow-x: auto; /* Allows scrolling */
-  }
+}
 
 .section {
     margin-top: 20px;
@@ -27,36 +25,28 @@
     color: #277bc0;
     text-transform: uppercase;
     font-weight: bold;
-    margin-top: 20px;
-    /* Navbar se upar overlap fix */
+    margin-top: 20px; /* Navbar se upar overlap fix */
 }
 
 .members {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    /* Auto-fit cards */
-    gap: 20px;
-    /* Cards ke beech gap */
-    justify-content: center;
-    /* Centering cards properly */
-    max-width: 1200px;
-    /* Limit width to prevent stretching */
-    margin: 0 auto;
-    /* Center align with equal left-right spacing */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Auto-fit cards */
+    gap: 20px; /* Cards ke beech gap */
+    justify-content: center; /* Centering cards properly */
+    max-width: 1200px; /* Limit width to prevent stretching */
+    margin: 0 auto; /* Center align with equal left-right spacing */
     padding-left: 100px;
     padding-right: 100px;
 }
 
 @media (min-width: 1024px) {
     .members {
-        grid-template-columns: repeat(5, 1fr);
-        /* Max 5 cards per row */
+        grid-template-columns: repeat(5, 1fr); /* Max 5 cards per row */
     }
 }
 
 .card {
-    width: 180px;
-    /* Thoda chhota card */
+    width: 180px; /* Thoda chhota card */
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -70,8 +60,7 @@
 }
 
 .card img {
-    width: 100px;
-    /* Photo size */
+    width: 100px; /* Photo size */
     height: 100px;
     border-radius: 50%;
     margin-bottom: 10px;
@@ -143,13 +132,11 @@ td {
 
 /* Alternate row colors */
 tbody tr:nth-child(odd) {
-    background-color: #f8f9fa;
-    /* Light gray */
+    background-color: #f8f9fa; /* Light gray */
 }
 
 tbody tr:nth-child(even) {
-    background-color: #e9ecef;
-    /* Slightly darker gray */
+    background-color: #e9ecef; /* Slightly darker gray */
 }
 
 th {
