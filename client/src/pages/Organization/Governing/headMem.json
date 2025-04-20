@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "name": "Ajay Kumar Sharma",
+      "roleParmarth": "Faculty Coordinator",
+      "department": "Mechanical Department",
+      "linkedin": "https://www.linkedin.com/in/vivek-kumar-dixit",
+      "email": "vivek@example.com",
+      "imgSrc": "/img/Team/3.png"
+    },
+    {
+      "id": 1,
+      "name": "Pawan Kumar Tripathi",
+      "roleParmarth": "Faculty Coordinator ",
+      "department": "Computer Science Department",
+      "linkedin": "https://www.linkedin.com/in/vivek-kumar-dixit",
+      "email": "vivek@example.com",
+      "imgSrc": "/img/Team/4.png"
+    }
+  ]
+  
