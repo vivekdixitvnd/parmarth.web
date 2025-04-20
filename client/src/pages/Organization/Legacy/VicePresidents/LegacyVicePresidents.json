@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "name": "Rohit Singh",
+      "designation": "President, Parmarth",
+      "department": "ECE, Batch of 2022",
+      "roleParmarth": "Led multiple social initiatives",
+      "linkedin": "https://linkedin.com/in/rohitsingh",
+      "email": "rohit@example.com",
+      "imgSrc": "/img/Team/2.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Anjali Verma",
+      "designation": "President, Parmarth",
+      "department": "CSE, Batch of 2021",
+      "roleParmarth": "Focused on education and RTE",
+      "linkedin": "https://linkedin.com/in/anjaliverma",
+      "email": "anjali@example.com",
+      "imgSrc": "/img/Team/2.jpg"
+    }
+  ]
+  

@@ -1,0 +1,93 @@
+[
+    {
+      "id": 1,
+      "name": "Vivek Kumar Dixit",
+      "year": "President",
+      "linkedin": "https://www.linkedin.com/in/vivek-kumar-dixit",
+      "instagram": "https://instagram.com/vivekdixit",
+      "email": "vivek@example.com",
+      "imgSrc": "/img/Team/1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Arnav Saxena",
+      "year": "Vice President",
+      "linkedin": "https://www.linkedin.com/in/arnavsaxena",
+      "instagram": "https://instagram.com/arnav",
+      "email": "arnav@example.com",
+      "imgSrc": "/img/Team/2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Divyansh Tripathi",
+      "year": "Treasurer",
+      "linkedin": "https://www.linkedin.com/in/divyanshtripathi",
+      "instagram": "https://instagram.com/divyansh",
+      "email": "divyansh@example.com",
+      "imgSrc": "/img/Team/3.png"
+    },
+    {
+      "id": 4,
+      "name": "Avanish Yadav",
+      "year": "Media Head",
+      "linkedin": "https://www.linkedin.com/in/avanish",
+      "instagram": "https://instagram.com/avanish",
+      "email": "avanish@example.com",
+      "imgSrc": "/img/Team/4.png"
+    },
+    {
+      "id": 5,
+      "name": "Sachin Yadav",
+      "year": "Competitive Exams Head",
+      "linkedin": "https://www.linkedin.com/in/sachinyadav",
+      "instagram": "https://instagram.com/sachin",
+      "email": "sachin@example.com",
+      "imgSrc": "/img/Team/5.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Yash Gupta",
+      "year": "PR Head",
+      "linkedin": "https://www.linkedin.com/in/yashgupta",
+      "instagram": "https://instagram.com/yash",
+      "email": "yash@example.com",
+      "imgSrc": "/img/Team/6.png"
+    },
+    {
+      "id": 7,
+      "name": "Rajeev Gupta",
+      "year": "PR Head",
+      "linkedin": "https://www.linkedin.com/in/rajeevgupta",
+      "instagram": "https://instagram.com/rajeev",
+      "email": "rajeev@example.com",
+      "imgSrc": "/img/Team/7.png"
+    },
+    {
+      "id": 8,
+      "name": "Navya Singh",
+      "year": "PR Head",
+      "linkedin": "https://www.linkedin.com/in/navyasingh",
+      "instagram": "https://instagram.com/navya",
+      "email": "navya@example.com",
+      "imgSrc": "/img/Team/8.png"
+    },
+    {
+      "id": 9,
+      "name": "Anshika Mishra",
+      "year": "Girls Education Head",
+      "linkedin": "https://www.linkedin.com/in/anshika",
+      "instagram": "https://instagram.com/anshika",
+      "email": "anshika@example.com",
+      "imgSrc": "/img/Team/9.png"
+    },
+    {
+      "id": 10,
+      "name": "Abhishek Kumar",
+      "year": "Girls Education Head",
+      "linkedin": "https://www.linkedin.com/in/abhishek",
+      "instagram": "https://instagram.com/abhishek",
+      "email": "abhishek@example.com",
+      "imgSrc": "/img/Team/10.jpg"
+    }
+  ]
+  
