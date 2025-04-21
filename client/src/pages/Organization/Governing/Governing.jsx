@@ -26,22 +26,12 @@ const InfoCard = ({ member, messageTitle, messageContent, isDirector = false }) 
       </div>
     </div>
     <div className={styles.right}>
-      <h2>{messageTitle}</h2>
-      <p>{messageContent}</p>
+      {/* <h2 className={styles.legacyTitle}>Legacy</h2> */}
+      <p className={styles.messageContent}>{member.message}</p>
 
       {isDirector && (
         <>
-          <h3 style={{ marginTop: "1rem", color: "#1a1a1a" }}>Vision for Parmarth</h3>
-          <p>
-            My vision for Parmarth is to create a sustainable impact through education and social reform.
-            I believe student-driven change is the most powerful force to uplift the underprivileged.
-          </p>
 
-          <h3 style={{ marginTop: "1rem", color: "#1a1a1a" }}>Thoughts about Parmarth</h3>
-          <p>
-            Parmarth has grown into a mission that reflects the values of empathy and responsibility.
-            I am proud of the efforts made by our students to build a better society.
-          </p>
         </>
       )}
     </div>
@@ -64,8 +54,6 @@ const Team = () => {
         <InfoCard
           key={member.id}
           member={member}
-          messageTitle="Vision"
-          messageContent="As a guiding force for Parmarth, our focus remains on making impactful changes in students' lives while fostering a spirit of volunteerism and leadership."
         />
       ))}
     </div>

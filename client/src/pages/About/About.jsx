@@ -1,13 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./About.module.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+const InfiniteScroll = ({ images }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isSliding, setIsSliding] = useState(false);
+
+  // Next Slide
+  const nextSlide = () => {
+    setIsSliding(true);
+    setTimeout(() => {
+      currentIndex < images.length - 1
+        ? setCurrentIndex(currentIndex + 1)
+        : setCurrentIndex(0);
+    }, 100);
+  };
+
+  // Previous Slide
+  const prevSlide = () => {
+    setIsSliding(true);
+    setTimeout(() => {
+      currentIndex > 0
+        ? setCurrentIndex(currentIndex - 1)
+        : setCurrentIndex(images.length - 1);
+    }, 100);
+  };
+
+  // Auto-scroll logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval ); // Clean up interval
+  }, [currentIndex]);
+
+  return (
+    <div className={styles.sliderWrapper}>
+      {/* Left Button */}
+      <button onClick={prevSlide} className={styles.navButton} id={styles.prev}>
+        <FaChevronLeft />
+      </button>
+
+      <div className={styles.sliderContainer}>
+        <div
+          className={`${styles.slider} ${
+            isSliding ? styles.slideTransition : ""
+          }`}
+        >
+          <div className={styles.slide}>
+            <img src={images[currentIndex]} alt={`slide-${currentIndex}`} />
+          </div>
+        </div>
+      </div>
+
+      {/* Right Button */}
+      <button onClick={nextSlide} className={styles.navButton} id={styles.next}>
+        <FaChevronRight />
+      </button>
+    </div>
+  );
+};
 
 const About = () => {
+  const images = [
+    "/img/About/1.png",
+    "/img/About/2.png",
+  ];
   return (
     <>
       {/* <Navbar /> */}
-      <div style={{ paddingTop: "150px" }} className={styles.body}>
+      <div style={{ paddingTop: "120px" }} className={styles.body}>
+
+        <div className={styles.section}>
+                  <InfiniteScroll images={images} />
+                </div>
         {/* History of Parmarth */}
         <div className={styles.section}>
           <h1>Parmarth</h1>

@@ -8,7 +8,7 @@ const volunteerSchema = new Schema({
   email: String,
   postHolded: { type: String, required: true },
   session: { type: String, required: true },
-  refrence: { type: String, unique: true},
+  refrence: { type: String, required: true, unique: false},
 });
 
 const Volunteer = mongoose.model("Volunteer", volunteerSchema);
