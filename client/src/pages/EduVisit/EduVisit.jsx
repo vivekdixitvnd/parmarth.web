@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./EduVisit.module.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const InfiniteScroll = ({ images }) => {

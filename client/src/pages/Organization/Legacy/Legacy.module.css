@@ -110,4 +110,19 @@
       padding-top: 20px;
     }
   }
+
+
+  .legacyTitle {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .messageContent {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
   

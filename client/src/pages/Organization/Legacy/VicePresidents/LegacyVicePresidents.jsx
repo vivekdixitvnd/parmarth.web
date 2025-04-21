@@ -3,13 +3,13 @@ import styles from "../Legacy.module.css"
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 import legacyVicePresidents from "./LegacyVicePresidents.json";
 
-const InfoCard = ({ member, messageTitle, messageContent }) => (
+const InfoCard = ({ member }) => (
   <div className={styles.profileCard}>
     <div className={styles.left}>
       <img src={member.imgSrc} alt={member.name} />
       <h3>{member.name}</h3>
       <p className={styles.designation}>{member.designation}</p>
-      {member.batch && <p>Batch {member.batch}</p>}
+      {member.department && <p>{member.department}</p>}
       <div className={styles.socialIcons}>
         {member.linkedin && (
           <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
@@ -24,8 +24,8 @@ const InfoCard = ({ member, messageTitle, messageContent }) => (
       </div>
     </div>
     <div className={styles.right}>
-      <h2>{messageTitle}</h2>
-      <p>{messageContent}</p>
+      {/* <h2 className={styles.legacyTitle}>Legacy</h2> */}
+      <p className={styles.messageContent}>{member.message}</p>
     </div>
   </div>
 );
@@ -38,9 +38,7 @@ const LegacyVicePresidents = () => {
         <InfoCard
           key={member.id}
           member={member}
-          messageTitle="Legacy"
-          messageContent="Their leadership helped shape Parmarth into the impactful student-driven organization it is today."
-        />
+          />
       ))}
     </div>
   );

@@ -66,17 +66,17 @@ const InfiniteScroll = ({ images }) => {
 
 const SocialService = () => {
   const images = [
-    "/img/Utsaah/1.png",
-    "/img/Utsaah/2.png",
-    "/img/Utsaah/3.png",
-    "/img/Utsaah/4.png",
-    "/img/Utsaah/5.png",
+    "/img/SocialService/1.png",
+    "/img/SocialService/2.png",
+    "/img/SocialService/3.png",
+    "/img/SocialService/4.png",
+    "/img/SocialService/5.png",
   ];
 
   return (
     <>
       {/* <Navbar /> */}
-      <div style={{ paddingTop: "150px" }} className={styles.body}>
+      <div style={{ paddingTop: "125px" }} className={styles.body}>
         <div className={styles.section}>
           <InfiniteScroll images={images} />
         </div>

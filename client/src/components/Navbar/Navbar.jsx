@@ -169,15 +169,6 @@ const Navbar = () => {
                             Past Vice President
                           </NavLink>
                         </li>
-                        <li>
-                          <NavLink
-                            to="/governing"
-                            className={pathname === "/governing" ? styles.active : styles.link}
-                            style={{ fontSize: "18px" }}
-                          >
-                            Governing Council
-                          </NavLink>
-                        </li>
                       </ul>
                     </div>
                   )}
