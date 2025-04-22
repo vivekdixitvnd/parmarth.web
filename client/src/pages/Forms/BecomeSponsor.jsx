@@ -3,8 +3,6 @@ import FormInput from "../../components/Form/FormInput";
 import FormStatusMessage from "../../components/Form/FormStatusMessage";
 import useForm from "../../components/Form/useForm";
 import styles from "./BecomeSponsor.module.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import backendUrl from "../../backendUrl";
 
 const SponsorChildForm = () => {
@@ -26,7 +24,7 @@ const SponsorChildForm = () => {
   return (
     <>
     {/* <Navbar/> */}
-    <main style={{ paddingTop: "150px" }} className={styles.body}>
+    <main style={{ paddingTop: "125px" }} className={styles.body}>
       {" "}
       <section className={styles.section}>
         <h1>Sponsor a Child</h1>{" "}

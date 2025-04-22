@@ -1,5 +1,40 @@
 [
     {
+        "id": 12,
+        "ref": "PARM-210316501",
+        "name": "Vivek Kumar Dixit",
+        "batch": "2025",
+        "linkedin": "https://www.linkedin.com/in/vivek-553277228/"
+    },
+    {
+        "id": 13,
+        "ref": "PARM-210201702",
+        "name": "Arnav Saxena",
+        "batch": "2025",
+        "linkedin": "https://www.linkedin.com/in/arnav-saxena-170116233/"
+    },
+    {
+        "id": 14,
+        "ref": "PARM-210001903",
+        "name": "Divyansh Tripathi",
+        "batch": "2025",
+        "linkedin": "https://www.linkedin.com/in/divyansh-tripathi-8720bb232/"
+    },
+    {
+        "id": 14,
+        "ref": "PARM-210311725",
+        "name": "Anshika Mishra",
+        "batch": "2025",
+        "linkedin": "https://www.linkedin.com/in/anshika-mishra-58a19522b/"
+    },
+    {
+        "id": 14,
+        "ref": "PARM-210205418",
+        "name": "Rajeev Gupta",
+        "batch": "2025",
+        "linkedin": "https://www.linkedin.com/in/rajeev-kumar-569846227/"
+    },
+    {
         "id": 1,
         "ref": "PARM-200313901",
         "name": "Mridul Pandey",
@@ -61,40 +96,5 @@
         "name": "Sharthik Sharma",
         "batch": "2023",
         "linkedin": "https://www.linkedin.com/in/sharthik-sharma"
-    },
-    {
-        "id": 10,
-        "ref": "PAR-1811101",
-        "name": "Alok Kumar",
-        "batch": "2022",
-        "linkedin": "https://www.linkedin.com/in/alok-kumar-687041216"
-    },
-    {
-        "id": 11,
-        "ref": "PAR-1800102",
-        "name": "Abhay Sharma",
-        "batch": "2022",
-        "linkedin": "https://www.linkedin.com/in/abhaysharma4799"
-    },
-    {
-        "id": 12,
-        "ref": "PAR-1800116",
-        "name": "Divyanshu Jaiswal",
-        "batch": "2022",
-        "email": "jaiswaldivyanshu93@gmail.com"
-    },
-    {
-        "id": 13,
-        "ref": "PAR-1800108",
-        "name": "Bhuvnesh Kumar",
-        "batch": "2022",
-        "linkedin": "https://www.linkedin.com/in/bhuvnesh-kumar-8842932a4"
-    },
-    {
-        "id": 14,
-        "ref": "PAR-1800104",
-        "name": "Shashank Verma",
-        "batch": "2022",
-        "linkedin": "https://www.linkedin.com/in/shashank-Verma-a715b2217"
     }
 ]

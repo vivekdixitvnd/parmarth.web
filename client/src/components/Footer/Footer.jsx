@@ -51,7 +51,7 @@ const Footer = () => {
             <a href="https://www.instagram.com/parmarth.iet/" rel="noreferrer" target="_blank">
               <BsInstagram className={styles.icon} />
             </a>
-            <a href="https://in.linkedin.com/company/parmarth-iet" rel="noreferrer" target="_blank">
+            <a href="https://www.linkedin.com/company/parmarth-iet-lucknow/posts/?feedView=all" rel="noreferrer" target="_blank">
               <BsLinkedin className={styles.icon} />
             </a>
             <a href="https://www.youtube.com/channel/UCy66KqRs1rKSHXNVdLFSO7Q" rel="noreferrer" target="_blank">
