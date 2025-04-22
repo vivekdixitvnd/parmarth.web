@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./BecomeSponsor.module.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import FormInput from "../../components/Form/FormInput";
 import FormStatusMessage from "../../components/Form/FormStatusMessage";
 import useForm from "../../components/Form/useForm";
