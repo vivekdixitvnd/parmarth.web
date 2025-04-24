@@ -106,6 +106,19 @@ const MobileNav = () => {
               <ul>
                 <li>
                   <NavLink
+                    to="/founders"
+                    className={
+                      pathname === "/founders"
+                        ? "mobile-nav__active"
+                        : "mobile-nav__link"
+                    }
+                    style={{ fontSize: "18px" }}
+                  >
+                    Founding Members
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
                     to="/governing"
                     className={
                       pathname === "/governing"
