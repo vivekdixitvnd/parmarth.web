@@ -109,7 +109,10 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            
+            <div className={styles['test-credentials']}>
+              <p>Please Use Correct Credentials
+              </p>
+            </div>
             <button className={styles["login-btn"]} type="submit">
               {isLoading ? <div className={styles.loader}></div> : "Log in"}
             </button>
