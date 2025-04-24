@@ -110,9 +110,8 @@ const Login = () => {
               required
             />
             <div className={styles['test-credentials']}>
-              <p>Test Credentials 👇</p>
-              <p>Email: admin@parmarth.com</p>
-              <p>Password: Muskan2025</p>
+              <p>Please Use Correct Credentials
+              </p>
             </div>
             <button className={styles["login-btn"]} type="submit">
               {isLoading ? <div className={styles.loader}></div> : "Log in"}
