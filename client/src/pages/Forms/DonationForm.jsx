@@ -37,38 +37,6 @@ const DonationForm = () => {
     }
   };
 
-  // Handle form submission
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setSubmitStatus('sending');
-
-  //   try {
-  //     const response = await fetch(BACKEND_ENDPOINT, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         ...formData,
-  //         recipientEmail: "vivekdixit504@gmail.com",
-  //         timestamp: new Date().toISOString()
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       setSubmitStatus('success');
-  //       setTimeout(() => {
-  //         resetForm();
-  //       }, 3000);
-  //     } else {
-  //       throw new Error('Submission failed');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error submitting form:', error);
-  //     setSubmitStatus('error');
-  //   }
-  // };
-
   return (
     <>
       {/* <Navbar /> */}
