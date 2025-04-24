@@ -18,6 +18,7 @@ const MobileNav = () => {
   const [showEventsDropdown, setShowAEventsDropdown] = useState(false);
   const [showOrgDropdown, setShowOrgDropdown] = useState(false);
   const [showLegDropdown, setShowLegDropdown] = useState(false);
+  const [showActDropdown, setShowActDropdown] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Disable body scroll when menu is open
@@ -29,6 +30,7 @@ const MobileNav = () => {
       setShowLegDropdown(false);
       setShowMoreDropdown(false);
       setShowOrgDropdown(false);
+      setShowActDropdown(false);
     }
   }, [menuOpen]);
 
@@ -92,6 +94,7 @@ const MobileNav = () => {
               setShowAdminsDropdown(false);
               setShowLegDropdown(false);
               setShowMoreDropdown(false);
+              setShowActDropdown(false);
             }}
           >
             Organization
@@ -164,6 +167,7 @@ const MobileNav = () => {
                       setShowAEventsDropdown(false);
                       setShowAdminsDropdown(false);
                       setShowMoreDropdown(false);
+                      setShowActDropdown(false);
                     }}
                   >
                     Legacy Executive Council
@@ -222,23 +226,73 @@ const MobileNav = () => {
             </div>
           )}
         </NavLink>
+        
         <NavLink
-          to="/events"
+          to="#"
           className={
-            pathname === "/events" ? "mobile-nav__active" : "mobile-nav__link"
+            pathname === "#" ? "mobile-nav__active" : "mobile-nav__link"
           }
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
           <span
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              position: "relative",
+            }}
+            onClick={() => {
+              setShowActDropdown(!showActDropdown);
+              setShowOrgDropdown(false);
+              setShowAEventsDropdown(false);
+              setShowAdminsDropdown(false);
+              setShowLegDropdown(false);
+              setShowMoreDropdown(false);
             }}
           >
-            Recent Activity
+            Activites
+            <RiArrowDropDownLine size={25} />
           </span>
+          {showActDropdown && (
+            <div className="mobile-nav__dropdown">
+              <ul>
+                <li>
+                  <NavLink
+                    to="/recent-act"
+                    className={
+                      pathname === "/recent-act"
+                        ? "mobile-nav__active"
+                        : "mobile-nav__link"
+                    }
+                    style={{ fontSize: "18px" }}
+                  >
+                    Recent Activites
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/past-act"
+                    className={
+                      pathname === "/past-act"
+                        ? "mobile-nav__active"
+                        : "mobile-nav__link"
+                    }
+                    style={{ fontSize: "18px" }}
+                  >
+                    Past Activities
+                  </NavLink>
+                </li>
+                
+              </ul>
+            </div>
+          )}
         </NavLink>
+        
+      
         <NavLink
           to="#"
           className={
@@ -263,6 +317,7 @@ const MobileNav = () => {
               setShowAdminsDropdown(false);
               setShowLegDropdown(false);
               setShowMoreDropdown(false);
+              setShowActDropdown(false);
             }}
           >
             Events
@@ -418,6 +473,7 @@ const MobileNav = () => {
               setShowAEventsDropdown(false);
               setShowAdminsDropdown(false);
               setShowLegDropdown(false);
+              setShowActDropdown(false);
             }}
           >
             More
@@ -530,6 +586,7 @@ const MobileNav = () => {
                 setShowAEventsDropdown(false);
                 setShowLegDropdown(false);
                 setShowMoreDropdown(false);
+                setShowActDropdown(false);
               }}
               style={{
                 display: "flex",
