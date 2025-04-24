@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./RequestReceived.module.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import AuthContext from "../../store/auth-context";
 import toast from "react-hot-toast";
 import { ImCross, ImCheckmark } from "react-icons/im";

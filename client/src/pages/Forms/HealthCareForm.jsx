@@ -29,7 +29,7 @@ const HealthCareForm = () => {
   return (
     <>
       {/* <Navbar /> */}
-      <main style={{ paddingTop: "150px" }} className={styles.body}>
+      <main style={{ paddingTop: "125px" }} className={styles.body}>
         <section className={styles.section}>
           <h1>Medical Help</h1>
 

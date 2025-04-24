@@ -43,7 +43,6 @@ import VerifyCode from "../pages/VerifyCode/VerifyCode";
 import Muskan from "../pages/Muskan/Muskan.jsx";
 import GE from "../pages/GE/GE.jsx";
 import Article from "../pages/Article/Article.jsx";
-import ConvertUrl from "../pages/ConvertUrl/ConvertUrl";
 import AddEventVolunteersData from "../pages/AddEventVolunteersData/AddEventVolunteersData";
 import EventVolunteersData from "../pages/EventVolunteersData/EventVolunteersData";
 import UtsavAyojan from "../pages/UtsavAyojan/UtsaavAyojan.jsx";
@@ -52,6 +51,7 @@ import BecomeSponsor from "../pages/Forms/BecomeSponsor.jsx";
 import HealthCareForm from "../pages/Forms/HealthCareForm.jsx";
 import VolunteersData from "../pages/VolunteersData/VolunteersData.jsx";
 import EventVolunteers from "../pages/EventVolunteers/EventVolunteers.jsx";
+import PastActivities from "../pages/PastActivities/PastActivities.jsx";
 
 // Layout
 import Layout from "../components/Layout.jsx";
@@ -115,7 +115,8 @@ const AppRoutes = () => {
       <Route path="/RTE" element={<Layout><RTE /></Layout>} />
       <Route path="/volunteers" element={<Layout><Volunteers /></Layout>} />
       <Route path="/event-volunteers" element={<Layout><EventVolunteers /></Layout>} />
-      <Route path="/events" element={<Layout><Events /></Layout>} />
+      <Route path="/recent-act" element={<Layout><Events /></Layout>} />
+      <Route path="/past-act" element={<Layout><PastActivities /></Layout>} />
       <Route path="/article" element={<Layout><Article /></Layout>} />
       <Route path="/constitution" element={<Layout><Constitution /></Layout>} />
       <Route path="/request-for-certificate" element={<Layout><RequestForCertificate /></Layout>} />

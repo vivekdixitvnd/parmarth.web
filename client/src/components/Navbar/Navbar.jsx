@@ -20,6 +20,7 @@ const Navbar = () => {
   const [showEventsDropdown, setShowAEventsDropdown] = useState(false);
   const [showOrgDropdown, setShowOrgDropdown] = useState(false);
   const [showLegDropdown, setShowLegDropdown] = useState(false);
+  const [showActDropdown, setShowActDropdown] = useState(false);
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -76,7 +77,9 @@ const Navbar = () => {
 
         <NavLink
           to="#"
-          className={pathname.startsWith("/organization") ? styles.active : styles.link}
+          className={
+            pathname.startsWith("/organization") ? styles.active : styles.link
+          }
           style={{ position: "relative" }}
           onMouseEnter={() => setShowOrgDropdown(true)}
           onMouseLeave={() => setShowOrgDropdown(false)}
@@ -92,7 +95,9 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/governing"
-                    className={pathname === "/governing" ? styles.active : styles.link}
+                    className={
+                      pathname === "/governing" ? styles.active : styles.link
+                    }
                     style={{ fontSize: "18px" }}
                   >
                     Governing Council
@@ -102,7 +107,9 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/advisory"
-                    className={pathname === "/advisory" ? styles.active : styles.link}
+                    className={
+                      pathname === "/advisory" ? styles.active : styles.link
+                    }
                     style={{ fontSize: "18px" }}
                   >
                     Advisory Council
@@ -112,7 +119,9 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/executive"
-                    className={pathname === "/executive" ? styles.active : styles.link}
+                    className={
+                      pathname === "/executive" ? styles.active : styles.link
+                    }
                     style={{ fontSize: "18px" }}
                   >
                     Executive Council
@@ -127,8 +136,16 @@ const Navbar = () => {
                 >
                   <NavLink
                     to="#"
-                    className={pathname.startsWith("/legacy") ? styles.active : styles.link}
-                    style={{ fontSize: "18px", display: "flex", alignItems: "center" }}
+                    className={
+                      pathname.startsWith("/legacy")
+                        ? styles.active
+                        : styles.link
+                    }
+                    style={{
+                      fontSize: "18px",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
                   >
                     Legacy Executive Council
                     <RiArrowDropDownLine size={25} />
@@ -154,7 +171,11 @@ const Navbar = () => {
                         <li>
                           <NavLink
                             to="/presidents"
-                            className={pathname === "/presidents" ? styles.active : styles.link}
+                            className={
+                              pathname === "/presidents"
+                                ? styles.active
+                                : styles.link
+                            }
                             style={{ fontSize: "18px" }}
                           >
                             Past Presidents
@@ -163,7 +184,9 @@ const Navbar = () => {
                         <li>
                           <NavLink
                             to="/vp"
-                            className={pathname === "/vp" ? styles.active : styles.link}
+                            className={
+                              pathname === "/vp" ? styles.active : styles.link
+                            }
                             style={{ fontSize: "18px" }}
                           >
                             Past Vice President
@@ -179,6 +202,57 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
+          to="#"
+          className={pathname === "#" ? styles.active : styles.link}
+          style={{ position: "relative" }}
+          onMouseEnter={() => setShowActDropdown(!showActDropdown)}
+          onMouseLeave={() => setShowActDropdown(!showActDropdown)}
+        >
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            Activities
+            <RiArrowDropDownLine size={25} />
+          </span>
+          {showActDropdown && (
+            <div className={styles.dropdown}>
+              <ul>
+                <li>
+                  <NavLink
+                    to="/recent-act"
+                    className={
+                      pathname === "/recent-act" ? styles.active : styles.link
+                    }
+                    style={{ fontSize: "18px" }}
+                  >
+                    Recent Activites
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/past-act"
+                    className={
+                      pathname === "/past-act"
+                        ? styles.active
+                        : styles.link
+                    }
+                    style={{ fontSize: "18px" }}
+                  >
+                    Past Activities
+                  </NavLink>
+                </li>
+               
+                
+              </ul>
+            </div>
+          )}
+        </NavLink>
+
+        {/* <NavLink
           to="/events"
           className={pathname === "/events" ? styles.active : styles.link}
         >
@@ -192,7 +266,7 @@ const Navbar = () => {
           >
             Recent Activity
           </span>
-        </NavLink>
+        </NavLink> */}
         <NavLink
           to="#"
           className={pathname === "#" ? styles.active : styles.link}
