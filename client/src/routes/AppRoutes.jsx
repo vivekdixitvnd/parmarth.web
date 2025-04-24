@@ -87,7 +87,7 @@ const AppRoutes = () => {
           </Layout>
         }
       />
-      {!authCtx.isLoggedIn && <Route path="/login" element={<Login />} />}
+      {!authCtx.isLoggedIn && <Route path="/login" element={<Layout><Login /></Layout>} />}
       {!authCtx.isLoggedIn && <Route path="/verify-code" element={<VerifyCode />} />}
 
       <Route path="/about" element={<Layout><About /></Layout>} />
