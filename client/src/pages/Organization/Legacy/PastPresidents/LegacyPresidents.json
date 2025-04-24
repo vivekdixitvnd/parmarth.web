@@ -68,5 +68,15 @@
     "linkedin": "",
     "email": "priyanshujaiswal42@gmail.com",
     "imgSrc": "/img/PastPresident/priyanshu.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Ankit Pandey",
+    "designation": "President, Parmarth",
+    "department": "ME, Batch of 2018",
+    "message": "हमारा उद्देश्य सिर्फ मदद करना नहीं, बल्कि यह सुनिश्चित करना है कि समाज का कोई भी व्यक्ति पीछे न छूटे। परमार्थ की यही भावना मेरे दिल को छूती है।\n\n - अंकित पांडेय",
+    "linkedin": "",
+    "email": "ankit.iet1@gmail.com",
+    "imgSrc": "/img/PastPresident/ankit.jpg"
   }
 ]
