@@ -25,8 +25,8 @@ const getEventVolunteersData = async (req, res, next) => {
 const getEventVolunteerDataByAcademicYear = async (req, res, next) => {
   const academicYear = req.params.academicYear;
   try {
-    const rteData = await EventVolunteer.find({ academicYear: academicYear });
-    res.status(200).json(rteData);
+    const eventVolunteers = await EventVolunteer.find({ academicYear: academicYear });
+    res.status(200).json(eventVolunteers);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -65,7 +65,7 @@ const addEventVolunteerDataViaExcel = async (req, res, next) => {
         if (cell[0] === "!") continue;
         const col = cell.match(/[A-Z]+/)[0];
         const row = parseInt(cell.match(/\d+/)[0]);
-        const value = worksheet[cell].v.toString().trim().toLowerCase();
+        const value = worksheet[cell].v.toString().trim();
 
         if (row === 1) {
           headers[col] = camelCase(value); // Set header names as keys

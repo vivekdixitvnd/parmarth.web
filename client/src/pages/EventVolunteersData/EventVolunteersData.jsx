@@ -5,19 +5,18 @@ import Footer from "../../components/Footer/Footer";
 import toast from "react-hot-toast";
 import AuthContext from "../../store/auth-context";
 import backendUrl from "../../backendUrl";
+import { useParams } from "react-router-dom";
 
 const EventVolunteersData = () => {
   const authCtx = useContext(AuthContext);
+  const { academicYear } = useParams();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const getVolunteersData = async () => {
+    const getVolunteersDataByYear = async () => {
       setIsLoading(true);
-
-      await fetch(`${backendUrl}/getEventVolunteersData`, {
-        headers: { Authorization: "Bearer " + authCtx.token },
-      })
+      await fetch(`${backendUrl}/getEventVolunteersData/` + academicYear)
         .then((res) => {
           if (res.status !== 200) {
             return [];
@@ -26,16 +25,41 @@ const EventVolunteersData = () => {
         })
         .then((res) => {
           if (res === []) {
-            toast.error("Failed to load Volunteers Data");
+            toast.error("Failed to load Student Data");
           }
           setData(res);
         })
-        .catch((err) => console.log(err));
-
+        .catch((err) => toast.error(err.messsage));
       setIsLoading(false);
     };
-    getVolunteersData();
-  }, []);
+    getVolunteersDataByYear();
+  }, [academicYear]);
+
+  // useEffect(() => {
+  //   const getVolunteersData = async () => {
+  //     setIsLoading(true);
+
+  //     await fetch(`${backendUrl}/getEventVolunteersData`, {
+  //       headers: { Authorization: "Bearer " + authCtx.token },
+  //     })
+  //       .then((res) => {
+  //         if (res.status !== 200) {
+  //           return [];
+  //         }
+  //         return res.json();
+  //       })
+  //       .then((res) => {
+  //         if (res === []) {
+  //           toast.error("Failed to load Volunteers Data");
+  //         }
+  //         setData(res);
+  //       })
+  //       .catch((err) => console.log(err));
+
+  //     setIsLoading(false);
+  //   };
+  //   getVolunteersData();
+  // }, []);
   return (
     <>
       {/* <Navbar /> */}
