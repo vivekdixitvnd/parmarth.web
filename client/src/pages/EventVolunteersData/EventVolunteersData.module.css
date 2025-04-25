@@ -1,11 +1,16 @@
 .body {
   padding: 2rem;
+  overflow-x: hidden;
+}
+
+.body > h1 {
+  text-align: center;
 }
 
 .body > div {
-  max-width: 100%;
+  max-width: max-content;
   margin: 0 auto;
-  overflow-x: auto; /* Scroll enable kar diya */
+  overflow-x: hidden; /* Allows scrolling */
 }
 
 .total {
@@ -13,19 +18,34 @@
   margin-bottom: 1rem;
   color: #535353;
 }
+.search {
+  width: 35%;
+  /* position: relative; */
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+  
+  }
+  
 
-table {
-  width: 100%;
-  min-width: 900px; /* Ensures table doesn't shrink too much */
+.tableContainer {
+  margin-top: 10px;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  max-width: 100%;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
   border-collapse: collapse;
 }
 
 th,
 td {
-  border: 1px solid black;
   text-align: center;
-  padding: 0.5rem;
-  white-space: nowrap; /* Text wrapping avoid karne ke liye */
+  padding: 0.5rem 1rem;
 }
 
 th {
@@ -33,40 +53,22 @@ th {
   color: #fff;
 }
 
-/* Column-Specific Width Adjustments */
-.sNo {
-  width: 50px; /* S. No. ke liye */
+.school{
+  width: 560px;
+} 
+
+.sno {
+  width: 50px;
 }
 
 .name {
-  width: 180px; /* Max name length ke hisaab se */
+  width: 180px;
 }
 
-.course {
-  width: 200px; /* Course + Branch */
+.class {
+  width: 150px;
 }
 
-.event {
-  width: 90px;
-}
-
-.rollNumber {
-  width: 130px; /* 13-digit Roll Number ke hisaab se */
-}
-
-.post {
-  width: 100px;
-}
-
-.academic {
-  width: 110px;
-}
-
-.certno {
-  width: 200px;
-}
-
-/* Loader */
 .loader {
   border: 10px solid #ccc;
   border-radius: 50%;
@@ -77,6 +79,7 @@ th {
   animation: spin 2s linear infinite;
   margin: 2rem auto;
 }
+
 
 @-webkit-keyframes spin {
   0% {

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Volunteers.module.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import toast from "react-hot-toast";
 import backendUrl from "../../backendUrl";
 import Card from "../../components/Card/Card"; // NEW IMPORT
@@ -59,7 +57,7 @@ const Volunteers = () => {
   return (
     <>
       {/* <Navbar /> */}
-      <div style={{ paddingTop: "150px" }} className={styles.body}>
+      <div style={{ paddingTop: "125px" }} className={styles.body}>
         <div>
           <div className={styles.header}>
           <h1 id="volunteers-data">Registered Volunteers in PARMARTH</h1>

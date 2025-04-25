@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./EventVolunteers.module.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import toast from "react-hot-toast";
 import backendUrl from "../../backendUrl";
 import Card from "../../components/Card/Card"; // NEW IMPORT
@@ -15,7 +13,7 @@ const EventVolunteers = () => {
   const [sessions, setsessions] = useState([]);
 
   useEffect(() => {
-    const getVolunteersData = async () => {
+    const getEventVolunteersData = async () => {
       setIsLoading(true);
 
       try {
@@ -37,7 +35,7 @@ const EventVolunteers = () => {
         setIsLoading(false);
       }
     };
-    getVolunteersData();
+    getEventVolunteersData();
   },[]);
 
   // Filter data based on search term
@@ -59,7 +57,7 @@ const EventVolunteers = () => {
   return (
     <>
       {/* <Navbar /> */}
-      <div style={{ paddingTop: "150px" }} className={styles.body}>
+      <div style={{ paddingTop: "125px" }} className={styles.body}>
         <div>
           <div className={styles.header}>
           <h1>Registered Volunteers at MUSKAAN in PARMARTH</h1>
@@ -84,7 +82,7 @@ const EventVolunteers = () => {
                   key={index}
                   to={`/event-volunteers-data/${academicYear}`}
                   className={styles["card"]}
-                  onClick={() => localStorage.setItem("session", academicYear)}
+                  onClick={() => localStorage.setItem("academicYear", academicYear)}
                 >
                   <Card title={`Volunteers at Muskaan`}  value={academicYear} />
                 </Link>
