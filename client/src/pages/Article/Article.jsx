@@ -40,7 +40,7 @@ const Articles = () => {
   return (
     <>
       {/* <Navbar /> */}
-      <div style={{ paddingTop: "150px" }} className={styles.body}>
+      <div style={{ paddingTop: "125px" }} className={styles.body}>
         <h1>Articles</h1>
         <hr className={styles.hr} />
         <Masonry
