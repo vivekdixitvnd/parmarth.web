@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import styles from "./Events.module.css";
 import Masonry from "react-masonry-css";
 import backendUrl from "../../backendUrl";
@@ -40,7 +38,7 @@ const Events = () => {
   return (
     <>
       {/* <Navbar /> */}
-      <div style={{ paddingTop: "150px" }} className={styles.body}>
+      <div style={{ paddingTop: "125px" }} className={styles.body}>
         <div className={styles["page-desc"]}>
           It's not the events that we create but the meaning that we attach to
           those events. At परमार्थ, we organise a set of events from time to
