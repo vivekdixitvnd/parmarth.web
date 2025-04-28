@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./VolunteersData.module.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import backendUrl from "../../backendUrl";
@@ -10,7 +8,7 @@ const VolunteersData = () => {
   const [data, setData] = useState([]);
   const { session } = useParams();
   const [searchTerm, setSearchTerm] = useState("");
-    const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -36,25 +34,25 @@ const VolunteersData = () => {
   }, []);
 
   // Filter data based on search term
-    useEffect(() => {
-      if (searchTerm.trim() === "") {
-        setFilteredData(data);
-      } else {
-        const filtered = data.filter((volunteer) =>
-          Object.values(volunteer).some(
-            (value) =>
-              value &&
-              value.toString().toLowerCase().includes(searchTerm.toLowerCase()),
-          ),
-        );
-        setFilteredData(filtered);
-      }
-    }, [searchTerm, data]);
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      setFilteredData(data);
+    } else {
+      const filtered = data.filter((volunteer) =>
+        Object.values(volunteer).some(
+          (value) =>
+            value &&
+            value.toString().toLowerCase().includes(searchTerm.toLowerCase()),
+        ),
+      );
+      setFilteredData(filtered);
+    }
+  }, [searchTerm, data]);
 
   return (
     <>
       {/* <Navbar /> */}
-      <div style={{ paddingTop: "150px" }} className={styles.body}>
+      <div style={{ paddingTop: "125px" }} className={styles.body}>
         <div>
           <div className={styles.header}>
             <div className={styles.total}>
