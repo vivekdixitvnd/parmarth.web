@@ -56,6 +56,7 @@ import PastActivities from "../pages/PastActivities/PastActivities.jsx";
 
 // Layout
 import Layout from "../components/Layout.jsx";
+import ChangePassword from "../components/ChangePassword/ChangePassword.jsx";
 
 const AppRoutes = () => {
   const authCtx = useContext(AuthContext);
@@ -130,6 +131,12 @@ const AppRoutes = () => {
       <Route path="/:category/:id" element={<Layout><Post /></Layout>} />
 
       {/* Protected Routes */}
+      {authCtx.isLoggedIn && (
+        <>
+          <Route path="/change-pass" element={<Layout><ChangePassword/></Layout>} />
+        </>
+      )}
+
       {authCtx.isLoggedIn && (userType === "master" || userType === "media") && (
         <>
           <Route path="/add-rte-data" element={<Layout><AddRteData /></Layout>} />

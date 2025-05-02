@@ -247,17 +247,13 @@ const Navbar = () => {
                   <NavLink
                     to="/past-act"
                     className={
-                      pathname === "/past-act"
-                        ? styles.active
-                        : styles.link
+                      pathname === "/past-act" ? styles.active : styles.link
                     }
                     style={{ fontSize: "18px" }}
                   >
                     Past Activities
                   </NavLink>
                 </li>
-               
-                
               </ul>
             </div>
           )}
@@ -504,18 +500,28 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                 ) : (
-                  <li style={{ marginTop: "1.5rem" }}>
-                    <NavLink
-                      to="/"
-                      className={styles.login}
-                      onClick={() => {
-                        authCtx.logout();
-                        toast.success("Successfully logged out");
-                      }}
-                    >
-                      Logout
-                    </NavLink>
-                  </li>
+                  <>
+                    <li style={{ marginTop: "1.5rem" }}>
+                      <NavLink
+                        to="/"
+                        className={styles.login}
+                        onClick={() => {
+                          authCtx.logout();
+                          toast.success("Successfully logged out");
+                        }}
+                      >
+                        Logout
+                      </NavLink>
+                    </li>
+                    <li style={{ marginTop: "1.5rem" }}>
+                      <NavLink
+                        to="/change-pass"
+                        className={styles.login}
+                      >
+                        Change Password
+                      </NavLink>
+                    </li>
+                  </>
                 )}
               </ul>
             </div>
