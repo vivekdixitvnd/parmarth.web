@@ -63,10 +63,10 @@ const InfiniteScroll = ({ images }) => {
 
 const Classes = () => {
   const images = [
-    "/img/Classes/1.png",
-    "/img/Classes/2.png",
-    "/img/Classes/3.png",
-    "/img/Classes/4.png",
+    "/img/Classes/11.png",
+    "/img/Classes/22.png",
+    "/img/Classes/33.png",
+    "/img/Classes/44.png",
     "/img/Classes/5.png",
     "/img/Classes/6.png",
     "/img/Classes/7.png",
@@ -93,6 +93,7 @@ const Classes = () => {
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Group 0</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               For complete beginners who have never been exposed to reading or writing before.
             </p>
@@ -100,6 +101,7 @@ const Classes = () => {
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Group 0+</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               Includes children who know basic alphabets, numbers, and can do simple additions or subtractions.
             </p>
@@ -107,6 +109,7 @@ const Classes = () => {
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Group 1</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               For kids who are at 3rd-grade level. They understand multiplication, division, and can read and write simple sentences.
             </p>
@@ -114,6 +117,7 @@ const Classes = () => {
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Group JNV</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               Focused on preparing students from classes 4 to 8 for the Jawahar Navodaya Vidyalaya entrance exams with competitive resources.
             </p>
@@ -121,6 +125,7 @@ const Classes = () => {
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Group 2</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               For students from class 9 to 12, receiving advanced academic support and guidance tailored to their school curriculum.
             </p>
@@ -128,6 +133,7 @@ const Classes = () => {
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Group GE (Girl Education)</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               A special group for girls who are unable to attend school due to family or social limitations, aiming to empower them through basic education.
             </p>
@@ -138,9 +144,11 @@ const Classes = () => {
         {/* Tools in LT Section */}
         <div className={styles.section}>
           <h1 className={styles.heading}>Tools Used in LT Classes</h1>
+          
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Books</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               Customized books are created for every group based on their level. These books ensure continuity of learning despite different volunteer rotations.
             </p>
@@ -148,6 +156,7 @@ const Classes = () => {
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Stationery</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               Essential supplies like slates, sketch pens, pencils, and notebooks are provided from club funds to support learning.
             </p>
@@ -155,6 +164,7 @@ const Classes = () => {
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Homework</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               Daily homework is assigned and checked the next day to ensure consistency and revision.
             </p>
@@ -162,6 +172,7 @@ const Classes = () => {
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Projectors and Speakers</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               Audio-visual learning using projectors enhances understanding—used for storytelling in junior groups and science topics in senior ones.
             </p>
@@ -169,6 +180,7 @@ const Classes = () => {
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Learn with Fun</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               Fun and creative activities are held every Sunday to make learning enjoyable and more effective.
             </p>
@@ -176,6 +188,7 @@ const Classes = () => {
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Special Sessions</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               Focused sessions on cleanliness, career awareness, and personal development are conducted regularly.
             </p>
@@ -183,6 +196,7 @@ const Classes = () => {
 
           <div className={styles.subsection}>
             <h2 className={styles.subheading}>Tests</h2>
+            <img src="/img/Classes/1.png" alt="Group 0" className={styles.sectionImage} />
             <p className={styles.text}>
               Regular assessments are conducted to track progress, and top performers are rewarded to keep them motivated.
             </p>

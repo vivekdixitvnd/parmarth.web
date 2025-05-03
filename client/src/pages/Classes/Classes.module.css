@@ -28,6 +28,16 @@
   border-radius: 8px;
 }
 
+.sectionImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 16px;
+  margin: 16px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
 .subheading {
   font-size: 1.25rem;
   color: #007bff;

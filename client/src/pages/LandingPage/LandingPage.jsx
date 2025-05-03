@@ -4,8 +4,9 @@ import styles from "./LandingPage.module.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import TaskCard from "../../components/TaskCard/TaskCard";
-import Footer from "../../components/Footer/Footer";
 import HelpCard from "../../components/HelpCard/HelpCard";
+import { Volume2, VolumeX } from 'lucide-react';
+
 
 import { useState, useEffect, useRef } from 'react';
 
@@ -51,10 +52,22 @@ const Counter = ({ end, duration = 2000 }) => {
 };
 
 const LandingPage = () => {
+
+  const videoRef = useRef(null);
+  const [muted, setMuted] = useState(true);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setMuted(videoRef.current.muted);
+      videoRef.current.play(); // ensures it plays after interaction
+    }
+  };
   return (
     <>
       {/* <Navbar /> */}
       <div style={{ paddingTop: "150px" }} id="parallax" className={styles.parallax}>
+        
         <div className={styles.parmarth} id="parallax">
           परमार्थ<span style={{ color: "#277bc0" }}>.</span>
         </div>
@@ -106,11 +119,27 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <img
+          {/* <img
             src="img/children-studying.jpeg"
             alt="children-studying"
             className={styles.children}
-          />
+          /> */}
+          <div className={styles.childrenWrapper}>
+  <video
+    className={styles.children}
+    src="img/intro.mp4"
+    autoPlay
+    muted={muted}
+    loop
+    playsInline
+    ref={videoRef}
+  />
+  <button className={styles.unmuteButton} onClick={toggleMute}>
+  {muted ? <VolumeX size={20} color="#fff" /> : <Volume2 size={20} color="#fff" />}
+</button>
+</div>
+
+
         </div>
 
 

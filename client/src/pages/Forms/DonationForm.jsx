@@ -21,7 +21,7 @@ const DonationForm = () => {
   };
 
   // Initialize the custom useForm hook
-  const { formData, submitStatus, handleChange, resetForm, handleSubmit } =
+  const { formData, submitStatus, handleChange, handleClear, handleSubmit } =
     useForm(initialState, backend_endpoint);
 
   const handleLocalChange = (e) => {
@@ -40,7 +40,7 @@ const DonationForm = () => {
   return (
     <>
       {/* <Navbar /> */}
-      <main style={{ paddingTop: "150px" }} className={styles.body}>
+      <main style={{ paddingTop: "125px" }} className={styles.body}>
         <section className={styles.section}>
           <h1>Donate to Parmarth</h1>
           <p className={styles.introText}>
