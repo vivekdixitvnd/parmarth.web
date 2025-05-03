@@ -421,3 +421,34 @@ body > * {
     border-radius: 8px;
   }
 }
+
+.children {
+  height: 274px;
+    margin: 0px 1rem;
+    border-radius: 20px;
+    object-fit: cover;
+    width: 100%;
+    display: block;
+}
+
+.childrenWrapper {
+  padding-top: 100px;
+  position: relative;
+  display: inline-block;
+}
+
+.unmuteButton {
+  position: absolute;
+  top: 100px;
+    right: -16px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  padding: 8px;
+  border-radius: 53%;
+  cursor: pointer;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6%;
+}

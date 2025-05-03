@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./BloodDonation.module.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const InfiniteScroll = ({ images }) => {
@@ -76,7 +74,7 @@ const BloodDonation = () => {
   return (
     <>
       {/* <Navbar /> */}
-      <div style={{ paddingTop: "150px" }} className={styles.body}>
+      <div style={{ paddingTop: "125px" }} className={styles.body}>
         <div className={styles.section}>
           <InfiniteScroll images={images} />
         </div>

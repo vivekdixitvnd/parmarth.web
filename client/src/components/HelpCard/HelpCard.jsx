@@ -30,7 +30,7 @@ const HelpCard = ({
         <div className={styles.divider}></div>
         <p className={styles.description}>{description}</p>
         <div className={styles.buttonContainer}>
-          <a href={`https://parmarth-web.vercel.app${primaryBtnUrl}`} className={styles.actionButton}>
+        <a href={primaryBtnUrl} className={styles.actionButton}>
             {primaryBtnText}
           </a>
           <a href={secondaryBtnUrl} className={styles.secondaryButton}>
