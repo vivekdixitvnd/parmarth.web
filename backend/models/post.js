@@ -1,6 +1,5 @@
 import mongoose, { Schema } from "mongoose";
 
-
 const postSchema = new Schema({
   title: {
     type: String,
@@ -21,16 +20,13 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
-  createdAt: {
-    type: String,
-    required: true,
-  },
-  lastUpdated: {
-    type: String,
-    required: true,
-  },
+  createdAt: { type: Date, required: true }, // 🔁 was String
+  lastUpdated: { type: Date, required: true }, // 🔁 was String
 });
 
 const Post = mongoose.model("Post", postSchema);
 
 export default Post;
+
+
+
