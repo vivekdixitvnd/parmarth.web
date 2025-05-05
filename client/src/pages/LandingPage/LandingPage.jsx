@@ -67,7 +67,7 @@ const LandingPage = () => {
     <>
       {/* <Navbar /> */}
       <div style={{ paddingTop: "150px" }} id="parallax" className={styles.parallax}>
-        
+
         <div className={styles.parmarth} id="parallax">
           परमार्थ<span style={{ color: "#277bc0" }}>.</span>
         </div>
@@ -125,19 +125,19 @@ const LandingPage = () => {
             className={styles.children}
           /> */}
           <div className={styles.childrenWrapper}>
-  <video
-    className={styles.children}
-    src="img/intro.mp4"
-    autoPlay
-    muted={muted}
-    loop
-    playsInline
-    ref={videoRef}
-  />
-  <button className={styles.unmuteButton} onClick={toggleMute}>
-  {muted ? <VolumeX size={20} color="#fff" /> : <Volume2 size={20} color="#fff" />}
-</button>
-</div>
+            <video
+              className={styles.children}
+              src="img/intro.mp4"
+              autoPlay
+              muted={muted}
+              loop
+              playsInline
+              ref={videoRef}
+            />
+            <button className={styles.unmuteButton} onClick={toggleMute}>
+              {muted ? <VolumeX size={20} color="#fff" /> : <Volume2 size={20} color="#fff" />}
+            </button>
+          </div>
 
 
         </div>

@@ -29,6 +29,7 @@
     "nodemailer-sendgrid-transport": "^0.2.0",
     "path": "^0.12.7",
     "pdfkit": "^0.13.0",
+    "react-icons": "^5.5.0",
     "sharp": "^0.34.1",
     "svg-to-pdfkit": "^0.1.8",
     "svg.js": "^2.7.1",

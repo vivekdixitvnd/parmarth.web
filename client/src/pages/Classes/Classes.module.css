@@ -20,26 +20,55 @@
   font-weight: 600;
 }
 
+@media (max-width: 600px) {  /* 768 ki jagah 600 kar do */
+  .subsection {
+    flex-direction: column;
+  }
+}
+
+.subheading1{
+  font-size: 1.5rem;
+  color: #007bff;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  text-align: left;
+}
+
 .subsection {
-  margin-bottom: 2rem;
-  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+  flex-direction: column;
   border-left: 5px solid #007bff;
   background-color: #f1f8ff;
-  border-radius: 8px;
 }
 
 .sectionImage {
-  width: 100%;
-  max-width: 600px;
+  width: 400px;
   height: auto;
-  border-radius: 16px;
-  margin: 16px 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   object-fit: cover;
 }
 
+.leftAligned {
+  flex-direction: row;
+}
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.rightAligned {
+  flex-direction: row-reverse;
+} 
+
 .subheading {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: #007bff;
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -48,7 +77,7 @@
 .text {
   font-size: 1rem;
   line-height: 1.6;
-  color: #444;
+  max-width: 500px;
 }
 
 .hr {

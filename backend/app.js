@@ -31,8 +31,9 @@ import {
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  // origin: 'http://localhost:5173',
   // origin: 'https://parmarth-web.vercel.app',
+  origin: 'https://parmarth-iet.onrender.com',
   credentials: true,
 }));
 app.options('*', cors()); // handle preflight for all routes
