@@ -1,7 +1,11 @@
 .body {
-    padding: 2rem;
-    overflow-x: hidden;
-  }
+  padding-top: 125px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  text-align: center;
+  background-color: #f8f9fa;
+}
   
   .body > h1 {
     text-align: center;
