@@ -21,7 +21,7 @@ const DonationForm = () => {
   };
 
   // Initialize the custom useForm hook
-  const { formData, submitStatus, handleChange, handleClear, handleSubmit } =
+  const { formData, submitStatus, handleChange, handleSubmit } =
     useForm(initialState, backend_endpoint);
 
   const handleLocalChange = (e) => {
@@ -147,7 +147,7 @@ const DonationForm = () => {
               <button
                 type="button"
                 className={styles.clearButton}
-                onClick={resetForm}
+                // onClick={resetForm}sx
               >
                 Clear Form
               </button>

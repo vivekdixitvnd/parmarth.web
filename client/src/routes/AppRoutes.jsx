@@ -47,12 +47,12 @@ import Article from "../pages/Article/Article.jsx";
 import AddEventVolunteersData from "../pages/AddEventVolunteersData/AddEventVolunteersData";
 import EventVolunteersData from "../pages/EventVolunteersData/EventVolunteersData";
 import UtsavAyojan from "../pages/UtsavAyojan/UtsaavAyojan.jsx";
-import DonationForm from "../pages/Forms/DonationForm.jsx";
 import BecomeSponsor from "../pages/Forms/BecomeSponsor.jsx";
 import HealthCareForm from "../pages/Forms/HealthCareForm.jsx";
 import VolunteersData from "../pages/VolunteersData/VolunteersData.jsx";
 import EventVolunteers from "../pages/EventVolunteers/EventVolunteers.jsx";
 import PastActivities from "../pages/PastActivities/PastActivities.jsx";
+import DonationForm from "../pages/Forms/DonationForm.jsx";
 
 // Layout
 import Layout from "../components/Layout.jsx";
@@ -93,7 +93,7 @@ const AppRoutes = () => {
       {!authCtx.isLoggedIn && <Route path="/verify-code" element={<VerifyCode />} />}
 
       <Route path="/about" element={<Layout><About /></Layout>} />
-      <Route path="/DonationForm" element={<Layout><DonationForm /></Layout>} />
+      <Route path="/donationForm" element={<Layout><DonationForm /></Layout>} />
       <Route path="/BecomeSponsor" element={<Layout><BecomeSponsor /></Layout>} />
       <Route path="/HealthCareForm" element={<Layout><HealthCareForm /></Layout>} />
       <Route path="/classes" element={<Layout><Classes /></Layout>} />
