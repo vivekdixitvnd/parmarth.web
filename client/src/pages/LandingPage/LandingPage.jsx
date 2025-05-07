@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../../components/Navbar/Navbar";
 import styles from "./LandingPage.module.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -176,7 +175,7 @@ const LandingPage = () => {
                   description="Happiness doesn't result from what we get, but from what we give."
                   cardClass="donationCard"
                   primaryBtnText="Donate Now"
-                  primaryBtnUrl="/DonationForm"
+                  primaryBtnUrl="/donationForm"
                   primaryBtnClass="donationPrimaryBtn"
                   secondaryBtnText="Why Donate?"
                   secondaryBtnClass="donationSecondaryBtn"
