@@ -35,7 +35,7 @@ const Footer = () => {
             <MdEmail className={styles.icon} />
             <div className={styles.details}>
               <div className={styles.label}>Email</div>
-              <a href="mailto:parmarth@ietlucknow.ac.in">parmarth@ietlucknow.ac.in</a>
+              <a href="mailto:parmarth@ietlucknow.ac.in" className={styles.linke}>parmarth@ietlucknow.ac.in</a>
             </div>
           </div>
         </div>
