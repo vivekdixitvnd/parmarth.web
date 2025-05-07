@@ -106,9 +106,9 @@ const MobileNav = () => {
               <ul>
                 <li>
                   <NavLink
-                    to="/founders"
+                    to="/founding-members"
                     className={
-                      pathname === "/founders"
+                      pathname === "/founding-members"
                         ? "mobile-nav__active"
                         : "mobile-nav__link"
                     }
@@ -746,6 +746,15 @@ const MobileNav = () => {
               onClick={() => navigate("/create-post")}
             >
               CREATE POST
+            </button>
+          )}
+        {isLoggedIn &&
+          pathname !== "/change-pass" && (
+            <button
+              className="mobile-nav__create-post"
+              onClick={() => navigate("/change-pass")}
+            >
+              CHANGE PASSWORD
             </button>
           )}
         {!isLoggedIn ? (

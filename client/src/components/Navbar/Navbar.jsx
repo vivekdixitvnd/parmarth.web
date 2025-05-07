@@ -94,9 +94,9 @@ const Navbar = () => {
               <ul>
                 <li>
                   <NavLink
-                    to="/founders"
+                    to="/founding-members"
                     className={
-                      pathname === "/founders" ? styles.active : styles.link
+                      pathname === "/founding-members" ? styles.active : styles.link
                     }
                     style={{ fontSize: "18px" }}
                   >
