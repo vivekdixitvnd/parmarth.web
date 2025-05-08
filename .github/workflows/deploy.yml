@@ -25,5 +25,5 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
           REMOTE_HOST: ${{ secrets.SFTP_HOST }}
           REMOTE_USER: ${{ secrets.SFTP_USERNAME }}
-          TARGET: /home/parmarth/public_html/
-          SOURCE: ./client/dist/
+          TARGET: /home/parmarth/public_html
+          SOURCE: ./client/dist
