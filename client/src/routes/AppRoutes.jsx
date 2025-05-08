@@ -99,7 +99,7 @@ const AppRoutes = () => {
       <Route path="/classes" element={<Layout><Classes /></Layout>} />
       <Route path="/governing" element={<Layout><Governing/></Layout>} />
       <Route path="/advisory" element={<Layout><Advisory/></Layout>} />
-      <Route path="/founders" element={<Layout><Founder/></Layout>} />
+      <Route path="/founding-members" element={<Layout><Founder/></Layout>} />
       <Route path="/executive" element={<Layout><Executive/></Layout>} />
       <Route path="/presidents" element={<Layout><LegacyPresidents/></Layout>} />
       <Route path="/vp" element={<Layout><LegacyVicePresidents/></Layout>} />
