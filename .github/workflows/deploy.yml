@@ -19,12 +19,14 @@ jobs:
           npm install
           npm run build
 
-      - name: Deploy via SFTP
-        uses: pressidium/lftp-mirror-action@v1
+      - name: Deploy using FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@v4
         with:
-          host: ${{ secrets.SFTP_HOST }}
-          user: ${{ secrets.SFTP_USERNAME }}
-          pass: ${{ secrets.SFTP_PASSWORD }}
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
           port: ${{ secrets.SFTP_PORT }}
-          localDir: ./client/dist
-          remoteDir: /home/parmarth/public_html
+          protocol: sftp
+          local-dir: ./client/dist
+          server-dir: /home/parmarth/public_html/
+
