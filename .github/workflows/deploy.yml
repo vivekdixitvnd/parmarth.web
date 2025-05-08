@@ -19,14 +19,11 @@ jobs:
           npm install
           npm run build
 
-      - name: Deploy using FTP-Deploy-Action
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy via SFTP
+        uses: easingthemes/ssh-deploy@main
         with:
-          server: ${{ secrets.SFTP_HOST }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          port: ${{ secrets.SFTP_PORT }}
-          protocol: sftp
-          local-dir: ./client/dist
-          server-dir: /home/parmarth/public_html/
-
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.SFTP_HOST }}
+          REMOTE_USER: ${{ secrets.SFTP_USERNAME }}
+          TARGET: /home/parmarth/public_html/
+          SOURCE: ./client/dist/
