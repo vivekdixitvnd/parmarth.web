@@ -30,8 +30,8 @@ jobs:
           localDir: ./client/dist
           remoteDir: /home/parmarth/public_html
           forceSSL: true
-          verifyCertificate: false
-          onlyNewer: true
+          verifyCertificate: true
+          onlyNewer: false
           restoreMTime: true
           reverse: true
           ignoreFile: .lftp_ignore
