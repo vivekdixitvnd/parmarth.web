@@ -94,17 +94,6 @@ const Navbar = () => {
               <ul>
                 <li>
                   <NavLink
-                    to="/founding-members"
-                    className={
-                      pathname === "/founding-members" ? styles.active : styles.link
-                    }
-                    style={{ fontSize: "18px" }}
-                  >
-                    Founding Members
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
                     to="/governing"
                     className={
                       pathname === "/governing" ? styles.active : styles.link
