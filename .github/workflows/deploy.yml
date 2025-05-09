@@ -33,6 +33,5 @@ jobs:
           verifyCertificate: false
           onlyNewer: true
           restoreMTime: true
-          parallel: 2
           reverse: true
           ignoreFile: .lftp_ignore
