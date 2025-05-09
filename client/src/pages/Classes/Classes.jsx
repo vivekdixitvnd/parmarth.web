@@ -91,12 +91,12 @@ const Classes = () => {
           {
             title: 'Group 0',
             text: 'For complete beginners who have never been exposed to reading or writing before.',
-            image: '/img/Classes/11.png',
+            image: '/img/Classes/group0.png',
           },
           {
             title: 'Group 0+',
             text: 'Includes children who know basic alphabets, numbers, and can do simple additions or subtractions.',
-            image: '/img/Classes/22.png',
+            image: '/img/Classes/group0+.png',
           },
           {
             title: 'Group 1',

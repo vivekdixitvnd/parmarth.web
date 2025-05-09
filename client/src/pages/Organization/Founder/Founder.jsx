@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Founder.module.css";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
-import coFounder from "./coFounder.json";
 import founder from "./Founder.json";
 
 const InfoCard = ({ member, isDirector = false }) => (
@@ -28,12 +27,6 @@ const InfoCard = ({ member, isDirector = false }) => (
     <div className={styles.right}>
       {/* <h2 className={styles.legacyTitle}>Legacy</h2> */}
       <p className={styles.messageContent}>{member.message}</p>
-
-      {isDirector && (
-        <>
-
-        </>
-      )}
     </div>
   </div>
 );
@@ -41,14 +34,10 @@ const InfoCard = ({ member, isDirector = false }) => (
 const Team = () => {
   return (
     <div className={styles.body}>
-      <h1 className={styles.title}>संस्थापक</h1>
-      <InfoCard
-        member={founder}
-       isDirector={true}
-      />
+      
 
-      <h1 className={styles.title}>सह-संस्थापक</h1>
-      {coFounder.map((member) => (
+      <h1 className={styles.title}>Founding Members</h1>
+      {founder.map((member) => (
         <InfoCard
           key={member.id}
           member={member}
