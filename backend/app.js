@@ -35,7 +35,7 @@ app.use(cors({
   // origin: 'https://parmarth-web.vercel.app',
   // origin: 'https://parmarth-iet.onrender.com',
 
-  origin: 'https://parmarth.ietlucknow.ac.in/',
+  origin: 'https://parmarth.ietlucknow.ac.in',
 
   credentials: true,
 }));
