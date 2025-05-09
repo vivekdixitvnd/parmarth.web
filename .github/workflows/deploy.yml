@@ -33,6 +33,7 @@ jobs:
           verifyCertificate: true
           onlyNewer: false
           restoreMTime: true
+          parallel: 1
           reverse: true
           ignoreFile: .lftp_ignore
           args: "-d"
