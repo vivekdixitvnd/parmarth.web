@@ -68,7 +68,7 @@ const LandingPage = () => {
       <div style={{ paddingTop: "150px" }} id="parallax" className={styles.parallax}>
 
         <div className={styles.parmarth} id="parallax">
-          परमार्थ - the social club <span style={{ color: "#277bc0" }}>.</span>
+          परमार्थ<span style={{ color: "#277bc0" }}>.</span>
         </div>
         <div style={{ color: "#fff", fontSize: "1.6rem" }}>
           The Social Club of IET Lucknow

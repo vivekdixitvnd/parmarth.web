@@ -33,7 +33,10 @@ const app = express();
 app.use(cors({
   // origin: 'http://localhost:5173',
   // origin: 'https://parmarth-web.vercel.app',
-  origin: 'https://parmarth-iet.onrender.com',
+  // origin: 'https://parmarth-iet.onrender.com',
+
+  origin: 'https://parmarth.ietlucknow.ac.in',
+
   credentials: true,
 }));
 app.options('*', cors()); // handle preflight for all routes
