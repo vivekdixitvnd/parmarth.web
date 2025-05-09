@@ -1,5 +1,3 @@
-// components/FormStatusMessage.jsx
-import React from "react";
 import styles from "./FormStatusMessage.module.css";
 
 const FormStatusMessage = ({ status }) => {

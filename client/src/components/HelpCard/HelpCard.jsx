@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./HelpCard.module.css";
+import { Link } from "react-router-dom";
 
 const HelpCard = ({
   src,
@@ -26,9 +27,9 @@ const HelpCard = ({
         <div className={styles.divider}></div>
         <p className={styles.description}>{description}</p>
         <div className={styles.buttonContainer}>
-        <a href={primaryBtnUrl} className={styles.actionButton}>
+        <Link to={primaryBtnUrl} className={styles.actionButton}>
             {primaryBtnText}
-          </a>
+          </Link>
           
         </div>
       </div>
