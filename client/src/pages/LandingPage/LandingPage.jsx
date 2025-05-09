@@ -177,8 +177,6 @@ const LandingPage = () => {
                   primaryBtnText="Donate Now"
                   primaryBtnUrl="/donationForm"
                   primaryBtnClass="donationPrimaryBtn"
-                  secondaryBtnText="Why Donate?"
-                  secondaryBtnClass="donationSecondaryBtn"
                   bgColor=''
                 />
               </div>
@@ -195,8 +193,6 @@ const LandingPage = () => {
                   primaryBtnText="Become a Sponsor"
                   primaryBtnClass="sponsorPrimaryBtn"
                   primaryBtnUrl="/BecomeSponsor"
-                  secondaryBtnText="Child Stories"
-                  secondaryBtnClass="sponsorSecondaryBtn"
                   bgColor=''
                 />
               </div>
@@ -211,8 +207,6 @@ const LandingPage = () => {
                   primaryBtnText="Support Healthcare"
                   primaryBtnClass="medicalPrimaryBtn"
                   primaryBtnUrl="/HealthCareForm"
-                  secondaryBtnText="Our Clinics"
-                  secondaryBtnClass="medicalSecondaryBtn"
                   bgColor=''
                 />
               </div>

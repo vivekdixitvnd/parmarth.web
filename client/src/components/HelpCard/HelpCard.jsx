@@ -6,13 +6,10 @@ const HelpCard = ({
   title,
   description,
   primaryBtnText = 'Donate Now',
-  secondaryBtnText = 'Learn More',
   primaryBtnUrl = '',
-  secondaryBtnUrl = '',
   titleColor = '#2a9be7',
   dividerColor = '#2a9be7',
   primaryBtnColor = '#277bc0',
-  secondaryBtnColor = '#2a9be7',
   bgColor = 'rgba(253, 243, 228, 0.85)'
 }) => {
   return (
@@ -21,7 +18,6 @@ const HelpCard = ({
       '--title-color': titleColor,
       '--divider-color': dividerColor,
       '--primary-btn-color': primaryBtnColor,
-      '--secondary-btn-color': secondaryBtnColor,
       '--bg-color': bgColor
     }}>
       <div className={styles.contentOverlay}></div>
@@ -33,9 +29,7 @@ const HelpCard = ({
         <a href={primaryBtnUrl} className={styles.actionButton}>
             {primaryBtnText}
           </a>
-          <a href={secondaryBtnUrl} className={styles.secondaryButton}>
-            {secondaryBtnText}
-          </a>
+          
         </div>
       </div>
     </div>
