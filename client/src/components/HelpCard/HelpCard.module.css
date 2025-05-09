@@ -68,7 +68,7 @@
   background-color: var(--primary-btn-color);
   color: rgb(255, 255, 255);
   border: none;
-  padding: 12px 30px;
+  padding: 14px 81px;
   border-radius: 8px;
   font-size: 1.1rem;
   cursor: pointer;
@@ -254,7 +254,7 @@
 }
 
 .description {
-  color: #4a5568;
+  color: #000;
   line-height: 1.5;
   font-size: 1.1rem;
   margin-bottom: 30px;
@@ -269,7 +269,7 @@
   background-color: var(--primary-btn-color);
   color: white;
   border: none;
-  padding: 12px 30px;
+  padding: 14px 81px;
   border-radius: 8px;
   font-size: 1.1rem;
   cursor: pointer;
