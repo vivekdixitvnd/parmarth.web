@@ -1,5 +1,3 @@
-// components/FormInput.jsx
-import React from "react";
 import styles from "./FormInput.module.css";
 
 const FormInput = ({ label, required, type = "text", name, value, onChange, placeholder, rows }) => {
