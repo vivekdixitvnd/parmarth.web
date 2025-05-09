@@ -21,6 +21,7 @@ jobs:
 
       - name: Deploy via SFTP
         uses: pressidium/lftp-mirror-action@v1
+        timeout-minutes: 10
         with:
           host: ${{ secrets.SFTP_HOST }}
           port: ${{ secrets.SFTP_PORT }}
@@ -29,9 +30,10 @@ jobs:
           localDir: ./client/dist
           remoteDir: /home/parmarth/public_html
           forceSSL: true
-          verifyCertificate: true
+          verifyCertificate: false 
           onlyNewer: true
           restoreMTime: true
-          parallel: 1
+          parallel: 2        
           reverse: true
+          debug: true             
           ignoreFile: .lftp_ignore
