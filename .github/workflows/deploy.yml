@@ -36,4 +36,3 @@ jobs:
           parallel: 2
           reverse: true
           ignoreFile: .lftp_ignore
-          settings: "-d"
