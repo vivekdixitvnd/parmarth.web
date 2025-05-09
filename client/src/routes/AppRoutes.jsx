@@ -26,7 +26,6 @@ import Ummeed from "../pages/Ummeed/Ummeed.jsx";
 import EduVisit from "../pages/EduVisit/EduVisit.jsx";
 import BloodDonation from "../pages/BloodDonation/BloodDonation.jsx";
 import Governing from "../pages/Organization/Governing/Governing.jsx";
-import Founder from "../pages/Organization/Founder/Founder.jsx";
 import LegacyPresidents from "../pages/Organization/Legacy/PastPresidents/LegacyPresidents.jsx";
 import LegacyVicePresidents from "../pages/Organization/Legacy/VicePresidents/LegacyVicePresidents.jsx";
 import Executive from "../pages/Organization/Executive/Executive.jsx";
@@ -99,7 +98,6 @@ const AppRoutes = () => {
       <Route path="/classes" element={<Layout><Classes /></Layout>} />
       <Route path="/governing" element={<Layout><Governing/></Layout>} />
       <Route path="/advisory" element={<Layout><Advisory/></Layout>} />
-      <Route path="/founding-members" element={<Layout><Founder/></Layout>} />
       <Route path="/executive" element={<Layout><Executive/></Layout>} />
       <Route path="/presidents" element={<Layout><LegacyPresidents/></Layout>} />
       <Route path="/vp" element={<Layout><LegacyVicePresidents/></Layout>} />
