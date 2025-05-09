@@ -35,3 +35,4 @@ jobs:
           restoreMTime: true
           reverse: true
           ignoreFile: .lftp_ignore
+          args: "-d"
