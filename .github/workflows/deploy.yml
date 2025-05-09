@@ -20,10 +20,18 @@ jobs:
           npm run build
 
       - name: Deploy via SFTP
-        uses: easingthemes/ssh-deploy@main
+        uses: pressidium/lftp-mirror-action@v1
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.SFTP_HOST }}
-          REMOTE_USER: ${{ secrets.SFTP_USERNAME }}
-          TARGET: /home/parmarth/public_html
-          SOURCE: ./client/dist
+          host: ${{ secrets.SFTP_HOST }}
+          port: ${{ secrets.SFTP_PORT }}
+          user: ${{ secrets.SFTP_USERNAME }}
+          pass: ${{ secrets.SFTP_PASSWORD }}
+          localDir: ./client/dist
+          remoteDir: /home/parmarth/public_html
+          forceSSL: true
+          verifyCertificate: true
+          onlyNewer: true
+          restoreMTime: true
+          parallel: 1
+          reverse: true
+          ignoreFile: .lftp_ignore
