@@ -87,15 +87,10 @@ app.use(verify2FARoute);
 app.use(imgUrlRoute);
 app.use(signature);
 app.use(donateEmail);
+app.use(express.static("dist"));
 
-
-// mongoose
-//   .connect(process.env.MONGOURI)
-//   .then(() => {
-//     app.listen(PORT, () => {
-//       console.log(`Express server listening on http://localhost:${PORT}`);
-//     });
-//   })
-//   .catch((err) => console.log(err));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve("dist", "index.html"));
+});
 
   export {app}

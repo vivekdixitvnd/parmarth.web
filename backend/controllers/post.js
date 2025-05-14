@@ -1,6 +1,68 @@
 import Post from "../models/post.js";
-
+import fs from "fs";
+import path from "path";
 // Add this temporary route to your backend
+
+const botUserAgents = [
+  "facebookexternalhit",
+  "Twitterbot",
+  "LinkedInBot",
+  "Slackbot",
+  "TelegramBot",
+  "WhatsApp",
+];
+
+// Middleware to serve SSR Open Graph meta for bots
+const serveSSRMeta = async (req, res, next) => {
+  const userAgent = req.headers["user-agent"];
+  const isBot = botUserAgents.some((bot) => userAgent.includes(bot));
+
+  if (!isBot) {
+    return next(); // Not a bot, continue as usual
+  }
+
+  const { category, id } = req.params;
+
+  if (!category || !id) {
+    return next(); // Not a specific post, skip
+  }
+
+  try {
+    const post = await Post.findById(id);
+
+    if (!post) {
+      return next(); // No post found, skip SSR
+    }
+
+    // Read index.html
+    const filePath = path.resolve("dist", "index.html"); // adjust path if different
+    let html = fs.readFileSync(filePath, "utf-8");
+
+    const metaTags = `
+      <meta property="og:title" content="${post.title}" />
+      <meta property="og:description" content="${post.description || "Read more on Parmarth"}" />
+      <meta property="og:image" content="${post.coverPhotoUrl}" />
+      <meta property="og:url" content="${req.protocol}://${req.get("host")}/${category}/${id}" />
+      <meta property="og:type" content="article" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="${post.title}" />
+      <meta name="twitter:description" content="${post.description || "Read more on Parmarth"}" />
+      <meta name="twitter:image" content="${post.coverPhotoUrl}" />
+    `;
+
+    // Inject meta tags
+    html = html.replace('<meta name="inject-meta" />', metaTags);
+
+    res.set("Content-Type", "text/html");
+    res.send(html);
+  } catch (error) {
+    console.error("SSR Meta Injection Error:", error.message);
+    next(); // Fallback to default route
+  }
+};
+
+
+
 
 
 const getPastActivities = async (req, res, next) => {
@@ -332,4 +394,5 @@ export {
   editPost,
   deletePost,
   getPastActivities,
+  serveSSRMeta,
 };
