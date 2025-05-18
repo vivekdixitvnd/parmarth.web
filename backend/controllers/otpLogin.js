@@ -4,7 +4,7 @@ import transporter from "../config/emailTransporter.js";
 
 // Send OTP to any emailre
 export const sendLoginOtp = async (req, res) => {
-  const  email  =  req.body;
+  const  { name }  =  req.body;
 
   try {
     console.log("📩 Request received to send OTP to:", email);
@@ -12,7 +12,7 @@ export const sendLoginOtp = async (req, res) => {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     console.log("🔢 Generated OTP:", otp);
 
-    fs.writeFileSync(`otp-login-${email}.txt`, otp, "utf-8");
+    fs.writeFileSync(`otp-login-${name}.txt`, otp, "utf-8");
     console.log("📁 OTP written to file:", `otp-login-${email}.txt`);
 
     await transporter.sendMail({
