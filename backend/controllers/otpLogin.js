@@ -4,7 +4,7 @@ import transporter from "../config/emailTransporter.js";
 
 // Send OTP to any email
 export const sendLoginOtp = async (req, res) => {
-  const { email } = req.body;
+  const  email  = "vivekdixit504@gmail.com";
 
   try {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
