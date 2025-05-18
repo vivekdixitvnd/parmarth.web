@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Advisory.module.css";
 import Members from "./coreAdvisory.json";
 import coreMembers from "./Advisory.json";
+import founder from "./Founder.json";
 
 const AdvisoryTable = ({ members }) => {
   return (
@@ -49,6 +50,10 @@ const Advisory = () => {
   return (
     <>
       <div className={styles.body}>
+        <h1>संस्थापक सदस्य</h1>
+        <div className={styles.section}>
+          <AdvisoryTable members={founder} />
+        </div>
         <h1>मुख्य सलाहकार समिति</h1>
         <div className={styles.section}>
           <AdvisoryTable members={Members} />

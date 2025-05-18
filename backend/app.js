@@ -34,7 +34,10 @@ const app = express();
 app.use(cors({
   // origin: 'http://localhost:5173',
   // origin: 'https://parmarth-web.vercel.app',
-  origin: 'https://parmarth-iet.onrender.com',
+  // origin: 'https://parmarth-iet.onrender.com',
+
+  origin: 'https://parmarth.ietlucknow.ac.in',
+
   credentials: true,
 }));
 app.options('*', cors()); // handle preflight for all routes
@@ -86,15 +89,10 @@ app.use(imgUrlRoute);
 app.use(signature);
 app.use(donateEmail);
 app.use(attendanceRoute)
+app.use(express.static("dist"));
 
-
-// mongoose
-//   .connect(process.env.MONGOURI)
-//   .then(() => {
-//     app.listen(PORT, () => {
-//       console.log(`Express server listening on http://localhost:${PORT}`);
-//     });
-//   })
-//   .catch((err) => console.log(err));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve("dist", "index.html"));
+});
 
   export {app}

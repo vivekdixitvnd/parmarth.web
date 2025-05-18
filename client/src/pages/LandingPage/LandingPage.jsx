@@ -68,7 +68,7 @@ const LandingPage = () => {
       <div style={{ paddingTop: "150px" }} id="parallax" className={styles.parallax}>
 
         <div className={styles.parmarth} id="parallax">
-          परमार्थ - the social club <span style={{ color: "#277bc0" }}>.</span>
+          परमार्थ<span style={{ color: "#277bc0" }}>.</span>
         </div>
         <div style={{ color: "#fff", fontSize: "1.6rem" }}>
           The Social Club of IET Lucknow
@@ -177,8 +177,6 @@ const LandingPage = () => {
                   primaryBtnText="Donate Now"
                   primaryBtnUrl="/donationForm"
                   primaryBtnClass="donationPrimaryBtn"
-                  secondaryBtnText="Why Donate?"
-                  secondaryBtnClass="donationSecondaryBtn"
                   bgColor=''
                 />
               </div>
@@ -195,8 +193,6 @@ const LandingPage = () => {
                   primaryBtnText="Become a Sponsor"
                   primaryBtnClass="sponsorPrimaryBtn"
                   primaryBtnUrl="/BecomeSponsor"
-                  secondaryBtnText="Child Stories"
-                  secondaryBtnClass="sponsorSecondaryBtn"
                   bgColor=''
                 />
               </div>
@@ -211,8 +207,6 @@ const LandingPage = () => {
                   primaryBtnText="Support Healthcare"
                   primaryBtnClass="medicalPrimaryBtn"
                   primaryBtnUrl="/HealthCareForm"
-                  secondaryBtnText="Our Clinics"
-                  secondaryBtnClass="medicalSecondaryBtn"
                   bgColor=''
                 />
               </div>
