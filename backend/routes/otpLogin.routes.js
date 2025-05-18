@@ -1,8 +1,5 @@
 import express from "express";
-import {
-  sendLoginOtp,
-  verifyLoginOtp,
-} from "../controllers/otpLogin.js";
+import { sendLoginOtp, verifyLoginOtp } from "../controllers/otpLogin";
 
 const router = express.Router();
 
