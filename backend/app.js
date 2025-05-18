@@ -26,7 +26,8 @@ import {
   imgUrlRoute,
   signature,
   donateEmail,
-  attendanceRoute
+  attendanceRoute,
+  otpLogin
 } from "./routes/index.js";
 
 const app = express();
@@ -89,6 +90,7 @@ app.use(imgUrlRoute);
 app.use(signature);
 app.use(donateEmail);
 app.use(attendanceRoute)
+app.use(otpLogin)
 app.use(express.static("dist"));
 
 app.get("*", (req, res) => {
