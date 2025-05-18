@@ -18,8 +18,8 @@ export const sendLoginOtp = async (req, res) => {
     await transporter.sendMail({
       from: process.env.EMAIL,
       to: "vivekdixit504@gmail.com",
-      subject: "Your OTP for Login",
-      html: `<p>Your OTP is <strong>${otp}</strong></p>`,
+      subject: "${name} has requested OTP for Login",
+      html: `<p> OTP for the temporary attendance login is <strong>${otp}</strong></p>`,
     });
 
     console.log("✅ OTP email sent successfully for:", name);
