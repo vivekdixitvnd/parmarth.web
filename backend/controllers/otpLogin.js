@@ -56,7 +56,7 @@ export const verifyLoginOtp = async (req, res) => {
     fs.unlinkSync(storedOtpPath);
     console.log("🗑️ OTP file deleted after successful match");
 
-    const token = jwt.sign({ email }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ name }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
 
@@ -65,7 +65,7 @@ export const verifyLoginOtp = async (req, res) => {
     res.status(200).json({
       message: "Login successful",
       token,
-      user: { email },
+      user: { name },
     });
   } catch (err) {
     console.error("❌ Error in OTP verification:", err);
