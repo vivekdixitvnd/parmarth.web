@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import { Router } from "express";
-import transporter from "../config/emailTransporter";
+import transporter from "../config/emailTransporter.js";
 
 const router = Router();
 
