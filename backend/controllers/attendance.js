@@ -2,14 +2,14 @@ import Attendance from "../models/attendance.js";
 
 export const markAttendance = async (req, res) => {
   try {
-    const { name, rollNo, branch } = req.body;
+    const { volName, rollNo, branch } = req.body;
     const date = new Date().toISOString().split("T")[0]; // current date in YYYY-MM-DD
 
     if (!rollNo || !branch) {
       return res.status(400).json({ message: "Please fill in all fields." });
     }
 
-    const attendance = new Attendance({ name, rollNo, branch, date });
+    const attendance = new Attendance({ volName, rollNo, branch, date });
     console.log(attendance);
     await attendance.save();
 
