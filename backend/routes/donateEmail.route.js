@@ -1,24 +1,10 @@
 import nodemailer from "nodemailer";
 import { Router } from "express";
+import transporter from "../config/emailTransporter";
 
 const router = Router();
 
 const sendEmail = async (subject, content, recipientEmail) => {
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    port: 465,
-    secure: true, // true if using 465
-    auth: {
-      user: "parmarth@ietlucknow.ac.in",
-      pass: "duom ndvb vzgi ydwm",
-    },
-    // debug: true, // Debug mode on
-    // logger: true, // Logs all activity
-    tls: {
-      rejectUnauthorized: false, // Ignore self-signed certs if testing locally
-    },
-  });
-
   const mailOptions = {
     from: "parmarth@ietlucknow.ac.in",
     to: recipientEmail,
