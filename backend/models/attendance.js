@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const attendanceSchema = new mongoose.Schema({
-  name: {
+  volName: {
     type: String,
     required: true,
   },
