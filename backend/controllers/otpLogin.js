@@ -57,7 +57,7 @@ export const verifyLoginOtp = async (req, res) => {
     console.log("🗑️ OTP file deleted after successful match");
 
     const token = jwt.sign({ name }, process.env.JWT_SECRET_KEY, {
-      expiresIn: "5m",
+      expiresIn: "1h",
     });
 
     console.log("🔐 JWT generated successfully for:", name);
