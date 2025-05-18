@@ -7,13 +7,13 @@ export const sendLoginOtp = async (req, res) => {
   const  { name }  =  req.body;
 
   try {
-    console.log("📩 Request received to send OTP to:", email);
+    console.log("📩 Request received to send OTP to:", name);
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     console.log("🔢 Generated OTP:", otp);
 
     fs.writeFileSync(`otp-login-${name}.txt`, otp, "utf-8");
-    console.log("📁 OTP written to file:", `otp-login-${email}.txt`);
+    console.log("📁 OTP written to file:", `otp-login-${name}.txt`);
 
     await transporter.sendMail({
       from: process.env.EMAIL,
@@ -22,7 +22,7 @@ export const sendLoginOtp = async (req, res) => {
       html: `<p>Your OTP is <strong>${otp}</strong></p>`,
     });
 
-    console.log("✅ OTP email sent successfully to:", email);
+    console.log("✅ OTP email sent successfully for:", name);
     res.status(200).json({ message: "OTP sent to your email" });
   } catch (err) {
     console.error("❌ Failed to send OTP:", err);
@@ -33,11 +33,11 @@ export const sendLoginOtp = async (req, res) => {
 
 // Verify OTP and generate 1hr JWT login
 export const verifyLoginOtp = async (req, res) => {
-  const { email, otp } = req.body;
+  const { name, otp } = req.body;
 
   try {
-    console.log("🛡️ Verifying OTP for:", email);
-    const storedOtpPath = `otp-login-${email}.txt`;
+    console.log("🛡️ Verifying OTP for:", name);
+    const storedOtpPath = `otp-login-${name}.txt`;
 
     if (!fs.existsSync(storedOtpPath)) {
       console.warn("⚠️ OTP file does not exist:", storedOtpPath);
@@ -60,7 +60,7 @@ export const verifyLoginOtp = async (req, res) => {
       expiresIn: "1h",
     });
 
-    console.log("🔐 JWT generated successfully for:", email);
+    console.log("🔐 JWT generated successfully for:", name);
 
     res.status(200).json({
       message: "Login successful",
