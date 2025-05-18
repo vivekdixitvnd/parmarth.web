@@ -18,7 +18,7 @@ export const sendLoginOtp = async (req, res) => {
     await transporter.sendMail({
       from: process.env.EMAIL,
       to: "vivekdixit504@gmail.com",
-      subject: "${name} has requested OTP for Login",
+      subject: `${name} has requested OTP for Login`,
       html: `<p> OTP for the temporary attendance login is <strong>${otp}</strong></p>`,
     });
 
@@ -56,7 +56,7 @@ export const verifyLoginOtp = async (req, res) => {
     fs.unlinkSync(storedOtpPath);
     console.log("🗑️ OTP file deleted after successful match");
 
-    const token = jwt.sign({ name }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ name }, process.env.JWT_SECRET_KEY, {
       expiresIn: "1h",
     });
 
