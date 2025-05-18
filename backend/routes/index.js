@@ -10,6 +10,7 @@ import imgUrlRoute from "./imgUrl.routes.js";
 import rteRoute from "./rteData.routes.js";
 import signature from "./signature.routes.js"
 import donateEmail from "./donateEmail.route.js"
+import attendanceRoute from "./attendance.routes.js"
 
 export {
   signature,
@@ -23,5 +24,6 @@ export {
   verify2FARoute,
   imgUrlRoute,
   rteRoute,
-  donateEmail
+  donateEmail,
+  attendanceRoute
 };
