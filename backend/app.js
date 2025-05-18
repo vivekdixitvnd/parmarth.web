@@ -25,7 +25,8 @@ import {
   verify2FARoute,
   imgUrlRoute,
   signature,
-  donateEmail
+  donateEmail,
+  attendanceRoute
 } from "./routes/index.js";
 
 const app = express();
@@ -84,6 +85,7 @@ app.use(verify2FARoute);
 app.use(imgUrlRoute);
 app.use(signature);
 app.use(donateEmail);
+app.use(attendanceRoute)
 
 
 // mongoose
