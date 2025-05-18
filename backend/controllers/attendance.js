@@ -24,7 +24,7 @@ export const getAttendanceByDate = async (req, res) => {
     const { date } = req.params;
     const data = await Attendance.find({ date });
 
-    res.status(200).json(data);
+    res.status(200).json({ attendance: data });
   } catch (err) {
     res.status(500).json({ message: "Server error", error: err.message });
   }
