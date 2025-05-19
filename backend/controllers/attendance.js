@@ -2,8 +2,30 @@ import multer from "multer";
 import Attendance from "../models/attendance.js";
 
 // Setup multer (in-memory storage for now)
-const storage = multer.memoryStorage(); // Or diskStorage if you want to save locally
+// const storage = multer.memoryStorage(); // Or diskStorage if you want to save locally
+// export const upload = multer({ storage });
+import path from "path";
+import fs from "fs";
+
+// Ensure uploads dir exists
+const uploadDir = path.join("uploads");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
+
+// Setup disk storage
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadDir);
+  },
+  filename: (req, file, cb) => {
+    const uniqueName = `${Date.now()}-${file.originalname}`;
+    cb(null, uniqueName);
+  },
+});
+
 export const upload = multer({ storage });
+
 
 // POST: Mark/Upload Attendance
 export const markAttendance = async (req, res) => {
@@ -32,11 +54,10 @@ export const markAttendance = async (req, res) => {
     }
 
     // Handle uploaded photos
-    const photos = req.files?.map((file, index) => {
-      // Placeholder: Replace with actual upload logic (e.g. S3/Cloudinary)
-      const filename = `${Date.now()}_${index}_${file.originalname}`;
-      return filename;
-    }) || [];
+    const photos = req.files?.map((file) => {
+  return `${req.protocol}://${req.get("host")}/uploads/${file.filename}`;
+}) || [];
+
 
     const attendance = new Attendance({
       date,
