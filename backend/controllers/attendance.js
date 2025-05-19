@@ -1,45 +1,60 @@
+import multer from "multer";
 import Attendance from "../models/attendance.js";
+
+// Setup multer (in-memory storage for now)
+const storage = multer.memoryStorage(); // Or diskStorage if you want to save locally
+export const upload = multer({ storage });
 
 // POST: Mark/Upload Attendance
 export const markAttendance = async (req, res) => {
   try {
-    const { volunteers, classWise, photos } = req.body;
-    const date = new Date().toISOString().split("T")[0]; // current date in YYYY-MM-DD
+    // Parse JSON fields from form-data (they come in as strings)
+    const { volunteers, classWise } = req.body;
+    const parsedVolunteers = JSON.parse(volunteers);
+    const parsedClassWise = JSON.parse(classWise);
+
+    const date = new Date().toISOString().split("T")[0];
 
     // Validation
-    if (!volunteers || !Array.isArray(volunteers) || volunteers.length === 0) {
+    if (!parsedVolunteers || !Array.isArray(parsedVolunteers) || parsedVolunteers.length === 0) {
       return res.status(400).json({ message: "Please provide at least one volunteer." });
     }
 
-    if (!classWise || typeof classWise !== "object") {
+    if (!parsedClassWise || typeof parsedClassWise !== "object") {
       return res.status(400).json({ message: "Please provide class-wise data." });
     }
 
-    // Calculate total students from classWise
-    const totalStudents = Object.values(classWise).reduce((sum, count) => sum + count, 0);
+    const totalStudents = Object.values(parsedClassWise).reduce((sum, count) => sum + count, 0);
 
-    // Check if attendance for that date already exists
     const alreadyMarked = await Attendance.findOne({ date });
     if (alreadyMarked) {
       return res.status(400).json({ message: "Attendance for today already exists!" });
     }
 
-    // Save to DB
+    // Handle uploaded photos
+    const photos = req.files?.map((file, index) => {
+      // Placeholder: Replace with actual upload logic (e.g. S3/Cloudinary)
+      const filename = `${Date.now()}_${index}_${file.originalname}`;
+      return filename;
+    }) || [];
+
     const attendance = new Attendance({
       date,
-      volunteers,
-      classWise,
+      volunteers: parsedVolunteers,
+      classWise: parsedClassWise,
       totalStudents,
-      photos: photos || [], // optional
+      photos,
     });
 
     await attendance.save();
 
     res.status(201).json({ message: "Attendance marked successfully!" });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ message: "Server error", error: err.message });
   }
 };
+
 
 
 // GET: Get Attendance by Date
