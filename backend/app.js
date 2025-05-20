@@ -25,7 +25,8 @@ import {
   verify2FARoute,
   imgUrlRoute,
   signature,
-  donateEmail
+  donateEmail,
+  materialRoutes
 } from "./routes/index.js";
 
 const app = express();
@@ -87,10 +88,8 @@ app.use(verify2FARoute);
 app.use(imgUrlRoute);
 app.use(signature);
 app.use(donateEmail);
-app.use(express.static("dist"));
+app.use(materialRoutes);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve("dist", "index.html"));
-});
+
 
   export {app}

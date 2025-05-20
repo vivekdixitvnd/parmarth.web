@@ -11,7 +11,6 @@ import {
   editPost,
   deletePost,
   getPastActivities,
-  serveSSRMeta,
 } from "../controllers/post.js";
 
 router.get("/api/getPosts", getPosts);
@@ -22,10 +21,6 @@ router.post("/api/addPost", isAuth, addPost);
 router.put("/api/editPost/:id", isAuth, editPost);
 router.delete("/api/deletePost/:id", isAuth, deletePost);
 router.get("/api/past-activities/:category", getPastActivities);
-
-router.get("/api/:category/:id", serveSSRMeta);
-
-// Then fallback to default SPA serve
 
 
 export default router;
