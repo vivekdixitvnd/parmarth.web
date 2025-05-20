@@ -1,9 +1,8 @@
 // config/cloudinary.js
-import { v2 as cloudinary } from 'cloudinary';
-import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import multer from 'multer';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv';
-
 dotenv.config();
 
 cloudinary.config({
@@ -15,12 +14,11 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: 'my_uploads',
-    allowed_formats: ['jpg', 'png', 'pdf', 'docx'],
-    public_id: (req, file) => `${Date.now()}-${file.originalname}`,
+    folder: 'study_materials',
+    allowed_formats: ['pdf', 'doc', 'docx', 'ppt', 'pptx'],
+    resource_type: 'auto',
   },
 });
 
 const upload = multer({ storage });
-
 export default upload;
