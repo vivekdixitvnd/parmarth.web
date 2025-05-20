@@ -10,10 +10,10 @@ import imgUrlRoute from "./imgUrl.routes.js";
 import rteRoute from "./rteData.routes.js";
 import signature from "./signature.routes.js"
 import donateEmail from "./donateEmail.route.js"
-import StudyMaterial from "./StudyMaterial.routes.js"
+// import StudyMaterial from "./StudyMaterial.routes.js"
 import attendanceRoute from "./attendance.routes.js"
 import otpLogin from "./otpLogin.routes.js"
-import uploadRoutes from './upload.js'; 
+// import uploadRoutes from './upload.js'; 
 
 export {
   signature,
@@ -28,8 +28,8 @@ export {
   imgUrlRoute,
   rteRoute,
   donateEmail,
-  StudyMaterial,
+  // StudyMaterial,
   attendanceRoute,
   otpLogin,
-  uploadRoutes
+  // uploadRoutes
 };
