@@ -79,6 +79,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api', uploadRoutes);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(requestDataRoute);
 app.use(authRoute);
 app.use(rteRoute);
