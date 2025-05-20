@@ -27,7 +27,7 @@ export {
   imgUrlRoute,
   rteRoute,
   donateEmail,
-  materialRoutes
+  materialRoutes,
   attendanceRoute,
   otpLogin,
 };
