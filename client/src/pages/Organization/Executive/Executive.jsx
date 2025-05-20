@@ -13,9 +13,7 @@ const MemberCard = ({ member }) => (
             <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
                 <FaLinkedin />
             </a>
-            <a href={member.instagram} target="_blank" rel="noopener noreferrer">
-                <FaInstagram />
-            </a>
+            
             <a href={`mailto:${member.email}`}>
                 <FaEnvelope />
             </a>

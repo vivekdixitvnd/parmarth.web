@@ -79,7 +79,7 @@ const About = () => {
         <div className={styles.section}>
           <h1>Parmarth</h1>
           <p>
-          Journey of Paramrth Social Club started in 2015. Back in those times, their was a huge
+          Journey of Club started in 2015. Back in those times, their was a huge
           amount of child beggars on the college road and college chauraha.
           Those little beggars use to beg for little food or some money. Such
           children can be seen everywhere but are not often noticed. Some golden

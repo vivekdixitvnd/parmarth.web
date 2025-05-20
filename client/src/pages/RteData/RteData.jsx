@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./RteData.module.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import backendUrl from "../../backendUrl";
