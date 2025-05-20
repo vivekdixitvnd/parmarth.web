@@ -102,23 +102,23 @@ export const getAttendanceCount = async (req, res) => {
       {
         $group: {
           _id: {
-            volName: "$volunteers.volName",
             rollNo: "$volunteers.rollNo",
             branch: "$volunteers.branch"
           },
-          count: { $sum: 1 }
+          count: { $sum: 1 },
+          volName: { $first: "$volunteers.volName" } // pick the first name found
         }
       },
       {
         $project: {
           _id: 0,
-          volName: "$_id.volName",
+          volName: 1,
           rollNo: "$_id.rollNo",
           branch: "$_id.branch",
           count: 1
         }
       },
-      { $sort: { count: -1 } } // optional: sort by count descending
+      { $sort: { count: -1 } }
     ]);
 
     res.status(200).json({ volunteers: result });
@@ -126,5 +126,3 @@ export const getAttendanceCount = async (req, res) => {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 };
-
-
