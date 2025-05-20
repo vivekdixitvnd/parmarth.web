@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const materialController = require('../controllers/materialController');
+const materialController = require('../controllers/StudyMaterial');
 
 // File storage setup
 const storage = multer.diskStorage({
