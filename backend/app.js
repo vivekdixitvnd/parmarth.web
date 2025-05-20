@@ -26,7 +26,9 @@ import {
   imgUrlRoute,
   signature,
   donateEmail,
-  materialRoutes
+  materialRoutes,
+  attendanceRoute,
+  otpLogin
 } from "./routes/index.js";
 
 const app = express();
@@ -89,6 +91,9 @@ app.use(imgUrlRoute);
 app.use(signature);
 app.use(donateEmail);
 app.use(materialRoutes);
+app.use(attendanceRoute)
+app.use(otpLogin)
+app.use(express.static("dist"));
 
 
 
