@@ -29,6 +29,7 @@ import {
   StudyMaterial,
   otpLogin,
   attendanceRoute,
+  uploadRoutes,
 } from "./routes/index.js";
 
 const app = express();
@@ -77,7 +78,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use('/api', uploadRoutes);
 app.use(requestDataRoute);
 app.use(authRoute);
 app.use(rteRoute);
