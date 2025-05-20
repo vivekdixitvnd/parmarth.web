@@ -13,6 +13,7 @@ import donateEmail from "./donateEmail.route.js"
 import StudyMaterial from "./StudyMaterial.routes.js"
 import attendanceRoute from "./attendance.routes.js"
 import otpLogin from "./otpLogin.routes.js"
+import uploadRoutes from './routes/upload.js'; 
 
 export {
   signature,
@@ -30,4 +31,5 @@ export {
   StudyMaterial,
   attendanceRoute,
   otpLogin,
+  uploadRoutes
 };
