@@ -95,7 +95,7 @@ export const getAttendanceByDate = async (req, res) => {
 };
 
 // GET: /api/attendance/volunteer-count
-export const getVolunteerAttendanceCount = async (req, res) => {
+export const getAttendanceCount = async (req, res) => {
   try {
     const allAttendance = await Attendance.find();
     console.log(allAttendance)
