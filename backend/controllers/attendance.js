@@ -101,6 +101,7 @@ export const getAttendanceByDate = async (req, res) => {
 export const getVolunteerAttendanceCount = async (req, res) => {
   try {
     const allAttendance = await Attendance.find();
+    console.log(allAttendance)
 
     const countMap = new Map();
 
@@ -116,6 +117,7 @@ export const getVolunteerAttendanceCount = async (req, res) => {
     });
 
     const result = Array.from(countMap.values());
+    console.log(result)
 
     res.status(200).json({ volunteers: result });
   } catch (err) {
