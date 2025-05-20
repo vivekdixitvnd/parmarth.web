@@ -28,7 +28,8 @@ import {
   donateEmail,
   StudyMaterial,
   attendanceRoute,
-  otpLogin
+  otpLogin,
+  getVolunteerAttendanceCount
 } from "./routes/index.js";
 
 const app = express();
@@ -93,6 +94,8 @@ app.use(donateEmail);
 app.use(StudyMaterial);
 app.use(attendanceRoute);
 app.use(otpLogin);
+app.use(getVolunteerAttendanceCount);
+
 app.use(express.static("dist"));
 
 
