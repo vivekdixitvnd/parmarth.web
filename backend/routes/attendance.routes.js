@@ -1,11 +1,11 @@
 import express from "express";
 import isAuth from "../middleware/is-auth.js";
-import { getAttendanceByDate, markAttendance, getVolunteerAttendanceCount, upload } from "../controllers/attendance.js";
+import { getAttendanceByDate, markAttendance, upload, getAttendanceCount } from "../controllers/attendance.js";
 
 const router = express.Router();
 
-router.post("/api/attendance", upload.array("photos", 7), markAttendance);
-router.get("/api/attendance/:date", getAttendanceByDate);
-router.get("/api/attendance/total", isAuth, getVolunteerAttendanceCount);
+router.post("/", upload.array("photos", 7), markAttendance);
+router.get("/:date", getAttendanceByDate);
+router.get("/total", isAuth, getAttendanceCount);
 
 export default router;
