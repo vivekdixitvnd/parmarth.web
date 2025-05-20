@@ -2,7 +2,7 @@ import express from 'express';
 import multer from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import materialController from '../controllers/StudyMaterial.js';
+import { uploadMaterial, getAllMaterials } from '../controllers/StudyMaterial.js';
 
 const router = express.Router();
 
