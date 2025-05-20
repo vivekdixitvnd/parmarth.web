@@ -85,12 +85,9 @@ export const getAttendanceByDate = async (req, res) => {
 
     const data = await Attendance.findOne({ date });
 
-    console.log("data coming from date attendance", data)
-
     if (!data) {
       return res.status(404).json({ message: "No attendance found for the given date." });
     }
-    console.log("response", res)
     res.status(200).json({ attendance: data });
   } catch (err) {
     res.status(500).json({ message: "Server error", error: err.message });
