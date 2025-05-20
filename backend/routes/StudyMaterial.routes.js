@@ -2,7 +2,10 @@ import express from 'express';
 import multer from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { uploadMaterial, getAllMaterials } from '../controllers/StudyMaterial.js';
+import {
+  uploadMaterial,
+  getAllMaterials,
+} from '../controllers/StudyMaterial.js';
 
 const router = express.Router();
 
@@ -24,8 +27,24 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// ✅ Use the imported function names directly
+// ✅ POST - Upload Material
 router.post('/upload', upload.single('file'), uploadMaterial);
+
+// ✅ GET - All Materials
 router.get('/all', getAllMaterials);
+
+// ✅ NEW: GET - Class-wise Materials
+router.get('/by-class/:className', async (req, res) => {
+  try {
+    const className = decodeURIComponent(req.params.className);
+    const StudyMaterial = (await import('../models/StudyMaterial.js')).default;
+
+    const materials = await StudyMaterial.find({ className });
+    res.status(200).json(materials);
+  } catch (err) {
+    console.error('Error fetching class-wise material:', err);
+    res.status(500).json({ message: 'Error fetching class materials' });
+  }
+});
 
 export default router;
