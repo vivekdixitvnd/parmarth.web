@@ -13,7 +13,8 @@ export const uploadMaterial = async (req, res) => {
       return res.status(400).json({ message: 'All fields are required including a file.' });
     }
 
-    const fileUrl = ${req.protocol}://${req.get('host')}/uploads/${file.filename};
+    const fileUrl = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`;
+
     console.log('✅ File URL:', fileUrl);
     const newMaterial = new StudyMaterial({
       className,
