@@ -26,7 +26,7 @@ import {
   imgUrlRoute,
   signature,
   donateEmail,
-  materialRoutes,
+  StudyMaterial,
   attendanceRoute,
   otpLogin
 } from "./routes/index.js";
@@ -90,9 +90,9 @@ app.use(verify2FARoute);
 app.use(imgUrlRoute);
 app.use(signature);
 app.use(donateEmail);
-app.use(materialRoutes);
-app.use(attendanceRoute)
-app.use(otpLogin)
+app.use(StudyMaterial);
+app.use(attendanceRoute);
+app.use(otpLogin);
 app.use(express.static("dist"));
 
 
