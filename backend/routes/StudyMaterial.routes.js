@@ -1,13 +1,19 @@
-import express from "express";
+import express from 'express';
+import multer from 'multer';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import materialController from '../controllers/StudyMaterial.js';
+
 const router = express.Router();
-const multer = require('multer');
-const path = require('path');
-const materialController = require('../controllers/StudyMaterial');
+
+// Handle __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // File storage setup
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/'); // make sure this folder exists
+    cb(null, path.join(__dirname, '../uploads')); // Make sure this folder exists
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
