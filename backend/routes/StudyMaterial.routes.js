@@ -25,7 +25,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Routes
-router.post('/upload', upload.single('file'), materialController.uploadMaterial);
-router.get('/all', materialController.getAllMaterials);
+router.post('/upload', upload.single('file'), StudyMaterial.uploadMaterial);
+router.get('/all', StudyMaterial.getAllMaterials);
 
 export default router;
