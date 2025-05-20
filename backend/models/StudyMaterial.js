@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const studyMaterialSchema = new mongoose.Schema({
   className: { type: String, required: true },
@@ -6,7 +6,8 @@ const studyMaterialSchema = new mongoose.Schema({
   title: { type: String, required: true },
   type: { type: String, enum: ['pdf', 'video', 'note'], required: true },
   fileUrl: { type: String, required: true },
-  uploadedAt: { type: Date, default: Date.now }
+  uploadedAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('StudyMaterial', studyMaterialSchema);
+const StudyMaterial = mongoose.model('StudyMaterial', studyMaterialSchema);
+export default StudyMaterial;
