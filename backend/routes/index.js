@@ -10,9 +10,16 @@ import imgUrlRoute from "./imgUrl.routes.js";
 import rteRoute from "./rteData.routes.js";
 import signature from "./signature.routes.js"
 import donateEmail from "./donateEmail.route.js"
+<<<<<<< HEAD
 import studyRoutes from "./routes/studyMaterialRoutes.js";
 import attendanceRoute from "./attendance.routes.js"
 import otpLogin from "./otpLogin.routes.js"
+=======
+// import StudyMaterial from "./StudyMaterial.routes.js"
+import attendanceRoute from "./attendance.routes.js"
+import otpLogin from "./otpLogin.routes.js"
+// import uploadRoutes from './upload.js'; 
+>>>>>>> 2517a10839e4c1991db66f0bc53eaea1877d7067
 
 export {
   signature,
@@ -27,7 +34,14 @@ export {
   imgUrlRoute,
   rteRoute,
   donateEmail,
+<<<<<<< HEAD
   studyRoutes,
   attendanceRoute,
   otpLogin
+=======
+  // StudyMaterial,
+  attendanceRoute,
+  otpLogin,
+  // uploadRoutes
+>>>>>>> 2517a10839e4c1991db66f0bc53eaea1877d7067
 };
