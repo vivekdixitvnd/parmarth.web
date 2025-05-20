@@ -24,8 +24,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// Routes
-router.post('/upload', upload.single('file'), StudyMaterial.uploadMaterial);
-router.get('/all', StudyMaterial.getAllMaterials);
+// ✅ Use the imported function names directly
+router.post('/upload', upload.single('file'), uploadMaterial);
+router.get('/all', getAllMaterials);
 
 export default router;
