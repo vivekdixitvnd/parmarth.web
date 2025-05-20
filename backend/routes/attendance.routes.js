@@ -5,7 +5,7 @@ import { getAttendanceByDate, markAttendance, upload, getAttendanceCount } from 
 const router = express.Router();
 
 router.post("/", upload.array("photos", 7), markAttendance);
-router.get("/:date", getAttendanceByDate);
 router.get("/total", isAuth, getAttendanceCount);
+router.get("/:date", getAttendanceByDate);
 
 export default router;
