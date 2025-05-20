@@ -30,4 +30,5 @@ export {
   StudyMaterial,
   attendanceRoute,
   otpLogin,
+  getVolunteerAttendanceCount
 };
