@@ -26,10 +26,9 @@ import {
   imgUrlRoute,
   signature,
   donateEmail,
-  StudyMaterial,
+  studyRoutes,
   otpLogin,
   attendanceRoute,
-  uploadRoutes,
 } from "./routes/index.js";
 
 const app = express();
@@ -78,7 +77,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api', uploadRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(requestDataRoute);
 app.use(authRoute);
@@ -92,7 +90,7 @@ app.use(verify2FARoute);
 app.use(imgUrlRoute);
 app.use(signature);
 app.use(donateEmail);
-app.use('/api/materials', StudyMaterial);
+app.use("/api/study", studyRoutes);
 app.use("/api/attendance",attendanceRoute);
 app.use(otpLogin);
 
