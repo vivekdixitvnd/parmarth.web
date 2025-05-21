@@ -90,6 +90,7 @@ export const getAttendanceByDate = async (req, res) => {
 
 export const getMonthlyAttendance = async (req, res) => {
   const { month, year } = req.query;
+  console.log(req.query)
 
   if (!month || !year) {
     return res.status(400).json({ error: "Month and Year are required" });
@@ -130,6 +131,7 @@ export const getMonthlyAttendance = async (req, res) => {
     ]);
 
     res.status(200).json({ volunteers: result });
+    console.log(res.json())
   } catch (err) {
     console.error("Monthly aggregation error:", err);
     res.status(500).json({ error: "Internal Server Error" });
