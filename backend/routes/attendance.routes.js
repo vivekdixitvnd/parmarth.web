@@ -1,6 +1,6 @@
 import express from "express";
 import isAuth from "../middleware/is-auth.js";
-import { getAttendanceByDate, markAttendance, upload, getAttendanceCount } from "../controllers/attendance.js";
+import { getAttendanceByDate, markAttendance, upload, getAttendanceCount, getMonthlyAttendance } from "../controllers/attendance.js";
 
 const router = express.Router();
 
