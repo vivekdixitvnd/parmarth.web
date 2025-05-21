@@ -115,8 +115,8 @@ export const getMonthlyAttendance = async (req, res) => {
       {
         $group: {
           _id: {
+            rollNo: "$volunteers.rollNo",
             branch: "$volunteers.branch",
-            volName: "$volunteers.volName"
           },
           count: { $sum: 1 },
           volName: { $first: "$volunteers.volName" }
@@ -132,7 +132,7 @@ export const getMonthlyAttendance = async (req, res) => {
         }
       },
       {
-        { $sort: { count: -1 } }
+         $sort: { count: -1 } 
       }
     ]);
 
