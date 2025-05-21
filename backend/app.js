@@ -90,7 +90,7 @@ app.use(verify2FARoute);
 app.use(imgUrlRoute);
 app.use(signature);
 app.use(donateEmail);
-app.use("/study", studyRoutes);
+app.use("/api/study", studyRoutes);
 app.use("/api/attendance",attendanceRoute);
 app.use(otpLogin);
 
