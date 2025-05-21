@@ -115,24 +115,24 @@ export const getMonthlyAttendance = async (req, res) => {
       {
         $group: {
           _id: {
-            rollNo: "$volunteers.rollNo",
             branch: "$volunteers.branch",
             volName: "$volunteers.volName"
           },
-          count: { $sum: 1 }
+          count: { $sum: 1 },
+          volName: { $first: "$volunteers.volName" }
         }
       },
       {
         $project: {
           _id: 0,
-          volName: "$_id.volName",
+          volName: 1,
           rollNo: "$_id.rollNo",
           branch: "$_id.branch",
           count: 1
         }
       },
       {
-        $sort: { volName: 1 }
+        { $sort: { count: -1 } }
       }
     ]);
 
