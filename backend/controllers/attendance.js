@@ -132,7 +132,7 @@ export const getMonthlyAttendance = async (req, res) => {
         }
       },
       {
-        { $sort: { count: -1 } }
+         $sort: { count: -1 } 
       }
     ]);
 
