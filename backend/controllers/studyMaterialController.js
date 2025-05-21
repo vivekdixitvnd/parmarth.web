@@ -12,7 +12,7 @@ export const uploadStudyMaterial = async (req, res) => {
 
     // Upload to Cloudinary
     const result = await cloudinary.uploader.upload(req.file.path, {
-      resource_type: "raw",
+      resource_type: "auto",
       folder: "study_material",
       access_mode: "public",
     });
