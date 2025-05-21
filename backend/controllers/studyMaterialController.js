@@ -1,3 +1,44 @@
+// import cloudinary from "../config/cloudinary.js";
+// import StudyMaterial from "../models/StudyMaterial.js";
+// import fs from "fs";
+
+// export const uploadStudyMaterial = async (req, res) => {
+//   try {
+//     const { classOrExam, subject, title, type } = req.body;
+
+//     if (!req.file) {
+//       return res.status(400).json({ message: "No file uploaded" });
+//     }
+
+//     // Upload to Cloudinary
+//     const result = await cloudinary.uploader.upload(req.file.path, {
+//       resource_type: "auto",
+//       folder: "study_material",
+//       access_mode: "public",
+//     });
+
+//     // Save to DB
+//     const material = new StudyMaterial({
+//       classOrExam,
+//       subject,
+//       title,
+//       type,
+//       fileUrl: result.secure_url,
+//       fileType: result.resource_type,
+//       fileName: result.original_filename,
+//     });
+
+//     await material.save();
+//     fs.unlinkSync(req.file.path); // Clean up
+
+//     res.status(201).json({ message: "Uploaded successfully", material });
+//   } catch (error) {
+//     console.error("Upload error:", error);
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };
+
+
 import cloudinary from "../config/cloudinary.js";
 import StudyMaterial from "../models/StudyMaterial.js";
 import fs from "fs";
@@ -10,14 +51,19 @@ export const uploadStudyMaterial = async (req, res) => {
       return res.status(400).json({ message: "No file uploaded" });
     }
 
-    // Upload to Cloudinary
+    // ✅ Allow only PDFs (optional safety)
+    if (!req.file.mimetype.includes("pdf")) {
+      return res.status(400).json({ message: "Only PDF uploads are allowed" });
+    }
+
+    // ✅ Upload to Cloudinary as raw file with public access
     const result = await cloudinary.uploader.upload(req.file.path, {
-      resource_type: "auto",
+      resource_type: "raw",
       folder: "study_material",
       access_mode: "public",
     });
 
-    // Save to DB
+    // ✅ Save metadata to DB
     const material = new StudyMaterial({
       classOrExam,
       subject,
@@ -29,7 +75,8 @@ export const uploadStudyMaterial = async (req, res) => {
     });
 
     await material.save();
-    fs.unlinkSync(req.file.path); // Clean up
+
+    fs.unlinkSync(req.file.path); // ✅ Clean up local file
 
     res.status(201).json({ message: "Uploaded successfully", material });
   } catch (error) {
