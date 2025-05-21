@@ -1,19 +1,14 @@
 import multer from "multer";
 import Attendance from "../models/attendance.js";
 
-// Setup multer (in-memory storage for now)
-// const storage = multer.memoryStorage(); // Or diskStorage if you want to save locally
-// export const upload = multer({ storage });
 import path from "path";
 import fs from "fs";
 
-// Ensure uploads dir exists
 const uploadDir = path.join("uploads");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
-// Setup disk storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, uploadDir);
@@ -30,7 +25,6 @@ export const upload = multer({ storage });
 // POST: Mark/Upload Attendance
 export const markAttendance = async (req, res) => {
   try {
-    // Parse JSON fields from form-data (they come in as strings)
     const { volunteers, classWise } = req.body;
     const parsedVolunteers = JSON.parse(volunteers);
     const parsedClassWise = JSON.parse(classWise);
@@ -91,6 +85,54 @@ export const getAttendanceByDate = async (req, res) => {
     res.status(200).json({ attendance: data });
   } catch (err) {
     res.status(500).json({ message: "Server error", error: err.message });
+  }
+};
+
+export const getMonthlyAttendance = async (req, res) => {
+  const { month, year } = req.query;
+
+  if (!month || !year) {
+    return res.status(400).json({ error: "Month and Year are required" });
+  }
+
+  try {
+    const startDate = new Date(year, month - 1, 1);
+    const endDate = new Date(year, month, 0, 23, 59, 59); // last day of the month
+
+    const result = await Attendance.aggregate([
+      {
+        $match: {
+          date: { $gte: startDate, $lte: endDate }
+        }
+      },
+      {
+        $group: {
+          _id: {
+            rollNo: "$rollNo",
+            branch: "$branch"
+          },
+          count: { $sum: 1 },
+          volName: { $first: "$volunteers.volName" }
+        }
+      },
+      {
+        $project: {
+          _id: 0,
+          volName: "$_id.volName",
+          rollNo: "$_id.rollNo",
+          branch: "$_id.branch",
+          count: 1
+        }
+      },
+      {
+        $sort: { volName: 1 }
+      }
+    ]);
+
+    res.status(200).json({ volunteers: result });
+  } catch (err) {
+    console.error("Monthly aggregation error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
