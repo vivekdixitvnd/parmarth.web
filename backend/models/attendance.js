@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const attendanceSchema = new mongoose.Schema({
   date: {
-    type: Date, // Format: YYYY-MM-DD
+    type: String, // Format: YYYY-MM-DD
     required: true,
     unique: true,
   },
