@@ -1,5 +1,5 @@
 import express from "express";
-import { uploadEventMaterial, getEventPhotos } from "../controllers/eventController.js";
+import { uploadEventMaterial, getEventPhotos } from "../controllers/eventUpload.js";
 
 const router = express.Router();
 
