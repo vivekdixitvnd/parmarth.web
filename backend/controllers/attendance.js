@@ -118,7 +118,8 @@ export const getMonthlyAttendance = async (req, res) => {
             branch: "$volunteers.branch",
             volName: "$volunteers.volName"
           },
-          count: { $sum: 1 }
+          count: { $sum: 1 },
+          volName: { $first: "$volunteers.volName" }
         }
       },
       {
