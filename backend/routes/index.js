@@ -13,6 +13,7 @@ import donateEmail from "./donateEmail.route.js"
 import studyRoutes from "./studyMaterialRoutes.js";
 import attendanceRoute from "./attendance.routes.js"
 import otpLogin from "./otpLogin.routes.js"
+import eventUploadRoutes from "./eventUpload.routes.js"
 
 
 export {
@@ -30,6 +31,6 @@ export {
   donateEmail,
   studyRoutes,
   attendanceRoute,
-  otpLogin
-
+  otpLogin,
+  eventUploadRoutes,
 };
