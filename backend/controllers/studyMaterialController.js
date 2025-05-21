@@ -51,32 +51,31 @@ export const uploadStudyMaterial = async (req, res) => {
       return res.status(400).json({ message: "No file uploaded" });
     }
 
-    // ✅ Allow only PDFs (optional safety)
-    if (!req.file.mimetype.includes("pdf")) {
-      return res.status(400).json({ message: "Only PDF uploads are allowed" });
-    }
-
-    // ✅ Upload to Cloudinary as raw file with public access
+    // Upload file to Cloudinary
     const result = await cloudinary.uploader.upload(req.file.path, {
-      resource_type: "raw",
+      resource_type: "auto",
       folder: "study_material",
+      use_filename: true,
+      unique_filename: false,
       access_mode: "public",
     });
 
-    // ✅ Save metadata to DB
+    // Create preview URL for browser viewing
+    const fileUrl = result.secure_url.replace('/upload/', '/upload/fl_attachment:preview/');
+
+    // Save to database
     const material = new StudyMaterial({
       classOrExam,
       subject,
       title,
       type,
-      fileUrl: result.secure_url,
+      fileUrl,
       fileType: result.resource_type,
       fileName: result.original_filename,
     });
 
     await material.save();
-
-    fs.unlinkSync(req.file.path); // ✅ Clean up local file
+    fs.unlinkSync(req.file.path); // Clean up local temp file
 
     res.status(201).json({ message: "Uploaded successfully", material });
   } catch (error) {
