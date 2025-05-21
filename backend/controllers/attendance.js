@@ -115,7 +115,6 @@ export const getMonthlyAttendance = async (req, res) => {
       {
         $group: {
           _id: {
-            rollNo: "$volunteers.rollNo",
             branch: "$volunteers.branch",
             volName: "$volunteers.volName"
           },
@@ -125,7 +124,7 @@ export const getMonthlyAttendance = async (req, res) => {
       {
         $project: {
           _id: 0,
-          volName: "$_id.volName",
+          volName: 1,
           rollNo: "$_id.rollNo",
           branch: "$_id.branch",
           count: 1
