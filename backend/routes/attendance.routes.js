@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/", upload.array("photos", 7), markAttendance);
 router.get("/total", isAuth, getAttendanceCount);
-router.get('/monthly', auth, getMonthlyAttendance);
+router.get('/monthly', isAuth, getMonthlyAttendance);
 router.get("/:date", getAttendanceByDate);
 
 export default router;
