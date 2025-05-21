@@ -1,5 +1,6 @@
 import multer from "multer";
 import Attendance from "../models/attendance.js";
+import moment from "moment";
 
 import path from "path";
 import fs from "fs";
@@ -90,15 +91,17 @@ export const getAttendanceByDate = async (req, res) => {
 
 export const getMonthlyAttendance = async (req, res) => {
   const { month, year } = req.query;
-  console.log(req.query)
+  console.log(req.query);
 
   if (!month || !year) {
     return res.status(400).json({ error: "Month and Year are required" });
   }
 
   try {
-    const startDate = new Date(year, month - 1, 1);
-    const endDate = new Date(year, month, 0, 23, 59, 59); // last day of the month
+    const startDate = moment(`${year}-${month}-01`).format("YYYY-MM-DD");
+    const endDate = moment(`${year}-${month}-01`).endOf("month").format("YYYY-MM-DD");
+
+    console.log("Searching between:", startDate, "to", endDate);
 
     const result = await Attendance.aggregate([
       {
@@ -107,13 +110,16 @@ export const getMonthlyAttendance = async (req, res) => {
         }
       },
       {
+        $unwind: "$volunteers"
+      },
+      {
         $group: {
           _id: {
-            rollNo: "$rollNo",
-            branch: "$branch"
+            rollNo: "$volunteers.rollNo",
+            branch: "$volunteers.branch",
+            volName: "$volunteers.volName"
           },
-          count: { $sum: 1 },
-          volName: { $first: "$volunteers.volName" }
+          count: { $sum: 1 }
         }
       },
       {
@@ -137,6 +143,7 @@ export const getMonthlyAttendance = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 
 // GET: /api/attendance/volunteer-count
 export const getAttendanceCount = async (req, res) => {
