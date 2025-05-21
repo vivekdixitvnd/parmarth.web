@@ -12,8 +12,9 @@ export const uploadStudyMaterial = async (req, res) => {
 
     // Upload to Cloudinary
     const result = await cloudinary.uploader.upload(req.file.path, {
-      resource_type: "auto",
+      resource_type: "raw",
       folder: "study_material",
+      access_mode: "public",
     });
 
     // Save to DB
