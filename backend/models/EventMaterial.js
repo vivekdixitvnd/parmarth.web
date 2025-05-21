@@ -1,17 +1,19 @@
 import mongoose from "mongoose";
 
 const eventMaterialSchema = new mongoose.Schema({
-  eventName: String,
+  eventName: {
+    type: String,
+    required: true,
+  },
   description: String,
-  fileUrl: String,
+  fileUrl: {
+    type: String,
+    required: true,
+  },
   fileType: String,
   fileName: String,
-  uploadedAt: {
-    type: Date,
-    default: Date.now,
-  },
+}, {
+  timestamps: true,
 });
 
-const EventMaterial = mongoose.model("EventMaterial", eventMaterialSchema);
-
-export default EventMaterial;
+export default mongoose.model("EventMaterial", eventMaterialSchema);
