@@ -131,7 +131,7 @@ export const getMonthlyAttendance = async (req, res) => {
     ]);
 
     res.status(200).json({ volunteers: result });
-    console.log(res.json())
+    console.log("Monthly attendance result:", result);
   } catch (err) {
     console.error("Monthly aggregation error:", err);
     res.status(500).json({ error: "Internal Server Error" });
