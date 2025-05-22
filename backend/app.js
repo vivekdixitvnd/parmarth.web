@@ -30,7 +30,6 @@ import {
   eventUploadRoutes,
   otpLogin,
   attendanceRoute,
-  eventUploadRoutes,
 } from "./routes/index.js";
 
 const app = express();

@@ -1,6 +1,8 @@
 import express from "express";
-import { uploadEventMaterial } from "../controllers/eventController.js";
+
 import EventMaterial from "../models/EventMaterial.js";
+import { uploadEventMaterial } from "../controllers/eventUpload.js";
+
 
 const router = express.Router();
 
