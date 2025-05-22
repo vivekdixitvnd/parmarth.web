@@ -6,14 +6,13 @@ const eventMaterialSchema = new mongoose.Schema({
     required: true,
   },
   description: String,
-  fileUrl: {
-    type: String,
-    required: true,
-  },
+  fileUrl: String,
   fileType: String,
   fileName: String,
-}, {
-  timestamps: true,
+  uploadedAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export default mongoose.model("EventMaterial", eventMaterialSchema);

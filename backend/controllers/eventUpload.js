@@ -1,29 +1,7 @@
 import cloudinary from "../config/cloudinary.js";
 import EventMaterial from "../models/EventMaterial.js";
 import fs from "fs";
-import multer from "multer";
-import path from "path";
 
-// ---- MULTER SETUP ----
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/"); // folder must exist
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  },
-});
-
-const upload = multer({
-  storage,
-  fileFilter: (req, file, cb) => {
-    const allowed = /jpeg|jpg|png|pdf/;
-    const ext = allowed.test(path.extname(file.originalname).toLowerCase());
-    const mime = allowed.test(file.mimetype);
-    if (ext && mime) cb(null, true);
-    else cb(new Error("Only images and PDFs are allowed"));
-  },
-}).single("file");
 
 // ---- CONTROLLER: Upload event material ----
 export const uploadEventMaterial = async (req, res) => {
@@ -48,11 +26,14 @@ export const uploadEventMaterial = async (req, res) => {
         access_mode: "public",
       });
 
+          // Create preview URL for browser viewing
+    const fileUrl = result.secure_url.replace('/upload/', '/upload/fl_attachment:preview/');
+
       // Save to DB
       const newMaterial = new EventMaterial({
         eventName,
         description,
-        fileUrl: result.secure_url,
+        fileUrl,
         fileType: result.resource_type,
         fileName: result.original_filename,
       });
@@ -66,27 +47,4 @@ export const uploadEventMaterial = async (req, res) => {
       res.status(500).json({ message: "Server error" });
     }
   });
-};
-
-// ---- CONTROLLER: Fetch photos by event name ----
-export const getEventPhotos = async (req, res) => {
-  try {
-    const { eventName } = req.params;
-
-    if (!eventName) {
-      return res.status(400).json({ message: "Event name is required" });
-    }
-
-    const photos = await EventMaterial.find({ eventName }).sort({ createdAt: -1 });
-    const urls = photos.map(photo => photo.fileUrl);
-
-    res.status(200).json({
-      eventName,
-      count: urls.length,
-      photos: urls,
-    });
-  } catch (error) {
-    console.error("Fetch error:", error);
-    res.status(500).json({ message: "Failed to fetch event photos" });
-  }
 };
