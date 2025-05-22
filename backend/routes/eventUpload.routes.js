@@ -1,15 +1,13 @@
 import express from "express";
-
+import uploadEventMaterial from "../controllers/eventController.js";
 import EventMaterial from "../models/EventMaterial.js";
-import { uploadEventMaterial } from "../controllers/eventUpload.js";
-
 
 const router = express.Router();
 
-// POST: Upload Event Material (multer handled in controller)
+// Upload endpoint (handled internally in controller with multer)
 router.post("/upload", uploadEventMaterial);
 
-// GET: Fetch Photos for a Specific Event
+// Fetch photos for a specific event
 router.get("/photos/:eventName", async (req, res) => {
   try {
     const eventName = decodeURIComponent(req.params.eventName);
@@ -17,8 +15,9 @@ router.get("/photos/:eventName", async (req, res) => {
       return res.status(400).json({ message: "Event name is required" });
     }
 
-    const photos = await EventMaterial.find({ eventName }).sort({ createdAt: -1 });
-    const urls = photos.map(photo => photo.fileUrl);
+    const photos = await EventMaterial.find({ eventName });
+
+    const urls = photos.map((photo) => photo.fileUrl);
 
     res.status(200).json({
       eventName,
