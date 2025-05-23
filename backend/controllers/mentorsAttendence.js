@@ -101,10 +101,15 @@ export const markMentorAttendance = async (req, res) => {
 export const getMentorAttendanceByDate = async (req, res) => {
   try {
     const { date } = req.params;
-    const attendance = await MentorAttendance.findOne({ date });
-    res.status(200).json({ attendance });
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching mentor attendance", error });
+
+    const data = await MentorAttendance.findOne({ date });
+    console.log(data);
+    if (!data) {
+      return res.status(404).json({ message: "No attendance found for the given date." });
+    }
+    res.status(200).json({ attendance: data });
+  } catch (err) {
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 };
 
