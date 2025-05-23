@@ -68,9 +68,10 @@ export const markMentorAttendance = async (req, res) => {
 
         // Check for existing attendance
         const existingAttendance = await MentorAttendance.findOne({
-          mentor: mentorData.rollNo,
-          date
-        });
+          "mentor.rollNo": mentorData.rollNo,
+            date
+            });
+
 
         if (existingAttendance) {
           errors.push({
@@ -82,10 +83,15 @@ export const markMentorAttendance = async (req, res) => {
 
         // Create new attendance record
         const attendance = new MentorAttendance({
-          mentor: mentorData.rollNo,
-          date,
-          isPresent: true
-        });
+  mentor: {
+    name: mentorData.mentorName,
+    rollNo: mentorData.rollNo,
+    branch: mentorData.branch,
+  },
+  date,
+  isPresent: true,
+});
+
 
         await attendance.save();
         results.push({
