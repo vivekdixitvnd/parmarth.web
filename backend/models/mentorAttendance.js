@@ -21,4 +21,6 @@ const mentorSchema = new mongoose.Schema({
 });
 
 const MentorAttendance = mongoose.model('MentorAttendance', mentorSchema); 
+
 export default MentorAttendance;
+
