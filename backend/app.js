@@ -30,6 +30,7 @@ import {
   eventUploadRoutes,
   otpLogin,
   attendanceRoute,
+  mentorRoutes,
 } from "./routes/index.js";
 
 const app = express();
@@ -94,6 +95,7 @@ app.use(donateEmail);
 app.use("/api/study", studyRoutes);
 app.use("/api/event", eventUploadRoutes);
 app.use("/api/attendance",attendanceRoute);
+app.use('/api/mentors', mentorRoutes);
 app.use(otpLogin);
 
 app.use(express.static("dist"));

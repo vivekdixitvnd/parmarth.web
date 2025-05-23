@@ -11,9 +11,10 @@ import rteRoute from "./rteData.routes.js";
 import signature from "./signature.routes.js"
 import donateEmail from "./donateEmail.route.js"
 import studyRoutes from "./studyMaterialRoutes.js";
-import attendanceRoute from "./attendance.routes.js"
-import otpLogin from "./otpLogin.routes.js"
-import eventUploadRoutes from "./eventUpload.routes.js"
+import attendanceRoute from "./attendance.routes.js";
+import otpLogin from "./otpLogin.routes.js";
+import eventUploadRoutes from "./eventUpload.routes.js";
+import mentorRoutes from "./mentorsAttendence.routes.js";
 
 
 export {
@@ -31,6 +32,7 @@ export {
   donateEmail,
   studyRoutes,
   attendanceRoute,
+  mentorRoutes,
   otpLogin,
   eventUploadRoutes,
 };
