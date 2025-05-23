@@ -143,8 +143,8 @@ export const getMentorAttendanceCount = async (req, res) => {
             rollNo: "$mentor.rollNo",
             branch: "$mentor.branch",
           },
-          name: { $first: "$mentor.name" },
           count: { $sum: 1 },
+          name: { $first: "$mentor.name" }
         },
       },
       {
@@ -190,8 +190,8 @@ export const getMonthlyMentorAttendance = async (req, res) => {
             rollNo: "$mentor.rollNo",
             branch: "$mentor.branch",
           },
-          name: { $first: "$mentor.name" },
           count: { $sum: 1 },
+          name: { $first: "$mentor.name" }
         },
       },
       {
