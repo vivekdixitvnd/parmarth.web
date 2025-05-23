@@ -1,5 +1,5 @@
 import multer from "multer";
-import Mentor from "../models/mentorAttendance";
+import MentorAttendance from "../models/mentorAttendance";
 import moment from "moment";
 import path from "path";
 import fs from "fs";
