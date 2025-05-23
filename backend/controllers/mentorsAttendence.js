@@ -132,90 +132,85 @@ export const getMentorAttendanceByDate = async (req, res) => {
   }
 };
 
-// GET: Get Monthly Mentor Attendance (optional - not updated for new schema)
-export const getMonthlyMentorAttendance = async (req, res) => {
+// GET: Total attendance per mentor
+export const getMentorAttendanceCount = async (req, res) => {
   try {
-    const { month, year } = req.query;
+    const result = await MentorAttendance.aggregate([
+      { $unwind: "$mentor" },
+      {
+        $group: {
+          _id: {
+            rollNo: "$mentor.rollNo",
+            branch: "$mentor.branch",
+          },
+          name: { $first: "$mentor.name" },
+          count: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          name: 1,
+          rollNo: "$_id.rollNo",
+          branch: "$_id.branch",
+          count: 1,
+        },
+      },
+      { $sort: { count: -1 } },
+    ]);
 
-    if (!month || !year) {
-      return res.status(400).json({
-        success: false,
-        message: "Month and Year are required",
-      });
-    }
+    res.status(200).json({ mentors: result });
+  } catch (err) {
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+};
 
+// GET: Monthly mentor attendance
+export const getMonthlyMentorAttendance = async (req, res) => {
+  const { month, year } = req.query;
+
+  if (!month || !year) {
+    return res.status(400).json({ error: "Month and year are required" });
+  }
+
+  try {
     const startDate = moment(`${year}-${month}-01`).format("YYYY-MM-DD");
     const endDate = moment(`${year}-${month}-01`).endOf("month").format("YYYY-MM-DD");
 
-    const records = await MentorAttendance.find({
-      date: { $gte: startDate, $lte: endDate },
-    });
+    const result = await MentorAttendance.aggregate([
+      {
+        $match: {
+          date: { $gte: startDate, $lte: endDate },
+        },
+      },
+      { $unwind: "$mentor" },
+      {
+        $group: {
+          _id: {
+            rollNo: "$mentor.rollNo",
+            branch: "$mentor.branch",
+          },
+          name: { $first: "$mentor.name" },
+          count: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          name: 1,
+          rollNo: "$_id.rollNo",
+          branch: "$_id.branch",
+          count: 1,
+        },
+      },
+      { $sort: { count: -1 } },
+    ]);
 
-    const rollCount = {};
-
-    records.forEach((entry) => {
-      entry.mentor.forEach((m) => {
-        const key = m.rollNo;
-        if (!rollCount[key]) {
-          rollCount[key] = {
-            name: m.name,
-            rollNo: m.rollNo,
-            branch: m.branch,
-            count: 0,
-          };
-        }
-        rollCount[key].count += 1;
-      });
-    });
-
-    const result = Object.values(rollCount).sort((a, b) => b.count - a.count);
-
-    res.status(200).json({
-      success: true,
-      mentors: result,
-    });
+    res.status(200).json({ mentors: result });
   } catch (err) {
-    console.error("Server error in getMonthlyMentorAttendance:", err);
-    res.status(500).json({
-      success: false,
-      message: "Server error",
-      error: err.message,
-    });
+    console.error("Monthly mentor error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
-// GET: Get Mentor Attendance Count (total per mentor)
-export const getMentorAttendanceCount = async (req, res) => {
-  try {
-    const records = await MentorAttendance.find({});
-
-    const rollCount = {};
-
-    records.forEach((entry) => {
-      entry.mentor.forEach((m) => {
-        const key = m.rollNo;
-        if (!rollCount[key]) {
-          rollCount[key] = {
-            name: m.name,
-            rollNo: m.rollNo,
-            branch: m.branch,
-            count: 0,
-          };
-        }
-        rollCount[key].count += 1;
-      });
-    });
-
-    const result = Object.values(rollCount).sort((a, b) => b.count - a.count);
-
-    res.status(200).json({ success: true, mentors: result });
-  } catch (err) {
-    console.error("Server error in getMentorAttendanceCount:", err);
-    res.status(500).json({
-      success: false,
-      message: "Server error",
-      error: err.message,
-    });
-  }
-};
 
