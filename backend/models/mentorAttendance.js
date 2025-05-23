@@ -2,8 +2,18 @@ import mongoose from 'mongoose';
 
 const mentorSchema = new mongoose.Schema({
   mentor: {
-    type: String, // This stores rollNo
-    required: true,
+    name: {
+      type: String,
+      required: true,
+    },
+    rollNo: {
+      type: String,
+      required: true,
+    },
+    branch: {
+      type: String,
+      required: true,
+    },
   },
   date: {
     type: String, // Format: YYYY-MM-DD
@@ -15,9 +25,8 @@ const mentorSchema = new mongoose.Schema({
   },
 });
 
-// To prevent duplicate attendance for same mentor on the same date
-mentorSchema.index({ mentor: 1, date: 1 }, { unique: true });
+mentorSchema.index({ "mentor.rollNo": 1, date: 1 }, { unique: true });
 
-const MentorAttendance = mongoose.model('MentorAttendance', mentorSchema); 
+const MentorAttendance = mongoose.model('MentorAttendance', mentorSchema);
 
 export default MentorAttendance;
