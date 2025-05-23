@@ -103,7 +103,7 @@ export const getMentorAttendanceByDate = async (req, res) => {
     const { date } = req.params;
 
     const data = await MentorAttendance.findOne({ date });
-    console.log(data);
+    console.log("data in the data section : ", data);
     if (!data) {
       return res.status(404).json({ message: "No attendance found for the given date." });
     }
