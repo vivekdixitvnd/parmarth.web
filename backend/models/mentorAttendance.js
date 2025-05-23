@@ -20,10 +20,9 @@ const mentorSchema = new mongoose.Schema({
   date: {
     type: String, // Format: YYYY-MM-DD
     required: true,
+    unique: true, // only one document per date
   },
 });
-
-mentorSchema.index({ "mentor.rollNo": 1, date: 1 }, { unique: true });
 
 const MentorAttendance = mongoose.model('MentorAttendance', mentorSchema);
 
