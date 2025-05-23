@@ -1,5 +1,5 @@
 import multer from "multer";
-import MentorAttendance from "../models/mentorAttendance";
+import MentorAttendance from "../models/MentorAttendance.js";
 import moment from "moment";
 import path from "path";
 import fs from "fs";
@@ -24,20 +24,47 @@ export const upload = multer({ storage });
 // POST: Mark Mentor Attendance
 export const markMentorAttendance = async (req, res) => {
   try {
+    console.log("Received request body:", req.body); // Debug log
+
     const { mentors } = req.body;
 
-    // Validation
-    if (!mentors || !Array.isArray(mentors) || mentors.length === 0) {
-      return res.status(400).json({ message: "Please provide at least one mentor." });
+    // Input validation
+    if (!mentors) {
+      console.log("No mentors data provided"); // Debug log
+      return res.status(400).json({ 
+        success: false,
+        message: "Mentors data is required" 
+      });
+    }
+
+    // Ensure mentors is an array
+    const mentorsArray = Array.isArray(mentors) ? mentors : [mentors];
+    console.log("Processing mentors:", mentorsArray); // Debug log
+    
+    if (mentorsArray.length === 0) {
+      return res.status(400).json({ 
+        success: false,
+        message: "Please provide at least one mentor" 
+      });
     }
 
     const date = new Date().toISOString().split("T")[0];
     const results = [];
     const errors = [];
 
-    for (const mentorData of mentors) {
+    for (const mentorData of mentorsArray) {
       try {
-        // Check if attendance already marked for this mentor today
+        // Validate mentor data
+        if (!mentorData.rollNo || !mentorData.mentorName) {
+          console.log("Invalid mentor data:", mentorData); // Debug log
+          errors.push({
+            rollNumber: mentorData.rollNo || 'unknown',
+            error: "Invalid mentor data: rollNo and mentorName are required"
+          });
+          continue;
+        }
+
+        // Check for existing attendance
         const existingAttendance = await MentorAttendance.findOne({
           mentor: mentorData.rollNo,
           date
@@ -51,6 +78,7 @@ export const markMentorAttendance = async (req, res) => {
           continue;
         }
 
+        // Create new attendance record
         const attendance = new MentorAttendance({
           mentor: mentorData.rollNo,
           date,
@@ -64,21 +92,31 @@ export const markMentorAttendance = async (req, res) => {
           status: "success"
         });
       } catch (error) {
+        console.error(`Error processing mentor ${mentorData.rollNo}:`, error);
         errors.push({
           rollNumber: mentorData.rollNo,
-          error: error.message
+          error: error.message || "Failed to process attendance"
         });
       }
     }
 
-    res.status(201).json({
+    // Send response
+    const response = {
+      success: true,
       message: "Attendance marked successfully!",
       results,
       errors: errors.length > 0 ? errors : undefined
-    });
+    };
+    
+    console.log("Sending response:", response); // Debug log
+    res.status(201).json(response);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error", error: err.message });
+    console.error("Server error in markMentorAttendance:", err);
+    res.status(500).json({ 
+      success: false,
+      message: "Server error", 
+      error: err.message 
+    });
   }
 };
 
@@ -87,27 +125,49 @@ export const getMentorAttendanceByDate = async (req, res) => {
   try {
     const { date } = req.params;
 
+    if (!date) {
+      return res.status(400).json({ 
+        success: false,
+        message: "Date parameter is required" 
+      });
+    }
+
     const data = await MentorAttendance.find({ date })
       .populate('mentor', 'name rollNumber branch');
 
     if (!data || data.length === 0) {
-      return res.status(404).json({ message: "No attendance found for the given date." });
+      return res.status(404).json({ 
+        success: false,
+        message: "No attendance found for the given date" 
+      });
     }
-    res.status(200).json({ attendance: data });
+
+    res.status(200).json({ 
+      success: true,
+      attendance: data 
+    });
   } catch (err) {
-    res.status(500).json({ message: "Server error", error: err.message });
+    console.error("Server error in getMentorAttendanceByDate:", err);
+    res.status(500).json({ 
+      success: false,
+      message: "Server error", 
+      error: err.message 
+    });
   }
 };
 
 // GET: Get Monthly Mentor Attendance
 export const getMonthlyMentorAttendance = async (req, res) => {
-  const { month, year } = req.query;
-
-  if (!month || !year) {
-    return res.status(400).json({ error: "Month and Year are required" });
-  }
-
   try {
+    const { month, year } = req.query;
+
+    if (!month || !year) {
+      return res.status(400).json({ 
+        success: false,
+        message: "Month and Year are required" 
+      });
+    }
+
     const startDate = moment(`${year}-${month}-01`).format("YYYY-MM-DD");
     const endDate = moment(`${year}-${month}-01`).endOf("month").format("YYYY-MM-DD");
 
@@ -122,20 +182,20 @@ export const getMonthlyMentorAttendance = async (req, res) => {
           from: "mentors",
           localField: "mentor",
           foreignField: "rollNumber",
-          as: "mentors"
+          as: "mentorDetails"
         }
       },
       {
-        $unwind: "$mentors"
+        $unwind: "$mentorDetails"
       },
       {
         $group: {
           _id: {
-            rollNumber: "$mentors.rollNumber",
-            branch: "$mentors.branch"
+            rollNumber: "$mentorDetails.rollNumber",
+            branch: "$mentorDetails.branch"
           },
           count: { $sum: 1 },
-          name: { $first: "$mentors.name" }
+          name: { $first: "$mentorDetails.name" }
         }
       },
       {
@@ -152,10 +212,17 @@ export const getMonthlyMentorAttendance = async (req, res) => {
       }
     ]);
 
-    res.status(200).json({ mentors: result });
+    res.status(200).json({ 
+      success: true,
+      mentors: result 
+    });
   } catch (err) {
-    console.error("Monthly aggregation error:", err);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error("Server error in getMonthlyMentorAttendance:", err);
+    res.status(500).json({ 
+      success: false,
+      message: "Server error", 
+      error: err.message 
+    });
   }
 };
 
