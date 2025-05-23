@@ -21,10 +21,6 @@ const mentorSchema = new mongoose.Schema({
     type: String, // Format: YYYY-MM-DD
     required: true,
   },
-  isPresent: {
-    type: Boolean,
-    default: true,
-  },
 });
 
 mentorSchema.index({ "mentor.rollNo": 1, date: 1 }, { unique: true });
