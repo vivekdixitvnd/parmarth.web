@@ -94,7 +94,8 @@ app.use(signature);
 app.use(donateEmail);
 app.use("/api/study", studyRoutes);
 app.use("/api/event", eventUploadRoutes);
-app.use("/api/attendance",attendanceRoute);
+app.use("/api/attendance/volunteer",attendanceRoute);
+app.use("/api/attendance/mentor",attendanceRoute);
 app.use('/api/mentors', mentorRoutes);
 app.use(otpLogin);
 
