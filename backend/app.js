@@ -10,8 +10,7 @@ import compression from "compression";
 import morgan from "morgan";
 import cors from "cors";
 import whatsappConfig from './config/whatsappConfig.js'
-
-
+import { initializeWhatsApp, getAllGroups, sendWhatsAppMessage, sendWhatsAppMedia } from './services/whatsappService.js';
 
 //Routes
 import {
@@ -135,6 +134,4 @@ app.use(otpLogin);
 
 app.use(express.static("dist"));
 
-
-
-  export {app}
+export {app}

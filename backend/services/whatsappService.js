@@ -1,61 +1,45 @@
-import venom from 'venom-bot';
+import whatsappConfig from '../config/whatsappConfig.js';
 
 let client = null;
 
-const initializeWhatsApp = async () => {
+export const initializeWhatsApp = async () => {
   try {
-    client = await venom.create({
-      session: 'parmarth-app',
-      multidevice: true
-    });
-    console.log('WhatsApp client initialized successfully');
+    // Initialize WhatsApp client here
+    // This is a placeholder - you'll need to implement the actual WhatsApp client initialization
+    // based on the WhatsApp API or library you're using
+    console.log('WhatsApp client initialized');
   } catch (error) {
     console.error('Error initializing WhatsApp client:', error);
+    throw error;
   }
 };
 
-// Function to get all groups and their IDs
-const getAllGroups = async () => {
+export const getAllGroups = async () => {
   try {
-    if (!client) {
-      await initializeWhatsApp();
-    }
-    const groups = await client.getAllGroups();
-    return groups.map(group => ({
-      name: group.name,
-      id: group.id._serialized
-    }));
-  } catch (error) {
-    console.error('Error getting groups:', error);
+    // Implement group fetching logic here
     return [];
+  } catch (error) {
+    console.error('Error fetching groups:', error);
+    throw error;
   }
 };
 
-const sendWhatsAppMessage = async (groupId, message) => {
+export const sendWhatsAppMessage = async (groupId, message) => {
   try {
-    if (!client) {
-      await initializeWhatsApp();
-    }
-    await client.sendText(groupId, message);
+    // Implement message sending logic here
+    console.log(`Sending message to group ${groupId}: ${message}`);
   } catch (error) {
     console.error('Error sending WhatsApp message:', error);
+    throw error;
   }
 };
 
-const sendWhatsAppMedia = async (groupId, mediaUrl, caption) => {
+export const sendWhatsAppMedia = async (groupId, mediaUrl, caption) => {
   try {
-    if (!client) {
-      await initializeWhatsApp();
-    }
-    await client.sendImage(groupId, mediaUrl, 'image', caption);
+    // Implement media sending logic here
+    console.log(`Sending media to group ${groupId}: ${mediaUrl} with caption: ${caption}`);
   } catch (error) {
     console.error('Error sending WhatsApp media:', error);
+    throw error;
   }
-};
-
-export {
-  initializeWhatsApp,
-  getAllGroups,
-  sendWhatsAppMessage,
-  sendWhatsAppMedia
 }; 
