@@ -7,7 +7,7 @@ import { getMentorAttendanceByDate, markMentorAttendance, getMentorAttendanceCou
 const router = express.Router();
 
 // Get all mentors
-router.get('/', markMentorAttendance);
+router.post('/', markMentorAttendance);
 router.get("/total", isAuth, getMentorAttendanceCount);
 router.get('/monthly', isAuth, getMonthlyMentorAttendance);
 router.get("/:date", getMentorAttendanceByDate);

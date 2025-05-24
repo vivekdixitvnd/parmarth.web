@@ -129,8 +129,8 @@ app.use(signature);
 app.use(donateEmail);
 app.use("/api/study", studyRoutes);
 app.use("/api/event", eventUploadRoutes);
-app.use("/api/attendance",attendanceRoute);
-app.use('/api/mentors', mentorRoutes);
+app.use("/api/attendance/volunteer",attendanceRoute);
+app.use("/api/attendance/mentor",mentorRoutes);
 app.use(otpLogin);
 
 app.use(express.static("dist"));
