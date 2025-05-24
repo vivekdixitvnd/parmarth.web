@@ -8,7 +8,8 @@ import fs from "fs";
 import helmet from "helmet";
 import compression from "compression";
 import morgan from "morgan";
-import cors from "cors"
+import cors from "cors";
+import whatsappConfig from './config/whatsappConfig.js'
 
 
 
@@ -47,6 +48,40 @@ app.use(cors({
 app.options('*', cors()); // handle preflight for all routes
 
 app.use(express.json());
+
+initializeWhatsApp();
+
+app.get('/whatsapp/groups', async (req, res) => {
+  try {
+    const groups = await getAllGroups();
+    res.json({ success: true, groups });
+  } catch (error) {
+    console.error('Error getting groups:', error);
+    res.status(500).json({ error: 'Failed to get groups' });
+  }
+});
+
+app.post('/whatsapp/message', async (req, res) => {
+  try {
+    const { message } = req.body;
+    await sendWhatsAppMessage(whatsappConfig.groupId, message);
+    res.json({ success: true, message: 'Message sent successfully!' });
+  } catch (error) {
+    console.error('Error sending WhatsApp message:', error);
+    res.status(500).json({ error: 'Failed to send message' });
+  }
+});
+
+app.post('/whatsapp/media', async (req, res) => {
+  try {
+    const { mediaUrl, caption } = req.body;
+    await sendWhatsAppMedia(whatsappConfig.groupId, mediaUrl, caption);
+    res.json({ success: true, message: 'Media sent successfully!' });
+  } catch (error) {
+    console.error('Error sending WhatsApp media:', error);
+    res.status(500).json({ error: 'Failed to send media' });
+  }
+});
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
