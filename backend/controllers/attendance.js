@@ -1,7 +1,7 @@
 import multer from "multer";
 import Attendance from "../models/attendance.js";
 import moment from "moment";
-
+import cloudinary from "../config/cloudinary.js";
 import path from "path";
 import fs from "fs";
 
@@ -58,19 +58,17 @@ export const markAttendance = async (req, res) => {
     }
 
     // Handle uploaded photos
-  //   const photos = req.files?.map((file) => {
-  // return `${req.protocol}://${req.get("host")}/uploads/${file.filename}`;
+    const photos = [];
+    for (const file of req.files || []) {
+      const result = await cloudinary.uploader.upload(file.path, {
+        folder: "event_photos",
+        use_filename: true,
+        unique_filename: false,
+        resource_type: "image",
+      });
 
-      const photos = [];
-
-      for (const file of req.files) {
-        const result = await cloudinary.uploader.upload(file.path, {
-          folder: "event_photos",
-          use_filename: true,
-          unique_filename: false,
-          resource_type: "image",
-        }) || [];
-
+      photos.push(result.secure_url);
+    }
 
     const attendance = new Attendance({
       date,
@@ -88,6 +86,7 @@ export const markAttendance = async (req, res) => {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 };
+
 
 
 
