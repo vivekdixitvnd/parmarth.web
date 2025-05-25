@@ -31,7 +31,12 @@ export const addUpdate = async (req, res) => {
 export const deleteUpdate = async (req, res) => {
   try {
     const { id } = req.params;
-    await LiveUpdate.findByIdAndDelete(id);
+    const deletedUpdate = await LiveUpdate.findByIdAndDelete(id);
+    
+    if (!deletedUpdate) {
+      return res.status(404).json({ error: 'Update not found' });
+    }
+    
     res.json({ message: 'Update deleted successfully' });
   } catch (error) {
     console.error('Error deleting update:', error);
