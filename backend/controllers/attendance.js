@@ -69,9 +69,7 @@ export const markAttendance = async (req, res) => {
           use_filename: true,
           unique_filename: false,
           resource_type: "image",
-        });
-
-}) || [];
+        }) || [];
 
 
     const attendance = new Attendance({
