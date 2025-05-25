@@ -5,22 +5,31 @@ import moment from "moment";
 import path from "path";
 import fs from "fs";
 
-const uploadDir = path.join("uploads");
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
-}
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadDir);
-  },
+  destination: "uploads/",
   filename: (req, file, cb) => {
-    const uniqueName = `${Date.now()}-${file.originalname}`;
+    const uniqueName = Date.now() + path.extname(file.originalname);
     cb(null, uniqueName);
   },
 });
+const upload = multer({ storage }).array("photos", 10); 
+// const uploadDir = path.join("uploads");
+// if (!fs.existsSync(uploadDir)) {
+//   fs.mkdirSync(uploadDir);
+// }
 
-export const upload = multer({ storage });
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, uploadDir);
+//   },
+//   filename: (req, file, cb) => {
+//     const uniqueName = `${Date.now()}-${file.originalname}`;
+//     cb(null, uniqueName);
+//   },
+// });
+
+// export const upload = multer({ storage });
 
 
 // POST: Mark/Upload Attendance
@@ -49,8 +58,19 @@ export const markAttendance = async (req, res) => {
     }
 
     // Handle uploaded photos
-    const photos = req.files?.map((file) => {
-  return `${req.protocol}://${req.get("host")}/uploads/${file.filename}`;
+  //   const photos = req.files?.map((file) => {
+  // return `${req.protocol}://${req.get("host")}/uploads/${file.filename}`;
+
+      const photos = [];
+
+      for (const file of req.files) {
+        const result = await cloudinary.uploader.upload(file.path, {
+          folder: "event_photos",
+          use_filename: true,
+          unique_filename: false,
+          resource_type: "image",
+        });
+
 }) || [];
 
 
