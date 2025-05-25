@@ -26,6 +26,7 @@ import {
   donateEmail,
   studyRoutes,
   eventUploadRoutes,
+  liveUpdateRoutes,
   otpLogin,
   attendanceRoute,
   mentorRoutes,
@@ -92,6 +93,7 @@ app.use("/api/event", eventUploadRoutes);
 app.use("/api/attendance/volunteer",attendanceRoute);
 app.use("/api/attendance/mentor",mentorRoutes);
 app.use(otpLogin);
+app.use("/api/live-updates", liveUpdateRoutes);
 
 app.use(express.static("dist"));
 
