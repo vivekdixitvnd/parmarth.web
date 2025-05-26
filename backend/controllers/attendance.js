@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
     cb(null, uniqueName);
   },
 });
-const upload = multer({ storage });
+export const upload = multer({ storage });
 // const uploadDir = path.join("uploads");
 // if (!fs.existsSync(uploadDir)) {
 //   fs.mkdirSync(uploadDir);
