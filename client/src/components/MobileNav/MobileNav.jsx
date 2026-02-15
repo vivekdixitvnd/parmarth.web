@@ -707,6 +707,21 @@ const MobileNav = () => {
                       </NavLink>
                     </li>
                   )}
+                  {userType === "master" && (
+                    <li>
+                      <NavLink
+                        to="/manage-organization"
+                        className={
+                          pathname === "/manage-organization"
+                            ? "mobile-nav__active"
+                            : "mobile-nav__link"
+                        }
+                        style={{ fontSize: "18px" }}
+                      >
+                        Manage Organization
+                      </NavLink>
+                    </li>
+                  )}
                   {/* <li>
                   <NavLink
                     to="/convert-url"

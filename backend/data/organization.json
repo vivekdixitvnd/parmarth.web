@@ -1,0 +1,482 @@
+{
+  "founder": [
+    {
+      "id": 1,
+      "ref": "PAR-1440119",
+      "name": "Saurabh Singh",
+      "batch": "CE, 2018",
+      "linkedin": "https://www.linkedin.com/in/saurabh-singh-b34297115"
+    },
+    {
+      "id": 2,
+      "ref": "PAR-1440125",
+      "name": "Vipul Sharma",
+      "batch": "ME, 2018",
+      "linkedin": "https://www.linkedin.com/in/vipul-sharma-273b941b4/"
+    },
+    {
+      "id": 3,
+      "ref": "PAR-1440103",
+      "name": "Ankit Pandey",
+      "batch": "ME, 2018",
+      "email": "ankit.iet1@gmail.com"
+    }
+  ],
+  "advisory": [
+    {
+      "id": 10,
+      "ref": "PAR-1811101",
+      "name": "Alok Kumar",
+      "batch": "CHE, 2022",
+      "linkedin": "https://www.linkedin.com/in/alok-kumar-687041216"
+    },
+    {
+      "id": 11,
+      "ref": "PAR-1800102",
+      "name": "Abhay Sharma",
+      "batch": "CE, 2022",
+      "linkedin": "https://www.linkedin.com/in/abhaysharma4799"
+    },
+    {
+      "id": 1,
+      "ref": "PAR-1700101",
+      "name": "Abhishek Kushwaha",
+      "batch": "CE, 2021",
+      "email": "ak6847696@gmail.com"
+    },
+    {
+      "id": 2,
+      "ref": "PAR-1713104",
+      "name": "Ankit Shrivastava",
+      "batch": "CSE, 2021",
+      "email": "aksmks9698@gmail.com"
+    },
+    {
+      "id": 3,
+      "ref": "PAR-1751102",
+      "name": "Ashish Chand",
+      "batch": "CHE, 2021",
+      "linkedin": "https://www.linkedin.com/in/ashishhere"
+    },
+    {
+      "id": 4,
+      "ref": "PAR-1620105",
+      "name": "Shrey Dubey",
+      "batch": "EE, 2020",
+      "linkedin": "https://www.linkedin.com/in/shrey-dubey"
+    },
+    {
+      "id": 5,
+      "ref": "PAR-1610106",
+      "name": "Pragya Vyas",
+      "batch": "CSE, 2020",
+      "linkedin": "https://www.linkedin.com/in/pvyas02"
+    },
+    {
+      "id": 6,
+      "ref": "PAR-1510104",
+      "name": "Ashwani Sharma",
+      "batch": "CSE, 2019",
+      "linkedin": "https://www.linkedin.com/in/ashwanisharma3"
+    },
+    {
+      "id": 7,
+      "ref": "PAR-1770108",
+      "name": "Kirti Verma",
+      "batch": "MBA, 2019",
+      "linkedin": "https://www.linkedin.com/in/kirti-verma-445354171"
+    },
+    {
+      "id": 8,
+      "ref": "PAR-1440125",
+      "name": "Vipul Sharma",
+      "batch": "ME, 2018",
+      "linkedin": "https://www.linkedin.com/in/vipul-sharma-273b941b4/"
+    },
+    {
+      "id": 9,
+      "ref": "PAR-1470109",
+      "name": "Richa Sharma",
+      "batch": "MBA, 2016",
+      "email": "richasharma0903@gmail.com"
+    }
+  ],
+  "coreAdvisory": [
+    {
+      "id": 12,
+      "ref": "PARM-210316501",
+      "name": "Vivek Kumar Dixit",
+      "batch": "ECE, 2025",
+      "linkedin": "https://www.linkedin.com/in/vivek-553277228/",
+      "email": ""
+    },
+    {
+      "id": 13,
+      "ref": "PARM-210201702",
+      "name": "Arnav Saxena",
+      "batch": "ECE, 2025",
+      "linkedin": "https://www.linkedin.com/in/arnav-saxena-170116233/"
+    },
+    {
+      "id": 14,
+      "ref": "PARM-210001903",
+      "name": "Divyansh Tripathi",
+      "batch": "CE, 2025",
+      "linkedin": "https://www.linkedin.com/in/divyansh-tripathi-8720bb232/"
+    },
+    {
+      "id": 14,
+      "ref": "PARM-210311725",
+      "name": "Anshika Mishra",
+      "batch": "ECE, 2025",
+      "linkedin": "https://www.linkedin.com/in/anshika-mishra-58a19522b/"
+    },
+    {
+      "id": 14,
+      "ref": "PARM-210205418",
+      "name": "Rajeev Gupta",
+      "batch": "CSE, 2025",
+      "linkedin": "https://www.linkedin.com/in/rajeev-kumar-569846227/"
+    },
+    {
+      "id": 1,
+      "ref": "PARM-200313901",
+      "name": "Mridul Pandey",
+      "batch": "ECE, 2024",
+      "linkedin": "https://www.linkedin.com/in/mridul-pandey-874856190"
+    },
+    {
+      "id": 2,
+      "ref": "PARM-200204913",
+      "name": "Rajneesh Dubey",
+      "batch": "EE, 2024",
+      "linkedin": "https://www.linkedin.com/in/rajneesh-dubey-1b8bb4241"
+    },
+    {
+      "id": 3,
+      "ref": "PARM-200014905",
+      "name": "Sakshi Chauhan",
+      "batch": "IT, 2024",
+      "linkedin": "https://www.linkedin.com/in/sakshi-chauhan-13bb27225"
+    },
+    {
+      "id": 4,
+      "ref": "PARM-200515602",
+      "name": "Shikha Awasthi",
+      "batch": "CHE, 2024",
+      "linkedin": "https://www.linkedin.com/in/shikha-awasthi-33060323a"
+    },
+    {
+      "id": 5,
+      "ref": "PARM-190003208",
+      "name": "Manish Tarkar",
+      "batch": "CE, 2023",
+      "linkedin": "https://www.linkedin.com/in/manishtarkar123"
+    },
+    {
+      "id": 6,
+      "ref": "PARM-190310702",
+      "name": "Adarsh Bhardwaj",
+      "batch": "ECE, 2023",
+      "linkedin": "https://www.linkedin.com/in/adarshabj"
+    },
+    {
+      "id": 7,
+      "ref": "PARM-190000611",
+      "name": "Shubham Chaurasiya",
+      "batch": "CE, 2023",
+      "linkedin": "https://www.linkedin.com/in/shubham-chaurasiya-2a521b201"
+    },
+    {
+      "id": 8,
+      "ref": "PARM-190000504",
+      "name": "Shilpi",
+      "batch": "CE, 2023",
+      "linkedin": "https://www.linkedin.com/in/shilpi"
+    },
+    {
+      "id": 9,
+      "ref": "PARM-190515293",
+      "name": "Sharthik Sharma",
+      "batch": "CHE, 2023",
+      "linkedin": "https://www.linkedin.com/in/sharthik-sharma"
+    }
+  ],
+  "director": {
+    "id": 1,
+    "name": "Prof. Vineet Kansal",
+    "designation": "Director, IET Lucknow",
+    "message": "परमार्थ केवल एक सामाजिक क्लब नहीं, बल्कि एक संवेदना है — हमारे छात्रों के हृदय की धड़कन, जो समाज की जरूरतों के प्रति जागरूक बनती है। जब युवा अपने ज्ञान और ऊर्जा को जनकल्याण के लिए समर्पित करते हैं, तभी सच्चे अर्थों में शिक्षा सार्थक होती है। परमार्थ का हर प्रयास, चाहे वह शिक्षा हो, स्वच्छता हो या समानता की दिशा में हो — एक नए भारत के निर्माण की नींव रखता है।\nमुझे गर्व है कि हमारे छात्र केवल शैक्षिक उपलब्धियों तक सीमित नहीं, बल्कि सामाजिक परिवर्तन के वाहक बन रहे हैं। यही वे मूल्य हैं जो किसी संस्था को महान बनाते हैं — और यही वह दिशा है जो परमार्थ को विशिष्ट बनाती है।\n\n - प्रो. विनीत कंसल",
+    "linkedin": "https://www.linkedin.com/in/vineet-kansal-6528056/",
+    "email": "vineetkansal@ietlucknow.ac.in",
+    "imgSrc": "/img/governing/vineet.png"
+  },
+  "governingHeadMem": [
+    {
+      "id": 1,
+      "name": "Dr. Pawan Kumar Tiwari",
+      "roleParmarth": "Faculty Coordinator, (2022-Present)",
+      "department": "Assistant Professor, CSE",
+      "message": "हर युवा में समाज को बदलने की क्षमता होती है, आवश्यकता है तो बस सही दिशा की। परमार्थ उस दिशा का नाम है जहाँ छात्र अपने विचारों और प्रयासों से समाज को बेहतर बनाने की कोशिश करते हैं। मेरा उद्देश्य रहा है कि हर विद्यार्थी में सेवा की भावना और नेतृत्व की क्षमता का विकास हो। इस क्लब के माध्यम से हम एक ऐसी पीढ़ी तैयार कर रहे हैं जो ज्ञान के साथ-साथ मानवीय मूल्यों को भी समझे।\n\n - डॉ. पवन कुमार तिवारी",
+      "linkedin": "",
+      "email": "pawantiwari@ietlucknow.ac.in",
+      "imgSrc": "/img/governing/pawan.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Dr. Ajay Kumar Sharma",
+      "roleParmarth": "Faculty Coordinator, (2022-Present)",
+      "department": "Assistant Professor, ME",
+      "message": "परमार्थ हमारे छात्रों को केवल सामाजिक जिम्मेदारी नहीं, बल्कि संवेदनशीलता, करुणा और नेतृत्व का भाव सिखाने का माध्यम है। मेरा मानना है कि शिक्षा का असली उद्देश्य तभी पूरा होता है जब वह समाज की सेवा में उपयोगी सिद्ध हो। परमार्थ के माध्यम से हम यही प्रयास कर रहे हैं – एक ऐसा मंच देना जो न केवल छात्र जीवन को समृद्ध बनाए, बल्कि समाज में भी सकारात्मक बदलाव लाए।\n\n - डॉ. अजय कुमार शर्मा",
+      "linkedin": "",
+      "email": "ajaysharma@ietlucknow.ac.in",
+      "imgSrc": "/img/governing/ajay.jpg"
+    }
+  ],
+  "governingPastMem": [
+    {
+      "id": 1,
+      "name": "Dr. Santosh Kumar Singh",
+      "roleParmarth": "Faculty Coordinator, (2019-2022)",
+      "department": "Assistant Professor, ASD",
+      "message": "परमार्थ मेरे लिए केवल एक क्लब नहीं है, यह एक परिवार है जहाँ हर छात्र अपनी क्षमताओं को पहचानता है, और अपने भीतर छिपी मानवता को ज़मीन पर उतारने का प्रयास करता है। मैंने स्वयं देखा है कि कैसे हमारे छात्र छोटी-छोटी पहलों से बड़े बदलाव ला रहे हैं। \nमुझे गर्व है कि मैं इस मंच से जुड़ा रहा हूँ, जहाँ हमने न केवल नेतृत्व की भावना विकसित की, बल्कि सेवा, करुणा और जिम्मेदारी जैसे मानवीय मूल्यों की नींव भी मज़बूत की। यह यात्रा मेरे लिए भी उतनी ही सीखने वाली रही है, जितनी हमारे विद्यार्थियों के लिए।\n\n - डॉ. संतोष कुमार सिंह",
+      "linkedin": "",
+      "email": "santoshsingh@ietlucknow.ac.in",
+      "imgSrc": "/img/governing/santosh.jpg"
+    }
+  ],
+  "executive": [
+    {
+      "id": 1,
+      "name": "Nilesh Kumar Singh",
+      "designation": "President",
+      "linkedin": "https://www.linkedin.com/in/nilesh-kumar-singh-019ab82aa",
+      "email": "snileshk1231@gmail.com",
+      "imgSrc": "https://res.cloudinary.com/ddo6wb1c5/image/upload/v1771147052/organization/org-1771147050446_pg5a13.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Akash Kapoor",
+      "designation": "Vice President",
+      "linkedin": "https://www.linkedin.com/in/akash-kapoor-4a8382256",
+      "email": "akashkapoor942@gmail.com",
+      "imgSrc": "/img/Team/2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Rishabh Shukla",
+      "designation": "Treasurer",
+      "linkedin": "https://www.linkedin.com/in/rishabh-shukla-76891a259",
+      "email": "rishabh7565099@gmail.com ",
+      "imgSrc": "/img/Team/3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Utkarsh Singh",
+      "designation": "Media Head",
+      "linkedin": "https://www.linkedin.com/in/utkarshsingh-iet",
+      "email": "utkarshsinghus181@gmail.com",
+      "imgSrc": "/img/Team/4.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Ashutosh Kumar Singh",
+      "designation": "Competitive Exams Head",
+      "linkedin": "https://www.linkedin.com/in/ashutosh-kumar-singh-466b891b8",
+      "email": "aksingh.vns007@gmail.com",
+      "imgSrc": "/img/Team/5.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Aryan Pandey",
+      "designation": "PR Head",
+      "linkedin": "https://www.linkedin.com/in/aryan-pandey-391a30253",
+      "email": "aryan2004pandey@gmail.com",
+      "imgSrc": "/img/Team/6.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Anjali Tomar",
+      "designation": "PR Head",
+      "linkedin": "https://www.linkedin.com/in/anjali-tomar-71522a266",
+      "email": "tomaranjali014@gmail.com",
+      "imgSrc": "/img/Team/7.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Priyanshu Mishra",
+      "designation": "PR Head",
+      "linkedin": "https://www.linkedin.com/in/priyanshu-mishra-6a1011220",
+      "email": "Priyanshumishra0.31415946@gmail.com",
+      "imgSrc": "/img/Team/8.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Palak",
+      "designation": "Girls Education Head",
+      "linkedin": "https://www.linkedin.com/in/palak-a959a02a5",
+      "email": "swatipalak2307@gmail.com",
+      "imgSrc": "/img/Team/9.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Vineet kumar",
+      "designation": "Girls Education Head",
+      "linkedin": "https://www.linkedin.com/in/vineet-kumar-391ab3296",
+      "email": "kumarvineet0928@gmail.com",
+      "imgSrc": "/img/Team/10.jpg"
+    },
+    {
+      "id": 1771147163505,
+      "name": "sgdfgsfssc",
+      "designation": "2025",
+      "linkedin": "huytr",
+      "email": "gydtg",
+      "imgSrc": "https://res.cloudinary.com/ddo6wb1c5/image/upload/v1771147161/organization/org-1771147158924_jdrqia.jpg"
+    }
+  ],
+  "legacyPresidents": [
+    {
+      "id": 1,
+      "name": "Vivek Kumar Dixit",
+      "designation": "President, Parmarth",
+      "department": "ECE, Batch of 2025",
+      "message": "परमार्थ सिर्फ़ एक क्लब नहीं है, यह एक सोच है – समाज की भलाई के लिए कुछ कर गुजरने की भावना। यहाँ हर कदम, हर प्रयास किसी के जीवन में एक सकारात्मक बदलाव लाने के लिए होता है।\n\n - विवेक कुमार दीक्षित",
+      "linkedin": "https://www.linkedin.com/in/vivek-553277228/",
+      "email": "vivekdixit504@gmail.com",
+      "imgSrc": "/img/PastPresident/vivek.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Mridul Pandey",
+      "designation": "President, Parmarth",
+      "department": "ECE, Batch of 2024",
+      "message": "एक छात्र के रूप में हम बहुत कुछ सीखते हैं, लेकिन परमार्थ ने हमें वह सिखाया जो किताबों में नहीं मिलता — इंसानियत। यहाँ बिताया हर पल, हर पहल समाज के लिए एक छोटा सा योगदान रहा, जिसे हम जीवन भर गर्व से याद रखेंगे।\n\n - मृदुल पांडेय",
+      "linkedin": "https://www.linkedin.com/in/mridul-pandey-874856190/",
+      "email": "mridulmp2030@gmail.com",
+      "imgSrc": "/img/PastPresident/mridul.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Anjani Kumar Singh",
+      "designation": "President, Parmarth",
+      "department": "IT, Batch of 2023",
+      "message": "कोई भी प्रयास छोटा नहीं होता। जब भी हमने किसी के चेहरे पर मुस्कान देखी, किसी बच्चे की आंखों में उम्मीद देखी — वहीं हमारी यात्रा सार्थक हो गई। परमार्थ ने हमें यह एहसास कराया कि जब तक इंसानियत जिंदा है, तब तक आशा की कोई कमी नहीं है।\n\n - अंजनी कुमार सिंह",
+      "linkedin": "https://www.linkedin.com/in/anjani-kumar-singh-042b95226/",
+      "email": "anjanigzp01@gmail.com",
+      "imgSrc": "/img/PastPresident/anjani.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Alok Kumar",
+      "designation": "President, Parmarth",
+      "department": "CHE, Batch of 2022",
+      "message": "परमार्थ की सबसे खूबसूरत बात यह रही कि यहाँ हम अकेले नहीं बढ़े — हम साथ बढ़े। हर सदस्य की सोच, ऊर्जा और भावना ने मिलकर इसे एक जीवंत परिवार बना दिया। यहाँ की हर योजना, हर आयोजन में एक साथ चलने का अहसास था, जो हमें जीवन भर याद रहेगा।\n\n - आलोक कुमार",
+      "linkedin": "https://www.linkedin.com/in/alok-kumar-687041216/",
+      "email": "alok07099@gmail.com",
+      "imgSrc": "/img/PastPresident/alok.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Abhishek Kushwaha",
+      "designation": "President, Parmarth",
+      "department": "CE, Batch of 2021",
+      "message": "कभी-कभी जीवन में ऐसे क्षण आते हैं जो हमें हमारे असली उद्देश्य से मिलवाते हैं। परमार्थ मेरे लिए वही क्षणों की श्रृंखला थी। यहाँ मैंने जाना कि दूसरों के लिए कुछ करने का संतोष, किसी भी उपलब्धि से बड़ा होता है। और जब आप दिल से सेवा करते हैं, तो आपका अस्तित्व भी एक प्रेरणा बन जाता है।\n\n - अभिषेक कुशवाहा",
+      "linkedin": "",
+      "email": "ak6847696@gmail.com",
+      "imgSrc": "/img/PastPresident/abhishek.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Ujjwal Pratap",
+      "designation": "President, Parmarth",
+      "department": "ME, Batch of 2020",
+      "message": "परमार्थ ने मुझे यह सिखाया कि हम चाहे कितने भी छोटे क्यों न हों, अगर सोच बड़ी है तो परिवर्तन निश्चित है। हमने समाज की जमीनी जरूरतों को समझा, महसूस किया और फिर उस पर काम किया। यह एक यात्रा थी — विचार से क्रियान्वयन तक, स्वार्थ से परमार्थ तक।\n\n - उज्जवल प्रताप",
+      "linkedin": "https://www.linkedin.com/in/ujjawal-pratap/",
+      "email": "ujjawalpratap24@gmail.com",
+      "imgSrc": "/img/PastPresident/ujjawal.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Priyanshu Jaiswal",
+      "designation": "President, Parmarth",
+      "department": "EE, Batch of 2019",
+      "message": "परमार्थ केवल एक संगठन नहीं, एक जुनून है — समाज के लिए कुछ कर गुजरने का। इसमें काम करते हुए मैंने सीखा कि समर्पण से बड़ी कोई शक्ति नहीं।\n\n - प्रियांशु जयसवाल",
+      "linkedin": "",
+      "email": "priyanshujaiswal42@gmail.com",
+      "imgSrc": "/img/PastPresident/priyanshu.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Ankit Pandey",
+      "designation": "President, Parmarth",
+      "department": "ME, Batch of 2018",
+      "message": "हमारा उद्देश्य सिर्फ मदद करना नहीं, बल्कि यह सुनिश्चित करना है कि समाज का कोई भी व्यक्ति पीछे न छूटे। परमार्थ की यही भावना मेरे दिल को छूती है।\n\n - अंकित पांडेय",
+      "linkedin": "",
+      "email": "ankit.iet1@gmail.com",
+      "imgSrc": "/img/PastPresident/ankit.jpg"
+    }
+  ],
+  "legacyVicePresidents": [
+    {
+      "id": 1,
+      "name": "Arnav Saxena",
+      "designation": "Vice-President, Parmarth",
+      "department": "ECE, Batch of 2025",
+      "message": "हर उस मुस्कान में एक उम्मीद होती है जो हमने किसी को मदद देकर दी। परमार्थ ने मुझे सिखाया कि समाज के हर वर्ग तक पहुँच बनानी ज़रूरी है — तभी हम सच्चे अर्थों में विकसित होंगे।\n\n - अर्णव सक्सेना",
+      "linkedin": "https://www.linkedin.com/in/arnav-saxena-170116233/",
+      "email": "arnav007sxn@gmail.com",
+      "imgSrc": "/img/pastVicePresident/arnav.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Shikha Awasthi",
+      "designation": "Vice-President, Parmarth",
+      "department": "CHE, Batch of 2024",
+      "message": "समाज को बदलने की ताकत हमारे युवाओं में है। परमार्थ ने हमें वह मंच दिया जहाँ हम न केवल सोच सकते हैं, बल्कि कुछ कर भी सकते हैं।\n\n - शिखा अवस्थी",
+      "linkedin": "https://www.linkedin.com/in/shikha-awasthi-33060323a",
+      "email": "shikha.techie@gmail.com",
+      "imgSrc": "/img/pastVicePresident/shikha.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Adarsh Bhardwaj",
+      "designation": "Vice-President, Parmarth",
+      "department": "ECE, Batch of 2023",
+      "message": "पढ़ाई के साथ अगर हम समाज के लिए भी जागरूक हो जाएं, तो हम सिर्फ अच्छे विद्यार्थी नहीं, अच्छे नागरिक भी बन जाते हैं।\n\n - आदर्श भारद्वाज",
+      "linkedin": "https://www.linkedin.com/in/adarshabj",
+      "email": "adarshbh19@gmail.com",
+      "imgSrc": "/img/pastVicePresident/adarsh.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Abhay Sharma",
+      "designation": "Vice-President, Parmarth",
+      "department": "CE, Batch of 2022",
+      "message": "एक अकेला इंसान बदलाव नहीं ला सकता, लेकिन जब कई दिल एक सोच के लिए धड़कते हैं, तब इतिहास बनता है — यही है परमार्थ की ताकत।\n\n - अभय शर्मा",
+      "linkedin": "https://www.linkedin.com/in/abhaysharma4799",
+      "email": "abhaysre47@gmail.com",
+      "imgSrc": "/img/pastVicePresident/abhay.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Ashish Chand",
+      "designation": "Vice-President, Parmarth",
+      "department": "CHE, Batch of 2021",
+      "message": "सेवा ही परमार्थ है। जब युवा अपने स्वार्थ से ऊपर उठकर समाज के लिए कार्य करते हैं, तभी बदलाव की शुरुआत होती है। मैं गर्व से कहता हूँ कि परमार्थ इस सोच का सजीव उदाहरण है।\n\n - आशीष चंद",
+      "linkedin": "https://www.linkedin.com/in/ashishhere/",
+      "email": "ashishchand12527@gmail.com",
+      "imgSrc": "/img/pastVicePresident/ashish.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Aditya Varma",
+      "designation": "Vice-President, Parmarth",
+      "department": "ECE, Batch of 2020",
+      "message": "हमारा उद्देश्य सिर्फ मदद करना नहीं, बल्कि यह सुनिश्चित करना है कि समाज का कोई भी व्यक्ति पीछे न छूटे। परमार्थ की यही भावना मेरे दिल को छूती है।\n\n - आदित्य वर्मा",
+      "linkedin": "https://www.linkedin.com/in/1aditya-varma/",
+      "email": "varmaditya360@gmail.com",
+      "imgSrc": "/img/pastVicePresident/aditya.jpg"
+    }
+  ]
+}

@@ -39,6 +39,7 @@ import AddVolunteerData from "../pages/AddVolunteerData/AddVolunteerData";
 import Events from "../pages/Events/Events";
 import CreateUser from "../pages/CreateUser/CreateUser";
 import ListUsers from "../pages/ListUsers/ListUsers";
+import ManageOrganization from "../pages/ManageOrganization/ManageOrganization";
 import VerifyCode from "../pages/VerifyCode/VerifyCode";
 import Muskan from "../pages/Muskan/Muskan.jsx";
 import GE from "../pages/GE/GE.jsx";
@@ -159,6 +160,7 @@ const AppRoutes = () => {
         <>
           <Route path="/create-user" element={<Layout><CreateUser /></Layout>} />
           <Route path="/list-users" element={<Layout><ListUsers /></Layout>} />
+          <Route path="/manage-organization" element={<Layout><ManageOrganization /></Layout>} />
         </>
       )}
 

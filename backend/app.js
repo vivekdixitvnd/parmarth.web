@@ -14,6 +14,7 @@ import cors from "cors";
 import {
   requestDataRoute,
   authRoute,
+  organizationRoute,
   rteRoute,
   volunteersRoute,
   eventVolunteersRoute,
@@ -35,10 +36,10 @@ import {
 const app = express();
 
 app.use(cors({
-  // origin: 'http://localhost:5173',
+  origin: 'http://localhost:5173',
   // origin: 'https://parmarth-web.vercel.app',
   // origin: 'https://parmarth-iet.onrender.com',
-  origin: 'https://parmarth.ietlucknow.ac.in',
+  // origin: 'https://parmarth.ietlucknow.ac.in',
   credentials: true,
 }));
 app.options('*', cors()); // handle preflight for all routes
@@ -77,6 +78,7 @@ app.use((req, res, next) => {
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(requestDataRoute);
+app.use(organizationRoute);
 app.use(authRoute);
 app.use(rteRoute);
 app.use(volunteersRoute);

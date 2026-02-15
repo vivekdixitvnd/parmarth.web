@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../Legacy.module.css"
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
-import legacyPresidents from "./LegacyPresidents.json";
+import { fetchOrganizationData } from "../../../../api/organization";
 
 const InfoCard = ({ member }) => (
   <div className={styles.profileCard}>
@@ -33,12 +33,26 @@ const InfoCard = ({ member }) => (
 
 
 const LegacyPresidents = () => {
+  const [legacyPresidents, setLegacyPresidents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchOrganizationData()
+      .then((data) => setLegacyPresidents(data.legacyPresidents || []))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <div className={styles.body} style={{ textAlign: "center" }}>Loading...</div>;
+  if (error) return <div className={styles.body} style={{ textAlign: "center", color: "red" }}>{error}</div>;
+
   return (
     <div className={styles.body}>
       <h1 className={styles.title}>पूर्व अध्यक्ष</h1>
-      {legacyPresidents.map((member) => (
+      {legacyPresidents.map((member, idx) => (
         <InfoCard
-          key={member.id}
+          key={member.id || idx}
           member={member}
           />
       ))}
