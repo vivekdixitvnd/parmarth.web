@@ -16,6 +16,7 @@ import otpLogin from "./otpLogin.routes.js";
 import eventUploadRoutes from "./eventUpload.routes.js";
 import mentorRoutes from "./mentorsAttendence.routes.js";
 import liveUpdateRoutes from "./liveUpdates.js";
+import organizationRoute from "./organization.routes.js";
 
 
 export {
@@ -37,4 +38,5 @@ export {
   otpLogin,
   eventUploadRoutes,
   liveUpdateRoutes,
+  organizationRoute,
 };

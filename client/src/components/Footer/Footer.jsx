@@ -61,7 +61,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.copyright}>
-  Parmarth © 2025 All Rights Reserved | Developed by Vivek Dixit & Arnav Saxena (Batch of 2025)
+  Parmarth © 2026 All Rights Reserved | Developed by Vivek Dixit & Arnav Saxena (Batch of 2025)
   
 </div>
 

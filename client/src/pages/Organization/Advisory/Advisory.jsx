@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Advisory.module.css";
-import Members from "./coreAdvisory.json";
-import coreMembers from "./Advisory.json";
-import founder from "./Founder.json";
+import { fetchOrganizationData } from "../../../api/organization";
 
 const AdvisoryTable = ({ members }) => {
   return (
@@ -47,6 +45,26 @@ const AdvisoryTable = ({ members }) => {
 
 
 const Advisory = () => {
+  const [founder, setFounder] = useState([]);
+  const [Members, setMembers] = useState([]);
+  const [coreMembers, setCoreMembers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchOrganizationData()
+      .then((data) => {
+        setFounder(data.founder || []);
+        setMembers(data.coreAdvisory || []);
+        setCoreMembers(data.advisory || []);
+      })
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <div className={styles.body} style={{ textAlign: "center" }}>Loading...</div>;
+  if (error) return <div className={styles.body} style={{ textAlign: "center", color: "red" }}>{error}</div>;
+
   return (
     <>
       <div className={styles.body}>

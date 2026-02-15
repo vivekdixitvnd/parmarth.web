@@ -51,10 +51,10 @@ const PostForm = (props) => {
     new Promise((resolve) => {
       Resizer.imageFileResizer(
         file,
-        400,
-        300,
+        1920,
+        1080,
         "JPEG",
-        70,
+        95,
         0,
         (uri) => {
           resolve(uri);

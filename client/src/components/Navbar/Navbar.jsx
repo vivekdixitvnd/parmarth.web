@@ -658,6 +658,21 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                   )}
+                  {userType === "master" && (
+                    <li>
+                      <NavLink
+                        to="/manage-organization"
+                        className={
+                          pathname === "/manage-organization"
+                            ? styles.active
+                            : styles.link
+                        }
+                        style={{ fontSize: "18px" }}
+                      >
+                        Manage Organization
+                      </NavLink>
+                    </li>
+                  )}
                   {/* <li>
                     <NavLink
                       to="/convert-url"

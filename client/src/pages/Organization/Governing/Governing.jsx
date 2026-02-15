@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Governing.module.css";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
-import headMembers from "./headMem.json";
-import pastMembers from "./pastMem.json";
-import director from "./Director.json";
+import { fetchOrganizationData } from "../../../api/organization";
 
 const InfoCard = ({ member, pastMem, isDirector = false }) => (
   <div className={styles.profileCard}>
@@ -40,25 +38,47 @@ const InfoCard = ({ member, pastMem, isDirector = false }) => (
 );
 
 const Team = () => {
+  const [director, setDirector] = useState(null);
+  const [headMembers, setHeadMembers] = useState([]);
+  const [pastMembers, setPastMembers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchOrganizationData()
+      .then((data) => {
+        setDirector(data.director || null);
+        setHeadMembers(data.governingHeadMem || []);
+        setPastMembers(data.governingPastMem || []);
+      })
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <div className={styles.body} style={{ textAlign: "center" }}>Loading...</div>;
+  if (error) return <div className={styles.body} style={{ textAlign: "center", color: "red" }}>{error}</div>;
+
   return (
     <div className={styles.body}>
       <h1 className={styles.title}>निदेशक</h1>
-      <InfoCard
-        member={director}
-       isDirector={true}
-      />
+      {director && (
+        <InfoCard
+          member={director}
+          isDirector={true}
+        />
+      )}
 
       <h1 className={styles.title}>संकाय सलाहकार </h1>
-      {headMembers.map((member) => (
+      {headMembers.map((member, idx) => (
         <InfoCard
-          key={member.id}
+          key={member.id || idx}
           member={member}
         />
       ))}
       <h1 className={styles.title}>पूर्व संकाय सलाहकार </h1>
-      {pastMembers.map((member) => (
+      {pastMembers.map((member, idx) => (
         <InfoCard
-          key={member.id}
+          key={member.id || idx}
           member={member}
         />
       ))}
